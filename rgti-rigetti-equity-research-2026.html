@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RGTI | Rigetti Computing — Citadel 深度投研报告</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0c10;
+    --surface: #12151c;
+    --surface-2: #181c26;
+    --border: #242a38;
+    --border-light: #2e3648;
+    --text: #e8ecf4;
+    --text-muted: #8a92a6;
+    --text-dim: #5a6278;
+    --accent: #4fc3f7;
+    --accent-dark: #0288d1;
+    --red: #ef5350;
+    --red-bg: rgba(239,83,80,0.08);
+    --green: #66bb6a;
+    --green-bg: rgba(102,187,106,0.08);
+    --yellow: #ffd54f;
+    --yellow-bg: rgba(255,213,79,0.08);
+    --orange: #ffa726;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* Header */
+  .header {
+    border-bottom: 1px solid var(--border);
+    padding: 40px 0 32px;
+  }
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 24px;
+  }
+  .header-brand {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .header-date {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    text-align: right;
+  }
+  .header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--text);
+    letter-spacing: -1px;
+  }
+  .header h1 span {
+    color: var(--accent);
+  }
+  .header-sub {
+    font-size: 17px;
+    color: var(--text-muted);
+    margin-top: 8px;
+    font-weight: 300;
+  }
+  .header-meta {
+    display: flex;
+    gap: 32px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+  }
+  .meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .meta-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+  .meta-value {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .meta-value.red { color: var(--red); }
+  .meta-value.green { color: var(--green); }
+  .meta-value.accent { color: var(--accent); }
+
+  /* Rating Badge */
+  .rating-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--yellow-bg);
+    border: 1px solid rgba(255,213,79,0.2);
+    color: var(--yellow);
+    padding: 6px 16px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+  }
+  .rating-badge .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--yellow);
+  }
+
+  /* Sections */
+  .section {
+    padding: 48px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .section:last-child { border-bottom: none; }
+  .section-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .section h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 24px;
+    line-height: 1.3;
+  }
+  .section h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin: 28px 0 12px;
+    padding-left: 12px;
+    border-left: 3px solid var(--accent);
+  }
+  .section p {
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+  .question {
+    color: var(--accent);
+    font-style: italic;
+    font-weight: 500;
+    margin: 20px 0 8px;
+  }
+  .highlight {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 20px 24px;
+    margin: 20px 0;
+  }
+  .highlight.red { border-left: 3px solid var(--red); }
+  .highlight.green { border-left: 3px solid var(--green); }
+  .highlight.yellow { border-left: 3px solid var(--yellow); }
+  .highlight.blue { border-left: 3px solid var(--accent); }
+  .highlight-title {
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .highlight-title.red { color: var(--red); }
+  .highlight-title.green { color: var(--green); }
+  .highlight-title.yellow { color: var(--yellow); }
+  .highlight-title.blue { color: var(--accent); }
+
+  /* Data Table */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 14px;
+  }
+  .data-table th {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    text-align: left;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--border);
+    font-weight: 500;
+  }
+  .data-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-muted);
+  }
+  .data-table tr:hover td {
+    background: var(--surface);
+  }
+  .data-table td:first-child {
+    color: var(--text);
+    font-weight: 500;
+  }
+  .data-table .num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+  }
+
+  /* Chart Container */
+  .chart-container {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 28px;
+    margin: 24px 0;
+  }
+  .chart-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 20px;
+  }
+  svg text {
+    font-family: 'IBM Plex Sans', sans-serif;
+  }
+
+  /* Grid */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+  }
+
+  /* KPI Cards */
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 20px;
+  }
+  .kpi-card .label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 8px;
+  }
+  .kpi-card .value {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1;
+  }
+  .kpi-card .sub {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 6px;
+  }
+
+  /* Catalyst Timeline */
+  .timeline {
+    position: relative;
+    padding-left: 24px;
+    margin: 20px 0;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 8px;
+    bottom: 8px;
+    width: 1px;
+    background: var(--border-light);
+  }
+  .timeline-item {
+    position: relative;
+    padding-bottom: 24px;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 6px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+    background: var(--bg);
+  }
+  .timeline-item.hot::before { border-color: var(--red); background: var(--red); }
+  .timeline-item.warm::before { border-color: var(--orange); }
+  .timeline-date {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+  .timeline-item.hot .timeline-date { color: var(--red); }
+  .timeline-title {
+    font-weight: 600;
+    color: var(--text);
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+  .timeline-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* Footer */
+  .footer {
+    padding: 32px 0;
+    text-align: center;
+    font-size: 11px;
+    color: var(--text-dim);
+    border-top: 1px solid var(--border);
+  }
+
+  strong { color: var(--text); font-weight: 600; }
+
+  @media (max-width: 768px) {
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .header h1 { font-size: 32px; }
+    .header-meta { gap: 16px; }
+    .container { padding: 0 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-top">
+    <div>
+      <div class="header-brand">Citadel Securities — Equity Research</div>
+      <h1>RGTI <span>|</span> Rigetti Computing</h1>
+      <div class="header-sub">量子计算全栈硬件公司 · NASDAQ · 超导量子比特架构</div>
+    </div>
+    <div style="text-align: right;">
+      <div class="header-date">2026年2月26日</div>
+      <div style="margin-top: 12px;">
+        <span class="rating-badge"><span class="dot"></span>战术性空头 (Tactical Short)</span>
+      </div>
+    </div>
+  </div>
+  <div class="header-meta">
+    <div class="meta-item">
+      <span class="meta-label">现价</span>
+      <span class="meta-value">$17.46</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">市值</span>
+      <span class="meta-value">$5.4B</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">52周区间</span>
+      <span class="meta-value">$6.86 – $58.15</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">EV/Sales (TTM)</span>
+      <span class="meta-value red">~255x</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">净现金/股</span>
+      <span class="meta-value green">$1.33</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">目标价区间</span>
+      <span class="meta-value accent">$8 – $30</span>
+    </div>
+  </div>
+</header>
+
+<!-- EXECUTIVE SUMMARY -->
+<section class="section">
+  <div class="section-num">Executive Summary</div>
+  <h2>核心论点：叙事溢价远超基本面承载力</h2>
+  <p>Rigetti Computing 是量子计算赛道中为数不多的"全栈"超导量子比特硬件公司，其可编程QPU、chiplet模块化架构和QCaaS云服务构成了一个完整的技术故事。但问题的核心在于：<strong>一家年收入仅$7.5M、连续三年营收下滑的公司，凭什么支撑$5.4B的市值？</strong></p>
+  <p>这不是一份传统意义上的"价值投资"报告。量子计算股的定价逻辑更接近风险投资的期权思维——投资者购买的是2030年以后商业化成功的"彩票"。我们的工作是：精确识别这张彩票当前的合理定价，并找到市场共识中的预期差。</p>
+
+  <div class="highlight yellow">
+    <div class="highlight-title yellow">核心结论</div>
+    <p style="margin-bottom:0">当前市场对RGTI的定价隐含了2027年$45M+营收与2030年前盈利的乐观假设。但量子纠错技术商业化仍需100万+物理量子比特（RGTI当前<200），TD Cowen已下调评级至Hold，DARPA QBI Stage B被淘汰。我们认为股价已透支未来3-5年的乐观预期，短期面临估值压缩风险。评级：<strong>战术性空头</strong>，Base Case目标价$12，Bull Case $30。</p>
+  </div>
+</section>
+
+<!-- SECTION 1: ALPHA -->
+<section class="section">
+  <div class="section-num">01 — Alpha识别</div>
+  <h2>预期差分析：共识在哪里犯了错？</h2>
+
+  <h3>竞争壁垒的"量化真相"</h3>
+  <p>Rigetti的核心技术叙事围绕三个支柱展开：(1) 超导量子比特的速度优势——比离子阱等替代方案快1000倍；(2) chiplet模块化架构允许"拼接"扩展量子比特数量；(3) 自有晶圆制造能力（Fab-1）提供端到端控制。</p>
+
+  <p class="question">→ 苏格拉底式追问：速度优势是否等于商业优势？</p>
+  <p>超导量子比特确实在门操作速度上领先，但这一优势被其<strong>保真度劣势</strong>抵消。IonQ的离子阱架构已实现99.99%的双量子比特门保真度，而Rigetti的目标仅为99.5%（当前）→ 99.7%（2026E）→ 99.8%（2027E）。在量子纠错的数学模型中，保真度每提升0.1%，所需的物理量子比特数量可减少一个数量级。这意味着Rigetti需要远多于IonQ的物理量子比特才能实现等效的逻辑量子比特——这直接转化为更高的系统成本和更大的工程复杂度。</p>
+
+  <p class="question">→ chiplet架构是否真正构成"护城河"？</p>
+  <p>模块化chiplet拼接技术降低了单芯片良率的瓶颈，但也引入了芯片间互联的信号衰减问题。更关键的是，这一技术路线并非Rigetti独有——Google、IBM均在探索类似方案，且拥有数量级更大的研发预算（Google量子AI年度预算估计>$500M vs. Rigetti全年OpEx $82M）。</p>
+
+  <!-- SVG: Competitive Positioning -->
+  <div class="chart-container">
+    <div class="chart-title">竞争格局矩阵 — 核心技术指标对比</div>
+    <svg viewBox="0 0 900 340" xmlns="http://www.w3.org/2000/svg">
+      <!-- Background grid -->
+      <rect x="0" y="0" width="900" height="340" fill="#12151c"/>
+      <!-- Table Header -->
+      <rect x="20" y="20" width="860" height="36" rx="4" fill="#181c26"/>
+      <text x="40" y="43" fill="#5a6278" font-size="10" font-weight="600" letter-spacing="1.5" text-transform="uppercase">公司</text>
+      <text x="200" y="43" fill="#5a6278" font-size="10" font-weight="600" letter-spacing="1.5">量子比特数</text>
+      <text x="340" y="43" fill="#5a6278" font-size="10" font-weight="600" letter-spacing="1.5">2-Qubit 保真度</text>
+      <text x="500" y="43" fill="#5a6278" font-size="10" font-weight="600" letter-spacing="1.5">Q3'25 营收</text>
+      <text x="630" y="43" fill="#5a6278" font-size="10" font-weight="600" letter-spacing="1.5">现金储备</text>
+      <text x="770" y="43" fill="#5a6278" font-size="10" font-weight="600" letter-spacing="1.5">EV/Sales</text>
+
+      <!-- RGTI Row -->
+      <rect x="20" y="62" width="860" height="44" rx="0" fill="rgba(79,195,247,0.04)"/>
+      <circle cx="32" cy="84" r="4" fill="#4fc3f7"/>
+      <text x="44" y="88" fill="#e8ecf4" font-size="13" font-weight="600">Rigetti (RGTI)</text>
+      <text x="200" y="88" fill="#8a92a6" font-size="13" font-family="'IBM Plex Mono',monospace">~100 (end'25E)</text>
+      <text x="340" y="88" fill="#ffa726" font-size="13" font-family="'IBM Plex Mono',monospace">99.5%</text>
+      <text x="500" y="88" fill="#ef5350" font-size="13" font-family="'IBM Plex Mono',monospace">$1.9M</text>
+      <text x="630" y="88" fill="#8a92a6" font-size="13" font-family="'IBM Plex Mono',monospace">~$600M</text>
+      <text x="770" y="88" fill="#ef5350" font-size="13" font-family="'IBM Plex Mono',monospace">~255x</text>
+
+      <!-- IONQ Row -->
+      <rect x="20" y="110" width="860" height="44" rx="0" fill="transparent"/>
+      <circle cx="32" cy="132" r="4" fill="#66bb6a"/>
+      <text x="44" y="136" fill="#e8ecf4" font-size="13" font-weight="600">IonQ (IONQ)</text>
+      <text x="200" y="136" fill="#8a92a6" font-size="13" font-family="'IBM Plex Mono',monospace">36 (#AQ)</text>
+      <text x="340" y="136" fill="#66bb6a" font-size="13" font-family="'IBM Plex Mono',monospace">99.99%</text>
+      <text x="500" y="136" fill="#66bb6a" font-size="13" font-family="'IBM Plex Mono',monospace">$39.9M</text>
+      <text x="630" y="136" fill="#8a92a6" font-size="13" font-family="'IBM Plex Mono',monospace">~$3.5B</text>
+      <text x="770" y="136" fill="#ffa726" font-size="13" font-family="'IBM Plex Mono',monospace">~206x</text>
+
+      <!-- QBTS Row -->
+      <rect x="20" y="158" width="860" height="44" rx="0" fill="rgba(255,255,255,0.01)"/>
+      <circle cx="32" cy="180" r="4" fill="#ffd54f"/>
+      <text x="44" y="184" fill="#e8ecf4" font-size="13" font-weight="600">D-Wave (QBTS)</text>
+      <text x="200" y="184" fill="#8a92a6" font-size="13" font-family="'IBM Plex Mono',monospace">5,000+ (退火)</text>
+      <text x="340" y="184" fill="#8a92a6" font-size="13" font-family="'IBM Plex Mono',monospace">N/A (退火型)</text>
+      <text x="500" y="184" fill="#8a92a6" font-size="13" font-family="'IBM Plex Mono',monospace">$15.2M</text>
+      <text x="630" y="184" fill="#8a92a6" font-size="13" font-family="'IBM Plex Mono',monospace">~$300M</text>
+      <text x="770" y="184" fill="#8a92a6" font-size="13" font-family="'IBM Plex Mono',monospace">~167x</text>
+
+      <!-- IBM Row -->
+      <rect x="20" y="206" width="860" height="44" rx="0" fill="transparent"/>
+      <circle cx="32" cy="228" r="4" fill="#ab47bc"/>
+      <text x="44" y="232" fill="#e8ecf4" font-size="13" font-weight="600">IBM (Quantum)</text>
+      <text x="200" y="232" fill="#8a92a6" font-size="13" font-family="'IBM Plex Mono',monospace">1,121 (Condor)</text>
+      <text x="340" y="232" fill="#8a92a6" font-size="13" font-family="'IBM Plex Mono',monospace">99.5%+</text>
+      <text x="500" y="232" fill="#66bb6a" font-size="13" font-family="'IBM Plex Mono',monospace">N/A (整合)</text>
+      <text x="630" y="232" fill="#66bb6a" font-size="13" font-family="'IBM Plex Mono',monospace">$13.5B FCF</text>
+      <text x="770" y="232" fill="#66bb6a" font-size="13" font-family="'IBM Plex Mono',monospace">N/A</text>
+
+      <!-- Google Row -->
+      <rect x="20" y="254" width="860" height="44" rx="0" fill="rgba(255,255,255,0.01)"/>
+      <circle cx="32" cy="276" r="4" fill="#e91e63"/>
+      <text x="44" y="280" fill="#e8ecf4" font-size="13" font-weight="600">Google (Willow)</text>
+      <text x="200" y="280" fill="#8a92a6" font-size="13" font-family="'IBM Plex Mono',monospace">105 (Willow)</text>
+      <text x="340" y="280" fill="#66bb6a" font-size="13" font-family="'IBM Plex Mono',monospace">99.7%+</text>
+      <text x="500" y="280" fill="#66bb6a" font-size="13" font-family="'IBM Plex Mono',monospace">N/A (整合)</text>
+      <text x="630" y="280" fill="#66bb6a" font-size="13" font-family="'IBM Plex Mono',monospace">>$100B</text>
+      <text x="770" y="280" fill="#66bb6a" font-size="13" font-family="'IBM Plex Mono',monospace">N/A</text>
+
+      <!-- Divider -->
+      <line x1="20" y1="304" x2="880" y2="304" stroke="#242a38" stroke-width="1"/>
+      <text x="40" y="326" fill="#5a6278" font-size="11" font-style="italic">注：IonQ #AQ为算法量子比特(Algorithmic Qubits)，不可与物理量子比特直接对比。D-Wave为量子退火架构，非通用量子门模型。</text>
+    </svg>
+  </div>
+
+  <h3>市场共识 vs. 我们的观点</h3>
+  <div class="grid-2">
+    <div class="highlight green">
+      <div class="highlight-title green">华尔街共识（多头叙事）</div>
+      <p style="margin-bottom:8px"><strong>评级：</strong>8位分析师 → "Strong Buy"，均价目标$33.5</p>
+      <p style="margin-bottom:8px"><strong>核心逻辑：</strong>量子计算TAM到2040年达$450B-$850B（BCG预测），RGTI作为纯正标的享受赛道β</p>
+      <p style="margin-bottom:0"><strong>近期催化：</strong>C-DAC $8.4M订单、Quanta $100M+合作、NVIDIA NVQLink集成</p>
+    </div>
+    <div class="highlight red">
+      <div class="highlight-title red">我们的独立观点（空头逻辑）</div>
+      <p style="margin-bottom:8px"><strong>被忽视的变量①：</strong>营收连续三年下滑（$13.1M→$10.8M→$7.5M TTM），商业化拐点迟迟未到</p>
+      <p style="margin-bottom:8px"><strong>被忽视的变量②：</strong>股份数一年暴增74%（190M→330M），稀释严重侵蚀每股价值</p>
+      <p style="margin-bottom:0"><strong>被忽视的变量③：</strong>DARPA QBI Stage B出局，意味着美国国防体系对其技术路线的信心存疑</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2: FINANCIALS -->
+<section class="section">
+  <div class="section-num">02 — 量化业绩预测与财务侦测</div>
+  <h2>数字不会撒谎，但叙事会</h2>
+
+  <h3>核心KPI驱动力识别</h3>
+  <div class="grid-3">
+    <div class="kpi-card">
+      <div class="label">KPI #1</div>
+      <div class="value" style="font-size:18px; color:var(--accent)">QPU系统订单</div>
+      <div class="sub">Novera/Cepheus交付量与ASP决定近期营收轨迹。C-DAC $8.4M单笔订单 = Q3全年营收1.1x</div>
+    </div>
+    <div class="kpi-card">
+      <div class="label">KPI #2</div>
+      <div class="value" style="font-size:18px; color:var(--accent)">量子比特保真度</div>
+      <div class="sub">99.5% → 99.7% → 99.8%的路线图执行度直接决定技术竞争力与政府合同获取能力</div>
+    </div>
+    <div class="kpi-card">
+      <div class="label">KPI #3</div>
+      <div class="value" style="font-size:18px; color:var(--accent)">现金消耗速度</div>
+      <div class="sub">当前~$600M现金 vs. ~$55M/年non-GAAP OpEx burn，理论跑道~10年，但新Fab投资需>$300M</div>
+    </div>
+  </div>
+
+  <!-- Revenue Chart SVG -->
+  <div class="chart-container">
+    <div class="chart-title">季度营收走势与预测 (单位: $M)</div>
+    <svg viewBox="0 0 860 300" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="860" height="300" fill="#12151c"/>
+      
+      <!-- Grid lines -->
+      <line x1="80" y1="40" x2="820" y2="40" stroke="#1e2330" stroke-width="0.5"/>
+      <line x1="80" y1="85" x2="820" y2="85" stroke="#1e2330" stroke-width="0.5"/>
+      <line x1="80" y1="130" x2="820" y2="130" stroke="#1e2330" stroke-width="0.5"/>
+      <line x1="80" y1="175" x2="820" y2="175" stroke="#1e2330" stroke-width="0.5"/>
+      <line x1="80" y1="220" x2="820" y2="220" stroke="#1e2330" stroke-width="0.5"/>
+      
+      <!-- Y-axis labels -->
+      <text x="70" y="44" fill="#5a6278" font-size="10" text-anchor="end" font-family="'IBM Plex Mono',monospace">$5.0</text>
+      <text x="70" y="89" fill="#5a6278" font-size="10" text-anchor="end" font-family="'IBM Plex Mono',monospace">$4.0</text>
+      <text x="70" y="134" fill="#5a6278" font-size="10" text-anchor="end" font-family="'IBM Plex Mono',monospace">$3.0</text>
+      <text x="70" y="179" fill="#5a6278" font-size="10" text-anchor="end" font-family="'IBM Plex Mono',monospace">$2.0</text>
+      <text x="70" y="224" fill="#5a6278" font-size="10" text-anchor="end" font-family="'IBM Plex Mono',monospace">$1.0</text>
+
+      <!-- Bars: Q1'24 = $3.05M -->
+      <rect x="110" y="122" width="50" height="98" rx="3" fill="#4fc3f7" opacity="0.7"/>
+      <text x="135" y="115" fill="#e8ecf4" font-size="11" text-anchor="middle" font-family="'IBM Plex Mono',monospace">3.05</text>
+      <text x="135" y="252" fill="#5a6278" font-size="10" text-anchor="middle">Q1'24</text>
+
+      <!-- Q2'24 = $3.13M -->
+      <rect x="190" y="119" width="50" height="101" rx="3" fill="#4fc3f7" opacity="0.7"/>
+      <text x="215" y="112" fill="#e8ecf4" font-size="11" text-anchor="middle" font-family="'IBM Plex Mono',monospace">3.13</text>
+      <text x="215" y="252" fill="#5a6278" font-size="10" text-anchor="middle">Q2'24</text>
+
+      <!-- Q3'24 = $2.38M -->
+      <rect x="270" y="144" width="50" height="76" rx="3" fill="#4fc3f7" opacity="0.7"/>
+      <text x="295" y="137" fill="#e8ecf4" font-size="11" text-anchor="middle" font-family="'IBM Plex Mono',monospace">2.38</text>
+      <text x="295" y="252" fill="#5a6278" font-size="10" text-anchor="middle">Q3'24</text>
+
+      <!-- Q4'24 = $2.27M -->
+      <rect x="350" y="148" width="50" height="72" rx="3" fill="#4fc3f7" opacity="0.7"/>
+      <text x="375" y="141" fill="#e8ecf4" font-size="11" text-anchor="middle" font-family="'IBM Plex Mono',monospace">2.27</text>
+      <text x="375" y="252" fill="#5a6278" font-size="10" text-anchor="middle">Q4'24</text>
+
+      <!-- Q1'25 = $1.47M -->
+      <rect x="430" y="174" width="50" height="46" rx="3" fill="#4fc3f7" opacity="0.5"/>
+      <text x="455" y="167" fill="#e8ecf4" font-size="11" text-anchor="middle" font-family="'IBM Plex Mono',monospace">1.47</text>
+      <text x="455" y="252" fill="#5a6278" font-size="10" text-anchor="middle">Q1'25</text>
+
+      <!-- Q2'25 = $2.12M (est) -->
+      <rect x="510" y="153" width="50" height="67" rx="3" fill="#4fc3f7" opacity="0.5"/>
+      <text x="535" y="146" fill="#e8ecf4" font-size="11" text-anchor="middle" font-family="'IBM Plex Mono',monospace">2.12</text>
+      <text x="535" y="252" fill="#5a6278" font-size="10" text-anchor="middle">Q2'25</text>
+
+      <!-- Q3'25 = $1.90M -->
+      <rect x="590" y="160" width="50" height="60" rx="3" fill="#4fc3f7" opacity="0.5"/>
+      <text x="615" y="153" fill="#e8ecf4" font-size="11" text-anchor="middle" font-family="'IBM Plex Mono',monospace">1.90</text>
+      <text x="615" y="252" fill="#5a6278" font-size="10" text-anchor="middle">Q3'25</text>
+
+      <!-- Q4'25E = $3.9M (est - C-DAC partial + Novera) -->
+      <rect x="670" y="100" width="50" height="120" rx="3" fill="#ffa726" opacity="0.5" stroke="#ffa726" stroke-width="1" stroke-dasharray="4,2"/>
+      <text x="695" y="93" fill="#ffa726" font-size="11" text-anchor="middle" font-family="'IBM Plex Mono',monospace">3.9E</text>
+      <text x="695" y="252" fill="#ffa726" font-size="10" text-anchor="middle">Q4'25E</text>
+
+      <!-- Q1'26E = $2.5M -->
+      <rect x="750" y="140" width="50" height="80" rx="3" fill="#ffa726" opacity="0.35" stroke="#ffa726" stroke-width="1" stroke-dasharray="4,2"/>
+      <text x="775" y="133" fill="#ffa726" font-size="11" text-anchor="middle" font-family="'IBM Plex Mono',monospace">2.5E</text>
+      <text x="775" y="252" fill="#ffa726" font-size="10" text-anchor="middle">Q1'26E</text>
+
+      <!-- Legend -->
+      <rect x="100" y="272" width="12" height="12" rx="2" fill="#4fc3f7" opacity="0.7"/>
+      <text x="118" y="283" fill="#8a92a6" font-size="11">实际值</text>
+      <rect x="200" y="272" width="12" height="12" rx="2" fill="#ffa726" opacity="0.5" stroke="#ffa726" stroke-width="1" stroke-dasharray="3,2"/>
+      <text x="218" y="283" fill="#8a92a6" font-size="11">Citadel估计值</text>
+    </svg>
+  </div>
+
+  <h3>预测分布 — 未来两个财季</h3>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>指标</th>
+        <th>Q4 2025E (3月4日发布)</th>
+        <th>Q1 2026E</th>
+        <th>预测逻辑</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>营收</td>
+        <td class="num">$3.5M – $4.2M</td>
+        <td class="num">$2.0M – $3.0M</td>
+        <td>Q4含Novera交付($5.7M订单部分确认)，Q1回归低基数</td>
+      </tr>
+      <tr>
+        <td>Non-GAAP EPS</td>
+        <td class="num">-$0.03 ~ -$0.02</td>
+        <td class="num">-$0.04 ~ -$0.03</td>
+        <td>OpEx基本稳定~$20M/Q，收入波动主导EPS</td>
+      </tr>
+      <tr>
+        <td>GAAP EPS</td>
+        <td class="num">-$0.50 ~ +$3.12*</td>
+        <td class="num">-$0.60 ~ -$0.10</td>
+        <td>*GAAP受warrant/earn-out公允价值变动剧烈影响，不可预测</td>
+      </tr>
+      <tr>
+        <td>现金余额</td>
+        <td class="num">~$560M – $590M</td>
+        <td class="num">~$530M – $570M</td>
+        <td>每季度经营性现金流出~$14M，warrant行权可能贡献正流入</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>资产负债表韧性 — 关键审查</h3>
+  
+  <div class="highlight red">
+    <div class="highlight-title red">⚠ 股权稀释 — 最大隐性风险</div>
+    <p style="margin-bottom:8px">过去12个月流通股从~190M增加至~330M，<strong>暴增74%</strong>。这意味着即使市值不变，每股价值也被稀释了约42%。稀释来源包括：(1) ATM股权发行（$350M offering），(2) warrant行权（$46.5M收入），(3) Quanta的$35M股权投资。</p>
+    <p style="margin-bottom:0">关键问题：TD Cowen指出RGTI可能需要额外>$300M用于新的制造设施（Fab）投资。如果以当前股价融资，将进一步稀释~10-15%的股份。这是一个正在进行中的"慢性失血"。</p>
+  </div>
+
+  <!-- Dilution Chart SVG -->
+  <div class="chart-container">
+    <div class="chart-title">流通股数量变化 (百万股) — 持续稀释趋势</div>
+    <svg viewBox="0 0 860 240" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="860" height="240" fill="#12151c"/>
+      <!-- Grid -->
+      <line x1="100" y1="40" x2="800" y2="40" stroke="#1e2330" stroke-width="0.5"/>
+      <line x1="100" y1="80" x2="800" y2="80" stroke="#1e2330" stroke-width="0.5"/>
+      <line x1="100" y1="120" x2="800" y2="120" stroke="#1e2330" stroke-width="0.5"/>
+      <line x1="100" y1="160" x2="800" y2="160" stroke="#1e2330" stroke-width="0.5"/>
+      
+      <text x="90" y="44" fill="#5a6278" font-size="10" text-anchor="end" font-family="'IBM Plex Mono',monospace">400M</text>
+      <text x="90" y="84" fill="#5a6278" font-size="10" text-anchor="end" font-family="'IBM Plex Mono',monospace">300M</text>
+      <text x="90" y="124" fill="#5a6278" font-size="10" text-anchor="end" font-family="'IBM Plex Mono',monospace">200M</text>
+      <text x="90" y="164" fill="#5a6278" font-size="10" text-anchor="end" font-family="'IBM Plex Mono',monospace">100M</text>
+
+      <!-- Area fill -->
+      <path d="M150,148 L280,145 L410,135 L540,82 L670,68 L760,58 L760,180 L150,180 Z" fill="url(#dilGrad)" opacity="0.3"/>
+      <defs>
+        <linearGradient id="dilGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#ef5350"/>
+          <stop offset="100%" stop-color="#ef5350" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+
+      <!-- Line -->
+      <polyline points="150,148 280,145 410,135 540,82 670,68 760,58" fill="none" stroke="#ef5350" stroke-width="2.5" stroke-linejoin="round"/>
+      
+      <!-- Data points -->
+      <circle cx="150" cy="148" r="4" fill="#ef5350"/>
+      <text x="150" y="170" fill="#5a6278" font-size="10" text-anchor="middle">2022</text>
+      <text x="150" y="140" fill="#e8ecf4" font-size="11" text-anchor="middle" font-family="'IBM Plex Mono',monospace">130M</text>
+
+      <circle cx="280" cy="145" r="4" fill="#ef5350"/>
+      <text x="280" y="170" fill="#5a6278" font-size="10" text-anchor="middle">2023</text>
+      <text x="280" y="137" fill="#e8ecf4" font-size="11" text-anchor="middle" font-family="'IBM Plex Mono',monospace">140M</text>
+
+      <circle cx="410" cy="135" r="4" fill="#ef5350"/>
+      <text x="410" y="170" fill="#5a6278" font-size="10" text-anchor="middle">Q1'25</text>
+      <text x="410" y="127" fill="#e8ecf4" font-size="11" text-anchor="middle" font-family="'IBM Plex Mono',monospace">180M</text>
+
+      <circle cx="540" cy="82" r="4" fill="#ef5350"/>
+      <text x="540" y="170" fill="#5a6278" font-size="10" text-anchor="middle">Q3'25</text>
+      <text x="540" y="74" fill="#e8ecf4" font-size="11" text-anchor="middle" font-family="'IBM Plex Mono',monospace">290M</text>
+
+      <circle cx="670" cy="68" r="4" fill="#ef5350"/>
+      <text x="670" y="170" fill="#5a6278" font-size="10" text-anchor="middle">Jan'26</text>
+      <text x="670" y="60" fill="#e8ecf4" font-size="11" text-anchor="middle" font-family="'IBM Plex Mono',monospace">330M</text>
+
+      <circle cx="760" cy="58" r="5" fill="none" stroke="#ef5350" stroke-width="2" stroke-dasharray="3,2"/>
+      <text x="760" y="170" fill="#ffa726" font-size="10" text-anchor="middle">H2'26E</text>
+      <text x="760" y="48" fill="#ffa726" font-size="11" text-anchor="middle" font-family="'IBM Plex Mono',monospace">~370M?</text>
+      
+      <!-- Annotation -->
+      <text x="820" y="210" fill="#ef5350" font-size="10" text-anchor="end" font-style="italic">+185% in 3 years</text>
+    </svg>
+  </div>
+</section>
+
+<!-- SECTION 3: EVENT-DRIVEN -->
+<section class="section">
+  <div class="section-num">03 — 事件驱动与博弈逻辑</div>
+  <h2>催化剂路径图 — 未来6个月</h2>
+
+  <div class="timeline">
+    <div class="timeline-item hot">
+      <div class="timeline-date">2026年3月4日 — 高波动性</div>
+      <div class="timeline-title">Q4 2025 & 全年财报发布</div>
+      <div class="timeline-desc">最关键催化剂。市场将聚焦：(1) Q4营收是否含Novera交付确认？(2) Cepheus-1-108Q系统是否按时交付？(3) 2026全年指引是否给出？如果营收不及预期或指引模糊，当前估值缺乏锚点，可能触发10-15%下跌。</div>
+    </div>
+    <div class="timeline-item warm">
+      <div class="timeline-date">2026年Q1末 — 中等影响</div>
+      <div class="timeline-title">Cepheus-1-108Q系统交付截止</div>
+      <div class="timeline-desc">此前已从2025年末推迟至2026年Q1末。如果再次延迟，将严重打击技术路线图的可信度。这是"承诺-交付"循环中的关键验证节点。</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">2026年H1 — 积极催化</div>
+      <div class="timeline-title">Novera系统交付 ($5.7M订单)</div>
+      <div class="timeline-desc">两套9-qubit Novera QPU系统已确认将于2026年上半年交付。确认收入后将部分缓解营收下滑趋势。</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">2026年H2 — 重大催化</div>
+      <div class="timeline-title">C-DAC 108-qubit系统部署（印度）</div>
+      <div class="timeline-desc">$8.4M订单计划2026年下半年部署。这是RGTI迄今最大的单笔硬件订单，成功交付将验证其商业化能力并打开政府市场。失败则可能是致命打击。</div>
+    </div>
+    <div class="timeline-item warm">
+      <div class="timeline-date">2026年全年 — 持续监测</div>
+      <div class="timeline-title">Big Tech量子进展（Google / Microsoft / IBM）</div>
+      <div class="timeline-desc">Google Willow芯片已展示低于阈值的量子纠错，Microsoft发布Majorana 1拓扑量子比特。任何Big Tech的突破性公告都可能让市场重新评估纯量子公司的生存空间。</div>
+    </div>
+  </div>
+
+  <h3>多空博弈 — 仓位分析</h3>
+  <p>当前空头仓位：<strong>41.25M股被做空</strong>，占流通股12.5%，属于中等偏高水平。空头日覆盖率（Days to Cover）约1.5天（基于日均成交量28M），意味着<strong>空头回补风险有限</strong>——流动性充足，不太可能出现GameStop式的空头挤兑。</p>
+  
+  <p class="question">→ 机构投资者真的在"押注"RGTI吗？</p>
+  <p>表面上，Vanguard持有3600万股（$577M）、BlackRock和State Street也有大额持仓。但这几乎全部来自被动指数基金（Russell 2000成分股权重自动增加）。真正有主动选股意图的机构持仓极为稀薄——D.E. Shaw等量化对冲基金的持仓更多是动量交易而非基本面判断。这意味着，一旦量子计算板块整体降温，<strong>没有真正的"价值锚"来托底股价</strong>。</p>
+
+  <!-- Positioning Chart -->
+  <div class="chart-container">
+    <div class="chart-title">投资者结构分析 — 被动 vs. 主动持仓</div>
+    <svg viewBox="0 0 860 200" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="860" height="200" fill="#12151c"/>
+      
+      <!-- Passive bar -->
+      <rect x="80" y="40" width="580" height="40" rx="4" fill="#4fc3f7" opacity="0.3"/>
+      <text x="380" y="65" fill="#e8ecf4" font-size="13" text-anchor="middle" font-weight="600">被动指数基金 ~75%</text>
+      <text x="680" y="65" fill="#5a6278" font-size="11">(Vanguard, BlackRock, State Street)</text>
+
+      <!-- Quant bar -->
+      <rect x="80" y="90" width="120" height="40" rx="4" fill="#ffa726" opacity="0.4"/>
+      <text x="145" y="115" fill="#e8ecf4" font-size="13" text-anchor="middle" font-weight="600">量化基金 ~15%</text>
+      <text x="220" y="115" fill="#5a6278" font-size="11">(D.E. Shaw等)</text>
+
+      <!-- Active bar -->
+      <rect x="80" y="140" width="60" height="40" rx="4" fill="#66bb6a" opacity="0.4"/>
+      <text x="113" y="165" fill="#e8ecf4" font-size="12" text-anchor="middle" font-weight="600">主动 ~8%</text>
+      <text x="160" y="165" fill="#5a6278" font-size="11">真正的基本面投资者</text>
+
+      <!-- Arrow annotation -->
+      <line x1="156" y1="165" x2="156" y2="185" stroke="#ef5350" stroke-width="1"/>
+      <text x="160" y="195" fill="#ef5350" font-size="10" font-style="italic">← 缺乏"聪明钱"底仓支撑</text>
+    </svg>
+  </div>
+</section>
+
+<!-- SECTION 4: RISK -->
+<section class="section">
+  <div class="section-num">04 — 压力测试与下行保护</div>
+  <h2>如果错了，我们在哪里止损？</h2>
+
+  <h3>特异性风险 — 20%+暴跌触发器</h3>
+  <table class="data-table">
+    <thead>
+      <tr><th>风险场景</th><th>概率评估</th><th>潜在影响</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Cepheus-1-108Q再次推迟或技术指标不达标</td>
+        <td class="num" style="color:var(--orange)">中高 (35%)</td>
+        <td>-20~30%，技术路线图公信力崩塌</td>
+      </tr>
+      <tr>
+        <td>Big Tech宣布量子优越性商业化突破</td>
+        <td class="num" style="color:var(--orange)">中 (20%)</td>
+        <td>-25~40%，纯量子股估值逻辑被颠覆</td>
+      </tr>
+      <tr>
+        <td>新一轮大规模股权融资（>$200M）</td>
+        <td class="num" style="color:var(--red)">高 (45%)</td>
+        <td>-15~25%，稀释效应+市场情绪双杀</td>
+      </tr>
+      <tr>
+        <td>CEO/CTO关键高管离职</td>
+        <td class="num">低 (10%)</td>
+        <td>-15~20%，139人团队中核心人才不可替代</td>
+      </tr>
+      <tr>
+        <td>Quanta合作终止或台海地缘风险升级</td>
+        <td class="num" style="color:var(--yellow)">中低 (15%)</td>
+        <td>-20~30%，核心合作伙伴丧失</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>估值底线 — "绝对安全垫"在哪？</h3>
+  <p class="question">→ 如果明天Rigetti宣布清算，股东能拿回多少？</p>
+  <p>截至最近报告期，RGTI的净现金（现金及投资 - 总债务）约为<strong>$439M</strong>，即每股约<strong>$1.33</strong>。这是绝对的"地板价"——但距离当前$17.46的股价，有<strong>92%的下行空间</strong>。这并非危言耸听，而是提醒投资者：当前股价中$16.13/股（92%）是纯粹的"技术期权溢价"，没有资产支撑。</p>
+
+  <div class="grid-2">
+    <div class="highlight blue">
+      <div class="highlight-title blue">估值锚点 — 不同方法</div>
+      <p style="margin-bottom:8px"><strong>清算价值：</strong>$1.33/股（净现金）</p>
+      <p style="margin-bottom:8px"><strong>保守DCF（WACC 15%, 2030年$100M Rev假设）：</strong>$5-8/股</p>
+      <p style="margin-bottom:8px"><strong>可比公司折价（相对IONQ 30%折扣）：</strong>$12-15/股</p>
+      <p style="margin-bottom:0"><strong>Bull Case DCF（2030年$300M Rev, 20% margin）：</strong>$25-35/股</p>
+    </div>
+    <div class="highlight">
+      <div class="highlight-title" style="color:var(--text-muted)">宏观敏感度</div>
+      <p style="margin-bottom:8px"><strong>利率敏感度：</strong>极高。作为零盈利、高增长预期的长久期资产，RGTI的理论Equity Duration>30年。利率每上升25bps，理论估值下降8-12%。</p>
+      <p style="margin-bottom:8px"><strong>Beta：</strong>1.71（5年月度），实际波动远超此数字——2025年内波幅$6.86-$58.15（约750%）。</p>
+      <p style="margin-bottom:0"><strong>地缘敏感度：</strong>中等。与Quanta（台湾）合作引入台海风险；对华出口管制政策变动可能影响亚太市场拓展。</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5: EXECUTION -->
+<section class="section">
+  <div class="section-num">05 — 投资决策与对冲方案</div>
+  <h2>最终裁决</h2>
+
+  <!-- Valuation Spectrum SVG -->
+  <div class="chart-container">
+    <div class="chart-title">估值情景分析 — 目标价分布</div>
+    <svg viewBox="0 0 860 180" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="860" height="180" fill="#12151c"/>
+      
+      <!-- Price axis -->
+      <line x1="60" y1="80" x2="800" y2="80" stroke="#2e3648" stroke-width="1.5"/>
+      
+      <!-- Tick marks and labels -->
+      <line x1="80" y1="75" x2="80" y2="85" stroke="#5a6278" stroke-width="1"/>
+      <text x="80" y="100" fill="#5a6278" font-size="10" text-anchor="middle" font-family="'IBM Plex Mono',monospace">$0</text>
+
+      <line x1="170" y1="75" x2="170" y2="85" stroke="#5a6278" stroke-width="1"/>
+      <text x="170" y="100" fill="#5a6278" font-size="10" text-anchor="middle" font-family="'IBM Plex Mono',monospace">$5</text>
+
+      <line x1="260" y1="75" x2="260" y2="85" stroke="#5a6278" stroke-width="1"/>
+      <text x="260" y="100" fill="#5a6278" font-size="10" text-anchor="middle" font-family="'IBM Plex Mono',monospace">$10</text>
+
+      <line x1="350" y1="75" x2="350" y2="85" stroke="#5a6278" stroke-width="1"/>
+      <text x="350" y="100" fill="#5a6278" font-size="10" text-anchor="middle" font-family="'IBM Plex Mono',monospace">$15</text>
+
+      <line x1="440" y1="75" x2="440" y2="85" stroke="#5a6278" stroke-width="1"/>
+      <text x="440" y="100" fill="#5a6278" font-size="10" text-anchor="middle" font-family="'IBM Plex Mono',monospace">$20</text>
+
+      <line x1="530" y1="75" x2="530" y2="85" stroke="#5a6278" stroke-width="1"/>
+      <text x="530" y="100" fill="#5a6278" font-size="10" text-anchor="middle" font-family="'IBM Plex Mono',monospace">$25</text>
+
+      <line x1="620" y1="75" x2="620" y2="85" stroke="#5a6278" stroke-width="1"/>
+      <text x="620" y="100" fill="#5a6278" font-size="10" text-anchor="middle" font-family="'IBM Plex Mono',monospace">$30</text>
+
+      <line x1="710" y1="75" x2="710" y2="85" stroke="#5a6278" stroke-width="1"/>
+      <text x="710" y="100" fill="#5a6278" font-size="10" text-anchor="middle" font-family="'IBM Plex Mono',monospace">$35</text>
+
+      <line x1="800" y1="75" x2="800" y2="85" stroke="#5a6278" stroke-width="1"/>
+      <text x="800" y="100" fill="#5a6278" font-size="10" text-anchor="middle" font-family="'IBM Plex Mono',monospace">$40</text>
+
+      <!-- Current Price marker -->
+      <line x1="395" y1="30" x2="395" y2="80" stroke="#e8ecf4" stroke-width="2"/>
+      <rect x="365" y="15" width="60" height="18" rx="3" fill="#e8ecf4"/>
+      <text x="395" y="28" fill="#0a0c10" font-size="10" text-anchor="middle" font-weight="700" font-family="'IBM Plex Mono',monospace">$17.46</text>
+
+      <!-- Bear Case -->
+      <rect x="130" y="55" width="100" height="10" rx="5" fill="#ef5350" opacity="0.6"/>
+      <circle cx="180" cy="60" r="6" fill="#ef5350"/>
+      <text x="180" y="48" fill="#ef5350" font-size="10" text-anchor="middle" font-weight="600">Bear $8</text>
+
+      <!-- Base Case -->
+      <rect x="200" y="110" width="120" height="10" rx="5" fill="#ffa726" opacity="0.6"/>
+      <circle cx="260" cy="115" r="6" fill="#ffa726"/>
+      <text x="260" y="135" fill="#ffa726" font-size="10" text-anchor="middle" font-weight="600">Base $12</text>
+
+      <!-- Bull Case -->
+      <rect x="480" y="55" width="170" height="10" rx="5" fill="#66bb6a" opacity="0.4"/>
+      <circle cx="565" cy="60" r="6" fill="#66bb6a"/>
+      <text x="565" y="48" fill="#66bb6a" font-size="10" text-anchor="middle" font-weight="600">Bull $30</text>
+
+      <!-- Street Consensus -->
+      <line x1="680" y1="110" x2="680" y2="80" stroke="#8a92a6" stroke-width="1" stroke-dasharray="4,3"/>
+      <text x="680" y="130" fill="#8a92a6" font-size="10" text-anchor="middle">Street $33.5</text>
+
+      <!-- Legend -->
+      <text x="80" y="165" fill="#5a6278" font-size="10" font-style="italic">注: 12个月目标价 | Bear = 技术失败+稀释 | Base = 当前趋势延续 | Bull = 商业化突破</text>
+    </svg>
+  </div>
+
+  <div class="grid-2">
+    <div>
+      <h3>投资评级与目标价</h3>
+      <table class="data-table">
+        <tbody>
+          <tr><td>投资评级</td><td><strong style="color:var(--yellow)">战术性空头 (Tactical Short)</strong></td></tr>
+          <tr><td>Bear Case (30%概率)</td><td class="num" style="color:var(--red)">$8</td></tr>
+          <tr><td>Base Case (50%概率)</td><td class="num" style="color:var(--orange)">$12</td></tr>
+          <tr><td>Bull Case (20%概率)</td><td class="num" style="color:var(--green)">$30</td></tr>
+          <tr><td>概率加权预期值</td><td class="num" style="color:var(--accent)">$14.40</td></tr>
+          <tr><td>隐含回报率</td><td class="num" style="color:var(--red)">-17.5%</td></tr>
+          <tr><td>止损位</td><td class="num">$25 (+43%)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <h3>对冲策略 (Pair Trade)</h3>
+      <div class="highlight green">
+        <div class="highlight-title green">推荐配对</div>
+        <p style="margin-bottom:8px"><strong>做空RGTI / 做多IONQ</strong></p>
+        <p style="margin-bottom:8px"><strong>理由：</strong>两者同属纯量子计算赛道，共享相同的宏观β与板块情绪。但IonQ在营收规模（$40M vs $2M/季度）、技术指标（99.99% vs 99.5%保真度）、现金储备（$3.5B vs $600M）和DARPA合同获取上全面领先。</p>
+        <p style="margin-bottom:0"><strong>风险比：</strong>如果量子板块整体上涨，IONQ的涨幅应大于RGTI（基本面更强）；如果板块下跌，RGTI因更高的EV/Sales（255x vs 206x）跌幅应更大。两端都有α。</p>
+      </div>
+      <div class="highlight" style="margin-top:16px">
+        <div class="highlight-title" style="color:var(--text-muted)">备选对冲</div>
+        <p style="margin-bottom:0">如果担心IONQ自身也有空头报告风险（Wolfpack Research近期做空IONQ），可替换为<strong>做多DEFIANCE QUANTUM ETF (QTUM)</strong>作为板块β对冲，同时裸空RGTI以获取纯α。</p>
+      </div>
+    </div>
+  </div>
+
+  <h3>辩证视角 — 我们可能错在哪？</h3>
+  <div class="highlight green">
+    <div class="highlight-title green">对空头论点的自我批判</div>
+    <p style="margin-bottom:8px"><strong>①</strong> 量子计算股的定价逻辑从来不是DCF，而是"赛道期权"。如果市场持续给予2030-2035年的远期贴现，当前估值可以在"非理性"区间维持很长时间。做空"故事股"的最大风险不是基本面错误，而是<strong>时间成本</strong>。</p>
+    <p style="margin-bottom:8px"><strong>②</strong> C-DAC订单和Quanta合作可能只是商业化的起点。如果2026年下半年再签1-2个类似规模的政府/企业订单，营收曲线可能出现J型拐点，迅速改变叙事。</p>
+    <p style="margin-bottom:0"><strong>③</strong> NVIDIA NVQLink集成是一个被低估的变量。如果NVIDIA在GTC大会上更深入地推广量子-AI混合计算，RGTI作为超导量子比特的集成伙伴可能获得远超基本面的估值重估。</p>
+  </div>
+</section>
+
+<!-- DISCLAIMER -->
+<footer class="footer">
+  <p>本报告仅供研究参考，不构成投资建议。所有分析基于公开信息，作者不持有文中提及的任何头寸。</p>
+  <p style="margin-top:4px">Citadel Securities — Equity Research Division | 2026年2月26日 | 机密文件</p>
+</footer>
+
+</div>
+</body>
+</html>
