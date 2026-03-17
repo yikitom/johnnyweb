@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>半脑世界 - 深度解构</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Noto Serif SC',Georgia,serif;background:#f9f7f2;color:#2c2c2c;font-size:17px;line-height:1.85;}
+nav{position:fixed;top:0;left:0;right:0;background:rgba(26,26,26,.97);backdrop-filter:blur(8px);z-index:100;padding:0 20px;display:flex;align-items:center;gap:4px;height:52px;overflow-x:auto;scrollbar-width:none;}
+nav::-webkit-scrollbar{display:none;}
+nav a{color:rgba(255,255,255,.8);text-decoration:none;font-size:12px;white-space:nowrap;padding:5px 10px;border-radius:4px;font-family:sans-serif;}
+.wrap{max-width:860px;margin:0 auto;padding:76px 24px 60px;}
+.hero{text-align:center;padding:60px 20px 48px;border-bottom:1px solid #e8e3db;margin-bottom:48px;}
+.hero-badge{display:inline-block;background:#1a3a5c;color:#fff;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:4px 14px;border-radius:2px;margin-bottom:18px;font-family:sans-serif;}
+.hero h1{font-size:clamp(24px,5vw,38px);font-weight:700;color:#1a1a1a;margin-bottom:10px;}
+.hero .author{color:#8b6f5e;font-size:15px;margin-bottom:16px;}
+.hero .summary{color:#555;font-size:15px;max-width:560px;margin:0 auto;}
+section{margin-bottom:52px;}
+.sec-title{font-size:22px;font-weight:700;color:#1a1a1a;margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid currentColor;}
+.card{background:#fff;border-radius:12px;padding:24px 28px;margin-bottom:16px;box-shadow:0 2px 12px rgba(0,0,0,.05);}
+.qa-q{font-weight:600;color:#1a3a5c;margin-bottom:6px;}
+.qa-a{color:#444;padding-left:12px;border-left:3px solid #c0392b;}
+.concept{background:#fff;border-radius:10px;padding:20px 24px;margin-bottom:14px;border-left:4px solid #27ae60;}
+.ct{font-weight:700;color:#1a1a1a;font-size:16px;margin-bottom:4px;}
+.cs{color:#e67e22;font-size:14px;margin-bottom:8px;font-family:sans-serif;}
+.cb{color:#555;font-size:15px;}
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+@media(max-width:600px){.cg{grid-template-columns:1fr;}}
+.cc{background:#fff;border-radius:10px;padding:18px 20px;}
+.cl{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;font-family:sans-serif;}
+.ch{background:#fff;border-radius:12px;padding:22px 26px;margin-bottom:14px;border-top:3px solid #2980b9;}
+.cn{font-weight:700;color:#1a1a1a;margin-bottom:6px;}
+.cw{font-size:13px;color:#e67e22;margin-bottom:10px;font-family:sans-serif;}
+blockquote{border-left:4px solid #c0392b;padding:12px 18px;margin:16px 0;background:#fff5f5;border-radius:0 8px 8px 0;font-style:italic;color:#555;}
+.tag{display:inline-block;font-size:12px;padding:3px 10px;border-radius:20px;font-family:sans-serif;margin-right:6px;margin-bottom:6px;}
+footer{text-align:center;padding:32px 20px;border-top:1px solid #e8e3db;color:#999;font-size:13px;font-family:sans-serif;}
+</style></head><body>
+<nav><a href="#" style="font-weight:700;color:#fff;font-size:13px;margin-right:8px;">📖</a><a href="#s1">作者使命</a> <a href="#s2">核心概念</a> <a href="#s3">方法论</a> <a href="#s4">辩证批判</a> <a href="#s5">精华章节</a></nav>
+<div class="wrap">
+<div class="hero"><div class="hero-badge">脑科学·意识</div>
+<h1>《半脑世界》</h1>
+<div class="author">✍️ 吉尔·博尔特·泰勒 著</div>
+<div class="summary">深度阅读解构 · 苏格拉底式追问 · 大白话降维 · 辩证批判</div>
+</div>
+
+<section id="s1">
+<div class="sec-title" style="color:#1a3a5c">🧠 作者画像与核心使命</div>
+<div class="card">
+<p><strong>作者：</strong>吉尔·博尔特·泰勒，哈佛大学脑科学家。37岁遭遇严重脑溢血，左脑功能几乎全部丧失。她用脑科学家的眼光观察自己的中风全过程，8年康复后写下这本书。</p>
+<div class="qa-q" style="margin-top:12px">Q1: 这本书表面在谈什么？</div>
+<div class="qa-a">一个脑科学家中风的亲历记——从发病、意识改变、康复，到最终回归正常。</div>
+<div class="qa-q" style="margin-top:12px">Q2: 真正的痛点是什么？</div>
+<div class="qa-a">当左脑（负责语言、逻辑、时间感、"自我"感）停止运作，她体验到了深刻的宁静和与万物合一感。那个焦虑的、喋喋不休的"自我"，只是左脑的产物。</div>
+<div class="qa-q" style="margin-top:12px">Q3: 终极问题是什么？</div>
+<div class="qa-a"><strong>如果"我"只是大脑某部分的输出，我们能否主动选择哪个"我"主导当下？平静是一种可以训练的神经能力。</strong></div>
+</div></section>
+
+<section id="s2">
+<div class="sec-title" style="color:#27ae60">🗝️ 核心概念大白话解码</div>
+<div class="concept">
+<div class="ct">左脑的喋喋不休</div>
+<div class="cs">那个永远在评判、分类、担忧的声音</div>
+<div class="cb">左脑负责语言、逻辑、时间、因果、自我叙事。它让你高效运作，但也让你永远活在过去的遗憾和未来的焦虑里。泰勒失去左脑后，这个声音消失了，留下的是极度宁静的当下体验。</div>
+</div>
+<div class="concept">
+<div class="ct">右脑的当下体验</div>
+<div class="cs">那个只活在这一刻、与世界融为一体的感知</div>
+<div class="cb">右脑处理感觉、空间、整体图像，活在永恒的当下——没有过去，没有未来，只有此刻的感知流。泰勒称之为"涅槃感"或"宇宙意识"。</div>
+</div>
+<div class="concept">
+<div class="ct">90秒情绪法</div>
+<div class="cs">情绪的生理反应只持续90秒</div>
+<div class="cb">当情绪触发时，神经化学反应只持续约90秒。超过90秒继续愤怒/悲伤，是因为你在主动"续充"这种情绪——在思维上反复重演触发点。这是可以通过训练改变的习惯。</div>
+</div>
+</section>
+
+<section id="s3">
+<div class="sec-title" style="color:#e67e22">🛠️ 神经可塑性与意识训练</div>
+<div class="card">
+<p>泰勒的核心洞见转化为可实践的训练框架：</p>
+<p style="margin-top:10px">① <strong>觉察情绪的神经生理时钟</strong>：情绪触发后，给自己90秒时间，仅仅观察身体反应，而不立刻行动或压制。</p>
+<p style="margin-top:10px">② <strong>主动选择脑回路</strong>：练习识别"左脑主导模式"（分析、担忧、评判）和"右脑主导模式"（感官、当下、联接），在需要时有意切换。</p>
+<p style="margin-top:10px">③ <strong>神经可塑性的希望</strong>：大脑是可以重塑的。泰勒的8年康复证明，即使受损的神经功能，也可以通过持续练习重建。</p>
+<blockquote>你永远无法控制感受的到来，但你可以控制对感受的续充。</blockquote>
+</div>
+</section>
+
+<section id="s4">
+<div class="sec-title" style="color:#c0392b">🛡️ 辩证批判</div>
+<div class="cg">
+<div class="cc" style="border-top:3px solid #c0392b"><div class="cl" style="color:#c0392b">左右脑理论的科学质疑</div><p>严格的神经科学研究表明，左脑逻辑右脑感性是一种有用的隐喻，但不是准确的神经解剖学描述。大多数认知功能需要两个半球协作完成。</p></div>
+<div class="cc" style="border-top:3px solid #e67e22"><div class="cl" style="color:#e67e22">个案的局限性</div><p>这是一个人的极端个案。中风体验高度个性化，泰勒的特定病变位置产生了她特定的意识体验，不能直接推广到其他人。</p></div>
+<div class="cc" style="border-top:3px solid #27ae60"><div class="cl" style="color:#27ae60">新时代运动的色彩</div><p>书中对宇宙意识和涅槃体验的描述带有明显的灵性色彩，让部分科学界读者感到不适。</p></div>
+<div class="cc" style="border-top:3px solid #3498db"><div class="cl" style="color:#3498db">核心价值</div><p>90秒情绪法有神经科学基础；神经可塑性是真实且坚实的科学概念；第一人称的脑科学叙事是独一无二的阅读体验。</p></div>
+</div>
+</section>
+
+<section id="s5">
+<div class="sec-title" style="color:#2980b9">📖 帕累托精华章节</div>
+<div class="ch">
+<div class="cn">发病当天：左脑关闭的体验</div>
+<div class="cw">必读理由：全书最震撼也最有智识密度的部分</div>
+<p>她描述了左脑一点一点失去功能时意识的变化——语言消失了、自我边界消失了、时间感消失了，剩下一种奇异的宁静。这是任何书都没有提供的第一手意识解剖学报告。</p>
+</div>
+<div class="ch">
+<div class="cn">选择平静的神经科学</div>
+<div class="cw">必读理由：从体验到实践的桥梁</div>
+<p>把在右脑世界的体验翻译成可操作的日常练习：如何识别情绪的90秒时钟，如何主动选择从故事模式切换到感知模式。</p>
+</div>
+</section>
+
+</div>
+<footer>《半脑世界》· 深度解构 · johnnyweb.netlify.app</footer>
+</body></html>

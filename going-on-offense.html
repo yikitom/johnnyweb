@@ -1,0 +1,64 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Going on Offense - 深度解构</title><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet"><style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Noto Serif SC',Georgia,serif;background:#f9f7f2;color:#2c2c2c;font-size:17px;line-height:1.85;}
+nav{position:fixed;top:0;left:0;right:0;background:rgba(26,26,26,.97);backdrop-filter:blur(8px);z-index:100;padding:0 20px;display:flex;align-items:center;gap:4px;height:52px;overflow-x:auto;scrollbar-width:none;}
+nav::-webkit-scrollbar{display:none;}
+nav a{color:rgba(255,255,255,.8);text-decoration:none;font-size:12px;white-space:nowrap;padding:5px 10px;border-radius:4px;font-family:sans-serif;}
+.wrap{max-width:860px;margin:0 auto;padding:76px 24px 60px;}
+.hero{text-align:center;padding:60px 20px 48px;border-bottom:1px solid #e8e3db;margin-bottom:48px;}
+.hero-badge{display:inline-block;background:#1a3a5c;color:#fff;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:4px 14px;border-radius:2px;margin-bottom:18px;font-family:sans-serif;}
+.hero h1{font-size:clamp(24px,5vw,38px);font-weight:700;color:#1a1a1a;margin-bottom:10px;}
+.hero .author{color:#8b6f5e;font-size:15px;margin-bottom:16px;}
+.hero .summary{color:#555;font-size:15px;max-width:560px;margin:0 auto;}
+section{margin-bottom:52px;}
+.sec-title{font-size:22px;font-weight:700;color:#1a1a1a;margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid currentColor;}
+.card{background:#fff;border-radius:12px;padding:24px 28px;margin-bottom:16px;box-shadow:0 2px 12px rgba(0,0,0,.05);}
+.qa-q{font-weight:600;color:#1a3a5c;margin-bottom:6px;}
+.qa-a{color:#444;padding-left:12px;border-left:3px solid #c0392b;}
+.concept{background:#fff;border-radius:10px;padding:20px 24px;margin-bottom:14px;border-left:4px solid #27ae60;}
+.ct{font-weight:700;color:#1a1a1a;font-size:16px;margin-bottom:4px;}
+.cs{color:#e67e22;font-size:14px;margin-bottom:8px;font-family:sans-serif;}
+.cb{color:#555;font-size:15px;}
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+@media(max-width:600px){.cg{grid-template-columns:1fr;}}
+.cc{background:#fff;border-radius:10px;padding:18px 20px;}
+.cl{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;font-family:sans-serif;}
+.ch{background:#fff;border-radius:12px;padding:22px 26px;margin-bottom:14px;border-top:3px solid #2980b9;}
+.cn{font-weight:700;color:#1a1a1a;margin-bottom:6px;}
+.cw{font-size:13px;color:#e67e22;margin-bottom:10px;font-family:sans-serif;}
+blockquote{border-left:4px solid #c0392b;padding:12px 18px;margin:16px 0;background:#fff5f5;border-radius:0 8px 8px 0;font-style:italic;color:#555;}
+.tag{display:inline-block;font-size:12px;padding:3px 10px;border-radius:20px;font-family:sans-serif;margin-right:6px;margin-bottom:6px;}
+footer{text-align:center;padding:32px 20px;border-top:1px solid #e8e3db;color:#999;font-size:13px;font-family:sans-serif;}
+</style></head><body>
+<nav><a href="#" style="font-weight:700;color:#fff;font-size:13px;margin-right:8px;">📖</a><a href="#s1">作者使命</a> <a href="#s2">核心概念</a> <a href="#s3">方法论</a> <a href="#s4">辩证批判</a> <a href="#s5">精华章节</a></nav>
+<div class="wrap"><div class="hero"><div class="hero-badge">创新组织文化</div><h1>《Going on Offense》</h1><div class="author">✍️ Behnam Tabrizi 著</div><div class="summary">深度阅读解构 · 苏格拉底式追问 · 大白话降维 · 辩证批判</div></div>
+<section id="s1"><div class="sec-title" style="color:#1a3a5c">🧠 作者画像与核心使命</div>
+<div class="card"><p><strong>作者：</strong>Behnam Tabrizi，斯坦福大学研究学者，研究了Amazon、Microsoft、Tesla、Apple、Shake Shack等5家"永远进攻"的顶级创新企业与26家对照和失败企业，提炼出8大创新基因。</p>
+<div class="qa-q" style="margin-top:12px">Q1: 表面谈什么？</div><div class="qa-a">谈为什么有些公司能永远保持创新势头（Going on Offense），而另一些公司则越来越守旧防御（Playing Defense）。</div>
+<div class="qa-q" style="margin-top:12px">Q2: 真正的痛点？</div><div class="qa-a">大多数公司在成功之后就开始"保护既有成果"——优化现有产品、维护现有客户、规避风险。这种防守心态是创新死亡的开始。</div>
+<div class="qa-q" style="margin-top:12px">Q3: 终极问题？</div><div class="qa-a"><strong>是什么让Amazon、Tesla等公司能够在成功之后继续进攻？他们的基因和普通公司有何不同？</strong></div></div></section>
+
+<section id="s2"><div class="sec-title" style="color:#27ae60">🗝️ 核心概念大白话解码</div>
+<div class="concept"><div class="ct">进攻vs防守心态</div><div class="cs">成功最大的敌人，是用成功去保护成功</div><div class="cb">防守型企业问："我们如何保护现有的市场份额？"进攻型企业问："如果没有我们，用户会怎么解决这个问题？"前者活在昨天，后者活在明天。</div></div>
+<div class="concept"><div class="ct">凶猛（Ferocious）</div><div class="cs">不是残忍，是在合理范围内以最快速度推进</div><div class="cb">Tesla工程师被要求在疯狂的时间表下交付产品；Amazon的"两披萨团队"必须在明确的deadline内拿出可工作的原型。凶猛不是暴力管理，而是对执行速度的绝不妥协。</div></div>
+<div class="concept"><div class="ct">存在性目的（Existential Purpose）</div><div class="cs">公司存在的理由，必须大到足以引发信仰</div><div class="cb">Amazon的目的：成为地球上最以客户为中心的公司。Tesla的目的：加速世界向可持续能源的转变。这些目的大到让人觉得"不加入就是犯罪"，这是吸引疯子级别人才的磁场。</div></div>
+</section>
+
+<section id="s3"><div class="sec-title" style="color:#e67e22">🛠️ 8大创新基因框架</div>
+<div class="card"><p>Tabrizi研究后提炼的8大共同特征：</p>
+<p style="margin-top:8px"><strong>① 存在性目的</strong>（大到足以引发信仰的使命）<br><strong>② 客户痴迷</strong>（不只是满足客户，而是比客户更了解客户）<br><strong>③ 创业者心态</strong>（即使是大公司，每个团队都像Day 1的创业公司）<br><strong>④ 凶猛</strong>（疯狂的执行速度，不允许任何借口拖延）<br><strong>⑤ 激进协作</strong>（打破部门墙，信息高度透明）<br><strong>⑥ 大胆下注</strong>（愿意在不确定的方向上投入大量资源）<br><strong>⑦ 持续重塑</strong>（不断自我颠覆，比竞争对手更早放弃自己的现金牛）<br><strong>⑧ 责任机制</strong>（清晰的权责，失败有人负责，成功有人受益）</p>
+</div></section>
+
+<section id="s4"><div class="sec-title" style="color:#c0392b">🛡️ 辩证批判</div>
+<div class="cg">
+<div class="cc" style="border-top:3px solid #c0392b"><div class="cl" style="color:#c0392b">幸存者偏差未完全消除</div><p>5家标杆全是赢家。有多少公司也做了类似文化改造但依然失败？成功结果未必能回推方法论的普适性。</p></div>
+<div class="cc" style="border-top:3px solid #e67e22"><div class="cl" style="color:#e67e22">人的代价被忽视</div><p>Amazon仓库工人的极端压力、Tesla工厂的高强度争议……"凶猛"确实催生创新，但员工身心健康被大幅回避。</p></div>
+<div class="cc" style="border-top:3px solid #27ae60"><div class="cl" style="color:#27ae60">案例有保质期</div><p>Tesla品牌在2024-2025年面临严重危机；Google凭Gemini强势回归。企业进攻和防守是动态切换的，书中结论是静态快照。</p></div>
+<div class="cc" style="border-top:3px solid #3498db"><div class="cl" style="color:#3498db">核心价值</div><p>用8大基因框架审视你的团队，找到最短的那块板——这是它最大的实用价值。把它当镜子不当圣经。</p></div>
+</div></section>
+
+<section id="s5"><div class="sec-title" style="color:#2980b9">📖 帕累托精华章节</div>
+<div class="ch"><div class="cn">存在性目的的构建</div><div class="cw">必读理由：理解为什么使命不是口号而是战略武器</div><p>一个足够大的使命会吸引疯子，而只有疯子才能做出改变世界的事情。这章用Amazon、Tesla的案例完整展示了"使命如何成为最强大的招募和保留工具"。</p></div>
+<div class="ch"><div class="cn">Microsoft的灵魂重塑</div><div class="cw">必读理由：最好的"大公司如何重回进攻状态"案例</div><p>纳德拉如何把一个陷入防守状态的科技巨头重新点燃——从竞争文化到成长型文化，从产品帝国到平台生态，从PC时代到云计算。这是最值得中国大公司学习的转型案例。</p></div>
+</section></div>
+<footer>《Going on Offense》· 深度解构 · johnnyweb.netlify.app</footer></body></html>

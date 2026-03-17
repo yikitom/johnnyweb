@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Rapid Transformation - 深度解构</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Noto Serif SC',Georgia,serif;background:#f9f7f2;color:#2c2c2c;font-size:17px;line-height:1.85;}
+nav{position:fixed;top:0;left:0;right:0;background:rgba(26,26,26,.97);backdrop-filter:blur(8px);z-index:100;padding:0 20px;display:flex;align-items:center;gap:4px;height:52px;overflow-x:auto;scrollbar-width:none;}
+nav::-webkit-scrollbar{display:none;}
+nav a{color:rgba(255,255,255,.8);text-decoration:none;font-size:12px;white-space:nowrap;padding:5px 10px;border-radius:4px;font-family:sans-serif;}
+.wrap{max-width:860px;margin:0 auto;padding:76px 24px 60px;}
+.hero{text-align:center;padding:60px 20px 48px;border-bottom:1px solid #e8e3db;margin-bottom:48px;}
+.hero-badge{display:inline-block;background:#1a3a5c;color:#fff;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:4px 14px;border-radius:2px;margin-bottom:18px;font-family:sans-serif;}
+.hero h1{font-size:clamp(24px,5vw,38px);font-weight:700;color:#1a1a1a;margin-bottom:10px;}
+.hero .author{color:#8b6f5e;font-size:15px;margin-bottom:16px;}
+.hero .summary{color:#555;font-size:15px;max-width:560px;margin:0 auto;}
+section{margin-bottom:52px;}
+.sec-title{font-size:22px;font-weight:700;color:#1a1a1a;margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid currentColor;}
+.card{background:#fff;border-radius:12px;padding:24px 28px;margin-bottom:16px;box-shadow:0 2px 12px rgba(0,0,0,.05);}
+.qa-q{font-weight:600;color:#1a3a5c;margin-bottom:6px;}
+.qa-a{color:#444;padding-left:12px;border-left:3px solid #c0392b;}
+.concept{background:#fff;border-radius:10px;padding:20px 24px;margin-bottom:14px;border-left:4px solid #27ae60;}
+.ct{font-weight:700;color:#1a1a1a;font-size:16px;margin-bottom:4px;}
+.cs{color:#e67e22;font-size:14px;margin-bottom:8px;font-family:sans-serif;}
+.cb{color:#555;font-size:15px;}
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+@media(max-width:600px){.cg{grid-template-columns:1fr;}}
+.cc{background:#fff;border-radius:10px;padding:18px 20px;}
+.cl{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;font-family:sans-serif;}
+.ch{background:#fff;border-radius:12px;padding:22px 26px;margin-bottom:14px;border-top:3px solid #2980b9;}
+.cn{font-weight:700;color:#1a1a1a;margin-bottom:6px;}
+.cw{font-size:13px;color:#e67e22;margin-bottom:10px;font-family:sans-serif;}
+blockquote{border-left:4px solid #c0392b;padding:12px 18px;margin:16px 0;background:#fff5f5;border-radius:0 8px 8px 0;font-style:italic;color:#555;}
+.tag{display:inline-block;font-size:12px;padding:3px 10px;border-radius:20px;font-family:sans-serif;margin-right:6px;margin-bottom:6px;}
+footer{text-align:center;padding:32px 20px;border-top:1px solid #e8e3db;color:#999;font-size:13px;font-family:sans-serif;}
+</style></head><body>
+<nav><a href="#" style="font-weight:700;color:#fff;font-size:13px;margin-right:8px;">📖</a><a href="#s1">作者使命</a> <a href="#s2">核心概念</a> <a href="#s3">方法论</a> <a href="#s4">辩证批判</a> <a href="#s5">精华章节</a></nav>
+<div class="wrap">
+<div class="hero"><div class="hero-badge">组织变革管理</div>
+<h1>《Rapid Transformation》</h1>
+<div class="author">✍️ Behnam Tabrizi 著</div>
+<div class="summary">深度阅读解构 · 苏格拉底式追问 · 大白话降维 · 辩证批判</div>
+</div>
+
+<section id="s1">
+<div class="sec-title" style="color:#1a3a5c">🧠 作者画像与核心使命</div>
+<div class="card">
+<div class="qa-q">Q1: 这本书表面在谈什么？</div>
+<div class="qa-a">谈企业如何在90天内完成快速有效的变革——不是慢慢熬三五年的大计划，而是用短周期冲刺产生不可逆的变革动力。</div>
+<div class="qa-q" style="margin-top:12px">Q2: 真正的痛点是什么？</div>
+<div class="qa-a">企业变革70%失败，最常见原因不是方向错，而是拖太久——人心等不了。变革项目启动时热情高涨，三年后已成明日黄花。</div>
+<div class="qa-q" style="margin-top:12px">Q3: 终极问题是什么？</div>
+<div class="qa-a"><strong>如何制造变革的"不可逆点"——让组织无法退回原来的状态？</strong>答案：快速创造可见的胜利，用胜利喂养信心，用信心驱动下一轮。</div>
+</div></section>
+
+<section id="s2">
+<div class="sec-title" style="color:#27ae60">🗝️ 核心概念大白话解码</div>
+<div class="concept">
+<div class="ct">快速赢（Early Win）</div>
+<div class="cs">第30天内，必须让所有人都能看见一个真实的胜利</div>
+<div class="cb">变革初期最脆弱——怀疑者最多。一个看得见的小胜利（不是PPT上的，是实际发生的）能扭转"这次又是走过场"的心理预期，是整个变革的关键杠杆点。</div>
+</div>
+<div class="concept">
+<div class="ct">突破团队（Breakthrough Team）</div>
+<div class="cs">10个最优秀的人，全职脱产，90天内改变命运</div>
+<div class="cb">不是委员会，不是工作组，不是兼职。是让你最好的10个人完全放下日常工作，全力攻克最关键的问题。全职是对变革的信念声明。</div>
+</div>
+<div class="concept">
+<div class="ct">飞轮效应（Flywheel Effect）</div>
+<div class="cs">每一个小胜利都让下一个胜利变得更容易</div>
+<div class="cb">变革是正反馈循环：胜利→信心→更大的胜利→更大的信心。第一圈最难，推起来之后飞轮自己转。这是整个90天框架的核心能量逻辑。</div>
+</div>
+</section>
+
+<section id="s3">
+<div class="sec-title" style="color:#e67e22">🛠️ 90天变革五步法</div>
+<div class="card">
+<p>① <strong>战略清晰（第1-10天）</strong>：明确且具体的单一使命——不是"改善效率"，而是"把客户投诉响应时间从72小时降到24小时"。</p>
+<p style="margin-top:8px">② <strong>组建突破团队（第11-20天）</strong>：10人，全职脱产，授予足够权限，快速决策。</p>
+<p style="margin-top:8px">③ <strong>30天小胜利（第21-30天）</strong>：一个具体可见的成果，向全组织展示"这次是真的"。</p>
+<p style="margin-top:8px">④ <strong>快速迭代（第31-60天）</strong>：不断测试、调整、再测试，把错误代价最小化。</p>
+<p style="margin-top:8px">⑤ <strong>锁定巩固（第61-90天）</strong>：把成果嵌入系统、流程和激励机制，防止反弹。</p>
+<blockquote>等计划完美再行动，等于拒绝行动。先动起来，在运动中调整。</blockquote>
+</div>
+</section>
+
+<section id="s4">
+<div class="sec-title" style="color:#c0392b">🛡️ 辩证批判</div>
+<div class="cg">
+<div class="cc" style="border-top:3px solid #c0392b"><div class="cl" style="color:#c0392b">幸存者偏差</div><p>书中案例全是成功完成变革的企业。失败案例从不被引用。有多少企业用了同样方法依然失败？这个答案书里没有。</p></div>
+<div class="cc" style="border-top:3px solid #e67e22"><div class="cl" style="color:#e67e22">文化变革局限</div><p>90天能改变流程和结构，但无法改变深层文化信念。如果文化不变，90天后会反弹。快速赢解决的是表层问题。</p></div>
+<div class="cc" style="border-top:3px solid #27ae60"><div class="cl" style="color:#27ae60">中小企业适用性</div><p>"抽调10个最优秀的人全职做新项目"——中小企业可能总共就10个人，这根本做不到。书的框架偏向大型组织。</p></div>
+<div class="cc" style="border-top:3px solid #3498db"><div class="cl" style="color:#3498db">核心价值</div><p>短周期+早胜利+飞轮效应的逻辑框架是真实有效的。把它当急救手册而非万能药使用是正确姿势。</p></div>
+</div>
+</section>
+
+<section id="s5">
+<div class="sec-title" style="color:#2980b9">📖 帕累托精华章节</div>
+<div class="ch">
+<div class="cn">突破团队的构建逻辑</div>
+<div class="cw">必读理由：颠覆传统委员会文化</div>
+<p>为什么必须全职脱产而非兼职委员会——兼职意味着变革永远排在日常工作之后，遇到压力第一个被砍。全职是对变革的信念声明，也是对其他人发出的信号。</p>
+</div>
+<div class="ch">
+<div class="cn">30天小胜利的设计</div>
+<div class="cw">必读理由：这是整个框架的关键杠杆点</div>
+<p>如何设计一个足够真实、足够可见、足够快的早期胜利——它必须是真实改善而非KPI游戏，必须是组织内每个人都能感受到的，必须在30天内实现。</p>
+</div>
+</section>
+
+</div>
+<footer>《Rapid Transformation》· 深度解构 · johnnyweb.netlify.app</footer>
+</body></html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Thinking with Machines - 深度解构</title><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet"><style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Noto Serif SC',Georgia,serif;background:#f9f7f2;color:#2c2c2c;font-size:17px;line-height:1.85;}
+nav{position:fixed;top:0;left:0;right:0;background:rgba(26,26,26,.97);backdrop-filter:blur(8px);z-index:100;padding:0 20px;display:flex;align-items:center;gap:4px;height:52px;overflow-x:auto;scrollbar-width:none;}
+nav::-webkit-scrollbar{display:none;}
+nav a{color:rgba(255,255,255,.8);text-decoration:none;font-size:12px;white-space:nowrap;padding:5px 10px;border-radius:4px;font-family:sans-serif;}
+.wrap{max-width:860px;margin:0 auto;padding:76px 24px 60px;}
+.hero{text-align:center;padding:60px 20px 48px;border-bottom:1px solid #e8e3db;margin-bottom:48px;}
+.hero-badge{display:inline-block;background:#1a3a5c;color:#fff;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:4px 14px;border-radius:2px;margin-bottom:18px;font-family:sans-serif;}
+.hero h1{font-size:clamp(24px,5vw,38px);font-weight:700;color:#1a1a1a;margin-bottom:10px;}
+.hero .author{color:#8b6f5e;font-size:15px;margin-bottom:16px;}
+.hero .summary{color:#555;font-size:15px;max-width:560px;margin:0 auto;}
+section{margin-bottom:52px;}
+.sec-title{font-size:22px;font-weight:700;color:#1a1a1a;margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid currentColor;}
+.card{background:#fff;border-radius:12px;padding:24px 28px;margin-bottom:16px;box-shadow:0 2px 12px rgba(0,0,0,.05);}
+.qa-q{font-weight:600;color:#1a3a5c;margin-bottom:6px;}
+.qa-a{color:#444;padding-left:12px;border-left:3px solid #c0392b;}
+.concept{background:#fff;border-radius:10px;padding:20px 24px;margin-bottom:14px;border-left:4px solid #27ae60;}
+.ct{font-weight:700;color:#1a1a1a;font-size:16px;margin-bottom:4px;}
+.cs{color:#e67e22;font-size:14px;margin-bottom:8px;font-family:sans-serif;}
+.cb{color:#555;font-size:15px;}
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+@media(max-width:600px){.cg{grid-template-columns:1fr;}}
+.cc{background:#fff;border-radius:10px;padding:18px 20px;}
+.cl{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;font-family:sans-serif;}
+.ch{background:#fff;border-radius:12px;padding:22px 26px;margin-bottom:14px;border-top:3px solid #2980b9;}
+.cn{font-weight:700;color:#1a1a1a;margin-bottom:6px;}
+.cw{font-size:13px;color:#e67e22;margin-bottom:10px;font-family:sans-serif;}
+blockquote{border-left:4px solid #c0392b;padding:12px 18px;margin:16px 0;background:#fff5f5;border-radius:0 8px 8px 0;font-style:italic;color:#555;}
+.tag{display:inline-block;font-size:12px;padding:3px 10px;border-radius:20px;font-family:sans-serif;margin-right:6px;margin-bottom:6px;}
+footer{text-align:center;padding:32px 20px;border-top:1px solid #e8e3db;color:#999;font-size:13px;font-family:sans-serif;}
+</style></head><body>
+<nav><a href="#" style="font-weight:700;color:#fff;font-size:13px;margin-right:8px;">📖</a><a href="#s1">作者使命</a> <a href="#s2">核心概念</a> <a href="#s3">方法论</a> <a href="#s4">辩证批判</a> <a href="#s5">精华章节</a></nav>
+<div class="wrap"><div class="hero"><div class="hero-badge">AI与人类决策</div><h1>《Thinking with Machines》</h1><div class="author">✍️ Vasant Dhar 著</div><div class="summary">深度阅读解构 · 苏格拉底式追问 · 大白话降维 · 辩证批判</div></div>
+<section id="s1"><div class="sec-title" style="color:#1a3a5c">🧠 作者画像与核心使命</div>
+<div class="card"><p><strong>作者：</strong>Vasant Dhar，NYU Stern商学院教授和数据科学家，40年AI实战经验。他既见证了AI的辉煌，也经历过AI寒冬，是真正的老司机而非炒作者。</p>
+<div class="qa-q" style="margin-top:12px">Q1: 表面谈什么？</div><div class="qa-a">谈AI时代人类如何与机器共存、协作、保持主导权——不是技术介绍，而是判断框架。</div>
+<div class="qa-q" style="margin-top:12px">Q2: 真正的痛点？</div><div class="qa-a">AI越来越强，但大多数人要么盲目信任要么盲目恐惧，缺乏判断"何时该信AI、何时该质疑AI"的系统性工具。</div>
+<div class="qa-q" style="margin-top:12px">Q3: 终极问题？</div><div class="qa-a"><strong>AI已是你生活里的隐形室友了。如何不被它牵着鼻子走？</strong></div></div></section>
+
+<section id="s2"><div class="sec-title" style="color:#27ae60">🗝️ 核心概念大白话解码</div>
+<div class="concept"><div class="ct">信任区域（Trust Zone）</div><div class="cs">什么能交给AI，什么必须人类盯着</div><div class="cb">出错代价低+环境稳定 = 放心让AI干（天气预报、翻译）。出错代价高+环境多变 = 必须人类盯着（看病、打官司）。信任不是全给或全不给，而是场景化的分级授权。</div></div>
+<div class="concept"><div class="ct">高方差（High Variance）</div><div class="cs">AI的致命缺陷：换个说法答案就变</div><div class="cb">同一个问题换种表达，LLM可能给出完全不同的答案。这不是偶然错误，是概率模型的系统性特征。在高风险决策中，这种不稳定性是致命的。</div></div>
+<div class="concept"><div class="ct">注意义务（Duty of Care）</div><div class="cs">高风险领域AI只能当助手，人类必须负最终责任</div><div class="cb">医生可以用AI辅助诊断，但签字的必须是医生。法官可以参考AI的量刑建议，但判决的必须是法官。AI扩展了人类能力，但不能替代人类对结果的责任。</div></div>
+</section>
+
+<section id="s3"><div class="sec-title" style="color:#e67e22">🛠️ AI协作决策三步法</div>
+<div class="card"><p><strong>① 识别场景风险等级</strong>：这个决策出错的代价是什么？能否快速纠错？<br><strong>② 画信任区地图</strong>：在这个风险等级下，AI可以负责哪些，人类必须负责哪些？<br><strong>③ 建立质疑机制</strong>：对AI的输出保持"但为什么"的追问——不是拒绝使用，而是负责任地使用。</p>
+<blockquote>AI是副驾驶，不是司机。方向盘必须握在人手里，遇到危险必须人踩刹车。</blockquote>
+</div></section>
+
+<section id="s4"><div class="sec-title" style="color:#c0392b">🛡️ 辩证批判</div>
+<div class="cg">
+<div class="cc" style="border-top:3px solid #c0392b"><div class="cl" style="color:#c0392b">技术乐观主义偏见</div><p>Dhar整体偏向AI乐观，对AI可能加剧不平等、制造新形式的算法歧视着墨不足。</p></div>
+<div class="cc" style="border-top:3px solid #e67e22"><div class="cl" style="color:#e67e22">保质期问题</div><p>AI发展极快，书中对具体模型能力的判断可能2-3年后就过时。框架有价值，具体案例需要更新。</p></div>
+<div class="cc" style="border-top:3px solid #27ae60"><div class="cl" style="color:#27ae60">核心价值</div><p>Trust Zone框架是真正可以立刻使用的工具。40年实战经验让他的判断比大多数AI评论者更接地气、更经得起时间考验。</p></div>
+<div class="cc" style="border-top:3px solid #3498db"><div class="cl" style="color:#3498db">推荐评分</div><p>在AI书籍里约7.5/10——极其实用，入门友好，但深度有限，5年后部分内容可能需要更新。</p></div>
+</div></section>
+
+<section id="s5"><div class="sec-title" style="color:#2980b9">📖 帕累托精华章节</div>
+<div class="ch"><div class="cn">信任区域框架</div><div class="cw">必读理由：可以立刻使用的判断工具</div><p>如何系统性地判断"这件事该不该信AI"——按出错代价和环境稳定性建立信任分级，是这本书最有实操价值的贡献。</p></div>
+<div class="ch"><div class="cn">AI在高风险领域的应用边界</div><div class="cw">必读理由：防止过度信任的认知疫苗</div><p>医疗、法律、金融——这些领域AI最诱人也最危险。这章给出了清醒的分析：哪些任务AI可以显著辅助，哪些必须保留人类的最终判断权。</p></div>
+</section></div>
+<footer>《Thinking with Machines》· 深度解构 · johnnyweb.netlify.app</footer></body></html>

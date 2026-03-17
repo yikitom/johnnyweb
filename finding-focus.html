@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Finding Focus - 深度解构</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Noto Serif SC',Georgia,serif;background:#f9f7f2;color:#2c2c2c;font-size:17px;line-height:1.85;}
+nav{position:fixed;top:0;left:0;right:0;background:rgba(26,26,26,.97);backdrop-filter:blur(8px);z-index:100;padding:0 20px;display:flex;align-items:center;gap:4px;height:52px;overflow-x:auto;scrollbar-width:none;}
+nav::-webkit-scrollbar{display:none;}
+nav a{color:rgba(255,255,255,.8);text-decoration:none;font-size:12px;white-space:nowrap;padding:5px 10px;border-radius:4px;font-family:sans-serif;}
+.wrap{max-width:860px;margin:0 auto;padding:76px 24px 60px;}
+.hero{text-align:center;padding:60px 20px 48px;border-bottom:1px solid #e8e3db;margin-bottom:48px;}
+.hero-badge{display:inline-block;background:#1a3a5c;color:#fff;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:4px 14px;border-radius:2px;margin-bottom:18px;font-family:sans-serif;}
+.hero h1{font-size:clamp(24px,5vw,38px);font-weight:700;color:#1a1a1a;margin-bottom:10px;}
+.hero .author{color:#8b6f5e;font-size:15px;margin-bottom:16px;}
+.hero .summary{color:#555;font-size:15px;max-width:560px;margin:0 auto;}
+section{margin-bottom:52px;}
+.sec-title{font-size:22px;font-weight:700;color:#1a1a1a;margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid currentColor;}
+.card{background:#fff;border-radius:12px;padding:24px 28px;margin-bottom:16px;box-shadow:0 2px 12px rgba(0,0,0,.05);}
+.qa-q{font-weight:600;color:#1a3a5c;margin-bottom:6px;}
+.qa-a{color:#444;padding-left:12px;border-left:3px solid #c0392b;}
+.concept{background:#fff;border-radius:10px;padding:20px 24px;margin-bottom:14px;border-left:4px solid #27ae60;}
+.ct{font-weight:700;color:#1a1a1a;font-size:16px;margin-bottom:4px;}
+.cs{color:#e67e22;font-size:14px;margin-bottom:8px;font-family:sans-serif;}
+.cb{color:#555;font-size:15px;}
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+@media(max-width:600px){.cg{grid-template-columns:1fr;}}
+.cc{background:#fff;border-radius:10px;padding:18px 20px;}
+.cl{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;font-family:sans-serif;}
+.ch{background:#fff;border-radius:12px;padding:22px 26px;margin-bottom:14px;border-top:3px solid #2980b9;}
+.cn{font-weight:700;color:#1a1a1a;margin-bottom:6px;}
+.cw{font-size:13px;color:#e67e22;margin-bottom:10px;font-family:sans-serif;}
+blockquote{border-left:4px solid #c0392b;padding:12px 18px;margin:16px 0;background:#fff5f5;border-radius:0 8px 8px 0;font-style:italic;color:#555;}
+.tag{display:inline-block;font-size:12px;padding:3px 10px;border-radius:20px;font-family:sans-serif;margin-right:6px;margin-bottom:6px;}
+footer{text-align:center;padding:32px 20px;border-top:1px solid #e8e3db;color:#999;font-size:13px;font-family:sans-serif;}
+</style></head><body>
+<nav><a href="#" style="font-weight:700;color:#fff;font-size:13px;margin-right:8px;">📖</a><a href="#s1">作者使命</a> <a href="#s2">核心概念</a> <a href="#s3">方法论</a> <a href="#s4">辩证批判</a> <a href="#s5">精华章节</a></nav>
+<div class="wrap">
+<div class="hero"><div class="hero-badge">注意力管理</div>
+<h1>《Finding Focus》</h1>
+<div class="author">✍️ Zelana Montminy 著</div>
+<div class="summary">深度阅读解构 · 苏格拉底式追问 · 大白话降维 · 辩证批判</div>
+</div>
+
+<section id="s1">
+<div class="sec-title" style="color:#1a3a5c">🧠 作者画像与核心使命</div>
+<div class="card">
+<div class="qa-q">Q1: 这本书表面在谈什么？</div>
+<div class="qa-a">谈如何在分心的时代夺回注意力——用神经科学和行为心理学的双重框架。</div>
+<div class="qa-q" style="margin-top:12px">Q2: 真正的痛点是什么？</div>
+<div class="qa-a">大多数"专注力"书只讲意志力，但意志力是有限资源。Montminy发现问题更深：现代生活的结构性设计正在摧毁你的注意力基础设施。</div>
+<div class="qa-q" style="margin-top:12px">Q3: 终极问题是什么？</div>
+<div class="qa-a"><strong>在一个靠你分心赚钱的世界里，如何系统性地重建自己的注意力生态系统？</strong></div>
+</div></section>
+
+<section id="s2">
+<div class="sec-title" style="color:#27ae60">🗝️ 核心概念大白话解码</div>
+<div class="concept">
+<div class="ct">超日节律（Ultradian Rhythm）</div>
+<div class="cs">大脑有自己的90分钟工作-休息循环</div>
+<div class="cb">不只有昼夜节律，大脑还有每90-120分钟一次的能量波动。在高能量期专注工作，在低谷期强迫自己工作等于逆流而行。识别你的每日能量节律是一切的起点。</div>
+</div>
+<div class="concept">
+<div class="ct">注意力残留（Attention Residue）</div>
+<div class="cs">切换任务后，脑子里还在想上一件事</div>
+<div class="cb">会议结束开始写方案，但思绪还在刚才的争论上。这就是注意力残留。多任务切换越频繁，残留越严重，等效认知资源越少。</div>
+</div>
+<div class="concept">
+<div class="ct">恢复性活动（Restorative Activities）</div>
+<div class="cs">不是"换一种屏幕"，而是真正让神经系统放松</div>
+<div class="cb">刷社交媒体消耗的是同一条注意力回路，不算恢复。真正的恢复：散步、自然接触、冥想——让大脑的默认模式网络有机会活跃。</div>
+</div>
+</section>
+
+<section id="s3">
+<div class="sec-title" style="color:#e67e22">🛠️ 三层重建框架</div>
+<div class="card">
+<p><strong>层一——生理基建：</strong>睡眠、营养、运动是注意力的基础设施。一夜睡6小时vs8小时，第二天的专注力差距可达40%。没有这一层，其他技巧都是在漏水的桶里倒水。</p>
+<p style="margin-top:10px"><strong>层二——时间结构：</strong>按90分钟超日节律安排工作。每个周期开始时明确单一目标，结束后真正恢复（不是换屏幕）。</p>
+<p style="margin-top:10px"><strong>层三——环境设计：</strong>关通知、设数字宵禁、物理隔离高干扰设备。让"专注"成为默认状态，而不是需要意志力维持的特殊状态。</p>
+</div>
+</section>
+
+<section id="s4">
+<div class="sec-title" style="color:#c0392b">🛡️ 辩证批判</div>
+<div class="cg">
+<div class="cc" style="border-top:3px solid #c0392b"><div class="cl" style="color:#c0392b">精英偏见</div><p>瑜伽、森林浴等"恢复性活动"预设了时间和经济余量。对于双职工、轮班工人来说，这些建议很难落地。</p></div>
+<div class="cc" style="border-top:3px solid #e67e22"><div class="cl" style="color:#e67e22">资源限制下的局限</div><p>极度疲惫、贫困、创伤应激状态下，元认知能力会严重下降。不能把所有"无法专注"都归因于方法不对。</p></div>
+<div class="cc" style="border-top:3px solid #27ae60"><div class="cl" style="color:#27ae60">AI时代新问题</div><p>当AI能承担大量执行任务，"深度专注做什么"比"如何专注"变得更重要——书对此着墨不足。</p></div>
+<div class="cc" style="border-top:3px solid #3498db"><div class="cl" style="color:#3498db">核心价值</div><p>超日节律框架和注意力残留概念有真实的神经科学基础，是直接可用的行动工具。</p></div>
+</div>
+</section>
+
+<section id="s5">
+<div class="sec-title" style="color:#2980b9">📖 帕累托精华章节</div>
+<div class="ch">
+<div class="cn">超日节律与专注周期</div>
+<div class="cw">必读理由：唯一真正改变工作方式的章节</div>
+<p>90分钟专注+20分钟真正恢复的框架。在能量高峰做最难的工作，在低谷做机械性工作。仅此一条，就能比"努力专注"高效得多。</p>
+</div>
+<div class="ch">
+<div class="cn">环境设计与数字宵禁</div>
+<div class="cw">必读理由：最容易落地的系统改变</div>
+<p>关掉90%的通知、设置屏幕时间限制、睡前1小时不看屏幕——这些是系统设计问题，不是意志力问题。一周内就能感受到差异。</p>
+</div>
+</section>
+
+</div>
+<footer>《Finding Focus》· 深度解构 · johnnyweb.netlify.app</footer>
+</body></html>
