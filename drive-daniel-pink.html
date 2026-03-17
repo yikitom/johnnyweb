@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>《驱动力》 · 深度解构</title><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f9f7f2;--card:#fff;--text:#2c2c2c;--text-sub:#5a5a5a;--text-dim:#888;--accent:#c0392b;--accent2:#2c3e50;--gold:#b8860b;--border:#e0dcd5;--serif:"Noto Serif SC",serif;--sans:"Noto Sans SC",sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.8;-webkit-font-smoothing:antialiased}
+.nav{position:fixed;top:0;left:0;right:0;z-index:99;background:rgba(249,247,242,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:14px 24px;display:flex;align-items:center;gap:16px}
+.nav-back{color:var(--text-dim);text-decoration:none;font-size:13px}.nav-back:hover{color:var(--text)}
+.nav-title{font-family:var(--serif);font-size:14px;font-weight:600;color:var(--accent2);flex:1;text-align:center}
+.hero{padding:100px 24px 60px;max-width:800px;margin:0 auto;text-align:center}
+.hero-cat{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:16px}
+.hero-title{font-family:var(--serif);font-size:clamp(26px,4vw,42px);font-weight:900;line-height:1.2;color:var(--accent2);margin-bottom:12px}
+.hero-sub{font-size:15px;color:var(--text-sub);margin-bottom:24px}
+.hero-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.meta-tag{background:var(--accent2);color:#fff;font-size:11px;padding:4px 12px;border-radius:20px;letter-spacing:.5px}
+.wrap{max-width:800px;margin:0 auto;padding:0 24px 80px}
+.sec{margin-bottom:56px}
+.sec-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:14px}
+.sec h2{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--accent2);margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid var(--border)}
+.qa{margin-bottom:16px}.qa-q{font-weight:600;color:var(--accent2);margin-bottom:6px}
+.qa-q::before{content:"Q: ";color:var(--accent)}.qa-a{color:var(--text-sub);padding-left:20px;border-left:3px solid var(--border)}
+.concept{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px 22px;margin-bottom:14px}
+.concept-name{font-weight:700;color:var(--accent2);margin-bottom:6px;font-family:var(--serif);font-size:16px}
+.concept-def{font-size:13px;color:var(--text-sub);margin-bottom:8px}
+.concept-case{font-size:13px;background:var(--bg);border-radius:8px;padding:10px 14px;color:var(--text);border-left:3px solid var(--gold)}
+.method-chain{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px;margin-bottom:16px}
+.method-step{display:flex;gap:14px;margin-bottom:16px;align-items:flex-start}
+.step-num{width:28px;height:28px;background:var(--accent2);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px}
+.step-title{font-weight:600;color:var(--accent2);margin-bottom:4px}
+.step-desc{font-size:14px;color:var(--text-sub)}
+.dial{border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:14px}
+.dial-pro{background:#f0faf0;padding:16px 20px;border-bottom:1px solid var(--border)}
+.dial-con{background:#fdf5f5;padding:16px 20px}
+.dial-label{font-size:11px;letter-spacing:1px;text-transform:uppercase;font-weight:600;margin-bottom:6px}
+.dial-pro .dial-label{color:#2d6a4f}.dial-con .dial-label{color:#c0392b}
+.chapter-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px 22px;margin-bottom:14px}
+.chapter-badge{display:inline-block;background:var(--accent);color:#fff;font-size:11px;padding:3px 10px;border-radius:20px;margin-bottom:10px;font-weight:600}
+.chapter-name{font-family:var(--serif);font-size:16px;font-weight:700;color:var(--accent2);margin-bottom:8px}
+.chapter-reason{font-size:13px;color:var(--gold);font-weight:500;margin-bottom:8px}
+.blockquote{border-left:4px solid var(--gold);padding:14px 20px;background:var(--bg);border-radius:0 8px 8px 0;font-style:italic;color:var(--text-sub);margin:14px 0;font-size:15px}
+p{color:var(--text-sub);line-height:1.8;margin-bottom:12px}strong{color:var(--text)}
+.footer{text-align:center;padding:32px;color:var(--text-dim);font-size:12px;border-top:1px solid var(--border)}
+</style></head>
+<body>
+<div class="nav"><a href="index.html" class="nav-back">← 返回</a><div class="nav-title">《驱动力》</div></div>
+<div class="hero"><div class="hero-cat">管理·动机</div><div class="hero-title">《驱动力》</div>
+<div class="hero-sub">Daniel Pink 著 · 萝卜加大棒已经失效，让人真正行动的是第三种驱动力</div><div class="hero-meta"><span class="meta-tag">Daniel Pink</span> <span class="meta-tag">内在动机</span> <span class="meta-tag">自主性</span> <span class="meta-tag">组织管理</span></div></div>
+<div class="wrap"><div class="sec"><div class="sec-label">🧠 作者画像</div><h2>这本书挑战什么管理假设？</h2><div class="qa"><div class="qa-q">Q1：表面讲什么？</div><div class="qa-a">讲人类行为的三种驱动力，以及为什么传统的奖惩机制（萝卜加大棒）在现代工作中越来越失效。</div></div><div class="qa"><div class="qa-q">Q2：挑战的是什么？</div><div class="qa-a">管理学100年来都假设：给人更多钱，他们就工作得更好。Pink用研究证明：这只在简单重复性任务中成立。在需要创造力的工作中，高奖励反而会降低表现。</div></div><div class="qa"><div class="qa-q">Q3：终极命题？</div><div class="qa-a">现代工作越来越需要创造力、判断力和内在驱动。真正让人持续高效的是自主（Autonomy）、精通（Mastery）和使命（Purpose）——内在动机的三个核心。</div></div><p><strong>Daniel Pink</strong>是作家，前美国副总统Al Gore的演讲撰稿人，专研商业、工作与行为科学。他的TED演讲《驱动力的惊人真相》是有史以来播放最多的TED演讲之一。</p></div><div class="sec"><div class="sec-label">🗝️ 核心概念</div><h2>三种驱动力</h2><div class="concept"><div class="concept-name">驱动力1.0：生存本能</div><div class="concept-def">人类最原始的驱动力——吃饱穿暖活下去。</div><div class="concept-case">💡 这层驱动力让人类在恶劣环境中生存，但不能解释为什么人会做超出生存必须的事。</div></div><div class="concept"><div class="concept-name">驱动力2.0：奖惩机制</div><div class="concept-def">外部奖励（钱、晋升）和惩罚驱动行为——工业时代的管理基础，对简单、可量化的任务有效。</div><div class="concept-case">💡 流水线工人、电话销售——这些有明确步骤的工作适合奖惩驱动。</div></div><div class="concept"><div class="concept-name">驱动力3.0：内在动机</div><div class="concept-def">当工作本身给人带来满足感时，人会自发地、持续地投入。它来自自主感、成长感和意义感。</div><div class="concept-case">💡 维基百科的编辑不拿工资，谷歌工程师用20%时间做自己感兴趣的项目（Gmail和Google News都来自这里）——这就是内在动机的力量。</div></div></div><div class="sec"><div class="sec-label">🛠️ 核心方法论</div><h2>如何激活内在动机</h2><div class="method-chain"><div class="method-step"><div class="step-num">1</div><div class="step-body"><div class="step-title">给予任务自主权</div><div class="step-desc">让人自己选择如何完成工作，而不是规定每一个步骤。研究一致发现：自主感提高内在动机和工作质量。</div></div></div><div class="method-step"><div class="step-num">2</div><div class="step-body"><div class="step-title">创造刻意练习的条件</div><div class="step-desc">精通（Mastery）需要处于技能边界的适度挑战——太简单无聊，太难挫败。让人在挑战与能力的最佳区间工作。</div></div></div><div class="method-step"><div class="step-num">3</div><div class="step-body"><div class="step-title">连接更大的意义</div><div class="step-desc">让每个人都理解自己的工作如何影响客户、团队、社会。意义感是最持久的内在驱动来源。</div></div></div><div class="method-step"><div class="step-num">4</div><div class="step-body"><div class="step-title">合理使用外部奖励</div><div class="step-desc">对创造性工作，奖励应该是意外的、在完成后给的、非控制性的——而不是提前承诺的、绑定结果的奖励。</div></div></div></div></div><div class="sec"><div class="sec-label">🛡️ 辩证审视</div><h2>价值与局限</h2><div class="dial"><div class="dial-pro"><div class="dial-label">✓ 价值所在</div><p>Pink对内在动机的梳理帮助了大量管理者反思奖惩体系。他所引用的研究（Deci、Ryan等人的自我决定理论）是坚实的。谷歌的20%时间、Atlassian的Shiplt Day等实践都验证了这个方向。</p></div><div class="dial-con"><div class="dial-label">⚠ 局限性</div><p>内在动机并不适合所有工作场景——对于有标准答案的任务，外部激励仍然有效。另外，完全去掉外部奖励在现实的商业环境中也不可行。书的结论有时被过度解读。</p></div></div><div class="blockquote">胡萝卜和大棒在20世纪很有效，但在21世纪，它们常常会带来相反的效果。——Daniel Pink</div></div><div class="sec"><div class="sec-label">📖 帕累托精选</div><h2>必读章节</h2><div class="chapter-card"><span class="chapter-badge">必读 #1</span><div class="chapter-name">蜡烛问题——为什么高奖励会降低创造性表现</div><div class="chapter-reason">最反常识的核心实验</div><p>卡尔·邓克尔的蜡烛实验（如何把蜡烛固定在墙上）发现：提前告诉人解决了有奖励，反而让人思维更狭窄，解题速度更慢。这违背了直觉，但被反复验证。这是理解整本书的关键实验。</p></div><div class="chapter-card"><span class="chapter-badge">必读 #2</span><div class="chapter-name">自主、精通、使命——内在动机的三个维度</div><div class="chapter-reason">把理论转化为实践指南的章节</div><p>这章把内在动机拆解成可操作的三个维度：自主（怎么做）、精通（做得更好）、使命（为什么做）。每个维度都有具体的实现方法，无论你是员工还是管理者，都能找到可以立刻行动的改变点。</p></div></div></div>
+<div class="footer">深度阅读解构 · 苏格拉底式提问 · 辩证批判</div>
+</body></html>

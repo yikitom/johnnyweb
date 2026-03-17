@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>《原子习惯》 · 深度解构</title><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f9f7f2;--card:#fff;--text:#2c2c2c;--text-sub:#5a5a5a;--text-dim:#888;--accent:#c0392b;--accent2:#2c3e50;--gold:#b8860b;--border:#e0dcd5;--serif:"Noto Serif SC",serif;--sans:"Noto Sans SC",sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.8;-webkit-font-smoothing:antialiased}
+.nav{position:fixed;top:0;left:0;right:0;z-index:99;background:rgba(249,247,242,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:14px 24px;display:flex;align-items:center;gap:16px}
+.nav-back{color:var(--text-dim);text-decoration:none;font-size:13px}.nav-back:hover{color:var(--text)}
+.nav-title{font-family:var(--serif);font-size:14px;font-weight:600;color:var(--accent2);flex:1;text-align:center}
+.hero{padding:100px 24px 60px;max-width:800px;margin:0 auto;text-align:center}
+.hero-cat{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:16px}
+.hero-title{font-family:var(--serif);font-size:clamp(26px,4vw,42px);font-weight:900;line-height:1.2;color:var(--accent2);margin-bottom:12px}
+.hero-sub{font-size:15px;color:var(--text-sub);margin-bottom:24px}
+.hero-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.meta-tag{background:var(--accent2);color:#fff;font-size:11px;padding:4px 12px;border-radius:20px;letter-spacing:.5px}
+.wrap{max-width:800px;margin:0 auto;padding:0 24px 80px}
+.sec{margin-bottom:56px}
+.sec-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:14px}
+.sec h2{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--accent2);margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid var(--border)}
+.qa{margin-bottom:16px}.qa-q{font-weight:600;color:var(--accent2);margin-bottom:6px}
+.qa-q::before{content:"Q: ";color:var(--accent)}.qa-a{color:var(--text-sub);padding-left:20px;border-left:3px solid var(--border)}
+.concept{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px 22px;margin-bottom:14px}
+.concept-name{font-weight:700;color:var(--accent2);margin-bottom:6px;font-family:var(--serif);font-size:16px}
+.concept-def{font-size:13px;color:var(--text-sub);margin-bottom:8px}
+.concept-case{font-size:13px;background:var(--bg);border-radius:8px;padding:10px 14px;color:var(--text);border-left:3px solid var(--gold)}
+.method-chain{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px;margin-bottom:16px}
+.method-step{display:flex;gap:14px;margin-bottom:16px;align-items:flex-start}
+.step-num{width:28px;height:28px;background:var(--accent2);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px}
+.step-title{font-weight:600;color:var(--accent2);margin-bottom:4px}
+.step-desc{font-size:14px;color:var(--text-sub)}
+.dial{border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:14px}
+.dial-pro{background:#f0faf0;padding:16px 20px;border-bottom:1px solid var(--border)}
+.dial-con{background:#fdf5f5;padding:16px 20px}
+.dial-label{font-size:11px;letter-spacing:1px;text-transform:uppercase;font-weight:600;margin-bottom:6px}
+.dial-pro .dial-label{color:#2d6a4f}.dial-con .dial-label{color:#c0392b}
+.chapter-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px 22px;margin-bottom:14px}
+.chapter-badge{display:inline-block;background:var(--accent);color:#fff;font-size:11px;padding:3px 10px;border-radius:20px;margin-bottom:10px;font-weight:600}
+.chapter-name{font-family:var(--serif);font-size:16px;font-weight:700;color:var(--accent2);margin-bottom:8px}
+.chapter-reason{font-size:13px;color:var(--gold);font-weight:500;margin-bottom:8px}
+.blockquote{border-left:4px solid var(--gold);padding:14px 20px;background:var(--bg);border-radius:0 8px 8px 0;font-style:italic;color:var(--text-sub);margin:14px 0;font-size:15px}
+p{color:var(--text-sub);line-height:1.8;margin-bottom:12px}strong{color:var(--text)}
+.footer{text-align:center;padding:32px;color:var(--text-dim);font-size:12px;border-top:1px solid var(--border)}
+</style></head>
+<body>
+<div class="nav"><a href="index.html" class="nav-back">← 返回</a><div class="nav-title">《原子习惯》</div></div>
+<div class="hero"><div class="hero-cat">成长·行为科学</div><div class="hero-title">《原子习惯》</div>
+<div class="hero-sub">James Clear 著 · 每天进步1%，一年后你会强大37.78倍</div><div class="hero-meta"><span class="meta-tag">James Clear</span> <span class="meta-tag">习惯养成</span> <span class="meta-tag">行为科学</span> <span class="meta-tag">复利效应</span></div></div>
+<div class="wrap"><div class="sec"><div class="sec-label">🧠 作者画像</div><h2>作者背景与核心使命</h2><div class="qa"><div class="qa-q">Q1：这本书表面讲什么？</div><div class="qa-a">讲如何建立好习惯、戒除坏习惯，以及微小改变如何随时间积累成惊人的结果。</div></div><div class="qa"><div class="qa-q">Q2：更深的问题是什么？</div><div class="qa-a">为什么大多数人明白道理却做不到？为什么意志力法则失效，但习惯系统有效？</div></div><div class="qa"><div class="qa-q">Q3：终极命题？</div><div class="qa-a">你不是目标的产物，而是系统的产物。想要持久改变，不能依赖动力，要依赖环境和系统设计。</div></div><p><strong>James Clear</strong>是习惯领域最有影响力的作家之一。他的newsletter订阅者超过200万。这本书的灵感来自他高中时的严重棒球事故——康复期间他系统研究了习惯科学，并用在自己的运动和写作生涯上验证。</p></div><div class="sec"><div class="sec-label">🗝️ 核心概念</div><h2>大白话解码</h2><div class="concept"><div class="concept-name">习惯四步循环</div><div class="concept-def">所有习惯都由四步组成：提示（触发器）→渴望（动机）→反应（行动）→奖励（结果）。改变习惯，就是改变这四个环节中的一个或多个。</div><div class="concept-case">💡 你拿起手机刷朋友圈：手机放在桌上可见（提示）→感到无聊想获取刺激（渴望）→打开手机（反应）→短暂的信息愉悦（奖励）。</div></div><div class="concept"><div class="concept-name">两分钟法则</div><div class="concept-def">任何新习惯的开始，不能超过两分钟。想建立读书习惯，就从打开书读一页开始，而不是每天读30页。</div><div class="concept-case">💡 降低启动摩擦，让大脑把行动与习惯绑定，而不是把行动与负担绑定。</div></div><div class="concept"><div class="concept-name">身份认同先行</div><div class="concept-def">最持久的习惯改变来自身份转变——先改变你是谁，行为自然跟上。</div><div class="concept-case">💡 不说我在学习戒烟，说我不是一个抽烟的人。前者是在挣扎，后者是在执行自己的身份。</div></div></div><div class="sec"><div class="sec-label">🛠️ 核心方法论</div><h2>习惯系统设计四法则</h2><div class="method-chain"><div class="method-step"><div class="step-num">1</div><div class="step-body"><div class="step-title">让提示显而易见</div><div class="step-desc">把你想要的习惯的触发器放在显眼的地方。想多喝水，就把水杯放在办公桌中央。想少刷手机，就把手机放到另一个房间。</div></div></div><div class="method-step"><div class="step-num">2</div><div class="step-body"><div class="step-title">让渴望更有吸引力</div><div class="step-desc">把困难习惯和你享受的事情捆绑。比如只有在跑步机上才能看最喜欢的剧——诱惑捆绑法。</div></div></div><div class="method-step"><div class="step-num">3</div><div class="step-body"><div class="step-title">让行动更轻松</div><div class="step-desc">减少摩擦。把运动装备晚上就准备好；把垃圾食品从家里搬走而不是靠意志力抵抗。</div></div></div><div class="method-step"><div class="step-num">4</div><div class="step-body"><div class="step-title">让奖励令人满意</div><div class="step-desc">立即的奖励强化习惯。完成一次锻炼就在习惯追踪本上打勾——那个勾本身就是即时奖励。</div></div></div></div></div><div class="sec"><div class="sec-label">🛡️ 辩证审视</div><h2>优缺点</h2><div class="dial"><div class="dial-pro"><div class="dial-label">✓ 价值所在</div><p>Clear把分散的行为科学研究整合成一个实用系统。书中的四步循环来自BJ Fogg等研究者，但Clear把它写得更可操作。两分钟法则和环境设计等具体策略被大量读者验证有效。</p></div><div class="dial-con"><div class="dial-label">⚠ 局限性</div><p>对于根深蒂固的成瘾行为或有深层心理根源的习惯，这套系统过于轻量。另外，习惯不是万能的——有些目标需要的不是习惯，而是战略思考和判断力。</p></div></div><div class="blockquote">你的每一个行动都是在为你想成为的那种人投票。——James Clear</div></div><div class="sec"><div class="sec-label">📖 帕累托精选</div><h2>必读章节</h2><div class="chapter-card"><span class="chapter-badge">必读 #1</span><div class="chapter-name">身份认同与行为改变——为什么大多数改变不持久</div><div class="chapter-reason">全书最颠覆认知的理论章节</div><p>大多数人改变习惯的路径是：目标→结果→身份（我要减肥→我会变瘦→我是健康的人）。Clear说应该反过来：身份→结果→目标（我是健康的人→我做健康的事→我自然保持健康体重）。这个颠倒是整本书最有价值的洞见。</p></div><div class="chapter-card"><span class="chapter-badge">必读 #2</span><div class="chapter-name">环境设计——无需意志力的习惯改变</div><div class="chapter-reason">最直接可用的操作方法</div><p>Clear通过大量案例说明：改变环境比改变自己容易得多。改变超市动线让人买更多健康食品；把楼梯变得更显眼让人少乘电梯——这些都是不依赖动力的习惯改变。这章让你明白：自律不是关于意志力，而是关于设计你的环境。</p></div></div></div>
+<div class="footer">深度阅读解构 · 苏格拉底式提问 · 辩证批判</div>
+</body></html>

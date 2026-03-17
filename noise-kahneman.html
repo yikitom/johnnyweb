@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>《噪声》 · 深度解构</title><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f9f7f2;--card:#fff;--text:#2c2c2c;--text-sub:#5a5a5a;--text-dim:#888;--accent:#c0392b;--accent2:#2c3e50;--gold:#b8860b;--border:#e0dcd5;--serif:"Noto Serif SC",serif;--sans:"Noto Sans SC",sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.8;-webkit-font-smoothing:antialiased}
+.nav{position:fixed;top:0;left:0;right:0;z-index:99;background:rgba(249,247,242,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:14px 24px;display:flex;align-items:center;gap:16px}
+.nav-back{color:var(--text-dim);text-decoration:none;font-size:13px}.nav-back:hover{color:var(--text)}
+.nav-title{font-family:var(--serif);font-size:14px;font-weight:600;color:var(--accent2);flex:1;text-align:center}
+.hero{padding:100px 24px 60px;max-width:800px;margin:0 auto;text-align:center}
+.hero-cat{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:16px}
+.hero-title{font-family:var(--serif);font-size:clamp(26px,4vw,42px);font-weight:900;line-height:1.2;color:var(--accent2);margin-bottom:12px}
+.hero-sub{font-size:15px;color:var(--text-sub);margin-bottom:24px}
+.hero-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.meta-tag{background:var(--accent2);color:#fff;font-size:11px;padding:4px 12px;border-radius:20px;letter-spacing:.5px}
+.wrap{max-width:800px;margin:0 auto;padding:0 24px 80px}
+.sec{margin-bottom:56px}
+.sec-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:14px}
+.sec h2{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--accent2);margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid var(--border)}
+.qa{margin-bottom:16px}.qa-q{font-weight:600;color:var(--accent2);margin-bottom:6px}
+.qa-q::before{content:"Q: ";color:var(--accent)}.qa-a{color:var(--text-sub);padding-left:20px;border-left:3px solid var(--border)}
+.concept{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px 22px;margin-bottom:14px}
+.concept-name{font-weight:700;color:var(--accent2);margin-bottom:6px;font-family:var(--serif);font-size:16px}
+.concept-def{font-size:13px;color:var(--text-sub);margin-bottom:8px}
+.concept-case{font-size:13px;background:var(--bg);border-radius:8px;padding:10px 14px;color:var(--text);border-left:3px solid var(--gold)}
+.method-chain{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px;margin-bottom:16px}
+.method-step{display:flex;gap:14px;margin-bottom:16px;align-items:flex-start}
+.step-num{width:28px;height:28px;background:var(--accent2);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px}
+.step-title{font-weight:600;color:var(--accent2);margin-bottom:4px}
+.step-desc{font-size:14px;color:var(--text-sub)}
+.dial{border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:14px}
+.dial-pro{background:#f0faf0;padding:16px 20px;border-bottom:1px solid var(--border)}
+.dial-con{background:#fdf5f5;padding:16px 20px}
+.dial-label{font-size:11px;letter-spacing:1px;text-transform:uppercase;font-weight:600;margin-bottom:6px}
+.dial-pro .dial-label{color:#2d6a4f}.dial-con .dial-label{color:#c0392b}
+.chapter-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px 22px;margin-bottom:14px}
+.chapter-badge{display:inline-block;background:var(--accent);color:#fff;font-size:11px;padding:3px 10px;border-radius:20px;margin-bottom:10px;font-weight:600}
+.chapter-name{font-family:var(--serif);font-size:16px;font-weight:700;color:var(--accent2);margin-bottom:8px}
+.chapter-reason{font-size:13px;color:var(--gold);font-weight:500;margin-bottom:8px}
+.blockquote{border-left:4px solid var(--gold);padding:14px 20px;background:var(--bg);border-radius:0 8px 8px 0;font-style:italic;color:var(--text-sub);margin:14px 0;font-size:15px}
+p{color:var(--text-sub);line-height:1.8;margin-bottom:12px}strong{color:var(--text)}
+.footer{text-align:center;padding:32px;color:var(--text-dim);font-size:12px;border-top:1px solid var(--border)}
+</style></head>
+<body>
+<div class="nav"><a href="index.html" class="nav-back">← 返回</a><div class="nav-title">《噪声》</div></div>
+<div class="hero"><div class="hero-cat">思维·判断</div><div class="hero-title">《噪声》</div>
+<div class="hero-sub">卡尼曼 等著 · 同一个人对同样的案例做出不同判断——这比偏见更隐蔽，危害更大</div><div class="hero-meta"><span class="meta-tag">卡尼曼</span> <span class="meta-tag">决策质量</span> <span class="meta-tag">判断一致性</span> <span class="meta-tag">组织管理</span></div></div>
+<div class="wrap"><div class="sec"><div class="sec-label">🧠 作者画像</div><h2>这本书提出了什么新问题？</h2><div class="qa"><div class="qa-q">Q1：表面讲什么？</div><div class="qa-a">讲判断中的噪声——同样的问题，不同的人（或同一个人在不同时刻）给出不同答案，这种随机变异叫噪声。</div></div><div class="qa"><div class="qa-q">Q2：为什么这比偏见更难处理？</div><div class="qa-a">偏见是系统性的错误——知道规律就能纠正；噪声是随机的变异——连当事人都不知道自己下次会怎么判断，无法预测也无法纠正。</div></div><div class="qa"><div class="qa-q">Q3：终极命题？</div><div class="qa-a">在任何需要人类判断的系统中（法院、医院、保险、招聘），噪声无处不在且代价巨大。降低噪声，系统就会更公平、更准确、更高效。</div></div><p><strong>Daniel Kahneman</strong>（诺贝尔经济学奖得主）与Olivier Sibony和Cass Sunstein合著此书。继《思考，快与慢》之后对人类判断的进一步深化研究。</p></div><div class="sec"><div class="sec-label">🗝️ 核心概念</div><h2>大白话解码</h2><div class="concept"><div class="concept-name">偏见 vs 噪声</div><div class="concept-def">偏见是系统性错误（总是往一个方向错），噪声是随机变异（有时高有时低，但平均值可能正确）。两者都会降低判断质量，但方式不同。</div><div class="concept-case">💡 弓箭手偏见：箭总射向靶子左边。噪声：箭散落在各处，看似没有规律。两种情况都糟糕，但修正方法完全不同。</div></div><div class="concept"><div class="concept-name">机会噪声</div><div class="concept-def">同一个人在不同心情、不同时间、不同情境下，对同一个案例做出不同判断。</div><div class="concept-case">💡 同一位法官，下午比上午更倾向于重判；同一位医生，在连续看了几个重症患者后会改变对下一个患者的诊断。</div></div><div class="concept"><div class="concept-name">决策卫生</div><div class="concept-def">系统性地减少噪声的方法——包括结构化评估流程、独立判断、延迟汇总、量化评分等。</div><div class="concept-case">💡 就像外科手术前的清单——不依赖某个医生某天的状态，而是用流程来保证一致性。</div></div></div><div class="sec"><div class="sec-label">🛠️ 核心方法论</div><h2>降低噪声的决策卫生规范</h2><div class="method-chain"><div class="method-step"><div class="step-num">1</div><div class="step-body"><div class="step-title">先独立后汇总</div><div class="step-desc">在讨论前让每个人独立形成意见，避免锚定效应和从众效应导致的噪声。</div></div></div><div class="method-step"><div class="step-num">2</div><div class="step-body"><div class="step-title">用量化标准代替印象</div><div class="step-desc">把判断从模糊的整体印象分解成几个可以量化的维度评分，最后汇总。</div></div></div><div class="method-step"><div class="step-num">3</div><div class="step-body"><div class="step-title">延迟整合信息</div><div class="step-desc">在形成判断之前，不要急于整合所有线索——尤其是那些情绪化的故事性信息。</div></div></div><div class="method-step"><div class="step-num">4</div><div class="step-body"><div class="step-title">使用算法辅助</div><div class="step-desc">在有大量历史数据的领域，简单的统计模型往往比人类专家判断更稳定、噪声更低。</div></div></div><div class="method-step"><div class="step-num">5</div><div class="step-body"><div class="step-title">匿名化评估</div><div class="step-desc">在能做到的情况下，去掉与结果无关的背景信息（如种族、性别、学校），减少与问题无关的偏见噪声。</div></div></div></div></div><div class="sec"><div class="sec-label">🛡️ 辩证审视</div><h2>价值与局限</h2><div class="dial"><div class="dial-pro"><div class="dial-label">✓ 价值所在</div><p>这本书填补了决策科学中一个被忽视的重要领域。偏见已经被广泛讨论，但噪声的问题在实践中同样巨大甚至更大。它对法律、医疗、人力资源等领域的系统改进有直接价值。</p></div><div class="dial-con"><div class="dial-label">⚠ 局限性</div><p>书中提出的很多降低噪声的方法（如用算法替代人工判断）在实践中会遇到文化阻力和伦理争议。另外，噪声问题虽真实存在，但书对其危害的量化估算有时过于乐观。</p></div></div></div><div class="sec"><div class="sec-label">📖 帕累托精选</div><h2>必读章节</h2><div class="chapter-card"><span class="chapter-badge">必读 #1</span><div class="chapter-name">你想不到的噪声——法官、医生、保险核算师的随机性</div><div class="chapter-reason">最震撼的案例章节</div><p>你以为法官的判决代表法律的一致标准，但研究发现：同一个案件，不同法官的判决差异惊人。同一位法官，在胜利的球队进球后第一次裁决，比失利后更宽松。这章让你看到：随机因素影响重要判断的程度，远超你的想象。</p></div><div class="chapter-card"><span class="chapter-badge">必读 #2</span><div class="chapter-name">决策卫生——系统性减少噪声的实践框架</div><div class="chapter-reason">最直接可用的组织改进工具</div><p>这章把抽象的噪声概念转化为组织可以立刻实施的措施：结构化面试、评分维度分离、独立评估后汇总。任何需要做重要判断的组织，都可以从这章拿走至少2-3个可以立刻应用的工具。</p></div></div></div>
+<div class="footer">深度阅读解构 · 苏格拉底式提问 · 辩证批判</div>
+</body></html>

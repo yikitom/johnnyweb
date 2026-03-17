@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>《伯恩斯新情绪疗法》 · 深度解构</title><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f9f7f2;--card:#fff;--text:#2c2c2c;--text-sub:#5a5a5a;--text-dim:#888;--accent:#c0392b;--accent2:#2c3e50;--gold:#b8860b;--border:#e0dcd5;--serif:"Noto Serif SC",serif;--sans:"Noto Sans SC",sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.8;-webkit-font-smoothing:antialiased}
+.nav{position:fixed;top:0;left:0;right:0;z-index:99;background:rgba(249,247,242,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:14px 24px;display:flex;align-items:center;gap:16px}
+.nav-back{color:var(--text-dim);text-decoration:none;font-size:13px}.nav-back:hover{color:var(--text)}
+.nav-title{font-family:var(--serif);font-size:14px;font-weight:600;color:var(--accent2);flex:1;text-align:center}
+.hero{padding:100px 24px 60px;max-width:800px;margin:0 auto;text-align:center}
+.hero-cat{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:16px}
+.hero-title{font-family:var(--serif);font-size:clamp(26px,4vw,42px);font-weight:900;line-height:1.2;color:var(--accent2);margin-bottom:12px}
+.hero-sub{font-size:15px;color:var(--text-sub);margin-bottom:24px}
+.hero-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.meta-tag{background:var(--accent2);color:#fff;font-size:11px;padding:4px 12px;border-radius:20px;letter-spacing:.5px}
+.wrap{max-width:800px;margin:0 auto;padding:0 24px 80px}
+.sec{margin-bottom:56px}
+.sec-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:14px}
+.sec h2{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--accent2);margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid var(--border)}
+.qa{margin-bottom:16px}.qa-q{font-weight:600;color:var(--accent2);margin-bottom:6px}
+.qa-q::before{content:"Q: ";color:var(--accent)}.qa-a{color:var(--text-sub);padding-left:20px;border-left:3px solid var(--border)}
+.concept{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px 22px;margin-bottom:14px}
+.concept-name{font-weight:700;color:var(--accent2);margin-bottom:6px;font-family:var(--serif);font-size:16px}
+.concept-def{font-size:13px;color:var(--text-sub);margin-bottom:8px}
+.concept-case{font-size:13px;background:var(--bg);border-radius:8px;padding:10px 14px;color:var(--text);border-left:3px solid var(--gold)}
+.method-chain{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px;margin-bottom:16px}
+.method-step{display:flex;gap:14px;margin-bottom:16px;align-items:flex-start}
+.step-num{width:28px;height:28px;background:var(--accent2);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px}
+.step-title{font-weight:600;color:var(--accent2);margin-bottom:4px}
+.step-desc{font-size:14px;color:var(--text-sub)}
+.dial{border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:14px}
+.dial-pro{background:#f0faf0;padding:16px 20px;border-bottom:1px solid var(--border)}
+.dial-con{background:#fdf5f5;padding:16px 20px}
+.dial-label{font-size:11px;letter-spacing:1px;text-transform:uppercase;font-weight:600;margin-bottom:6px}
+.dial-pro .dial-label{color:#2d6a4f}.dial-con .dial-label{color:#c0392b}
+.chapter-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px 22px;margin-bottom:14px}
+.chapter-badge{display:inline-block;background:var(--accent);color:#fff;font-size:11px;padding:3px 10px;border-radius:20px;margin-bottom:10px;font-weight:600}
+.chapter-name{font-family:var(--serif);font-size:16px;font-weight:700;color:var(--accent2);margin-bottom:8px}
+.chapter-reason{font-size:13px;color:var(--gold);font-weight:500;margin-bottom:8px}
+.blockquote{border-left:4px solid var(--gold);padding:14px 20px;background:var(--bg);border-radius:0 8px 8px 0;font-style:italic;color:var(--text-sub);margin:14px 0;font-size:15px}
+p{color:var(--text-sub);line-height:1.8;margin-bottom:12px}strong{color:var(--text)}
+.footer{text-align:center;padding:32px;color:var(--text-dim);font-size:12px;border-top:1px solid var(--border)}
+</style></head>
+<body>
+<div class="nav"><a href="index.html" class="nav-back">← 返回</a><div class="nav-title">《伯恩斯新情绪疗法》</div></div>
+<div class="hero"><div class="hero-cat">心理健康·CBT</div><div class="hero-title">《伯恩斯新情绪疗法》</div>
+<div class="hero-sub">David Burns 著 · 战胜抑郁，不靠药，靠重建你的思维方式</div><div class="hero-meta"><span class="meta-tag">认知行为疗法</span> <span class="meta-tag">David Burns</span> <span class="meta-tag">抑郁症</span> <span class="meta-tag">情绪调节</span></div></div>
+<div class="wrap"><div class="sec"><div class="sec-label">🧠 作者画像</div><h2>这本书是什么？</h2><div class="qa"><div class="qa-q">Q1：表面讲什么？</div><div class="qa-a">讲如何用认知行为疗法（CBT）克服抑郁和负面情绪，不依赖药物。</div></div><div class="qa"><div class="qa-q">Q2：为什么这本书重要？</div><div class="qa-a">它是最早把CBT技术写成普通人可以自助使用的读物的书之一，被精神科医生作为治疗补充推荐最多的书。</div></div><div class="qa"><div class="qa-q">Q3：终极命题？</div><div class="qa-a">你的情绪不是现实的直接产物，而是你对现实的解读。改变解读方式，情绪就会改变。</div></div><p><strong>David Burns</strong>是斯坦福大学精神病学临床教授，认知行为疗法的重要推广者。这本书自1980年出版以来，已成为全球最畅销的心理自助书之一。</p></div><div class="sec"><div class="sec-label">🗝️ 核心概念</div><h2>大白话解码</h2><div class="concept"><div class="concept-name">自动负面想法（ANTs）</div><div class="concept-def">当你情绪低落时，脑子里会自动冒出负面想法（全或无思维、以偏概全、读心术等），这些想法往往是扭曲的，但感觉无比真实。</div><div class="concept-case">💡 你在会议上说错了一句话，自动想法是：我真没用，所有人都觉得我是傻瓜——这两个想法都可能是扭曲的。</div></div><div class="concept"><div class="concept-name">认知扭曲十种模式</div><div class="concept-def">Burns列出了10种最常见的扭曲思维：全或无思维、以偏概全、心灵过滤、否定正面、妄下结论、放大/缩小、情绪推理、应该句式、贴标签、个人化。</div><div class="concept-case">💡 识别自己的主要扭曲模式，是改变的第一步。</div></div><div class="concept"><div class="concept-name">三栏法</div><div class="concept-def">写下：负面想法（想什么）→认知扭曲（哪种扭曲）→理性回应（更准确的想法）。</div><div class="concept-case">💡 就像给失真的镜子装上校正镜——把扭曲的想法校正回更贴近现实的版本。</div></div></div><div class="sec"><div class="sec-label">🛠️ 核心方法论</div><h2>CBT自助步骤</h2><div class="method-chain"><div class="method-step"><div class="step-num">1</div><div class="step-body"><div class="step-title">识别并记录自动负面想法</div><div class="step-desc">当情绪低落时，停下来把自动涌现的想法写下来，不要评判，只是记录。</div></div></div><div class="method-step"><div class="step-num">2</div><div class="step-body"><div class="step-title">识别认知扭曲类型</div><div class="step-desc">对照Burns的10种扭曲，给每个负面想法打标签——它属于哪种扭曲？</div></div></div><div class="method-step"><div class="step-num">3</div><div class="step-body"><div class="step-title">写出理性回应</div><div class="step-desc">针对每个扭曲想法，写出一个更平衡、更接近现实的版本。</div></div></div><div class="method-step"><div class="step-num">4</div><div class="step-body"><div class="step-title">追踪情绪变化</div><div class="step-desc">在做完以上步骤后，重新评估情绪强度。多数情况下会有显著改善。</div></div></div><div class="method-step"><div class="step-num">5</div><div class="step-body"><div class="step-title">持续练习</div><div class="step-desc">CBT的效果来自重复练习——就像学钢琴，开始慢而费力，最终会内化为自动的思维方式。</div></div></div></div></div><div class="sec"><div class="sec-label">🛡️ 辩证审视</div><h2>价值与局限</h2><div class="dial"><div class="dial-pro"><div class="dial-label">✓ 价值所在</div><p>Burns的CBT框架有大量循证支持，被认为是轻中度抑郁最有效的心理干预之一。三栏法等具体工具操作简单，有研究表明单纯阅读这本书就对部分患者有改善效果。</p></div><div class="dial-con"><div class="dial-label">⚠ 局限性</div><p>CBT对重度抑郁、双相情感障碍、创伤后应激障碍等效果有限，不能替代专业治疗。另外，它聚焦于改变思维，有时忽视了情绪背后更深层的生活环境问题。</p></div></div></div><div class="sec"><div class="sec-label">📖 帕累托精选</div><h2>必读章节</h2><div class="chapter-card"><span class="chapter-badge">必读 #1</span><div class="chapter-name">认知扭曲十种模式——识别让你痛苦的思维习惯</div><div class="chapter-reason">全书最核心的诊断工具</div><p>绝大多数人至少有2-3种主导性的认知扭曲模式。识别你自己的主要模式，就像找到了钥匙——它解释了你为什么在某些情境下会产生强烈的负面情绪，并给出了改变的切入点。</p></div><div class="chapter-card"><span class="chapter-badge">必读 #2</span><div class="chapter-name">三栏法——把扭曲思维转化为理性思维</div><div class="chapter-reason">最直接可用的实操工具</div><p>这章通过大量案例展示了三栏法的使用。初学者按这个流程做3-5次后，通常能感受到明显的情绪改善。Burns建议每次情绪低落时都做这个练习，直到它成为自动的思维习惯。</p></div></div></div>
+<div class="footer">深度阅读解构 · 苏格拉底式提问 · 辩证批判</div>
+</body></html>

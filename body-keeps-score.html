@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>《身体从未忘记》 · 深度解构</title><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f9f7f2;--card:#fff;--text:#2c2c2c;--text-sub:#5a5a5a;--text-dim:#888;--accent:#c0392b;--accent2:#2c3e50;--gold:#b8860b;--border:#e0dcd5;--serif:"Noto Serif SC",serif;--sans:"Noto Sans SC",sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.8;-webkit-font-smoothing:antialiased}
+.nav{position:fixed;top:0;left:0;right:0;z-index:99;background:rgba(249,247,242,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:14px 24px;display:flex;align-items:center;gap:16px}
+.nav-back{color:var(--text-dim);text-decoration:none;font-size:13px}.nav-back:hover{color:var(--text)}
+.nav-title{font-family:var(--serif);font-size:14px;font-weight:600;color:var(--accent2);flex:1;text-align:center}
+.hero{padding:100px 24px 60px;max-width:800px;margin:0 auto;text-align:center}
+.hero-cat{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:16px}
+.hero-title{font-family:var(--serif);font-size:clamp(26px,4vw,42px);font-weight:900;line-height:1.2;color:var(--accent2);margin-bottom:12px}
+.hero-sub{font-size:15px;color:var(--text-sub);margin-bottom:24px}
+.hero-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.meta-tag{background:var(--accent2);color:#fff;font-size:11px;padding:4px 12px;border-radius:20px;letter-spacing:.5px}
+.wrap{max-width:800px;margin:0 auto;padding:0 24px 80px}
+.sec{margin-bottom:56px}
+.sec-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:14px}
+.sec h2{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--accent2);margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid var(--border)}
+.qa{margin-bottom:16px}.qa-q{font-weight:600;color:var(--accent2);margin-bottom:6px}
+.qa-q::before{content:"Q: ";color:var(--accent)}.qa-a{color:var(--text-sub);padding-left:20px;border-left:3px solid var(--border)}
+.concept{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px 22px;margin-bottom:14px}
+.concept-name{font-weight:700;color:var(--accent2);margin-bottom:6px;font-family:var(--serif);font-size:16px}
+.concept-def{font-size:13px;color:var(--text-sub);margin-bottom:8px}
+.concept-case{font-size:13px;background:var(--bg);border-radius:8px;padding:10px 14px;color:var(--text);border-left:3px solid var(--gold)}
+.method-chain{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px;margin-bottom:16px}
+.method-step{display:flex;gap:14px;margin-bottom:16px;align-items:flex-start}
+.step-num{width:28px;height:28px;background:var(--accent2);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px}
+.step-title{font-weight:600;color:var(--accent2);margin-bottom:4px}
+.step-desc{font-size:14px;color:var(--text-sub)}
+.dial{border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:14px}
+.dial-pro{background:#f0faf0;padding:16px 20px;border-bottom:1px solid var(--border)}
+.dial-con{background:#fdf5f5;padding:16px 20px}
+.dial-label{font-size:11px;letter-spacing:1px;text-transform:uppercase;font-weight:600;margin-bottom:6px}
+.dial-pro .dial-label{color:#2d6a4f}.dial-con .dial-label{color:#c0392b}
+.chapter-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px 22px;margin-bottom:14px}
+.chapter-badge{display:inline-block;background:var(--accent);color:#fff;font-size:11px;padding:3px 10px;border-radius:20px;margin-bottom:10px;font-weight:600}
+.chapter-name{font-family:var(--serif);font-size:16px;font-weight:700;color:var(--accent2);margin-bottom:8px}
+.chapter-reason{font-size:13px;color:var(--gold);font-weight:500;margin-bottom:8px}
+.blockquote{border-left:4px solid var(--gold);padding:14px 20px;background:var(--bg);border-radius:0 8px 8px 0;font-style:italic;color:var(--text-sub);margin:14px 0;font-size:15px}
+p{color:var(--text-sub);line-height:1.8;margin-bottom:12px}strong{color:var(--text)}
+.footer{text-align:center;padding:32px;color:var(--text-dim);font-size:12px;border-top:1px solid var(--border)}
+</style></head>
+<body>
+<div class="nav"><a href="index.html" class="nav-back">← 返回</a><div class="nav-title">《身体从未忘记》</div></div>
+<div class="hero"><div class="hero-cat">心理健康·创伤</div><div class="hero-title">《身体从未忘记》</div>
+<div class="hero-sub">Bessel van der Kolk 著 · 创伤不只留在记忆里，它住在你的身体里</div><div class="hero-meta"><span class="meta-tag">创伤治疗</span> <span class="meta-tag">Bessel van der Kolk</span> <span class="meta-tag">PTSD</span> <span class="meta-tag">身心关系</span></div></div>
+<div class="wrap"><div class="sec"><div class="sec-label">🧠 作者画像</div><h2>这本书解决什么问题？</h2><div class="qa"><div class="qa-q">Q1：表面讲什么？</div><div class="qa-a">讲创伤——它是什么、如何影响大脑和身体、以及如何治愈。</div></div><div class="qa"><div class="qa-q">Q2：更深的问题？</div><div class="qa-a">为什么有些人经历了痛苦之后能走出来，而另一些人却永远被困在当时的感受中？为什么谈话疗法对很多创伤患者无效？</div></div><div class="qa"><div class="qa-q">Q3：终极命题？</div><div class="qa-a">创伤改变了大脑的结构，让身体对威胁的反应永远卡在激活模式。治愈创伤需要从身体入手，而不只是理解它。</div></div><p><strong>Bessel van der Kolk</strong>是波士顿大学精神病学教授，从事创伤研究超过40年，是全球最权威的创伤学者之一。这本书改变了精神医学对创伤的整体认识。</p></div><div class="sec"><div class="sec-label">🗝️ 核心概念</div><h2>大白话解码</h2><div class="concept"><div class="concept-name">创伤不只是记忆</div><div class="concept-def">创伤会改变大脑中负责危险感知（杏仁核）、自我意识（脑岛）、时间感知的区域。对创伤者来说，过去的创伤在身体层面一直是现在。</div><div class="concept-case">💡 PTSD患者在听到某些声音或闻到某种气味时，身体会像当时一样颤抖、心跳加速——不是因为他们选择这样，而是他们的神经系统真的以为危险还在。</div></div><div class="concept"><div class="concept-name">三脑系统（简化版）</div><div class="concept-def">大脑有三个层次：蜥蜴脑（生存本能）、哺乳动物脑（情绪）、人类脑（理性思考）。创伤激活蜥蜴脑后，人类脑的理性控制功能会被暂时切断。</div><div class="concept-case">💡 这就是为什么对创伤者说你要理性一点没有用——他们的理性系统此刻真的离线了。</div></div><div class="concept"><div class="concept-name">身体是创伤的储存库</div><div class="concept-def">创伤以身体记忆、姿势习惯、肌肉张力的形式储存在身体里，不只是在意识记忆中。</div><div class="concept-case">💡 这就是为什么运动、瑜伽、眼动脱敏（EMDR）等身体层面的干预，往往比纯粹的谈话疗法对创伤更有效。</div></div></div><div class="sec"><div class="sec-label">🛠️ 核心方法论</div><h2>创伤治愈的多元路径</h2><div class="method-chain"><div class="method-step"><div class="step-num">1</div><div class="step-body"><div class="step-title">EMDR（眼动脱敏与再处理）</div><div class="step-desc">通过眼球运动配合创伤记忆的再加工，帮助大脑把创伤记忆从当下情境中分离并重新归档。</div></div></div><div class="method-step"><div class="step-num">2</div><div class="step-body"><div class="step-title">身体感知疗法</div><div class="step-desc">专注于身体感受，而不是创伤事件本身——帮助身体重新找到安全感。</div></div></div><div class="method-step"><div class="step-num">3</div><div class="step-body"><div class="step-title">瑜伽与运动</div><div class="step-desc">通过重新获得对身体的掌控感来重建自我意识——这对性侵创伤幸存者尤为有效。</div></div></div><div class="method-step"><div class="step-num">4</div><div class="step-body"><div class="step-title">剧场与叙事</div><div class="step-desc">重新叙述自己的故事，不是作为受害者，而是作为幸存者和叙事者。</div></div></div><div class="method-step"><div class="step-num">5</div><div class="step-body"><div class="step-title">社区与人际关系</div><div class="step-desc">创伤发生在关系中，治愈也发生在关系中——安全、稳定的关系是创伤康复最强大的基础。</div></div></div></div></div><div class="sec"><div class="sec-label">🛡️ 辩证审视</div><h2>价值与局限</h2><div class="dial"><div class="dial-pro"><div class="dial-label">✓ 价值所在</div><p>这本书彻底改变了公众对创伤的理解，让无数曾经被误诊为性格问题的人知道：你没有问题，你是受伤了。它为多种身体疗法提供了神经科学基础，具有里程碑意义。</p></div><div class="dial-con"><div class="dial-label">⚠ 局限性</div><p>书中部分疗法的循证支持程度不一。另外，EMDR对某些人非常有效，对另一些人则效果有限。书的后半部分偏学术，普通读者可能感到吃力。</p></div></div><div class="blockquote">身体掌握着分数——创伤的影响不会因为你选择不去想它就消失。——Bessel van der Kolk</div></div><div class="sec"><div class="sec-label">📖 帕累托精选</div><h2>必读章节</h2><div class="chapter-card"><span class="chapter-badge">必读 #1</span><div class="chapter-name">创伤重塑大脑——神经科学如何解释PTSD</div><div class="chapter-reason">理解创伤的理论基础</div><p>这章解释了为什么创伤反应不是性格软弱，而是神经系统被改变的生理结果。明白这一点对创伤幸存者本人和他们周围的人都至关重要——它把自责转化为理解，把歧视转化为同情。</p></div><div class="chapter-card"><span class="chapter-badge">必读 #2</span><div class="chapter-name">身体感知疗法——在身体里找回安全感</div><div class="chapter-reason">最实用的自我治愈路径</div><p>这章介绍了普通人在日常生活中可以使用的、帮助神经系统找回平静的身体技术。不需要治疗师，通过呼吸、运动、身体扫描等方式，就能开始重建对自己身体的掌控感。</p></div></div></div>
+<div class="footer">深度阅读解构 · 苏格拉底式提问 · 辩证批判</div>
+</body></html>

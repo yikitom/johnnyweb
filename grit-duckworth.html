@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>《坚毅》 · 深度解构</title><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f9f7f2;--card:#fff;--text:#2c2c2c;--text-sub:#5a5a5a;--text-dim:#888;--accent:#c0392b;--accent2:#2c3e50;--gold:#b8860b;--border:#e0dcd5;--serif:"Noto Serif SC",serif;--sans:"Noto Sans SC",sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.8;-webkit-font-smoothing:antialiased}
+.nav{position:fixed;top:0;left:0;right:0;z-index:99;background:rgba(249,247,242,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:14px 24px;display:flex;align-items:center;gap:16px}
+.nav-back{color:var(--text-dim);text-decoration:none;font-size:13px}.nav-back:hover{color:var(--text)}
+.nav-title{font-family:var(--serif);font-size:14px;font-weight:600;color:var(--accent2);flex:1;text-align:center}
+.hero{padding:100px 24px 60px;max-width:800px;margin:0 auto;text-align:center}
+.hero-cat{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:16px}
+.hero-title{font-family:var(--serif);font-size:clamp(26px,4vw,42px);font-weight:900;line-height:1.2;color:var(--accent2);margin-bottom:12px}
+.hero-sub{font-size:15px;color:var(--text-sub);margin-bottom:24px}
+.hero-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.meta-tag{background:var(--accent2);color:#fff;font-size:11px;padding:4px 12px;border-radius:20px;letter-spacing:.5px}
+.wrap{max-width:800px;margin:0 auto;padding:0 24px 80px}
+.sec{margin-bottom:56px}
+.sec-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:14px}
+.sec h2{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--accent2);margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid var(--border)}
+.qa{margin-bottom:16px}.qa-q{font-weight:600;color:var(--accent2);margin-bottom:6px}
+.qa-q::before{content:"Q: ";color:var(--accent)}.qa-a{color:var(--text-sub);padding-left:20px;border-left:3px solid var(--border)}
+.concept{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px 22px;margin-bottom:14px}
+.concept-name{font-weight:700;color:var(--accent2);margin-bottom:6px;font-family:var(--serif);font-size:16px}
+.concept-def{font-size:13px;color:var(--text-sub);margin-bottom:8px}
+.concept-case{font-size:13px;background:var(--bg);border-radius:8px;padding:10px 14px;color:var(--text);border-left:3px solid var(--gold)}
+.method-chain{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px;margin-bottom:16px}
+.method-step{display:flex;gap:14px;margin-bottom:16px;align-items:flex-start}
+.step-num{width:28px;height:28px;background:var(--accent2);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px}
+.step-title{font-weight:600;color:var(--accent2);margin-bottom:4px}
+.step-desc{font-size:14px;color:var(--text-sub)}
+.dial{border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:14px}
+.dial-pro{background:#f0faf0;padding:16px 20px;border-bottom:1px solid var(--border)}
+.dial-con{background:#fdf5f5;padding:16px 20px}
+.dial-label{font-size:11px;letter-spacing:1px;text-transform:uppercase;font-weight:600;margin-bottom:6px}
+.dial-pro .dial-label{color:#2d6a4f}.dial-con .dial-label{color:#c0392b}
+.chapter-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px 22px;margin-bottom:14px}
+.chapter-badge{display:inline-block;background:var(--accent);color:#fff;font-size:11px;padding:3px 10px;border-radius:20px;margin-bottom:10px;font-weight:600}
+.chapter-name{font-family:var(--serif);font-size:16px;font-weight:700;color:var(--accent2);margin-bottom:8px}
+.chapter-reason{font-size:13px;color:var(--gold);font-weight:500;margin-bottom:8px}
+.blockquote{border-left:4px solid var(--gold);padding:14px 20px;background:var(--bg);border-radius:0 8px 8px 0;font-style:italic;color:var(--text-sub);margin:14px 0;font-size:15px}
+p{color:var(--text-sub);line-height:1.8;margin-bottom:12px}strong{color:var(--text)}
+.footer{text-align:center;padding:32px;color:var(--text-dim);font-size:12px;border-top:1px solid var(--border)}
+</style></head>
+<body>
+<div class="nav"><a href="index.html" class="nav-back">← 返回</a><div class="nav-title">《坚毅》</div></div>
+<div class="hero"><div class="hero-cat">成长·心理学</div><div class="hero-title">《坚毅》</div>
+<div class="hero-sub">Angela Duckworth 著 · 天赋决定上限？不，激情加坚持才是</div><div class="hero-meta"><span class="meta-tag">Angela Duckworth</span> <span class="meta-tag">坚毅力</span> <span class="meta-tag">成就心理学</span> <span class="meta-tag">刻意练习</span></div></div>
+<div class="wrap"><div class="sec"><div class="sec-label">🧠 作者画像</div><h2>作者是谁？她为什么研究这个问题？</h2><div class="qa"><div class="qa-q">Q1：表面讲什么？</div><div class="qa-a">讲为什么有些人能坚持到底而有些人半途而废，以及坚毅力（Grit）如何成为比天赋更重要的成功预测指标。</div></div><div class="qa"><div class="qa-q">Q2：更深的问题？</div><div class="qa-a">为什么那么多聪明人最终平庸，而某些看似普通的人却取得了非凡成就？</div></div><div class="qa"><div class="qa-q">Q3：终极命题？</div><div class="qa-a">天赋是起点，但激情乘以坚持才是真正决定一个人走多远的公式。</div></div><p><strong>Angela Duckworth</strong>是宾大心理学教授，麦克阿瑟天才奖得主。她曾在顶级咨询公司工作，后来转型当老师，发现学生的成就和智商的相关性远低于她的预期——这个困惑驱动了她后来所有的研究。</p></div><div class="sec"><div class="sec-label">🗝️ 核心概念</div><h2>大白话解码</h2><div class="concept"><div class="concept-name">坚毅力公式</div><div class="concept-def">坚毅力=激情（长期一致的终极目标）乘以坚持（遇到挫折后的持续努力）。</div><div class="concept-case">💡 一个把每次练习都当成终生事业而不是当天任务的游泳运动员，和一个每天同样训练小时数但只想完成任务的运动员，十年后会相差悬殊。</div></div><div class="concept"><div class="concept-name">激情不等于兴趣</div><div class="concept-def">激情是长期稳定的、与终极目标绑定的驱动力，不是那种忽冷忽热的兴趣。</div><div class="concept-case">💡 你对某件事感到好奇是兴趣；你愿意为它放弃更舒适的选择、在枯燥期也坚持，才是激情。</div></div><div class="concept"><div class="concept-name">坚毅力可以培养</div><div class="concept-def">Duckworth发现坚毅力不是固定特质——它可以通过成长型思维、刻意练习、目标层级构建来提升。</div><div class="concept-case">💡 就像肌肉，不用则萎缩，经常有意识地在困难中坚持，坚毅力就会增强。</div></div></div><div class="sec"><div class="sec-label">🛠️ 核心方法论</div><h2>如何培养坚毅力</h2><div class="method-chain"><div class="method-step"><div class="step-num">1</div><div class="step-body"><div class="step-title">找到你的高层目标</div><div class="step-desc">把各种短期任务归结到一个最高目标。问自己：我所做的这些，最终服务于什么？</div></div></div><div class="method-step"><div class="step-num">2</div><div class="step-body"><div class="step-title">把兴趣发展为激情</div><div class="step-desc">兴趣需要时间和经历来培养。给自己许可去探索，但同时要深挖——肤浅的兴趣不会产生坚毅力。</div></div></div><div class="method-step"><div class="step-num">3</div><div class="step-body"><div class="step-title">实践刻意练习</div><div class="step-desc">每次练习都要有明确目标、专注投入、立即反馈、不断修正。舒适区内的重复不产生进步。</div></div></div><div class="method-step"><div class="step-num">4</div><div class="step-body"><div class="step-title">找到使命感</div><div class="step-desc">当你的工作与更大的意义相连，坚持就变得更容易。问：我的工作如何帮助他人？</div></div></div><div class="method-step"><div class="step-num">5</div><div class="step-body"><div class="step-title">培养坚毅文化</div><div class="step-desc">你周围的人影响你的坚毅水平——加入高标准的群体，环境会拉着你向上。</div></div></div></div></div><div class="sec"><div class="sec-label">🛡️ 辩证审视</div><h2>这本书的优缺点</h2><div class="dial"><div class="dial-pro"><div class="dial-label">✓ 价值所在</div><p>Duckworth的研究基础扎实，她用西点军校、全国拼写比赛、芝加哥公立学校等多个真实数据集验证了坚毅力的预测力。这本书给了很多因为感觉自己不够聪明而放弃的人一个重要的认知武器。</p></div><div class="dial-con"><div class="dial-label">⚠ 局限性</div><p>过度强调坚毅力有时会导致结构性不平等被个人化——一个没有机会和资源的人，坚毅力再强也难以突破。另外，坚毅力量表（Grit Scale）的测量效度受到一些研究者的质疑。</p></div></div><div class="blockquote">成功不是天才的专利，而是激情加坚持的复利。——Angela Duckworth</div></div><div class="sec"><div class="sec-label">📖 帕累托精选</div><h2>必读两章</h2><div class="chapter-card"><span class="chapter-badge">必读 #1</span><div class="chapter-name">坚毅力的两个成分——激情与坚持如何共同作用</div><div class="chapter-reason">理解坚毅力公式的核心章节</div><p>这章揭示了激情和坚持各自的含义，以及为什么单有其中一个不够。有激情但没有坚持的人在遇到第一个重大困难时就会放弃；有坚持但没有激情的人会走在错误的路上。只有两者结合，才能形成真正的坚毅力。</p></div><div class="chapter-card"><span class="chapter-badge">必读 #2</span><div class="chapter-name">刻意练习——坚毅力的技术面</div><div class="chapter-reason">把坚持变成有效坚持的方法论</div><p>所有坚毅的人都有一个共同点：他们不只是努力，而是有目的地努力。刻意练习的关键是：明确短板、专注突破、即时反馈、不断迭代。这章把Duckworth的理论与Ericsson的刻意练习研究结合起来，告诉你坚毅力的技术实现路径。</p></div></div></div>
+<div class="footer">深度阅读解构 · 苏格拉底式提问 · 辩证批判</div>
+</body></html>

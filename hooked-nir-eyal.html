@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>《上瘾》 · 深度解构</title><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f9f7f2;--card:#fff;--text:#2c2c2c;--text-sub:#5a5a5a;--text-dim:#888;--accent:#c0392b;--accent2:#2c3e50;--gold:#b8860b;--border:#e0dcd5;--serif:"Noto Serif SC",serif;--sans:"Noto Sans SC",sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.8;-webkit-font-smoothing:antialiased}
+.nav{position:fixed;top:0;left:0;right:0;z-index:99;background:rgba(249,247,242,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:14px 24px;display:flex;align-items:center;gap:16px}
+.nav-back{color:var(--text-dim);text-decoration:none;font-size:13px}.nav-back:hover{color:var(--text)}
+.nav-title{font-family:var(--serif);font-size:14px;font-weight:600;color:var(--accent2);flex:1;text-align:center}
+.hero{padding:100px 24px 60px;max-width:800px;margin:0 auto;text-align:center}
+.hero-cat{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:16px}
+.hero-title{font-family:var(--serif);font-size:clamp(26px,4vw,42px);font-weight:900;line-height:1.2;color:var(--accent2);margin-bottom:12px}
+.hero-sub{font-size:15px;color:var(--text-sub);margin-bottom:24px}
+.hero-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.meta-tag{background:var(--accent2);color:#fff;font-size:11px;padding:4px 12px;border-radius:20px;letter-spacing:.5px}
+.wrap{max-width:800px;margin:0 auto;padding:0 24px 80px}
+.sec{margin-bottom:56px}
+.sec-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:14px}
+.sec h2{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--accent2);margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid var(--border)}
+.qa{margin-bottom:16px}.qa-q{font-weight:600;color:var(--accent2);margin-bottom:6px}
+.qa-q::before{content:"Q: ";color:var(--accent)}.qa-a{color:var(--text-sub);padding-left:20px;border-left:3px solid var(--border)}
+.concept{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px 22px;margin-bottom:14px}
+.concept-name{font-weight:700;color:var(--accent2);margin-bottom:6px;font-family:var(--serif);font-size:16px}
+.concept-def{font-size:13px;color:var(--text-sub);margin-bottom:8px}
+.concept-case{font-size:13px;background:var(--bg);border-radius:8px;padding:10px 14px;color:var(--text);border-left:3px solid var(--gold)}
+.method-chain{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px;margin-bottom:16px}
+.method-step{display:flex;gap:14px;margin-bottom:16px;align-items:flex-start}
+.step-num{width:28px;height:28px;background:var(--accent2);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px}
+.step-title{font-weight:600;color:var(--accent2);margin-bottom:4px}
+.step-desc{font-size:14px;color:var(--text-sub)}
+.dial{border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:14px}
+.dial-pro{background:#f0faf0;padding:16px 20px;border-bottom:1px solid var(--border)}
+.dial-con{background:#fdf5f5;padding:16px 20px}
+.dial-label{font-size:11px;letter-spacing:1px;text-transform:uppercase;font-weight:600;margin-bottom:6px}
+.dial-pro .dial-label{color:#2d6a4f}.dial-con .dial-label{color:#c0392b}
+.chapter-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px 22px;margin-bottom:14px}
+.chapter-badge{display:inline-block;background:var(--accent);color:#fff;font-size:11px;padding:3px 10px;border-radius:20px;margin-bottom:10px;font-weight:600}
+.chapter-name{font-family:var(--serif);font-size:16px;font-weight:700;color:var(--accent2);margin-bottom:8px}
+.chapter-reason{font-size:13px;color:var(--gold);font-weight:500;margin-bottom:8px}
+.blockquote{border-left:4px solid var(--gold);padding:14px 20px;background:var(--bg);border-radius:0 8px 8px 0;font-style:italic;color:var(--text-sub);margin:14px 0;font-size:15px}
+p{color:var(--text-sub);line-height:1.8;margin-bottom:12px}strong{color:var(--text)}
+.footer{text-align:center;padding:32px;color:var(--text-dim);font-size:12px;border-top:1px solid var(--border)}
+</style></head>
+<body>
+<div class="nav"><a href="index.html" class="nav-back">← 返回</a><div class="nav-title">《上瘾》</div></div>
+<div class="hero"><div class="hero-cat">产品设计·行为心理</div><div class="hero-title">《上瘾》</div>
+<div class="hero-sub">Nir Eyal 著 · 为什么你总在刷手机？设计者用了这个套路</div><div class="hero-meta"><span class="meta-tag">Nir Eyal</span> <span class="meta-tag">用户习惯</span> <span class="meta-tag">产品设计</span> <span class="meta-tag">行为心理学</span></div></div>
+<div class="wrap"><div class="sec"><div class="sec-label">🧠 作者画像</div><h2>这本书为谁而写？</h2><div class="qa"><div class="qa-q">Q1：表面讲什么？</div><div class="qa-a">讲如何设计让用户形成习惯的产品——即Hook（钩子）模型：触发-行动-多变奖励-投入。</div></div><div class="qa"><div class="qa-q">Q2：背后的根本问题？</div><div class="qa-a">为什么某些产品（Facebook、TikTok、微信）能让人反复使用，而大多数产品用几次就被放弃？</div></div><div class="qa"><div class="qa-q">Q3：终极命题？</div><div class="qa-a">产品的持续使用不来自营销，而来自习惯。习惯的形成遵循固定的神经心理规律，理解这个规律，就能设计让人停不下来的产品。</div></div><p><strong>Nir Eyal</strong>是斯坦福大学讲师，研究行为设计和消费者心理。这本书基于神经科学和行为经济学，是产品经理和创业者的必读经典。</p></div><div class="sec"><div class="sec-label">🗝️ 核心概念</div><h2>Hook模型四步</h2><div class="concept"><div class="concept-name">触发（Trigger）</div><div class="concept-def">外部触发：通知、邮件、好友邀请；内部触发：无聊、孤独、焦虑——这些情绪驱动你拿起手机。</div><div class="concept-case">💡 你感到无聊（内部触发）→打开刷视频——无聊就是这个习惯的触发器。</div></div><div class="concept"><div class="concept-name">行动（Action）</div><div class="concept-def">让用户完成目标行为的摩擦越小越好。行动=动力乘以能力除以摩擦。</div><div class="concept-case">💡 刷一下这个动作比点赞发帖更低摩擦，这就是为什么feed设计比论坛更容易让人上瘾。</div></div><div class="concept"><div class="concept-name">多变奖励（Variable Reward）</div><div class="concept-def">奖励是可变的，才能产生强烈的期待感——就像赌博机器。可预测的奖励失去吸引力。</div><div class="concept-case">💡 朋友圈发了一条状态，你时不时来刷新看有没有新的评论和点赞——这个不确定的期待就是多变奖励在起作用。</div></div><div class="concept"><div class="concept-name">投入（Investment）</div><div class="concept-def">每次使用，用户投入越多（内容、关注、数据），产品就越个性化，离开的代价就越大。</div><div class="concept-case">💡 你在微信上建立的几十个群、所有聊天记录——这就是你离不开的投入。</div></div></div><div class="sec"><div class="sec-label">🛠️ 核心方法论</div><h2>如何用Hook模型分析和设计产品</h2><div class="method-chain"><div class="method-step"><div class="step-num">1</div><div class="step-body"><div class="step-title">找到你的内部触发器</div><div class="step-desc">用户在什么情绪下会想到你的产品？无聊？焦虑？孤独？还是某种更积极的状态？</div></div></div><div class="method-step"><div class="step-num">2</div><div class="step-body"><div class="step-title">设计最低摩擦的行动</div><div class="step-desc">用户的核心行动是什么？把完成这个行动的摩擦减到最低。每一个额外的点击都是流失。</div></div></div><div class="method-step"><div class="step-num">3</div><div class="step-body"><div class="step-title">设计多变奖励</div><div class="step-desc">有没有办法让每次使用的体验稍有不同？变化创造期待，期待驱动重复。</div></div></div><div class="method-step"><div class="step-num">4</div><div class="step-body"><div class="step-title">创造投入机制</div><div class="step-desc">用户如何在使用过程中投入时间、内容、关系、金钱？投入越多，转换成本越高。</div></div></div><div class="method-step"><div class="step-num">5</div><div class="step-body"><div class="step-title">诚实地做道德审查</div><div class="step-desc">Hook只应该用于真正对用户有价值的产品——帮助用户实现他们自己想要的目标，而不是操控他们消耗时间。</div></div></div></div></div><div class="sec"><div class="sec-label">🛡️ 辩证审视</div><h2>价值与道德争议</h2><div class="dial"><div class="dial-pro"><div class="dial-label">✓ 价值所在</div><p>这本书是目前最系统化解释产品习惯形成的框架，被全球产品经理广泛使用。它帮助了大量有价值的产品（健康App、学习App）更好地留住用户。</p></div><div class="dial-con"><div class="dial-label">⚠ 局限性</div><p>这本书也被批评为帮助设计了很多让人沉迷的产品，间接加剧了手机上瘾问题。Eyal本人后来写了《不可打扰》来讨论如何抵抗这些设计——有一定的矛盾性。</p></div></div><div class="blockquote">如果你不设计人们的习惯，竞争对手会。——Nir Eyal</div></div><div class="sec"><div class="sec-label">📖 帕累托精选</div><h2>必读章节</h2><div class="chapter-card"><span class="chapter-badge">必读 #1</span><div class="chapter-name">多变奖励——为什么不确定比确定更让人上瘾</div><div class="chapter-reason">全书最反直觉的核心机制</div><p>赌博机器是多变奖励最纯粹的形式——正是那个不知道这次会不会赢的期待，让人欲罢不能。这章把神经科学的多巴胺研究与产品设计直接连接，解释了为什么社交媒体比报纸更让人上瘾：每次刷新都是一次小小的赌博。</p></div><div class="chapter-card"><span class="chapter-badge">必读 #2</span><div class="chapter-name">投入阶段——用户如何为产品建造牢笼</div><div class="chapter-reason">最有战略价值的设计原则</div><p>这章解释了为什么要让用户在产品中创造内容、建立关系、积累数据——每一项投入都增加了离开的成本。Instagram的照片、LinkedIn的职业史、微信的朋友圈——都是用户自己建造的留存机制。这是产品护城河的来源。</p></div></div></div>
+<div class="footer">深度阅读解构 · 苏格拉底式提问 · 辩证批判</div>
+</body></html>

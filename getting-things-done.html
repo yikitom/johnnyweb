@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>《搞定》 · 深度解构</title><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f9f7f2;--card:#fff;--text:#2c2c2c;--text-sub:#5a5a5a;--text-dim:#888;--accent:#c0392b;--accent2:#2c3e50;--gold:#b8860b;--border:#e0dcd5;--serif:"Noto Serif SC",serif;--sans:"Noto Sans SC",sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.8;-webkit-font-smoothing:antialiased}
+.nav{position:fixed;top:0;left:0;right:0;z-index:99;background:rgba(249,247,242,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:14px 24px;display:flex;align-items:center;gap:16px}
+.nav-back{color:var(--text-dim);text-decoration:none;font-size:13px}.nav-back:hover{color:var(--text)}
+.nav-title{font-family:var(--serif);font-size:14px;font-weight:600;color:var(--accent2);flex:1;text-align:center}
+.hero{padding:100px 24px 60px;max-width:800px;margin:0 auto;text-align:center}
+.hero-cat{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:16px}
+.hero-title{font-family:var(--serif);font-size:clamp(26px,4vw,42px);font-weight:900;line-height:1.2;color:var(--accent2);margin-bottom:12px}
+.hero-sub{font-size:15px;color:var(--text-sub);margin-bottom:24px}
+.hero-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.meta-tag{background:var(--accent2);color:#fff;font-size:11px;padding:4px 12px;border-radius:20px;letter-spacing:.5px}
+.wrap{max-width:800px;margin:0 auto;padding:0 24px 80px}
+.sec{margin-bottom:56px}
+.sec-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:14px}
+.sec h2{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--accent2);margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid var(--border)}
+.qa{margin-bottom:16px}.qa-q{font-weight:600;color:var(--accent2);margin-bottom:6px}
+.qa-q::before{content:"Q: ";color:var(--accent)}.qa-a{color:var(--text-sub);padding-left:20px;border-left:3px solid var(--border)}
+.concept{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px 22px;margin-bottom:14px}
+.concept-name{font-weight:700;color:var(--accent2);margin-bottom:6px;font-family:var(--serif);font-size:16px}
+.concept-def{font-size:13px;color:var(--text-sub);margin-bottom:8px}
+.concept-case{font-size:13px;background:var(--bg);border-radius:8px;padding:10px 14px;color:var(--text);border-left:3px solid var(--gold)}
+.method-chain{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px;margin-bottom:16px}
+.method-step{display:flex;gap:14px;margin-bottom:16px;align-items:flex-start}
+.step-num{width:28px;height:28px;background:var(--accent2);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px}
+.step-title{font-weight:600;color:var(--accent2);margin-bottom:4px}
+.step-desc{font-size:14px;color:var(--text-sub)}
+.dial{border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:14px}
+.dial-pro{background:#f0faf0;padding:16px 20px;border-bottom:1px solid var(--border)}
+.dial-con{background:#fdf5f5;padding:16px 20px}
+.dial-label{font-size:11px;letter-spacing:1px;text-transform:uppercase;font-weight:600;margin-bottom:6px}
+.dial-pro .dial-label{color:#2d6a4f}.dial-con .dial-label{color:#c0392b}
+.chapter-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px 22px;margin-bottom:14px}
+.chapter-badge{display:inline-block;background:var(--accent);color:#fff;font-size:11px;padding:3px 10px;border-radius:20px;margin-bottom:10px;font-weight:600}
+.chapter-name{font-family:var(--serif);font-size:16px;font-weight:700;color:var(--accent2);margin-bottom:8px}
+.chapter-reason{font-size:13px;color:var(--gold);font-weight:500;margin-bottom:8px}
+.blockquote{border-left:4px solid var(--gold);padding:14px 20px;background:var(--bg);border-radius:0 8px 8px 0;font-style:italic;color:var(--text-sub);margin:14px 0;font-size:15px}
+p{color:var(--text-sub);line-height:1.8;margin-bottom:12px}strong{color:var(--text)}
+.footer{text-align:center;padding:32px;color:var(--text-dim);font-size:12px;border-top:1px solid var(--border)}
+</style></head>
+<body>
+<div class="nav"><a href="index.html" class="nav-back">← 返回</a><div class="nav-title">《搞定》</div></div>
+<div class="hero"><div class="hero-cat">效率·生产力</div><div class="hero-title">《搞定》</div>
+<div class="hero-sub">David Allen 著 · 清空你的大脑，把它变成执行机器</div><div class="hero-meta"><span class="meta-tag">David Allen</span> <span class="meta-tag">GTD</span> <span class="meta-tag">时间管理</span> <span class="meta-tag">无压工作</span></div></div>
+<div class="wrap"><div class="sec"><div class="sec-label">🧠 作者画像</div><h2>这本书解决什么问题？</h2><div class="qa"><div class="qa-q">Q1：表面讲什么？</div><div class="qa-a">讲GTD（Getting Things Done）方法——一套把所有任务从大脑清空、放入外部系统、按情境执行的工作管理系统。</div></div><div class="qa"><div class="qa-q">Q2：更深的问题？</div><div class="qa-a">为什么那么多勤奋的人总感觉焦虑、被事情追着跑、无法专注？因为大脑是用来思考的，不是用来记忆任务的。当大脑里塞满待办事项，它就没有空间做真正的思考。</div></div><div class="qa"><div class="qa-q">Q3：终极命题？</div><div class="qa-a">建立一个可以100%信任的外部系统，把所有承诺都放进去——然后在任何时刻，你只需要专注于此刻最重要的那一件事，而不是反复想着那些你怕忘记的事。</div></div><p><strong>David Allen</strong>是生产力顾问，为IBM、世界银行等组织提供效率培训超过30年。他的GTD方法被《时代》杂志评为21世纪最有影响力的商业理念之一。</p></div><div class="sec"><div class="sec-label">🗝️ 核心概念</div><h2>GTD核心原理</h2><div class="concept"><div class="concept-name">开放循环（Open Loop）</div><div class="concept-def">每一个你承诺但还没完成的事，都是一个开放循环。大脑会一直追踪它、不定时提醒你，消耗认知资源。你的焦虑，很大程度上来自脑子里那些未关闭的循环。</div><div class="concept-case">💡 你答应了帮朋友查一个信息但还没查，你的大脑会在不合适的时候突然提醒你——在开会时、睡前、洗澡时。</div></div><div class="concept"><div class="concept-name">两分钟规则</div><div class="concept-def">如果一件事两分钟内可以做完，立刻做——不要放进系统。如果超过两分钟，才需要进入GTD系统处理。</div><div class="concept-case">💡 收到一封需要两句话回复的邮件，立刻回复；需要查数据、联系多人的邮件，放进系统。</div></div><div class="concept"><div class="concept-name">下一步行动</div><div class="concept-def">每一个项目都需要定义清楚下一步具体的物理行动。不是推进A项目，而是给A项目的负责人发邮件确认3个问题。</div><div class="concept-case">💡 模糊的任务让大脑犹豫，具体的行动让大脑行动。永远把任务转化为最具体的下一步。</div></div></div><div class="sec"><div class="sec-label">🛠️ 核心方法论</div><h2>GTD五个步骤</h2><div class="method-chain"><div class="method-step"><div class="step-num">1</div><div class="step-body"><div class="step-title">收集（Capture）</div><div class="step-desc">把所有进入你脑袋的东西——无论大小——全部放进收件箱（实体或数字），清空大脑。</div></div></div><div class="method-step"><div class="step-num">2</div><div class="step-body"><div class="step-title">澄清（Clarify）</div><div class="step-desc">逐一处理收件箱里的每项东西：这是什么？我需要行动吗？如果需要，下一步是什么？</div></div></div><div class="method-step"><div class="step-num">3</div><div class="step-body"><div class="step-title">组织（Organize）</div><div class="step-desc">把各类内容放入对应的位置：日程表（特定时间）、下一步行动列表（按情境）、项目列表、等待列表、某天也许列表。</div></div></div><div class="method-step"><div class="step-num">4</div><div class="step-body"><div class="step-title">回顾（Reflect）</div><div class="step-desc">每周做一次全面回顾——检查所有清单，确保系统最新、可靠。</div></div></div><div class="method-step"><div class="step-num">5</div><div class="step-body"><div class="step-title">执行（Engage）</div><div class="step-desc">在任何时刻，根据当前的情境、可用时间、精力状态，从清单中选择最合适的行动去做。</div></div></div></div></div><div class="sec"><div class="sec-label">🛡️ 辩证审视</div><h2>价值与局限</h2><div class="dial"><div class="dial-pro"><div class="dial-label">✓ 价值所在</div><p>GTD是目前最系统化的工作管理方法之一，它解决的不只是效率问题，还有认知负担问题。很多人反映认真实施GTD后，焦虑感显著降低，工作满足感提高。</p></div><div class="dial-con"><div class="dial-label">⚠ 局限性</div><p>GTD的完整实施对很多人来说太复杂，维护系统本身需要大量时间。对于工作本身就非常混乱、不可预测的人（急诊医生、创业者），这套系统的适用性有限。另外它偏重执行，对于确定正确方向（做什么）的帮助有限。</p></div></div><div class="blockquote">你的大脑是用来产生想法的，不是用来储存想法的。——David Allen</div></div><div class="sec"><div class="sec-label">📖 帕累托精选</div><h2>必读章节</h2><div class="chapter-card"><span class="chapter-badge">必读 #1</span><div class="chapter-name">为什么事情都在你的脑子里（以及为什么不应该）</div><div class="chapter-reason">理解GTD的根本动机</div><p>这章解释了认知负担是如何产生的：每一个未完成的承诺都在消耗你的注意力资源，即使你没有有意识地想它。理解这一点，是愿意建立外部系统的动力来源——因为你明白了大脑不是最好的储存设备。</p></div><div class="chapter-card"><span class="chapter-badge">必读 #2</span><div class="chapter-name">澄清：处理你脑袋里的东西</div><div class="chapter-reason">最核心的操作步骤</div><p>这章详细讲解了如何决定每一个进入收件箱的东西应该怎么处理：丢弃、参考资料、等待别人、加入日程、定义下一步行动……这是GTD系统的大脑，理解了澄清步骤，整个系统就活了。</p></div></div></div>
+<div class="footer">深度阅读解构 · 苏格拉底式提问 · 辩证批判</div>
+</body></html>
