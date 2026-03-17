@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>苏东坡新传 · 深度解构</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Noto Serif SC',Georgia,serif;background:#f9f7f2;color:#2c2c2c;font-size:17px;line-height:1.85;}
+nav{position:fixed;top:0;left:0;right:0;background:rgba(26,26,26,.97);backdrop-filter:blur(8px);z-index:100;padding:0 20px;display:flex;align-items:center;gap:4px;height:52px;overflow-x:auto;scrollbar-width:none;}
+nav::-webkit-scrollbar{display:none;}
+nav a{color:rgba(255,255,255,.8);text-decoration:none;font-size:12px;white-space:nowrap;padding:5px 10px;border-radius:4px;font-family:sans-serif;transition:.2s;}
+nav a:hover{background:rgba(255,255,255,.15);color:#fff;}
+.wrap{max-width:860px;margin:0 auto;padding:76px 24px 60px;}
+.hero{text-align:center;padding:60px 20px 48px;border-bottom:1px solid #e8e3db;margin-bottom:48px;}
+.hero-badge{display:inline-block;background:#8b4513;color:#fff;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:4px 14px;border-radius:2px;margin-bottom:18px;font-family:sans-serif;}
+.hero h1{font-size:clamp(26px,5vw,40px);font-weight:700;color:#1a1a1a;margin-bottom:10px;letter-spacing:1px;}
+.hero .author{color:#8b6f5e;font-size:15px;margin-bottom:16px;}
+.hero .summary{color:#555;font-size:15px;max-width:560px;margin:0 auto;}
+section{margin-bottom:52px;}
+.sec-title{font-size:22px;font-weight:700;color:#1a1a1a;margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid currentColor;display:flex;align-items:center;gap:8px;}
+.card{background:#fff;border-radius:12px;padding:24px 28px;margin-bottom:16px;box-shadow:0 2px 12px rgba(0,0,0,.05);}
+.qa-q{font-weight:600;color:#1a3a5c;margin-bottom:6px;}
+.qa-a{color:#444;padding-left:12px;border-left:3px solid #c0392b;}
+.concept{background:#fff;border-radius:10px;padding:20px 24px;margin-bottom:14px;border-left:4px solid #27ae60;}
+.concept-term{font-weight:700;color:#1a1a1a;font-size:16px;margin-bottom:4px;}
+.concept-simple{color:#e67e22;font-size:14px;margin-bottom:8px;font-family:sans-serif;}
+.concept-body{color:#555;font-size:15px;}
+.critique-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+@media(max-width:600px){.critique-grid{grid-template-columns:1fr;}}
+.crit-card{background:#fff;border-radius:10px;padding:18px 20px;}
+.crit-label{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;font-family:sans-serif;}
+.chapter{background:#fff;border-radius:12px;padding:22px 26px;margin-bottom:14px;border-top:3px solid #2980b9;}
+.ch-name{font-weight:700;color:#1a1a1a;margin-bottom:6px;}
+.ch-why{font-size:13px;color:#e67e22;margin-bottom:10px;font-family:sans-serif;}
+blockquote{border-left:4px solid #c0392b;padding:12px 18px;margin:16px 0;background:#fff5f5;border-radius:0 8px 8px 0;font-style:italic;color:#555;}
+.tag{display:inline-block;font-size:12px;padding:3px 10px;border-radius:20px;font-family:sans-serif;margin-right:6px;margin-bottom:4px;}
+footer{text-align:center;padding:32px 20px;border-top:1px solid #e8e3db;color:#999;font-size:13px;font-family:sans-serif;}
+</style>
+
+</head>
+<body>
+<nav><a href="#" style="font-weight:700;color:#fff;font-size:13px;margin-right:8px;">📖</a><a href="#s1">🧠画像</a>
+<a href="#s2">🎯核心局</a>
+<a href="#s3">🔧思维模型</a>
+<a href="#s4">🎲运气分析</a>
+<a href="#s5">⚡至暗时刻</a>
+<a href="#s6">🌑阴暗面</a>
+<a href="#s7">📖精华章节</a>
+<a href="#s8">墓志铭</a></nav>
+<div class="wrap">
+<div class="hero">
+<div class="hero-badge">传记解构</div>
+<h1>《苏东坡新传》</h1>
+<div class="author">✍️ 李一冰 著</div>
+<div class="summary">深度阅读解构 · 苏格拉底式追问 · 大白话降维 · 辩证批判</div>
+</div>
+
+<section id="s1">
+<div class="sec-title" style="color:#8b4513">🧠 传主核心画像</div>
+<div class="card">
+<p><strong>历史背景：</strong>苏东坡生活在北宋中期——这是中国历史上文化最灿烂、政治最复杂的时代。王安石变法把当时所有的官员逼进了两个阵营：变法派和守旧派。苏东坡两边都不讨好，注定了他"站哪边都是异类"的悲剧命运。</p>
+</div>
+<div class="card" style="margin-top:12px">
+<p><strong>性格特征：</strong>天才横溢、率真直言、不懂政治、心宽如海。他有一个致命的性格特点——<em>有话憋不住</em>。别人忍得了的他忍不了，别人看得开的他要写诗骂出来。这是他的天才，也是他的祸根。</p>
+</div>
+<div class="card" style="margin-top:12px">
+<p><strong>成就感来源：</strong>不是官位，不是财富，而是"当下这一刻的全情投入"。被贬黄州时，他在赤壁前喝酒作赋，感慨的不是命运多舛，而是宇宙的壮阔和自己的渺小。这种把苦难转化为审美的能力，是他真正独一无二的地方。</p>
+</div>
+</section>
+
+<section id="s2">
+<div class="sec-title" style="color:#c0392b">🎯 核心局与破局点</div>
+<div class="card">
+<p><strong>游戏规则：</strong>北宋的官员游戏只有一条规则——<em>站队</em>。支持变法就能当大官，反对就滚。苏东坡的破局点是：他拒绝站队，坚持用自己的眼光判断每一件具体的事。</p>
+<blockquote>别人的游戏规则是"投机"，苏东坡的游戏规则是"真话只说一次，但要说得漂亮"。</blockquote>
+<p style="margin-top:12px"><strong>First Principles（第一性原理）：</strong>他发现了别人没看到的事——文字和精神才是真正的自由，官位和权力只是借来的东西。所以被贬越重，他反而写得越好，活得越豁达。</p>
+</div>
+</section>
+
+<section id="s3">
+<div class="sec-title" style="color:#27ae60">🔧 三大思维模型</div>
+<div class="concept">
+<div class="concept-term">模型一：苦中作乐的再定义框架</div>
+<div class="concept-simple">把每一次失败重新定义成另一种礼物</div>
+<div class="concept-body">被贬黄州，他发明了东坡肉；被贬惠州，他爱上了荔枝；被贬儋州，他教当地人读书。每到一处，他不问"为什么是我"，而是问"这里有什么有趣的"。这是真正高级的心理韧性。</div>
+</div>
+<div class="concept">
+<div class="concept-term">模型二：当下完整性原则</div>
+<div class="concept-simple">不为明天焦虑，把今天过得完整</div>
+<div class="concept-body">《赤壁赋》的核心就是这个——"逝者如斯，而未尝往也"。水流过了但水还在，人变老了但此刻还在。他把"活在当下"从励志口号变成了哲学实践。</div>
+</div>
+<div class="concept">
+<div class="concept-term">模型三：跨界迁移创新</div>
+<div class="concept-simple">把A领域的顿悟搬进B领域</div>
+<div class="concept-body">他用弹琴的"松弛感"来理解书法，用书法的"骨气"来理解诗歌，用禅意来理解烹饪。他的创新不是从0到1，而是把已知的东西拼出新组合。</div>
+</div>
+</section>
+
+<section id="s4">
+<div class="sec-title" style="color:#8e44ad">🎲 贝叶斯分析：运气 vs 实力</div>
+<div class="critique-grid">
+<div class="crit-card" style="border-top:3px solid #e74c3c">
+<div class="crit-label" style="color:#e74c3c">时代红利（运气，不可复制）</div>
+<p>北宋是中国文化的黄金期：印刷术普及、文人圈子发达、诗词歌赋是官员标配。换到任何其他朝代，苏东坡的诗才未必有同等舞台。</p>
+</div>
+<div class="crit-card" style="border-top:3px solid #27ae60">
+<div class="crit-label" style="color:#27ae60">个人算法（实力，可以复制）</div>
+<p>把逆境转化为创作的"苦难炼金术"；保持好奇心，永不停止学习；用幽默和审美抵御政治压迫——这三点在任何时代都有效。</p>
+</div>
+</div>
+<div class="card" style="margin-top:14px;background:#fffbf0;border-left:4px solid #f39c12;">
+<p><strong>一句话评分：</strong>运气占30%（时代与出身），实力占70%（把命运牌打出满分）。</p>
+</div>
+</section>
+
+<section id="s5">
+<div class="sec-title" style="color:#e74c3c">⚡ 至暗时刻：乌台诗案</div>
+<div class="card">
+<p><strong>情境：</strong>1079年，苏东坡被捕，关进御史台（俗称"乌台"）。弹劾他的人用他的诗句断章取义，说他讽刺朝廷。死刑的可能性实实在在。他在狱中对儿子说了最后的话，准备赴死。</p>
+<p style="margin-top:12px"><strong>反人性的决定：</strong>他没有认罪求饶到底，也没有绝望放弃，而是在狱中继续写诗、写信、保持清醒。最终神宗皇帝手下留情，改判流放。他的"不彻底屈服但也不正面硬刚"——这种弹性，救了他的命。</p>
+<p style="margin-top:12px"><strong>可复用框架：</strong>在权力面前，完全顺从会让人失去灵魂，完全对抗会让人丢掉脑袋。真正的存活之道是"竹子式抵抗"——弯而不折。</p>
+</div>
+</section>
+
+<section id="s6">
+<div class="sec-title" style="color:#555">🌑 阴暗面与反面教材</div>
+<div class="card">
+<p><strong>核心缺陷：直言不讳到自毁长城。</strong>苏东坡因为嘴快，一生被贬三次，几乎送命一次。他明明看穿了政治游戏，却始终没法闭嘴。这是他的诗才之源，也是他人生悲剧之源。</p>
+<p style="margin-top:12px"><strong>不要模仿什么：</strong>不要学他在政治场合的直言。他能靠文名和人格魅力在贬谪中存活，你未必有同样的"社会护甲"。在现实中，选择你的战场，不是每一场都值得开口。</p>
+</div>
+</section>
+
+<section id="s7">
+<div class="sec-title" style="color:#2980b9">📖 帕累托精华章节</div>
+<div class="chapter">
+<div class="ch-name">精华一：黄州时期（第5-8章）</div>
+<div class="ch-why">必读理由：这是苏东坡从"天才官员"变成"苏东坡"的蜕变时刻</div>
+<p>贬谪黄州四年，是他人生最低谷，也是他作品最高峰。《赤壁赋》《念奴娇·赤壁怀古》《定风波》都诞生于此。这章最值钱的逻辑：<strong>真正的自由不是没有限制，而是在限制里找到无限可能。</strong>他没有钱、没有权、没有朋友，却在黄州活出了中国文人的最高典范。</p>
+</div>
+<div class="chapter">
+<div class="ch-name">精华二：晚年惠州儋州（第13-15章）</div>
+<div class="ch-why">必读理由：看一个老人如何在最恶劣的条件下依然保持好奇心</div>
+<p>被贬到蛮荒的岭南、海南，他已年迈。他做的事令人震撼：学当地话，教当地孩子，研究当地美食，写下"日啖荔枝三百颗，不辞长作岭南人"。这一章的核心干货：<strong>晚年的苏东坡证明了，好奇心是比权力更持久的生命力。</strong></p>
+</div>
+</section>
+
+<section id="s8">
+<div class="sec-title" style="color:#8b4513">🏛️ 墓志铭</div>
+<blockquote style="font-size:20px;text-align:center;padding:24px;color:#1a1a1a;font-style:normal;font-weight:600;">
+他把所有的苦难都变成了诗，<br>然后把诗送给了所有人。<br>他是中国历史上最会活着的人。
+</blockquote>
+</section>
+
+</div>
+<footer>《苏东坡新传》· 李一冰 著 · 深度解构报告 · johnnyweb.netlify.app</footer>
+</body>
+</html>

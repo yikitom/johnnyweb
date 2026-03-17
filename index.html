@@ -2,98 +2,167 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>johnnyweb · 内容导航</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>JohnnyWeb · 知识报告中心</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  :root{--bg:#0a0c10;--surface:#12151c;--surface-2:#181c26;--border:#242a38;--text:#e8ecf4;--text-muted:#8a92a6;--text-dim:#5a6278;--accent:#7c4dff;--accent-2:#bb86fc;--green:#66bb6a;--teal:#4dd0e1;}
-  *{margin:0;padding:0;box-sizing:border-box;}
-  body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans',sans-serif;min-height:100vh;}
-  .container{max-width:900px;margin:0 auto;padding:0 32px;}
-  .header{border-bottom:1px solid var(--border);padding:48px 0 36px;}
-  .header-meta{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:2px;color:var(--accent);text-transform:uppercase;margin-bottom:12px;}
-  .header h1{font-family:'DM Serif Display',serif;font-size:42px;color:var(--text);}
-  .header-sub{font-size:14px;color:var(--text-muted);margin-top:6px;}
-  .section{padding:40px 0;}
-  .section-label{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--accent);text-transform:uppercase;margin-bottom:20px;}
-  .card-grid{display:grid;gap:16px;}
-  .card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:24px 28px;text-decoration:none;display:flex;align-items:center;justify-content:space-between;transition:border-color 0.2s,background 0.2s;}
-  .card:hover{border-color:var(--accent);background:var(--surface-2);}
-  .card-left{flex:1;}
-  .card-tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;padding:3px 10px;border-radius:3px;margin-bottom:10px;}
-  .tag-equity{background:rgba(124,77,255,0.15);color:var(--accent-2);border:1px solid rgba(124,77,255,0.3);}
-  .tag-book{background:rgba(102,187,106,0.12);color:var(--green);border:1px solid rgba(102,187,106,0.3);}
-  .tag-tech{background:rgba(77,208,225,0.12);color:var(--teal);border:1px solid rgba(77,208,225,0.3);}
-  .card-title{font-family:'DM Serif Display',serif;font-size:20px;color:var(--text);margin-bottom:6px;}
-  .card-desc{font-size:13px;color:var(--text-muted);line-height:1.6;}
-  .card-arrow{font-size:20px;color:var(--text-dim);margin-left:20px;flex-shrink:0;}
-  .card:hover .card-arrow{color:var(--accent-2);}
-  .footer{padding:36px 0;border-top:1px solid var(--border);text-align:center;color:var(--text-dim);font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:1px;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Noto Sans SC',sans-serif;background:#0a0c10;color:#e8ecf4;min-height:100vh;}
+.hero{text-align:center;padding:80px 20px 60px;background:linear-gradient(180deg,#0d0f18,#0a0c10);}
+.hero h1{font-family:'Noto Serif SC',serif;font-size:clamp(28px,5vw,48px);font-weight:700;margin-bottom:12px;background:linear-gradient(135deg,#fff,#8899bb);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero p{color:#8a92a6;font-size:15px;max-width:500px;margin:0 auto;}
+.wrap{max-width:1100px;margin:0 auto;padding:0 24px 80px;}
+.section-title{font-size:13px;letter-spacing:3px;text-transform:uppercase;color:#4a5568;font-family:sans-serif;margin:48px 0 20px;}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;}
+.card{background:#12151c;border:1px solid #1e2535;border-radius:12px;padding:22px 24px;text-decoration:none;color:inherit;display:block;transition:.2s;}
+.card:hover{border-color:#3a4a6a;background:#16192280;transform:translateY(-2px);}
+.card-cat{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#4a5568;font-family:sans-serif;margin-bottom:8px;}
+.card-title{font-family:'Noto Serif SC',serif;font-size:17px;color:#d4dae8;margin-bottom:8px;line-height:1.4;}
+.card-desc{font-size:13px;color:#5a6278;line-height:1.6;}
+.card-arrow{text-align:right;color:#3a4a6a;font-size:16px;margin-top:12px;}
+.book-card .card-cat{color:#7c5a8a;}
+.book-card{border-color:#1e1a2d;}
+.book-card:hover{border-color:#4a2a6a;}
+.research-card .card-cat{color:#3a6a8a;}
+.footer{text-align:center;padding:32px;color:#2e3648;font-size:12px;font-family:sans-serif;}
 </style>
 </head>
 <body>
-<div class="header">
-  <div class="container">
-    <div class="header-meta">johnnyweb · content hub</div>
-    <h1>内容导航</h1>
-    <div class="header-sub">所有已发布的报告与分析 · johnnyweb.netlify.app</div>
-  </div>
+<div class="hero">
+<h1>📚 JohnnyWeb</h1>
+<p>知识报告中心 · 读书解构 · 研究分析 · 持续更新</p>
 </div>
-<div class="section">
-  <div class="container">
-    <div class="section-label">📊 股票投研报告</div>
-    <div class="card-grid">
-      <a href="nvda-citadel-equity-research-2026.html" class="card">
-        <div class="card-left">
-          <div class="card-tag tag-equity">Equity Research · 2026.03</div>
-          <div class="card-title">NVIDIA (NVDA) — Citadel 深度投研报告</div>
-          <div class="card-desc">FY2026全年营收$215.9B，GTC 2026催化剂分析，Vera Rubin架构切换，战术性多头 · 目标价$240</div>
-        </div>
-        <div class="card-arrow">→</div>
-      </a>
-      <a href="ionq-equity-research-2026.html" class="card">
-        <div class="card-left">
-          <div class="card-tag tag-equity">Equity Research · 2026</div>
-          <div class="card-title">IonQ (IONQ) — 量子计算投研报告</div>
-          <div class="card-desc">量子计算赛道深度分析，商业化路径与风险评估</div>
-        </div>
-        <div class="card-arrow">→</div>
-      </a>
-      <a href="rgti-rigetti-equity-research-2026.html" class="card">
-        <div class="card-left">
-          <div class="card-tag tag-equity">Equity Research · 2026</div>
-          <div class="card-title">Rigetti Computing (RGTI) — 量子芯片投研报告</div>
-          <div class="card-desc">超导量子比特技术路线，与 IonQ 的竞争格局分析</div>
-        </div>
-        <div class="card-arrow">→</div>
-      </a>
-    </div>
-    <div class="section-label" style="margin-top:40px;">📚 深度读书解构</div>
-    <div class="card-grid">
-      <a href="infinite-machine-deepmind.html" class="card">
-        <div class="card-left">
-          <div class="card-tag tag-book">书籍解构</div>
-          <div class="card-title">《无限机器》· DeepMind 与超级智能</div>
-          <div class="card-desc">马拉比著 · 德米斯·哈萨比斯与 DeepMind 的 AGI 探索之路</div>
-        </div>
-        <div class="card-arrow">→</div>
-      </a>
-    </div>
-    <div class="section-label" style="margin-top:40px;">🔬 科技深度报告</div>
-    <div class="card-grid">
-      <a href="alphafold-report.html" class="card">
-        <div class="card-left">
-          <div class="card-tag tag-tech">科技报告</div>
-          <div class="card-title">AlphaFold 深度解析报告</div>
-          <div class="card-desc">蛋白质折叠问题的AI解法，从 AlphaFold 2 到 AlphaFold 3 的技术演进</div>
-        </div>
-        <div class="card-arrow">→</div>
-      </a>
-    </div>
-  </div>
+<div class="wrap">
+
+<div class="section-title">📖 读书解构报告</div>
+<div class="grid">
+
+<a href="su-dongpo-biography.html" class="card book-card">
+<div class="card-cat">传记 · 宋代</div>
+<div class="card-title">《苏东坡新传》</div>
+<div class="card-desc">李一冰著 · 把苦难变成诗，是中国文人的最高典范</div>
+<div class="card-arrow">→</div>
+</a>
+
+<a href="infinite-machine-deepmind.html" class="card book-card">
+<div class="card-cat">传记 · AI</div>
+<div class="card-title">《无限机器》</div>
+<div class="card-desc">马拉比著 · DeepMind与超级智能的探索之路</div>
+<div class="card-arrow">→</div>
+</a>
+
+<a href="hassabis-ai-biography.html" class="card book-card">
+<div class="card-cat">传记 · AI</div>
+<div class="card-title">《哈萨比斯：谷歌AI之脑》</div>
+<div class="card-desc">马拉比著 · 从国际象棋神童到AlphaFold的破局之路</div>
+<div class="card-arrow">→</div>
+</a>
+
+<a href="bauman-understanding-world.html" class="card book-card">
+<div class="card-cat">社会学</div>
+<div class="card-title">《我们如何理解这个世界》</div>
+<div class="card-desc">鲍曼著 · 液态现代性与秩序建立的代价</div>
+<div class="card-arrow">→</div>
+</a>
+
+<a href="how-world-thinks-baggini.html" class="card book-card">
+<div class="card-cat">跨文化哲学</div>
+<div class="card-title">《世界是如何思考的》</div>
+<div class="card-desc">巴吉尼著 · 哲学不是一棵树，而是一片森林</div>
+<div class="card-arrow">→</div>
+</a>
+
+<a href="behave-sapolsky.html" class="card book-card">
+<div class="card-cat">神经生物学</div>
+<div class="card-title">《Behave》</div>
+<div class="card-desc">萨波斯基著 · 人类行为从1秒到千年的生物学解构</div>
+<div class="card-arrow">→</div>
+</a>
+
+<a href="ridley-bottom-up.html" class="card book-card">
+<div class="card-cat">演化经济学</div>
+<div class="card-title">《自下而上》</div>
+<div class="card-desc">马特·里德利著 · 这个世界没有总设计师</div>
+<div class="card-arrow">→</div>
+</a>
+
+<a href="think-like-genius.html" class="card book-card">
+<div class="card-cat">思维方法</div>
+<div class="card-title">《如何像天才一样思考》</div>
+<div class="card-desc">天才不是智商碾压，而是一套不同的提问方式</div>
+<div class="card-arrow">→</div>
+</a>
+
+<a href="metacognition-rewire.html" class="card book-card">
+<div class="card-cat">认知科学</div>
+<div class="card-title">《元认知：改变大脑的顽固思维》</div>
+<div class="card-desc">神经可塑性与元认知四步循环的实践指南</div>
+<div class="card-arrow">→</div>
+</a>
+
+<a href="influence-dual-analysis.html" class="card book-card">
+<div class="card-cat">双书分析</div>
+<div class="card-title">影响力 × 影响力的八大障碍</div>
+<div class="card-desc">西奥迪尼+莎罗特 · 推力工具与阻力地图的整合</div>
+<div class="card-arrow">→</div>
+</a>
+
+<a href="llm-hands-on.html" class="card book-card">
+<div class="card-cat">AI工程</div>
+<div class="card-title">《Hands-On Large Language Models》</div>
+<div class="card-desc">Alammar著 · 从会用API到构建生产级LLM系统的工程判断力</div>
+<div class="card-arrow">→</div>
+</a>
+
+<a href="making-atomic-bomb.html" class="card book-card">
+<div class="card-cat">历史</div>
+<div class="card-title">《原子弹的制造》</div>
+<div class="card-desc">理查德·罗兹著 · 好奇心、恐惧与科学道德的历史审判</div>
+<div class="card-arrow">→</div>
+</a>
+
+<a href="glp1-solution.html" class="card book-card">
+<div class="card-cat">医学健康</div>
+<div class="card-title">《The GLP-1 Solution》</div>
+<div class="card-desc">GLP-1药物使用完整指南：保住肌肉，减掉脂肪</div>
+<div class="card-arrow">→</div>
+</a>
+
 </div>
-<div class="footer">
-  <div class="container">johnnyweb.netlify.app &nbsp;·&nbsp; 持续更新中</div>
+
+<div class="section-title">🔬 研究分析报告</div>
+<div class="grid">
+
+<a href="nvda-citadel-equity-research-2026.html" class="card research-card">
+<div class="card-cat">投资研究</div>
+<div class="card-title">英伟达深度投研报告 2026</div>
+<div class="card-desc">Citadel风格深度股票分析 · AI基础设施核心受益</div>
+<div class="card-arrow">→</div>
+</a>
+
+<a href="ionq-equity-research-2026.html" class="card research-card">
+<div class="card-cat">投资研究</div>
+<div class="card-title">IonQ量子计算投研报告 2026</div>
+<div class="card-desc">量子计算赛道领头羊深度分析</div>
+<div class="card-arrow">→</div>
+</a>
+
+<a href="rgti-rigetti-equity-research-2026.html" class="card research-card">
+<div class="card-cat">投资研究</div>
+<div class="card-title">Rigetti Computing投研报告 2026</div>
+<div class="card-desc">量子计算赛道深度研究报告</div>
+<div class="card-arrow">→</div>
+</a>
+
+<a href="alphafold-report.html" class="card research-card">
+<div class="card-cat">科学研究</div>
+<div class="card-title">AlphaFold技术深度解析</div>
+<div class="card-desc">蛋白质折叠问题的AI解法：从AlphaFold 2到3</div>
+<div class="card-arrow">→</div>
+</a>
+
 </div>
+</div>
+<div class="footer">johnnyweb.netlify.app · 持续更新中 · 2026</div>
 </body>
 </html>

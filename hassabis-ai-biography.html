@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>哈萨比斯：谷歌AI之脑 · 深度解构</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Noto Serif SC',Georgia,serif;background:#f9f7f2;color:#2c2c2c;font-size:17px;line-height:1.85;}
+nav{position:fixed;top:0;left:0;right:0;background:rgba(26,26,26,.97);backdrop-filter:blur(8px);z-index:100;padding:0 20px;display:flex;align-items:center;gap:4px;height:52px;overflow-x:auto;scrollbar-width:none;}
+nav::-webkit-scrollbar{display:none;}
+nav a{color:rgba(255,255,255,.8);text-decoration:none;font-size:12px;white-space:nowrap;padding:5px 10px;border-radius:4px;font-family:sans-serif;transition:.2s;}
+nav a:hover{background:rgba(255,255,255,.15);color:#fff;}
+.wrap{max-width:860px;margin:0 auto;padding:76px 24px 60px;}
+.hero{text-align:center;padding:60px 20px 48px;border-bottom:1px solid #e8e3db;margin-bottom:48px;}
+.hero-badge{display:inline-block;background:#8b4513;color:#fff;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:4px 14px;border-radius:2px;margin-bottom:18px;font-family:sans-serif;}
+.hero h1{font-size:clamp(26px,5vw,40px);font-weight:700;color:#1a1a1a;margin-bottom:10px;letter-spacing:1px;}
+.hero .author{color:#8b6f5e;font-size:15px;margin-bottom:16px;}
+.hero .summary{color:#555;font-size:15px;max-width:560px;margin:0 auto;}
+section{margin-bottom:52px;}
+.sec-title{font-size:22px;font-weight:700;color:#1a1a1a;margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid currentColor;display:flex;align-items:center;gap:8px;}
+.card{background:#fff;border-radius:12px;padding:24px 28px;margin-bottom:16px;box-shadow:0 2px 12px rgba(0,0,0,.05);}
+.qa-q{font-weight:600;color:#1a3a5c;margin-bottom:6px;}
+.qa-a{color:#444;padding-left:12px;border-left:3px solid #c0392b;}
+.concept{background:#fff;border-radius:10px;padding:20px 24px;margin-bottom:14px;border-left:4px solid #27ae60;}
+.concept-term{font-weight:700;color:#1a1a1a;font-size:16px;margin-bottom:4px;}
+.concept-simple{color:#e67e22;font-size:14px;margin-bottom:8px;font-family:sans-serif;}
+.concept-body{color:#555;font-size:15px;}
+.critique-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+@media(max-width:600px){.critique-grid{grid-template-columns:1fr;}}
+.crit-card{background:#fff;border-radius:10px;padding:18px 20px;}
+.crit-label{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;font-family:sans-serif;}
+.chapter{background:#fff;border-radius:12px;padding:22px 26px;margin-bottom:14px;border-top:3px solid #2980b9;}
+.ch-name{font-weight:700;color:#1a1a1a;margin-bottom:6px;}
+.ch-why{font-size:13px;color:#e67e22;margin-bottom:10px;font-family:sans-serif;}
+blockquote{border-left:4px solid #c0392b;padding:12px 18px;margin:16px 0;background:#fff5f5;border-radius:0 8px 8px 0;font-style:italic;color:#555;}
+.tag{display:inline-block;font-size:12px;padding:3px 10px;border-radius:20px;font-family:sans-serif;margin-right:6px;margin-bottom:4px;}
+footer{text-align:center;padding:32px 20px;border-top:1px solid #e8e3db;color:#999;font-size:13px;font-family:sans-serif;}
+</style>
+
+</head>
+<body>
+<nav><a href="#" style="font-weight:700;color:#fff;font-size:13px;margin-right:8px;">📖</a><a href="#s1">🧠画像</a>
+<a href="#s2">🎯核心局</a>
+<a href="#s3">🔧思维模型</a>
+<a href="#s4">🎲运气分析</a>
+<a href="#s5">⚡至暗时刻</a>
+<a href="#s6">🌑阴暗面</a>
+<a href="#s7">📖精华章节</a>
+<a href="#s8">墓志铭</a></nav>
+<div class="wrap">
+<div class="hero">
+<div class="hero-badge">传记解构</div>
+<h1>《哈萨比斯：谷歌AI之脑》</h1>
+<div class="author">✍️ 塞巴斯蒂安·马拉比 著</div>
+<div class="summary">深度阅读解构 · 苏格拉底式追问 · 大白话降维 · 辩证批判</div>
+</div>
+
+<section id="s1">
+<div class="sec-title" style="color:#7c3aed">🧠 传主核心画像</div>
+<div class="card">
+<p><strong>历史阶段：</strong>哈萨比斯出生于1976年，成长于互联网革命前夜，青年时期经历了第一次AI寒冬，壮年时站在了深度学习革命的浪尖。他的时代红利是：当他40岁时，算力和数据终于赶上了他25岁时就有的想法。</p>
+</div>
+<div class="card" style="margin-top:12px">
+<p><strong>性格特征：</strong>极端专注、竞争心爆棚、用游戏测试智能边界。他13岁时国际象棋排名世界第二，却放弃职业棋手，因为他认为棋盘太小，"智能"这个游戏才值得穷尽一生。</p>
+</div>
+</section>
+
+<section id="s2">
+<div class="sec-title" style="color:#1a3a5c">🎯 核心局与破局点</div>
+<div class="card">
+<p><strong>终极难题：</strong>他这辈子只在解决一个问题——<em>什么是智能？能否用机器复现它？</em></p>
+<p style="margin-top:12px"><strong>游戏规则：</strong>AI领域的规则是"发表论文、赢得学术声誉、申请资金"。哈萨比斯的破局点是：他把AI研究变成了一场<strong>竞技游戏</strong>。AlphaGo、AlphaFold，每一个项目都是一道"人类还没有解决的难题"——他用明确的胜负标准，逼迫团队专注在真正重要的问题上。</p>
+<blockquote>别人做AI是为了发论文，他做AI是为了"打败人类"。在明确的竞技目标下，团队更容易突破。</blockquote>
+</div>
+</section>
+
+<section id="s3">
+<div class="sec-title" style="color:#27ae60">🔧 三大思维模型</div>
+<div class="concept">
+<div class="concept-term">模型一：跳崖画伞（Leap before you look）</div>
+<div class="concept-simple">先跳下去，降落伞在空中画</div>
+<div class="concept-body">AlphaFold从零开始时，全团队的结构生物学背景为零。他的逻辑是：如果等到准备好了再跳，机会窗口就关了。先承诺目标，逼自己在限期内学会必要的知识。</div>
+</div>
+<div class="concept">
+<div class="concept-term">模型二：信念浓度决定论</div>
+<div class="concept-simple">你有多相信这件事，直接决定团队走多远</div>
+<div class="concept-body">AlphaFold GDT分数从60跌到20时，整个团队绝望了。哈萨比斯的信念是：这只是路上的一个坑，不是终点。他的坚持不是盲目乐观，而是基于对Transformer架构的深刻理解——他比团队更早看到了为什么这条路能走通。</div>
+</div>
+<div class="concept">
+<div class="concept-term">模型三：品位过滤器</div>
+<div class="concept-simple">学会欣赏"好"的东西，才能做出"好"的东西</div>
+<div class="concept-body">他对国际象棋的品位，让他能判断一个棋步是"正确的"还是"优雅的"。这种审美能力迁移到AI领域——他能感受哪个模型架构"对"了，而不只是看指标。顶级工程师和普通工程师的区别，就在这个品位。</div>
+</div>
+</section>
+
+<section id="s4">
+<div class="sec-title" style="color:#8e44ad">🎲 贝叶斯分析</div>
+<div class="critique-grid">
+<div class="crit-card" style="border-top:3px solid #e74c3c">
+<div class="crit-label" style="color:#e74c3c">时代红利（30%）</div>
+<p>GPU革命（NVIDIA）、海量数据（互联网）、谷歌的财力——这些缺一不可。1996年的哈萨比斯做不到2016年他做到的事，不是因为他变聪明了，而是世界准备好了。</p>
+</div>
+<div class="crit-card" style="border-top:3px solid #27ae60">
+<div class="crit-label" style="color:#27ae60">个人算法（70%）</div>
+<p>选对问题（蛋白质折叠是终极科学难题）、坚持到别人放弃之后、跨学科整合（神经科学+游戏+AI）——这些不是运气能复制的。</p>
+</div>
+</div>
+</section>
+
+<section id="s5">
+<div class="sec-title" style="color:#e74c3c">⚡ 至暗时刻：AlphaFold GDT崩溃</div>
+<div class="card">
+<p><strong>情境：</strong>2019年，AlphaFold第一版在CASP竞赛中排名第一。团队以为大功告成，开始庆祝。然后哈萨比斯宣布：推翻重来。</p>
+<p style="margin-top:12px"><strong>反人性的决定：</strong>在赢了的情况下说"不够好，推翻重来"，这违反了人类对胜利的本能执着。但他看到了差距——90分才是真正解决蛋白质折叠问题，而他们只拿了60分。</p>
+<p style="margin-top:12px"><strong>结果：</strong>2020年AlphaFold 2以92.4分震惊世界，被《Science》评为50年来最重要的科学突破。2024年诺贝尔化学奖。</p>
+</div>
+</section>
+
+<section id="s6">
+<div class="sec-title" style="color:#555">🌑 阴暗面与反面教材</div>
+<div class="card">
+<p><strong>核心缺陷：偏执式控制欲。</strong>苏莱曼（前DeepMind联合创始人）离职事件，反映了哈萨比斯在权力上的困境——他对公司控制权的执念，最终让两个好友反目。当科学理想与商业控制发生冲突时，他会更倾向于保住控制权。</p>
+<p style="margin-top:12px"><strong>不要模仿：</strong>不要模仿他在合作关系中的零和思维。他能靠天才护住DeepMind的招牌，你的"控制"很可能只是让人才出走。</p>
+</div>
+</section>
+
+<section id="s7">
+<div class="sec-title" style="color:#2980b9">📖 帕累托精华章节</div>
+<div class="chapter">
+<div class="ch-name">精华一：AlphaGo击败李世石</div>
+<div class="ch-why">必读理由：这是AI历史上最戏剧性的转折点，完整展示了哈萨比斯的战略思维</div>
+<p>他选择围棋而非象棋，不是因为围棋更容易（围棋更难），而是因为围棋的"胜利"更具说服力。核心干货：<strong>选择你的战场时，要选能让胜利无可辩驳的那个。</strong></p>
+</div>
+<div class="chapter">
+<div class="ch-name">精华二：AlphaFold与蛋白质折叠</div>
+<div class="ch-why">必读理由：人类用50年解决不了的问题，他们用3年解决了</div>
+<p>这章完整展示了跨学科整合的威力：把结构生物学翻译成深度学习语言，然后用暴力算力解决了生物学最难的问题。核心干货：<strong>最重要的创新往往发生在学科边界上，而不是学科中心。</strong></p>
+</div>
+</section>
+
+<section id="s8">
+<div class="sec-title" style="color:#7c3aed">🏛️ 墓志铭</div>
+<blockquote style="font-size:20px;text-align:center;padding:24px;color:#1a1a1a;font-style:normal;font-weight:600;">
+他用机器理解了智能，<br>用智能理解了生命，<br>用生命的意义驱动了人类科学。
+</blockquote>
+</section>
+
+</div>
+<footer>《哈萨比斯：谷歌AI之脑》· 塞巴斯蒂安·马拉比 著 · 深度解构报告 · johnnyweb.netlify.app</footer>
+</body>
+</html>
