@@ -1,0 +1,62 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>卢拉传 - 深度解构</title><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet"><style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Noto Serif SC',Georgia,serif;background:#f9f7f2;color:#2c2c2c;font-size:17px;line-height:1.85;}
+nav{position:fixed;top:0;left:0;right:0;background:rgba(26,26,26,.97);z-index:100;padding:0 20px;display:flex;align-items:center;gap:4px;height:52px;overflow-x:auto;scrollbar-width:none;}
+nav::-webkit-scrollbar{display:none;}
+nav a{color:rgba(255,255,255,.8);text-decoration:none;font-size:12px;white-space:nowrap;padding:5px 10px;border-radius:4px;font-family:sans-serif;}
+.wrap{max-width:860px;margin:0 auto;padding:76px 24px 60px;}
+.hero{text-align:center;padding:60px 20px 48px;border-bottom:1px solid #e8e3db;margin-bottom:48px;}
+.hero-badge{display:inline-block;background:#1a3a5c;color:#fff;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:4px 14px;border-radius:2px;margin-bottom:18px;font-family:sans-serif;}
+.hero h1{font-size:clamp(24px,5vw,38px);font-weight:700;color:#1a1a1a;margin-bottom:10px;}
+.hero .author{color:#8b6f5e;font-size:15px;margin-bottom:16px;}
+.hero .summary{color:#555;font-size:15px;max-width:560px;margin:0 auto;}
+section{margin-bottom:52px;}
+.sec-title{font-size:22px;font-weight:700;color:#1a1a1a;margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid currentColor;}
+.card{background:#fff;border-radius:12px;padding:24px 28px;margin-bottom:16px;box-shadow:0 2px 12px rgba(0,0,0,.05);}
+.qa-q{font-weight:600;color:#1a3a5c;margin-bottom:6px;}
+.qa-a{color:#444;padding-left:12px;border-left:3px solid #c0392b;}
+.concept{background:#fff;border-radius:10px;padding:20px 24px;margin-bottom:14px;border-left:4px solid #27ae60;}
+.ct{font-weight:700;color:#1a1a1a;font-size:16px;margin-bottom:4px;}
+.cs{color:#e67e22;font-size:14px;margin-bottom:8px;font-family:sans-serif;}
+.cb{color:#555;font-size:15px;}
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+@media(max-width:600px){.cg{grid-template-columns:1fr;}}
+.cc{background:#fff;border-radius:10px;padding:18px 20px;}
+.cl{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;font-family:sans-serif;}
+.ch{background:#fff;border-radius:12px;padding:22px 26px;margin-bottom:14px;border-top:3px solid #2980b9;}
+.cn{font-weight:700;color:#1a1a1a;margin-bottom:6px;}
+.cw{font-size:13px;color:#e67e22;margin-bottom:10px;font-family:sans-serif;}
+blockquote{border-left:4px solid #c0392b;padding:12px 18px;margin:16px 0;background:#fff5f5;border-radius:0 8px 8px 0;font-style:italic;color:#555;}
+footer{text-align:center;padding:32px 20px;border-top:1px solid #e8e3db;color:#999;font-size:13px;font-family:sans-serif;}
+</style></head><body>
+<nav><a href="#" style="font-weight:700;color:#fff;font-size:13px;margin-right:8px;">📖</a><a href="#s1">传主画像</a> <a href="#s2">核心局</a> <a href="#s3">思维模型</a> <a href="#s4">至暗时刻</a> <a href="#s5">精华章节</a> <a href="#s6">遗产</a></nav>
+<div class="wrap"><div class="hero"><div class="hero-badge">传记·巴西政治</div><h1>《卢拉传》</h1><div class="author">✍️ 各作者著</div><div class="summary">深度阅读解构 · 苏格拉底式追问 · 大白话降维 · 辩证批判</div></div>
+<section id="s1"><div class="sec-title" style="color:#1a3a5c">👤 传主画像</div>
+<div class="card"><p><strong>历史阶段：</strong>1945年至今，巴西从军事独裁到民主转型，再到社会主义执政的动荡时期。卢拉是这段历史的亲历者和塑造者。</p>
+<p style="margin-top:12px"><strong>性格特征：</strong>工会出身，极强的共情能力，双重叙事天才——能让工人和企业家都觉得他是"自己人"。不服输，四次竞选总统，第四次才赢。</p>
+<p style="margin-top:12px"><strong>成就感来源：</strong>让"穷人出头"从口号变成现实。他离任时支持率超过80%，是巴西历史上最高的。</p></div></section>
+
+<section id="s2"><div class="sec-title" style="color:#e67e22">🎮 核心局与破局点</div>
+<div class="card">
+<div class="qa-q">他这辈子在解决什么终极难题？</div>
+<div class="qa-a">一个没有大学学历的工厂工人，如何在一个被精英把持的政治游戏里，不仅进场还改变了规则？</div>
+<div class="qa-q" style="margin-top:12px">破局点："在不掀桌子的前提下让穷人翻身"</div>
+<div class="qa-a">他不走革命路线，而是用选举民主。2002年他发表"致巴西人民的信"，承诺尊重市场规则和现有合同。左派盟友骂他叛徒，但他知道：不让资本市场放心，就永远进不了那扇门。</div>
+</div></section>
+
+<section id="s3"><div class="sec-title" style="color:#27ae60">🧠 三大思维模型</div>
+<div class="concept"><div class="ct">战略性耐心</div><div class="cs">输了三次继续参选，把时间变成盟友</div><div class="cb">每次竞选失败后，他不是放弃而是分析：这次我输在哪里？1989年输在经验不足，1994年输在通胀控制，1998年输在经济危机时机，2002年终于用更成熟的形象和更温和的承诺赢得。</div></div>
+<div class="concept"><div class="ct">双重叙事能力</div><div class="cs">同时让工人和资本家觉得他是自己人</div><div class="cb">他对工会讲阶级斗争，对企业家讲经济增长，对国际社会讲民主治理——不是撒谎，而是找到了三种叙事的真实交叉点：让蛋糕变大，同时悄悄改变分蛋糕的规则。</div></div>
+<div class="concept"><div class="ct">聚焦可感知的改变</div><div class="cs">不讲抽象的公平，让穷人直接拿到钱</div><div class="cb">家庭津贴（Bolsa Familia）——直接给最穷的家庭发现金，条件是孩子上学、接种疫苗。这个项目让4000万人脱贫，是"让底层直接感受到改变"的典型设计。</div></div></section>
+
+<section id="s4"><div class="sec-title" style="color:#c0392b">⚡ 至暗时刻</div>
+<div class="ch"><div class="cn">2005年腐败丑闻（月费丑闻）</div><div class="cw">执政党涉嫌向国会议员行贿</div><p>他切割了涉案的党内核心，公开认错，保留了最后一点点的道德信用。反人性的决定：不保人，不捂盖子，让司法程序走完。代价是党内分裂，但他赢得了连任。</p></div>
+<div class="ch"><div class="cn">2018年入狱</div><div class="cw">被判12年腐败罪名入狱</div><p>他把监狱变成了殉道者的舞台：不断接受采访，把狱中的每封信件都变成政治宣言。2022年出狱后竞选总统，击败博索纳罗，再次当选。反人性的决定：在最脆弱的时刻选择不沉默。</p></div></section>
+
+<section id="s5"><div class="sec-title" style="color:#2980b9">📖 精华章节</div>
+<div class="ch"><div class="cn">工会岁月与罢工领导</div><div class="cw">必读理由：底层领导力的原型来自这里</div><p>他如何在圣保罗钢铁厂学会了双重叙事能力——既要让愤怒的工人保持理性，又要让强硬的资方坐到谈判桌前。这是他后来与IMF谈判的原型。</p></div>
+<div class="ch"><div class="cn">2002年胜选与那封信</div><div class="cw">必读理由：战略转型的教科书</div><p>四次竞选的关键差异：承诺尊重市场。左派骂他叛徒，但这个"叛徒"行为让他第一次真正进了总统府。有时候必须先假装接受规则，才能有机会改变规则。</p></div></section>
+
+<section id="s6"><div class="sec-title" style="color:#8e44ad">🌟 一句话遗产</div>
+<blockquote>他证明了穷人也可以治理国家，而且可以治理得不比精英差——并以4000万人脱贫的数字作为凭证。</blockquote></section></div>
+<footer>《卢拉传》· 深度解构 · johnnyweb.netlify.app</footer></body></html>

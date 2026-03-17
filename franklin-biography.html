@@ -1,0 +1,61 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>富兰克林传 - 深度解构</title><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet"><style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Noto Serif SC',Georgia,serif;background:#f9f7f2;color:#2c2c2c;font-size:17px;line-height:1.85;}
+nav{position:fixed;top:0;left:0;right:0;background:rgba(26,26,26,.97);z-index:100;padding:0 20px;display:flex;align-items:center;gap:4px;height:52px;overflow-x:auto;scrollbar-width:none;}
+nav::-webkit-scrollbar{display:none;}
+nav a{color:rgba(255,255,255,.8);text-decoration:none;font-size:12px;white-space:nowrap;padding:5px 10px;border-radius:4px;font-family:sans-serif;}
+.wrap{max-width:860px;margin:0 auto;padding:76px 24px 60px;}
+.hero{text-align:center;padding:60px 20px 48px;border-bottom:1px solid #e8e3db;margin-bottom:48px;}
+.hero-badge{display:inline-block;background:#1a3a5c;color:#fff;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:4px 14px;border-radius:2px;margin-bottom:18px;font-family:sans-serif;}
+.hero h1{font-size:clamp(24px,5vw,38px);font-weight:700;color:#1a1a1a;margin-bottom:10px;}
+.hero .author{color:#8b6f5e;font-size:15px;margin-bottom:16px;}
+.hero .summary{color:#555;font-size:15px;max-width:560px;margin:0 auto;}
+section{margin-bottom:52px;}
+.sec-title{font-size:22px;font-weight:700;color:#1a1a1a;margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid currentColor;}
+.card{background:#fff;border-radius:12px;padding:24px 28px;margin-bottom:16px;box-shadow:0 2px 12px rgba(0,0,0,.05);}
+.qa-q{font-weight:600;color:#1a3a5c;margin-bottom:6px;}
+.qa-a{color:#444;padding-left:12px;border-left:3px solid #c0392b;}
+.concept{background:#fff;border-radius:10px;padding:20px 24px;margin-bottom:14px;border-left:4px solid #27ae60;}
+.ct{font-weight:700;color:#1a1a1a;font-size:16px;margin-bottom:4px;}
+.cs{color:#e67e22;font-size:14px;margin-bottom:8px;font-family:sans-serif;}
+.cb{color:#555;font-size:15px;}
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+@media(max-width:600px){.cg{grid-template-columns:1fr;}}
+.cc{background:#fff;border-radius:10px;padding:18px 20px;}
+.cl{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;font-family:sans-serif;}
+.ch{background:#fff;border-radius:12px;padding:22px 26px;margin-bottom:14px;border-top:3px solid #2980b9;}
+.cn{font-weight:700;color:#1a1a1a;margin-bottom:6px;}
+.cw{font-size:13px;color:#e67e22;margin-bottom:10px;font-family:sans-serif;}
+blockquote{border-left:4px solid #c0392b;padding:12px 18px;margin:16px 0;background:#fff5f5;border-radius:0 8px 8px 0;font-style:italic;color:#555;}
+footer{text-align:center;padding:32px 20px;border-top:1px solid #e8e3db;color:#999;font-size:13px;font-family:sans-serif;}
+</style></head><body>
+<nav><a href="#" style="font-weight:700;color:#fff;font-size:13px;margin-right:8px;">📖</a><a href="#s1">传主画像</a> <a href="#s2">核心局</a> <a href="#s3">思维模型</a> <a href="#s4">至暗时刻</a> <a href="#s5">精华章节</a> <a href="#s6">遗产</a></nav>
+<div class="wrap"><div class="hero"><div class="hero-badge">传记·美国开国</div><h1>《富兰克林传》</h1><div class="author">✍️ 沃尔特·艾萨克森 著</div><div class="summary">深度阅读解构 · 苏格拉底式追问 · 大白话降维 · 辩证批判</div></div>
+<section id="s1"><div class="sec-title" style="color:#1a3a5c">👤 传主画像</div>
+<div class="card"><p><strong>历史阶段：</strong>1706-1790年，美国从殖民地到独立国家的建国时期。富兰克林活了84岁，亲历了这一切。</p>
+<p style="margin-top:12px"><strong>性格特征：</strong>终极务实主义者——不在乎在哪个领域出名，只在乎解决真实问题。印刷工出身，自学成为科学家、外交家、作家、立法者，是美国历史上最极致的"斜杠青年"。</p>
+<p style="margin-top:12px"><strong>成就感来源：</strong>把事情做成。他设计了社区图书馆、消防队、市政道路照明，不是因为这些高大上，而是因为费城真的需要它们。</p></div></section>
+
+<section id="s2"><div class="sec-title" style="color:#e67e22">🎮 核心局与破局点</div>
+<div class="card">
+<div class="qa-q">他在解决什么终极难题？</div>
+<div class="qa-a">一个没有出身、没有爵位、没有学历认证的穷工人，如何在一个靠阶层流通的社会里爬到顶端，并且还能改变整个游戏规则？</div>
+<div class="qa-q" style="margin-top:12px">破局点：知识即杠杆</div>
+<div class="qa-a">他16岁逃跑时身无分文，但带走了语言和印刷技术。他发现：知识是唯一一种在18世纪美国可以突破阶层限制的资产。他系统性地学习、建立人脉网络、用印刷建立话语权，用科学发明建立国际声誉。</div>
+</div></section>
+
+<section id="s3"><div class="sec-title" style="color:#27ae60">🧠 三大思维模型</div>
+<div class="concept"><div class="ct">十三美德系统</div><div class="cs">把性格优化变成一个可量化的项目</div><div class="cb">他列出13种美德（节制、沉默、秩序、果断、节俭、勤勉、真诚……），每周专注一种，用小本子记录失误，循环一年为一周期。这是世界上最早的"习惯追踪器"。</div></div>
+<div class="concept"><div class="ct">从外行视角解决专家问题</div><div class="cs">正因为不是专家，才看得见专家看不见的问题</div><div class="cb">他不是职业科学家，所以他研究雷电不是为了发表论文，而是为了解决"建筑物被雷劈"这个工程问题——避雷针就是这样发明的。外行视角让他专注于"有用"而不是"正确"。</div></div>
+<div class="concept"><div class="ct">战略性低调</div><div class="cs">让别人以为这个主意是他们想出来的</div><div class="cb">在费城市政建设的多次项目中，他把自己的倡议包装成"我们大家的共同想法"，让社区领袖们觉得自己是主角。结果是项目推进顺利，他也不需要负责任何失败。</div></div></section>
+
+<section id="s4"><div class="sec-title" style="color:#c0392b">⚡ 至暗时刻</div>
+<div class="ch"><div class="cn">与儿子的政治决裂</div><div class="cw">独立战争中，儿子站在英国一边</div><p>他儿子威廉是英国任命的新泽西总督，在独立战争中坚定支持英国。战后富兰克林虽然表面原谅，但再也没有真正和好——他的遗嘱中几乎剥夺了儿子的继承权。这个决定让他背负"不是一个好父亲"的评价，但他从未为了家庭牺牲过原则。</p></div></section>
+
+<section id="s5"><div class="sec-title" style="color:#2980b9">📖 精华章节</div>
+<div class="ch"><div class="cn">巴黎外交岁月</div><div class="cw">必读理由：70岁老人如何用人设打赢外交战</div><p>他到巴黎时刻意装扮成"朴素的美国圣贤"形象，用浣熊皮帽和不戴假发的造型俘获法国上层社会的好奇心。然后用这种心理优势，说服法国国王资助美国革命。这是关于个人品牌和外交谈判最精彩的案例。</p></div>
+<div class="ch"><div class="cn">致切斯特菲尔德勋爵的信</div><div class="cw">必读理由：中产阶级如何维护尊严的永恒范本</div><p>他在没有赞助的情况下独立完成了《穷人理查年鉴》，当功成名就后的勋爵提出要赞助他，他写了一封温和但彻底回绝的信。这封信奠定了"独立作者"这一身份的尊严。</p></div></section>
+
+<section id="s6"><div class="sec-title" style="color:#8e44ad">🌟 一句话遗产</div>
+<blockquote>他证明了一个普通人可以靠纯粹的智识力量为自己在世界上挣得一席之地——不需要出身，不需要财富，只需要足够勤奋、足够聪明，并且永不放弃。</blockquote></section></div>
+<footer>《富兰克林传》· 深度解构 · johnnyweb.netlify.app</footer></body></html>

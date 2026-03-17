@@ -1,0 +1,69 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Mastering AI Agents - 深度解构</title><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet"><style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Noto Serif SC',Georgia,serif;background:#f9f7f2;color:#2c2c2c;font-size:17px;line-height:1.85;}
+nav{position:fixed;top:0;left:0;right:0;background:rgba(26,26,26,.97);z-index:100;padding:0 20px;display:flex;align-items:center;gap:4px;height:52px;overflow-x:auto;scrollbar-width:none;}
+nav a{color:rgba(255,255,255,.8);text-decoration:none;font-size:12px;white-space:nowrap;padding:5px 10px;border-radius:4px;font-family:sans-serif;}
+.wrap{max-width:860px;margin:0 auto;padding:76px 24px 60px;}
+.hero{text-align:center;padding:60px 20px 48px;border-bottom:1px solid #e8e3db;margin-bottom:48px;}
+.hero-badge{display:inline-block;background:#1a3a5c;color:#fff;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:4px 14px;border-radius:2px;margin-bottom:18px;font-family:sans-serif;}
+.hero h1{font-size:clamp(24px,5vw,38px);font-weight:700;color:#1a1a1a;margin-bottom:10px;}
+.hero .author{color:#8b6f5e;font-size:15px;margin-bottom:16px;}
+.hero .summary{color:#555;font-size:15px;max-width:560px;margin:0 auto;}
+section{margin-bottom:52px;}
+.sec-title{font-size:22px;font-weight:700;color:#1a1a1a;margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid currentColor;}
+.card{background:#fff;border-radius:12px;padding:24px 28px;margin-bottom:16px;box-shadow:0 2px 12px rgba(0,0,0,.05);}
+.qa-q{font-weight:600;color:#1a3a5c;margin-bottom:6px;}
+.qa-a{color:#444;padding-left:12px;border-left:3px solid #c0392b;}
+.concept{background:#fff;border-radius:10px;padding:20px 24px;margin-bottom:14px;border-left:4px solid #27ae60;}
+.ct{font-weight:700;color:#1a1a1a;font-size:16px;margin-bottom:4px;}
+.cs{color:#e67e22;font-size:14px;margin-bottom:8px;font-family:sans-serif;}
+.cb{color:#555;font-size:15px;}
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+@media(max-width:600px){.cg{grid-template-columns:1fr;}}
+.cc{background:#fff;border-radius:10px;padding:18px 20px;}
+.cl{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;font-family:sans-serif;}
+.ch{background:#fff;border-radius:12px;padding:22px 26px;margin-bottom:14px;border-top:3px solid #2980b9;}
+.cn{font-weight:700;color:#1a1a1a;margin-bottom:6px;}
+.cw{font-size:13px;color:#e67e22;margin-bottom:10px;font-family:sans-serif;}
+blockquote{border-left:4px solid #c0392b;padding:12px 18px;margin:16px 0;background:#fff5f5;border-radius:0 8px 8px 0;font-style:italic;color:#555;}
+footer{text-align:center;padding:32px 20px;border-top:1px solid #e8e3db;color:#999;font-size:13px;font-family:sans-serif;}
+</style></head><body>
+<nav><a href="#" style="font-weight:700;color:#fff;font-size:13px;margin-right:8px;">📖</a><a href="#s1">作者使命</a> <a href="#s2">核心概念</a> <a href="#s3">方法论</a> <a href="#s4">辩证批判</a> <a href="#s5">精华章节</a></nav>
+<div class="wrap"><div class="hero"><div class="hero-badge">AI工程·Agent</div><h1>《Mastering AI Agents》</h1><div class="author">✍️ Pratik Bhavsar 著</div><div class="summary">深度阅读解构 · 苏格拉底式追问 · 大白话降维 · 辩证批判</div></div>
+<section id="s1"><div class="sec-title" style="color:#1a3a5c">🧠 作者画像与核心使命</div><div class="card">
+<p><strong>作者：</strong>Pratik Bhavsar，AI工程师和研究者，在生产环境中构建和部署AI Agent系统的实践者。</p>
+<div class="qa-q" style="margin-top:12px">Q1: 表面谈什么？</div>
+<div class="qa-a">谈如何构建真正能在生产环境中运行的AI Agent系统——不只是会聊天的对话机器人，而是能自主规划、使用工具、完成复杂任务的AI系统。</div>
+<div class="qa-q" style="margin-top:12px">Q2: 真正的痛点？</div>
+<div class="qa-a">LLM能力突破后，很多人开始构建Agent，但大多数Agent在演示里看起来很棒，在生产环境里一塌糊涂——因为真实世界的复杂性、工具调用的不可靠性、错误处理的缺失让它们频繁失败。</div>
+<div class="qa-q" style="margin-top:12px">Q3: 终极问题？</div>
+<div class="qa-a"><strong>如何设计能在真实世界可靠工作的Agent——包括规划、工具使用、记忆、错误恢复，而不只是在受控演示中表现良好？</strong></div>
+</div></section>
+
+<section id="s2"><div class="sec-title" style="color:#27ae60">🗝️ 核心概念大白话解码</div>
+<div class="concept"><div class="ct">AI Agent的四个核心能力</div><div class="cs">感知→规划→行动→反思的闭环</div><div class="cb">感知：从环境（用户输入、工具返回、数据库）获取信息。规划：把复杂任务分解成可执行的步骤。行动：调用工具（API、搜索、代码执行）。反思：评估行动结果，调整计划。Agent和普通聊天机器人的本质区别在这里。</div></div>
+<div class="concept"><div class="ct">工具调用（Tool Use）</div><div class="cs">让AI能使用外部资源，而不只靠自己的参数</div><div class="cb">一个没有工具的LLM就像一个脑子很好用但被关在密室里的人——他知道很多，但无法查最新信息、无法做计算、无法与外部系统交互。工具让AI能搜索网页、执行代码、查询数据库、发送邮件。</div></div>
+<div class="concept"><div class="ct">错误处理和回退策略</div><div class="cs">生产级Agent必须优雅处理失败</div><div class="cb">工具调用失败，API超时，LLM幻觉输出无效步骤——这些在真实世界每天都会发生。一个只在Happy Path上工作的Agent不是生产级系统。错误处理、重试逻辑、降级方案是区分Demo和真实产品的关键。</div></div>
+</section>
+
+<section id="s3"><div class="sec-title" style="color:#e67e22">🛠️ 生产级Agent设计框架</div><div class="card">
+<p><strong>从Demo到生产的关键差距：</strong></p>
+<p style="margin-top:10px">① <strong>确定性vs概率性：</strong>传统软件输入固定则输出固定，Agent的LLM核心是概率性的——同样的输入可能输出不同结果。你需要用测试、护栏、输出验证来弥补这个差距。<br>
+② <strong>可观测性：</strong>Agent做了什么、为什么做、在哪个步骤失败了——如果你看不见，你就无法调试和改进。<br>
+③ <strong>成本控制：</strong>每次LLM调用都有成本，Agent可能多轮调用。没有成本控制，一个复杂任务可能花费超出预期的10倍。<br>
+④ <strong>边界设定：</strong>明确Agent能做什么、不能做什么，防止它在授权范围外行动。</p>
+<blockquote>一个好的Agent不只是一个会规划的LLM——它是一个有护栏、有可观测性、有错误恢复、有成本控制的完整系统。</blockquote>
+</div></section>
+
+<section id="s4"><div class="sec-title" style="color:#c0392b">🛡️ 辩证批判</div><div class="cg">
+<div class="cc" style="border-top:3px solid #c0392b"><div class="cl" style="color:#c0392b">技术迭代风险</div><p>AI Agent领域技术迭代极快，书中涉及的具体框架（如LangChain、AutoGPT等）和最佳实践可能在出版数月内就有重大更新。核心原则比具体工具更有价值。</p></div>
+<div class="cc" style="border-top:3px solid #e67e22"><div class="cl" style="color:#e67e22">偏实践，理论深度有限</div><p>这是一本工程实践手册，对Agent的理论基础（符号AI vs神经网络、决策理论等）涉及不深。对想深入理解的读者，需要配合理论读物。</p></div>
+<div class="cc" style="border-top:3px solid #27ae60"><div class="cl" style="color:#27ae60">核心价值</div><p>它填补了'理论上Agent可以做很多事'和'实践中如何让Agent在真实世界可靠工作'之间的差距，对AI工程师有直接实用价值。</p></div>
+<div class="cc" style="border-top:3px solid #3498db"><div class="cl" style="color:#3498db">适用人群</div><p>主要面向已有LLM基础知识的工程师。对完全没有AI开发经验的读者，需要先补充LLM应用开发基础。</p></div>
+</div></section>
+
+<section id="s5"><div class="sec-title" style="color:#2980b9">📖 帕累托精华章节</div>
+<div class="ch"><div class="cn">Agent规划和任务分解</div><div class="cw">必读理由：最核心的Agent设计原则</div><p>如何让Agent把复杂任务分解成可执行的步骤，包括ReAct框架、Chain-of-Thought规划、Plan-and-Execute模式的对比和选择标准——这是Agent设计中最有价值的原则性内容。</p></div>
+<div class="ch"><div class="cn">生产部署的陷阱</div><div class="cw">必读理由：最节省时间的经验总结</div><p>列举了生产环境中最常见的Agent失败模式：工具调用循环、上下文溢出、成本爆炸、不可预测的行为——以及每种失败模式的解决方案。</p></div>
+</section></div>
+<footer>《Mastering AI Agents》· 深度解构 · johnnyweb.netlify.app</footer></body></html>

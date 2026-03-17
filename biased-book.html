@@ -1,0 +1,40 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>偏见 - 深度解构</title><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet"><style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Noto Serif SC',Georgia,serif;background:#f9f7f2;color:#2c2c2c;font-size:17px;line-height:1.85;}
+nav{position:fixed;top:0;left:0;right:0;background:rgba(26,26,26,.97);z-index:100;padding:0 20px;display:flex;align-items:center;gap:4px;height:52px;overflow-x:auto;scrollbar-width:none;}
+nav::-webkit-scrollbar{display:none;}
+nav a{color:rgba(255,255,255,.8);text-decoration:none;font-size:12px;white-space:nowrap;padding:5px 10px;border-radius:4px;font-family:sans-serif;}
+.wrap{max-width:860px;margin:0 auto;padding:76px 24px 60px;}
+.hero{text-align:center;padding:60px 20px 48px;border-bottom:1px solid #e8e3db;margin-bottom:48px;}
+.hero-badge{display:inline-block;background:#1a3a5c;color:#fff;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:4px 14px;border-radius:2px;margin-bottom:18px;font-family:sans-serif;}
+.hero h1{font-size:clamp(24px,5vw,38px);font-weight:700;color:#1a1a1a;margin-bottom:10px;}
+.hero .author{color:#8b6f5e;font-size:15px;margin-bottom:16px;}
+.hero .summary{color:#555;font-size:15px;max-width:560px;margin:0 auto;}
+section{margin-bottom:52px;}
+.sec-title{font-size:22px;font-weight:700;color:#1a1a1a;margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid currentColor;}
+.card{background:#fff;border-radius:12px;padding:24px 28px;margin-bottom:16px;box-shadow:0 2px 12px rgba(0,0,0,.05);}
+.qa-q{font-weight:600;color:#1a3a5c;margin-bottom:6px;}
+.qa-a{color:#444;padding-left:12px;border-left:3px solid #c0392b;}
+.concept{background:#fff;border-radius:10px;padding:20px 24px;margin-bottom:14px;border-left:4px solid #27ae60;}
+.ct{font-weight:700;color:#1a1a1a;font-size:16px;margin-bottom:4px;}
+.cs{color:#e67e22;font-size:14px;margin-bottom:8px;font-family:sans-serif;}
+.cb{color:#555;font-size:15px;}
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+@media(max-width:600px){.cg{grid-template-columns:1fr;}}
+.cc{background:#fff;border-radius:10px;padding:18px 20px;}
+.cl{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;font-family:sans-serif;}
+.ch{background:#fff;border-radius:12px;padding:22px 26px;margin-bottom:14px;border-top:3px solid #2980b9;}
+.cn{font-weight:700;color:#1a1a1a;margin-bottom:6px;}
+.cw{font-size:13px;color:#e67e22;margin-bottom:10px;font-family:sans-serif;}
+blockquote{border-left:4px solid #c0392b;padding:12px 18px;margin:16px 0;background:#fff5f5;border-radius:0 8px 8px 0;font-style:italic;color:#555;}
+footer{text-align:center;padding:32px 20px;border-top:1px solid #e8e3db;color:#999;font-size:13px;font-family:sans-serif;}
+</style></head><body>
+<nav><a href="#" style="font-weight:700;color:#fff;font-size:13px;margin-right:8px;">📖</a><a href="#s1">作者使命</a> <a href="#s2">核心概念</a> <a href="#s3">方法论</a> <a href="#s4">辩证批判</a> <a href="#s5">精华章节</a></nav>
+<div class="wrap"><div class="hero"><div class="hero-badge">社会心理学·种族</div><h1>《偏见》</h1><div class="author">✍️ 珍妮弗·埃伯哈特 著</div><div class="summary">深度阅读解构 · 苏格拉底式追问 · 大白话降维 · 辩证批判</div></div>
+<section id="s1"><div class="sec-title" style="color:#1a3a5c">🧠 作者画像与核心使命</div>
+<div class="card"><div class="qa-q">Q1: 表面谈什么？</div><div class="qa-a" style="margin-bottom:10px">谈隐性偏见——那种你自己都不知道存在的、系统性影响你判断的偏见。</div><div class="qa-q">Q2: 真正的痛点？</div><div class="qa-a" style="margin-bottom:10px">大多数人认为偏见是坏人的专利。但研究显示，即使是那些明确反对歧视、真诚相信平等的人，他们的大脑也在无意识地做出带有偏见的判断。这不是道德问题，是认知系统的设计问题。</div><div class="qa-q">Q3: 终极问题？</div><div class="qa-a" style="margin-bottom:10px"><strong>如果偏见是大脑的'出厂设置'，我们如何在知道这一点的前提下，让系统设计来减少偏见对实际结果的影响？</strong></div></div></section>
+<section id="s2"><div class="sec-title" style="color:#27ae60">🗝️ 核心概念大白话解码</div><div class="concept"><div class="ct">隐性偏见（Implicit Bias）</div><div class="cs">那些你没有意识到的判断偏向</div><div class="cb">你能快速判断哪张脸更'值得信任'——这个判断在200毫秒内完成，在你的意识介入之前。这不是你刻意歧视，而是你的大脑在自动分类。问题是：这些自动分类受到了文化偏见的训练。</div></div><div class="concept"><div class="ct">分类本能</div><div class="cs">大脑通过分类来提高处理速度，但分类会带来偏见</div><div class="cb">你在超市看到一个穿黑色帽衫的人，大脑0.1秒内完成分类：性别、年龄、种族，以及基于这些分类的危险评估。这个速度让我们得以高效生活，但也让我们在错误的情境下做出错误判断。</div></div><div class="concept"><div class="ct">系统设计优于个人意志</div><div class="cs">改变行为比改变态度更有效</div><div class="cb">让警察每次上岗前冥想30分钟来消除偏见，效果几乎是零。但让体制记录每一次警察停车检查的种族构成，定期公开，让警察知道自己的行为在被统计——这会改变行为。系统改变优于意识改变。</div></div></section>
+<section id="s3"><div class="sec-title" style="color:#e67e22">🛠️ 核心方法论</div><div class="card"><p>埃伯哈特的核心方法：把内隐联结测验（IAT）的实验室结论带到真实场景——法庭、学校、职场、医疗系统——展示隐性偏见如何在真实决策中造成真实后果。然后提出基于系统设计的干预方案。</p><blockquote>承认偏见不是认错，而是获得改变它的起点。拒绝承认偏见的人，永远无法减少它的影响。</blockquote></div></section>
+<section id="s4"><div class="sec-title" style="color:#c0392b">🛡️ 辩证批判</div><div class="cg"><div class="cc" style="border-top:3px solid #c0392b"><div class="cl" style="color:#c0392b">IAT测试的科学争议</div><p>内隐联结测验（IAT）的测量效度在学术界持续被质疑：它测的到底是偏见还是对文化关联的认知？它能预测真实行为吗？</p></div><div class="cc" style="border-top:3px solid #e67e22"><div class="cl" style="color:#e67e22">精英视角</div><p>埃伯哈特的解决方案主要针对机构（警察局、医院、学校）——这预设了一个可以改变政策的位置，对普通个人的指导相对有限。</p></div><div class="cc" style="border-top:3px solid #27ae60"><div class="cl" style="color:#27ae60">核心价值</div><p>把抽象的'偏见'概念翻译成具体的神经科学和行为科学研究，让读者理解'偏见不是坏人才有的'这个关键洞见。</p></div><div class="cc" style="border-top:3px solid #3498db"><div class="cl" style="color:#3498db">政治中性化</div><p>把结构性种族主义问题框架为'认知偏见'问题，可能在政治上更易被接受，但也可能低估了权力结构和系统性不平等的角色。</p></div></div></section>
+<section id="s5"><div class="sec-title" style="color:#2980b9">📖 帕累托精华章节</div><div class="ch"><div class="cn">黑暗面孔与犯罪联结</div><div class="cw">必读理由：最震撼的实验结果</div><p>埃伯哈特和同事研究了真实死刑判决数据：在其他条件相同的情况下，面孔更符合刻板印象'黑人特征'的被告，收到死刑的概率显著更高。这不是小的差异，是生死之别。</p></div><div class="ch"><div class="cn">减速策略</div><div class="cw">必读理由：最可操作的干预方案</div><p>当你知道偏见在快速判断中最强，干预方法之一是系统性地强制减速——面试时先看简历再看名字，量刑前提交统计数据。这章把抽象的建议变成了具体的机制设计。</p></div></section></div>
+<footer>《偏见》· 深度解构 · johnnyweb.netlify.app</footer></body></html>

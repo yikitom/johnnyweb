@@ -1,0 +1,64 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>安妮日记 - 深度解构</title><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet"><style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Noto Serif SC',Georgia,serif;background:#f9f7f2;color:#2c2c2c;font-size:17px;line-height:1.85;}
+nav{position:fixed;top:0;left:0;right:0;background:rgba(26,26,26,.97);z-index:100;padding:0 20px;display:flex;align-items:center;gap:4px;height:52px;overflow-x:auto;scrollbar-width:none;}
+nav::-webkit-scrollbar{display:none;}
+nav a{color:rgba(255,255,255,.8);text-decoration:none;font-size:12px;white-space:nowrap;padding:5px 10px;border-radius:4px;font-family:sans-serif;}
+.wrap{max-width:860px;margin:0 auto;padding:76px 24px 60px;}
+.hero{text-align:center;padding:60px 20px 48px;border-bottom:1px solid #e8e3db;margin-bottom:48px;}
+.hero-badge{display:inline-block;background:#1a3a5c;color:#fff;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:4px 14px;border-radius:2px;margin-bottom:18px;font-family:sans-serif;}
+.hero h1{font-size:clamp(24px,5vw,38px);font-weight:700;color:#1a1a1a;margin-bottom:10px;}
+.hero .author{color:#8b6f5e;font-size:15px;margin-bottom:16px;}
+.hero .summary{color:#555;font-size:15px;max-width:560px;margin:0 auto;}
+section{margin-bottom:52px;}
+.sec-title{font-size:22px;font-weight:700;color:#1a1a1a;margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid currentColor;}
+.card{background:#fff;border-radius:12px;padding:24px 28px;margin-bottom:16px;box-shadow:0 2px 12px rgba(0,0,0,.05);}
+.qa-q{font-weight:600;color:#1a3a5c;margin-bottom:6px;}
+.qa-a{color:#444;padding-left:12px;border-left:3px solid #c0392b;}
+.concept{background:#fff;border-radius:10px;padding:20px 24px;margin-bottom:14px;border-left:4px solid #27ae60;}
+.ct{font-weight:700;color:#1a1a1a;font-size:16px;margin-bottom:4px;}
+.cs{color:#e67e22;font-size:14px;margin-bottom:8px;font-family:sans-serif;}
+.cb{color:#555;font-size:15px;}
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+@media(max-width:600px){.cg{grid-template-columns:1fr;}}
+.cc{background:#fff;border-radius:10px;padding:18px 20px;}
+.cl{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;font-family:sans-serif;}
+.ch{background:#fff;border-radius:12px;padding:22px 26px;margin-bottom:14px;border-top:3px solid #2980b9;}
+.cn{font-weight:700;color:#1a1a1a;margin-bottom:6px;}
+.cw{font-size:13px;color:#e67e22;margin-bottom:10px;font-family:sans-serif;}
+blockquote{border-left:4px solid #c0392b;padding:12px 18px;margin:16px 0;background:#fff5f5;border-radius:0 8px 8px 0;font-style:italic;color:#555;}
+footer{text-align:center;padding:32px 20px;border-top:1px solid #e8e3db;color:#999;font-size:13px;font-family:sans-serif;}
+</style></head><body>
+<nav><a href="#" style="font-weight:700;color:#fff;font-size:13px;margin-right:8px;">📖</a><a href="#s1">传主画像</a> <a href="#s2">核心洞见</a> <a href="#s3">思维模型</a> <a href="#s4">辩证批判</a> <a href="#s5">精华日记</a></nav>
+<div class="wrap"><div class="hero"><div class="hero-badge">传记·二战·人性</div><h1>《安妮日记》</h1><div class="author">✍️ 安妮·弗兰克 著</div><div class="summary">深度阅读解构 · 苏格拉底式追问 · 大白话降维 · 辩证批判</div></div>
+<section id="s1"><div class="sec-title" style="color:#1a3a5c">👤 传主画像</div>
+<div class="card">
+<p><strong>历史背景：</strong>1942-1944年，纳粹德国占领荷兰，系统性灭绝犹太人。安妮一家8人藏匿于阿姆斯特丹一个仓库的密室里，两年零一个月。</p>
+<p style="margin-top:12px"><strong>性格特征：</strong>内有深刻观察力的外向型表演者——她给人看到的是嬉闹活泼，但日记里是一个正在快速成熟的思考者。她能同时扮演两个自己：社交的安妮和思考的安妮。</p>
+<p style="margin-top:12px"><strong>她在解决什么终极难题？</strong>在密室的物理极限里，如何保持精神的自由？她的答案是：写作。把内心世界扩张到无限大，以此对抗外在空间的极度压缩。</p>
+</div></section>
+
+<section id="s2"><div class="sec-title" style="color:#27ae60">🗝️ 核心洞见</div>
+<div class="concept"><div class="ct">双重人格框架</div><div class="cs">每个人都在表演，问题是你知不知道</div><div class="cb">她在1944年4月5日的日记里写道：外面的安妮是快乐的、爱开玩笑的——那是表演。里面的安妮才是真实的。大多数人一生都没意识到自己有这两个自己，能意识到这一点本身就是一种成熟。</div></div>
+<div class="concept"><div class="ct">经过考验的乐观主义</div><div class="cs">不是天真，是在充分理解黑暗之后的主动选择</div><div class="cb">她最后一篇重要日记写道：尽管看到了所有这些，她依然相信人性本善。注意：这不是没有看到恶，而是看到了恶之后仍然选择相信善。这是道德意志，不是童稚。</div></div>
+<div class="concept"><div class="ct">写作即自我</div><div class="cs">当所有外在都被剥夺，内在的表达就是最后的尊严</div><div class="cb">她在密室里无法上学、无法见朋友、无法走路。但她的日记里有自己对彼得的感情分析、对母亲的复杂情感、对战后生活的想象——写作让她拥有了一个密室之外的平行世界。</div></div></section>
+
+<section id="s3"><div class="sec-title" style="color:#e67e22">🛠️ 三个可复制的思维能力</div>
+<div class="card">
+<p><strong>① 元情感能力：</strong>在情感最浓烈时保持观察者视角。她一边爱着彼得，一边分析自己为什么爱；一边和母亲冲突，一边质疑自己的怨恨是否公平。这种能力让她的日记具有小说的深度。</p>
+<p style="margin-top:10px"><strong>② 反事实思考：</strong>她不断想象"如果没有战争我会怎样"，用这种反事实构建对正常生活的渴望，而不是陷入"现在很糟糕"的绝望。</p>
+<p style="margin-top:10px"><strong>③ 语言精准化内心：</strong>普通人感到"很难受"就停了，安妮会继续追问：是因为孤独？是因为对彼得的期待落空？是因为对战争的愤怒？她的日记让她自己的情感变得更可理解。</p>
+<blockquote>能够精确描述自己感受的人，比无法描述的人更能掌控自己的情绪。</blockquote>
+</div></section>
+
+<section id="s4"><div class="sec-title" style="color:#c0392b">🛡️ 辩证批判</div>
+<div class="cg">
+<div class="cc" style="border-top:3px solid #c0392b"><div class="cl" style="color:#c0392b">奥托·弗兰克的编辑影响</div><p>现在流通的版本是她父亲编辑过的——删去了一些对母亲的尖锐批评和部分青春期性描写。完整版1995年才出版。读者应该知道这个历史背景。</p></div>
+<div class="cc" style="border-top:3px solid #e67e22"><div class="cl" style="color:#e67e22">符号化的代价</div><p>安妮作为"大屠杀的象征"被全球传播，但这种符号化也遮蔽了她的个体性——她是一个有缺陷、有私心、有青春期躁动的真实少女，不是道德完人。</p></div>
+<div class="cc" style="border-top:3px solid #27ae60"><div class="cl" style="color:#27ae60">核心价值</div><p>它是极端历史中普通人内心世界的最珍贵记录之一。它的价值不是教训，而是见证——见证一个人在极端条件下如何保持人性。</p></div>
+</div></section>
+
+<section id="s5"><div class="sec-title" style="color:#2980b9">📖 精华日记</div>
+<div class="ch"><div class="cn">1944年4月5日（双重自我剖析）</div><div class="cw">必读理由：全书最有哲学密度的一篇</div><p>她完整地解构了自己——为什么表现得轻浮，为什么隐藏自己，为什么没人真正认识她。这是一个15岁少女对自我最诚实的解剖，放在任何心理学经典里都不逊色。</p></div>
+<div class="ch"><div class="cn">1944年7月15日（人性本善宣言）</div><div class="cw">必读理由：最后的信仰告白，也是最大的悬案</div><p>她在最后几周写下了那句著名的话。一个月后她被捕，八个月后在集中营去世。这句话因此成为了一个无法验证的道德假设——如果她活到战后，她还会这样认为吗？</p></div></section></div>
+<footer>《安妮日记》· 深度解构 · johnnyweb.netlify.app</footer></body></html>

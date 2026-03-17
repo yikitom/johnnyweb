@@ -1,0 +1,61 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>我的前半生 - 深度解构</title><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet"><style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Noto Serif SC',Georgia,serif;background:#f9f7f2;color:#2c2c2c;font-size:17px;line-height:1.85;}
+nav{position:fixed;top:0;left:0;right:0;background:rgba(26,26,26,.97);z-index:100;padding:0 20px;display:flex;align-items:center;gap:4px;height:52px;overflow-x:auto;scrollbar-width:none;}
+nav::-webkit-scrollbar{display:none;}
+nav a{color:rgba(255,255,255,.8);text-decoration:none;font-size:12px;white-space:nowrap;padding:5px 10px;border-radius:4px;font-family:sans-serif;}
+.wrap{max-width:860px;margin:0 auto;padding:76px 24px 60px;}
+.hero{text-align:center;padding:60px 20px 48px;border-bottom:1px solid #e8e3db;margin-bottom:48px;}
+.hero-badge{display:inline-block;background:#1a3a5c;color:#fff;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:4px 14px;border-radius:2px;margin-bottom:18px;font-family:sans-serif;}
+.hero h1{font-size:clamp(24px,5vw,38px);font-weight:700;color:#1a1a1a;margin-bottom:10px;}
+.hero .author{color:#8b6f5e;font-size:15px;margin-bottom:16px;}
+.hero .summary{color:#555;font-size:15px;max-width:560px;margin:0 auto;}
+section{margin-bottom:52px;}
+.sec-title{font-size:22px;font-weight:700;color:#1a1a1a;margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid currentColor;}
+.card{background:#fff;border-radius:12px;padding:24px 28px;margin-bottom:16px;box-shadow:0 2px 12px rgba(0,0,0,.05);}
+.qa-q{font-weight:600;color:#1a3a5c;margin-bottom:6px;}
+.qa-a{color:#444;padding-left:12px;border-left:3px solid #c0392b;}
+.concept{background:#fff;border-radius:10px;padding:20px 24px;margin-bottom:14px;border-left:4px solid #27ae60;}
+.ct{font-weight:700;color:#1a1a1a;font-size:16px;margin-bottom:4px;}
+.cs{color:#e67e22;font-size:14px;margin-bottom:8px;font-family:sans-serif;}
+.cb{color:#555;font-size:15px;}
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+@media(max-width:600px){.cg{grid-template-columns:1fr;}}
+.cc{background:#fff;border-radius:10px;padding:18px 20px;}
+.cl{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;font-family:sans-serif;}
+.ch{background:#fff;border-radius:12px;padding:22px 26px;margin-bottom:14px;border-top:3px solid #2980b9;}
+.cn{font-weight:700;color:#1a1a1a;margin-bottom:6px;}
+.cw{font-size:13px;color:#e67e22;margin-bottom:10px;font-family:sans-serif;}
+blockquote{border-left:4px solid #c0392b;padding:12px 18px;margin:16px 0;background:#fff5f5;border-radius:0 8px 8px 0;font-style:italic;color:#555;}
+footer{text-align:center;padding:32px 20px;border-top:1px solid #e8e3db;color:#999;font-size:13px;font-family:sans-serif;}
+</style></head><body>
+<nav><a href="#" style="font-weight:700;color:#fff;font-size:13px;margin-right:8px;">📖</a><a href="#s1">传主画像</a> <a href="#s2">核心局</a> <a href="#s3">思维模型</a> <a href="#s4">至暗时刻</a> <a href="#s5">精华章节</a> <a href="#s6">遗产</a></nav>
+<div class="wrap"><div class="hero"><div class="hero-badge">传记·清末民国</div><h1>《我的前半生》</h1><div class="author">✍️ 溥仪 著</div><div class="summary">深度阅读解构 · 苏格拉底式追问 · 大白话降维 · 辩证批判</div></div>
+<section id="s1"><div class="sec-title" style="color:#1a3a5c">👤 传主画像</div>
+<div class="card"><p><strong>历史阶段：</strong>1906-1967年，中国从帝制崩溃到共和国建立的最剧烈变动期。溥仪是那个被时代碾碎又重塑的人。</p>
+<p style="margin-top:12px"><strong>性格特征：</strong>从生下来就被"皇帝"身份锁定。过度依赖这个身份做所有判断，失去这个身份后几近人格崩溃。晚年在强制"改造"中重建了自我叙事。</p>
+<p style="margin-top:12px"><strong>成就感来源：</strong>早期：恢复皇位。中期：活下去。晚期：成为"新人"，获得外界认可的改造成果。</p></div></section>
+
+<section id="s2"><div class="sec-title" style="color:#e67e22">🎮 核心局与破局点</div>
+<div class="card">
+<div class="qa-q">他这辈子在解决什么终极难题？</div>
+<div class="qa-a">当支撑你存在的所有叙事都被历史宣告非法，你怎么活下去？三岁登基，17岁退位，29岁当傀儡，38岁被俘，62岁去世。每一个阶段都是旧身份的强制解构。</div>
+<div class="qa-q" style="margin-top:12px">破局点（如果有的话）：彻底认输</div>
+<div class="qa-a">不是表面的服软，而是在抚顺战犯管理所里主动拆毁旧的认知框架——用写作《我的前半生》的方式，把自己的人生重新叙述为一个"觉醒者"的故事。这是中国历史上最极端的认知重构案例。</div>
+</div></section>
+
+<section id="s3"><div class="sec-title" style="color:#27ae60">🧠 三大反面教材</div>
+<div class="concept"><div class="ct">受害者叙事陷阱</div><div class="cs">永远是别人的错，自己是无辜受害者</div><div class="cb">被赶出紫禁城怪冯玉祥，当日本傀儡怪日本骗他，伪满洲国失败怪时机不好。这种逻辑让他永远不用照镜子，但代价是永远无法掌控自己的命运。</div></div>
+<div class="concept"><div class="ct">身份锚定效应</div><div class="cs">"我是皇帝"这四个字把他的脑子锁死了</div><div class="cb">他愿意出卖国家、出卖尊严、出卖一切——只要对方承诺帮他复辟。这个身份执念让他在关键决策时完全失去独立判断。</div></div>
+<div class="concept"><div class="ct">被迫的认知重构</div><div class="cs">外力改写了他的人生叙事系统</div><div class="cb">抚顺10年，他把"皇帝是封建糟粕"这个新叙事内化进了自己的意识。这是"可以改变一个人的底层信念系统"最极端的案例——但它需要的代价是完全的权力丧失和外部强制。</div></div></section>
+
+<section id="s4"><div class="sec-title" style="color:#c0392b">⚡ 至暗时刻</div>
+<div class="ch"><div class="cn">1945年被俘：从"皇帝"到战犯</div><div class="cw">苏联军队机场拦截，日本战败投降</div><p>那一刻他带着一箱皇宫文物准备逃往日本，结果被截获。反人性的决定：他选择了主动配合，把价值连城的文物全部上交。这一刻的顺从，可能真的救了他一命。</p></div></section>
+
+<section id="s5"><div class="sec-title" style="color:#2980b9">📖 精华章节</div>
+<div class="ch"><div class="cn">天津租界岁月</div><div class="cw">必读理由：自我欺骗最深处的刻画</div><p>住在租界里的"伪皇帝"，既不能回北京，又无法接受已经退位的现实，靠着日本人的承诺维系虚假的"帝王感"。这一章是"身份锚定"如何让人完全失去判断力的最完整案例。</p></div>
+<div class="ch"><div class="cn">抚顺改造岁月</div><div class="cw">必读理由：认知重构如何在极端环境下发生</div><p>10年战犯管理所，他从"这些人不配审判我"到"我确实是历史罪人"的心理转变全过程。不管你怎么看这段历史，这是人类心理史上最有价值的第一人称改造记录之一。</p></div></section>
+
+<section id="s6"><div class="sec-title" style="color:#8e44ad">🌟 一句话遗产</div>
+<blockquote>当一个人失去了一切外在支撑——头衔、权力、财富——才真正面对这个问题：除了这些，我还是谁？</blockquote></section></div>
+<footer>《我的前半生》· 深度解构 · johnnyweb.netlify.app</footer></body></html>

@@ -13,17 +13,15 @@ body{font-family:'Noto Sans SC',sans-serif;background:#0a0c10;color:#e8ecf4;min-
 .hero p{color:#8a92a6;font-size:15px;max-width:500px;margin:0 auto;}
 .wrap{max-width:1100px;margin:0 auto;padding:0 24px 80px;}
 .section-title{font-size:13px;letter-spacing:3px;text-transform:uppercase;color:#4a5568;font-family:sans-serif;margin:48px 0 20px;}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;}
-.card{background:#12151c;border:1px solid #1e2535;border-radius:12px;padding:22px 24px;text-decoration:none;color:inherit;display:block;transition:.2s;}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;}
+.card{background:#12151c;border:1px solid #1e2535;border-radius:12px;padding:20px 22px;text-decoration:none;color:inherit;display:block;transition:.2s;}
 .card:hover{border-color:#3a4a6a;background:#161922;transform:translateY(-2px);}
 .card-cat{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#4a5568;font-family:sans-serif;margin-bottom:8px;}
-.card-title{font-family:'Noto Serif SC',serif;font-size:17px;color:#d4dae8;margin-bottom:8px;line-height:1.4;}
-.card-desc{font-size:13px;color:#5a6278;line-height:1.6;}
-.card-arrow{text-align:right;color:#3a4a6a;font-size:16px;margin-top:12px;}
-.book-card .card-cat{color:#7c5a8a;}
-.book-card{border-color:#1e1a2d;}
-.book-card:hover{border-color:#4a2a6a;}
-.research-card .card-cat{color:#3a6a8a;}
+.card-title{font-family:'Noto Serif SC',serif;font-size:16px;color:#d4dae8;margin-bottom:8px;line-height:1.4;}
+.card-desc{font-size:12px;color:#5a6278;line-height:1.6;}
+.card-arrow{text-align:right;color:#3a4a6a;font-size:14px;margin-top:10px;}
+.bk{border-color:#1e1a2d;}.bk:hover{border-color:#4a2a6a;}.bk .card-cat{color:#7c5a8a;}
+.rsch{border-color:#1a2535;}.rsch:hover{border-color:#2a4a6a;}.rsch .card-cat{color:#3a6a8a;}
 .footer{text-align:center;padding:32px;color:#2e3648;font-size:12px;font-family:sans-serif;}
 </style>
 </head>
@@ -34,71 +32,96 @@ body{font-family:'Noto Sans SC',sans-serif;background:#0a0c10;color:#e8ecf4;min-
 </div>
 <div class="wrap">
 
-<div class="section-title">📖 传记 · 人物解构</div>
+<div class="section-title">👤 传记·人物解构</div>
 <div class="grid">
-<a href="su-dongpo-biography.html" class="card book-card"><div class="card-cat">传记 · 宋代</div><div class="card-title">《苏东坡新传》</div><div class="card-desc">李一冰著 · 把苦难变成诗，中国文人的最高典范</div><div class="card-arrow">→</div></a>
-<a href="infinite-machine-deepmind.html" class="card book-card"><div class="card-cat">传记 · AI</div><div class="card-title">《无限机器》</div><div class="card-desc">马拉比著 · DeepMind与超级智能的探索之路</div><div class="card-arrow">→</div></a>
-<a href="hassabis-ai-biography.html" class="card book-card"><div class="card-cat">传记 · AI</div><div class="card-title">《哈萨比斯：谷歌AI之脑》</div><div class="card-desc">马拉比著 · 从国际象棋神童到AlphaFold的破局之路</div><div class="card-arrow">→</div></a>
-<a href="ducks-oil-sands.html" class="card book-card"><div class="card-cat">图像小说 · 社会批判</div><div class="card-title">《Ducks: Two Years in the Oil Sands》</div><div class="card-desc">Kate Beaton著 · 从一种荒芜逃向另一种荒芜</div><div class="card-arrow">→</div></a>
+<a href="su-dongpo-biography.html" class="card bk"><div class="card-cat">传记·宋代</div><div class="card-title">《苏东坡新传》</div><div class="card-desc">李一冰著·把苦难变成诗，中国文人的最高典范</div><div class="card-arrow">→</div></a>
+<a href="hassabis-ai-biography.html" class="card bk"><div class="card-cat">传记·AI</div><div class="card-title">《哈萨比斯：谷歌AI之脑》</div><div class="card-desc">马拉比著·从国际象棋神童到AlphaFold的破局之路</div><div class="card-arrow">→</div></a>
+<a href="musk-biography.html" class="card bk"><div class="card-cat">传记·科技创业</div><div class="card-title">《马斯克传》</div><div class="card-desc">艾萨克森著·第一性原理驱动的文明级创业者</div><div class="card-arrow">→</div></a>
+<a href="einstein-biography.html" class="card bk"><div class="card-cat">传记·物理学</div><div class="card-title">《爱因斯坦传》</div><div class="card-desc">艾萨克森著·想象力比知识更重要的一生</div><div class="card-arrow">→</div></a>
+<a href="franklin-biography.html" class="card bk"><div class="card-cat">传记·美国开国</div><div class="card-title">《富兰克林传》</div><div class="card-desc">艾萨克森著·终极务实主义者的知识改变命运</div><div class="card-arrow">→</div></a>
+<a href="lula-biography.html" class="card bk"><div class="card-cat">传记·巴西政治</div><div class="card-title">《卢拉传》</div><div class="card-desc">四次竞选才赢的工厂工人·战略性耐心的极致案例</div><div class="card-arrow">→</div></a>
+<a href="johnson-biography.html" class="card bk"><div class="card-cat">传记·英国文学</div><div class="card-title">《塞缪尔·约翰逊传》</div><div class="card-desc">鲍斯韦尔著·用知识垄断取代阶层垄断的编词典者</div><div class="card-arrow">→</div></a>
+<a href="puyi-biography.html" class="card bk"><div class="card-cat">传记·清末民国</div><div class="card-title">《我的前半生》</div><div class="card-desc">溥仪著·被时代碾碎又重塑的末代皇帝</div><div class="card-arrow">→</div></a>
+<a href="ducks-oil-sands.html" class="card bk"><div class="card-cat">图像小说·社会批判</div><div class="card-title">《Ducks: Two Years in the Oil Sands》</div><div class="card-desc">Kate Beaton著·从一种荒芜逃向另一种荒芜</div><div class="card-arrow">→</div></a>
+<a href="anne-frank-diary.html" class="card bk"><div class="card-cat">传记·二战·人性</div><div class="card-title">《安妮日记》</div><div class="card-desc">安妮·弗兰克著·在密室里把内心世界扩张到无限大</div><div class="card-arrow">→</div></a>
 </div>
 
-<div class="section-title">🧠 哲学 · 社会科学</div>
+<div class="section-title">🧠 哲学·社会·历史</div>
 <div class="grid">
-<a href="bauman-understanding-world.html" class="card book-card"><div class="card-cat">社会学</div><div class="card-title">《我们如何理解这个世界》</div><div class="card-desc">鲍曼著 · 液态现代性与秩序建立的代价</div><div class="card-arrow">→</div></a>
-<a href="how-world-thinks-baggini.html" class="card book-card"><div class="card-cat">跨文化哲学</div><div class="card-title">《世界是如何思考的》</div><div class="card-desc">巴吉尼著 · 哲学不是一棵树，而是一片森林</div><div class="card-arrow">→</div></a>
-<a href="ridley-bottom-up.html" class="card book-card"><div class="card-cat">演化经济学</div><div class="card-title">《自下而上》</div><div class="card-desc">马特·里德利著 · 这个世界没有总设计师</div><div class="card-arrow">→</div></a>
-<a href="mattering-instinct.html" class="card book-card"><div class="card-cat">存在主义·意义哲学</div><div class="card-title">《The Mattering Instinct》</div><div class="card-desc">Goldstein著 · 人不是为了活着，而是为了证明活着有意义</div><div class="card-arrow">→</div></a>
+<a href="bauman-understanding-world.html" class="card bk"><div class="card-cat">社会学</div><div class="card-title">《我们如何理解这个世界》</div><div class="card-desc">鲍曼著·液态现代性与秩序建立的代价</div><div class="card-arrow">→</div></a>
+<a href="how-world-thinks-baggini.html" class="card bk"><div class="card-cat">跨文化哲学</div><div class="card-title">《世界是如何思考的》</div><div class="card-desc">巴吉尼著·哲学不是一棵树，而是一片森林</div><div class="card-arrow">→</div></a>
+<a href="ridley-bottom-up.html" class="card bk"><div class="card-cat">演化经济学</div><div class="card-title">《自下而上》</div><div class="card-desc">马特·里德利著·这个世界没有总设计师</div><div class="card-arrow">→</div></a>
+<a href="mattering-instinct.html" class="card bk"><div class="card-cat">存在主义</div><div class="card-title">《The Mattering Instinct》</div><div class="card-desc">Goldstein著·人不是为了活着，而是为了证明活着有意义</div><div class="card-arrow">→</div></a>
+<a href="religion-nature.html" class="card bk"><div class="card-cat">哲学·无神论</div><div class="card-title">《宗教的本质》</div><div class="card-desc">费尔巴哈著·你跪拜的神，不过是你自己的倒影</div><div class="card-arrow">→</div></a>
+<a href="shuniu.html" class="card bk"><div class="card-cat">历史哲学·中国</div><div class="card-title">《枢纽》</div><div class="card-desc">施展著·中国是连接游牧与农耕的3000年战略节点</div><div class="card-arrow">→</div></a>
+<a href="atomized-humans.html" class="card bk"><div class="card-cat">社会学·现代性</div><div class="card-title">《原子化人类》</div><div class="card-desc">维勒贝克著·现代性解放了个体，也让人失去了归属</div><div class="card-arrow">→</div></a>
+<a href="the-cosmopolites.html" class="card bk"><div class="card-cat">政治学·移民</div><div class="card-title">《世界公民》</div><div class="card-desc">护照的政治经济学·无国籍者的困境与护照商品化</div><div class="card-arrow">→</div></a>
 </div>
 
-<div class="section-title">🔬 神经科学 · 认知心理学</div>
+<div class="section-title">🔬 科学·神经认知</div>
 <div class="grid">
-<a href="behave-sapolsky.html" class="card book-card"><div class="card-cat">神经生物学</div><div class="card-title">《Behave》</div><div class="card-desc">萨波斯基著 · 人类行为从1秒到千年的生物学解构</div><div class="card-arrow">→</div></a>
-<a href="half-brain-world.html" class="card book-card"><div class="card-cat">脑科学·意识</div><div class="card-title">《半脑世界》</div><div class="card-desc">泰勒著 · 脑科学家的中风亲历：平静是一种神经能力</div><div class="card-arrow">→</div></a>
-<a href="metacognition-rewire.html" class="card book-card"><div class="card-cat">认知科学</div><div class="card-title">《元认知：改变大脑的顽固思维》</div><div class="card-desc">神经可塑性与元认知四步循环的实践指南</div><div class="card-arrow">→</div></a>
-<a href="finding-focus.html" class="card book-card"><div class="card-cat">注意力管理</div><div class="card-title">《Finding Focus》</div><div class="card-desc">Montminy著 · 超日节律与注意力生态系统重建</div><div class="card-arrow">→</div></a>
+<a href="behave-sapolsky.html" class="card bk"><div class="card-cat">神经生物学</div><div class="card-title">《Behave》</div><div class="card-desc">萨波斯基著·人类行为从1秒到千年的生物学解构</div><div class="card-arrow">→</div></a>
+<a href="half-brain-world.html" class="card bk"><div class="card-cat">脑科学·意识</div><div class="card-title">《半脑世界》</div><div class="card-desc">泰勒著·脑科学家中风亲历：平静是神经能力</div><div class="card-arrow">→</div></a>
+<a href="metacognition-rewire.html" class="card bk"><div class="card-cat">认知科学</div><div class="card-title">《元认知：改变大脑的顽固思维》</div><div class="card-desc">神经可塑性与元认知四步循环的实践指南</div><div class="card-arrow">→</div></a>
+<a href="what-is-life.html" class="card bk"><div class="card-cat">物理生物学·哲学</div><div class="card-title">《生命是什么》</div><div class="card-desc">薛定谔著·物理学家预测了DNA的存在</div><div class="card-arrow">→</div></a>
+<a href="consciousness-exploration.html" class="card bk"><div class="card-cat">神经科学·意识</div><div class="card-title">《意识探索》</div><div class="card-desc">科赫著·意识的神经关联物与AI是否能有意识</div><div class="card-arrow">→</div></a>
+<a href="ageless-brain.html" class="card bk"><div class="card-cat">神经科学·大脑健康</div><div class="card-title">《The Ageless Brain》</div><div class="card-desc">Milstein著·你可以退休，但你的大脑不能退休</div><div class="card-arrow">→</div></a>
+<a href="eve-book.html" class="card bk"><div class="card-cat">进化生物学·女性</div><div class="card-title">《夏娃》</div><div class="card-desc">波汉农著·以女性为主角重写200万年人类进化史</div><div class="card-arrow">→</div></a>
+<a href="biased-book.html" class="card bk"><div class="card-cat">社会心理学·种族</div><div class="card-title">《偏见》</div><div class="card-desc">埃伯哈特著·偏见是大脑的出厂设置，不是坏人的专利</div><div class="card-arrow">→</div></a>
 </div>
 
-<div class="section-title">💡 思维方法 · 学习成长</div>
+<div class="section-title">💡 思维·成长·学习</div>
 <div class="grid">
-<a href="think-like-genius.html" class="card book-card"><div class="card-cat">思维方法</div><div class="card-title">《如何像天才一样思考》</div><div class="card-desc">天才不是智商碾压，而是一套不同的提问方式</div><div class="card-arrow">→</div></a>
-<a href="influence-dual-analysis.html" class="card book-card"><div class="card-cat">双书分析</div><div class="card-title">影响力 × 影响力的八大障碍</div><div class="card-desc">西奥迪尼+莎罗特 · 推力工具与阻力地图的整合</div><div class="card-arrow">→</div></a>
+<a href="think-like-genius.html" class="card bk"><div class="card-cat">思维方法</div><div class="card-title">《如何像天才一样思考》</div><div class="card-desc">天才不是智商碾压，而是一套不同的提问方式</div><div class="card-arrow">→</div></a>
+<a href="influence-dual-analysis.html" class="card bk"><div class="card-cat">双书分析</div><div class="card-title">影响力×影响力的八大障碍</div><div class="card-desc">西奥迪尼+莎罗特·推力工具与阻力地图的整合</div><div class="card-arrow">→</div></a>
+<a href="multiple-intelligence.html" class="card bk"><div class="card-cat">教育心理学</div><div class="card-title">《从多元智能到综合思维》</div><div class="card-desc">加德纳著·智能不止一种，综合才是最高级的能力</div><div class="card-arrow">→</div></a>
+<a href="finding-focus.html" class="card bk"><div class="card-cat">注意力管理</div><div class="card-title">《Finding Focus》</div><div class="card-desc">Montminy著·超日节律与注意力生态系统重建</div><div class="card-arrow">→</div></a>
+<a href="could-should-might-dont.html" class="card bk"><div class="card-cat">未来学·设计思维</div><div class="card-title">《Could Should Might Don't》</div><div class="card-desc">福斯特著·夺回对未来想象的主权</div><div class="card-arrow">→</div></a>
+<a href="doomsday-calculation.html" class="card bk"><div class="card-cat">概率论·预测</div><div class="card-title">《万物皆可预测》</div><div class="card-desc">庞德斯通著·用贝叶斯定理预测从未发生过的事</div><div class="card-arrow">→</div></a>
 </div>
 
-<div class="section-title">🤖 AI · 技术 · 未来</div>
+<div class="section-title">🤖 AI·技术·未来</div>
 <div class="grid">
-<a href="llm-hands-on.html" class="card book-card"><div class="card-cat">AI工程</div><div class="card-title">《Hands-On Large Language Models》</div><div class="card-desc">Alammar著 · 从会用API到构建生产级LLM系统的工程判断力</div><div class="card-arrow">→</div></a>
-<a href="thinking-with-machines.html" class="card book-card"><div class="card-cat">AI与人类决策</div><div class="card-title">《Thinking with Machines》</div><div class="card-desc">Vasant Dhar著 · AI是副驾驶不是司机，方向盘必须握在人手里</div><div class="card-arrow">→</div></a>
-<a href="brave-new-words.html" class="card book-card"><div class="card-cat">AI教育革命</div><div class="card-title">《Brave New Words》</div><div class="card-desc">萨尔·汗著 · AI让每个孩子拥有私人家教，几乎免费</div><div class="card-arrow">→</div></a>
-<a href="alphafold-report.html" class="card book-card"><div class="card-cat">科学研究</div><div class="card-title">AlphaFold技术深度解析</div><div class="card-desc">蛋白质折叠问题的AI解法：从AlphaFold 2到3</div><div class="card-arrow">→</div></a>
+<a href="llm-hands-on.html" class="card bk"><div class="card-cat">AI工程</div><div class="card-title">《Hands-On Large Language Models》</div><div class="card-desc">Alammar著·从API调用到生产级LLM系统的工程判断力</div><div class="card-arrow">→</div></a>
+<a href="thinking-with-machines.html" class="card bk"><div class="card-cat">AI与人类决策</div><div class="card-title">《Thinking with Machines》</div><div class="card-desc">Vasant Dhar著·AI是副驾驶，方向盘必须握在人手里</div><div class="card-arrow">→</div></a>
+<a href="brave-new-words.html" class="card bk"><div class="card-cat">AI教育革命</div><div class="card-title">《Brave New Words》</div><div class="card-desc">萨尔·汗著·AI让每个孩子拥有私人家教</div><div class="card-arrow">→</div></a>
+<a href="mastering-ai-agents.html" class="card bk"><div class="card-cat">AI工程·Agent</div><div class="card-title">《Mastering AI Agents》</div><div class="card-desc">Bhavsar著·从Demo到生产级Agent系统的工程实践</div><div class="card-arrow">→</div></a>
+<a href="alphafold-report.html" class="card rsch"><div class="card-cat">科学研究</div><div class="card-title">AlphaFold技术深度解析</div><div class="card-desc">蛋白质折叠问题的AI解法</div><div class="card-arrow">→</div></a>
 </div>
 
-<div class="section-title">⛓️ 区块链 · Web3</div>
+<div class="section-title">⛓️ 区块链·Web3</div>
 <div class="grid">
-<a href="bitcoin-virtual-real-world.html" class="card book-card"><div class="card-cat">区块链·加密货币</div><div class="card-title">《比特币：一个虚幻而真实的金融世界》</div><div class="card-desc">没有政府背书的数字货币，凭什么有价值？</div><div class="card-arrow">→</div></a>
-<a href="blockchain-basics.html" class="card book-card"><div class="card-cat">区块链技术入门</div><div class="card-title">《Blockchain Basics》</div><div class="card-desc">Drescher著 · 25步循序渐进，让非技术人真正理解区块链</div><div class="card-arrow">→</div></a>
-<a href="blockchain-credit-society.html" class="card book-card"><div class="card-cat">区块链应用前景</div><div class="card-title">《区块链：从数字货币到信用社会》</div><div class="card-desc">长铗·韩锋著 · 信任的三次跃迁：从血缘到机构到算法</div><div class="card-arrow">→</div></a>
+<a href="bitcoin-virtual-real-world.html" class="card bk"><div class="card-cat">区块链·加密货币</div><div class="card-title">《比特币：一个虚幻而真实的金融世界》</div><div class="card-desc">没有政府背书的数字货币，凭什么有价值？</div><div class="card-arrow">→</div></a>
+<a href="blockchain-basics.html" class="card bk"><div class="card-cat">区块链技术入门</div><div class="card-title">《Blockchain Basics》</div><div class="card-desc">Drescher著·25步让非技术人真正理解区块链</div><div class="card-arrow">→</div></a>
+<a href="blockchain-credit-society.html" class="card bk"><div class="card-cat">区块链应用前景</div><div class="card-title">《区块链：从数字货币到信用社会》</div><div class="card-desc">长铗·韩锋著·信任的三次跃迁：血缘→机构→算法</div><div class="card-arrow">→</div></a>
 </div>
 
-<div class="section-title">🏢 管理 · 领导力 · 变革</div>
+<div class="section-title">🏢 管理·领导力·变革</div>
 <div class="grid">
-<a href="going-on-offense.html" class="card book-card"><div class="card-cat">创新组织文化</div><div class="card-title">《Going on Offense》</div><div class="card-desc">Tabrizi著 · 8大基因解析Amazon/Tesla/Apple的永续进攻</div><div class="card-arrow">→</div></a>
-<a href="rapid-transformation.html" class="card book-card"><div class="card-cat">组织变革管理</div><div class="card-title">《Rapid Transformation》</div><div class="card-desc">Tabrizi著 · 90天变革法：先赢一把，用胜利喂养信心</div><div class="card-arrow">→</div></a>
-<a href="inside-out-effect.html" class="card book-card"><div class="card-cat">领导力转型</div><div class="card-title">《The Inside-Out Effect》</div><div class="card-desc">Tabrizi著 · 你这个人本身，配不配得上你想要的变革？</div><div class="card-arrow">→</div></a>
+<a href="going-on-offense.html" class="card bk"><div class="card-cat">创新组织文化</div><div class="card-title">《Going on Offense》</div><div class="card-desc">Tabrizi著·8大基因解析Amazon/Tesla的永续进攻</div><div class="card-arrow">→</div></a>
+<a href="rapid-transformation.html" class="card bk"><div class="card-cat">组织变革管理</div><div class="card-title">《Rapid Transformation》</div><div class="card-desc">Tabrizi著·90天变革法：先赢一把，用胜利喂养信心</div><div class="card-arrow">→</div></a>
+<a href="inside-out-effect.html" class="card bk"><div class="card-cat">领导力转型</div><div class="card-title">《The Inside-Out Effect》</div><div class="card-desc">Tabrizi著·你这个人本身，配不配得上你想要的变革？</div><div class="card-arrow">→</div></a>
+<a href="team-of-teams.html" class="card bk"><div class="card-cat">组织管理·军事</div><div class="card-title">《赋能》</div><div class="card-desc">麦克里斯特尔著·共享意识+赋权执行=应对复杂世界</div><div class="card-arrow">→</div></a>
 </div>
 
-<div class="section-title">🏦 历史 · 科学 · 医学</div>
+<div class="section-title">🌍 科技·历史·文化</div>
 <div class="grid">
-<a href="making-atomic-bomb.html" class="card book-card"><div class="card-cat">历史</div><div class="card-title">《原子弹的制造》</div><div class="card-desc">理查德·罗兹著 · 好奇心、恐惧与科学道德的历史审判</div><div class="card-arrow">→</div></a>
-<a href="glp1-solution.html" class="card book-card"><div class="card-cat">医学健康</div><div class="card-title">《The GLP-1 Solution》</div><div class="card-desc">GLP-1药物使用完整指南：保住肌肉，减掉脂肪</div><div class="card-arrow">→</div></a>
+<a href="making-atomic-bomb.html" class="card bk"><div class="card-cat">历史</div><div class="card-title">《原子弹的制造》</div><div class="card-desc">理查德·罗兹著·好奇心、恐惧与科学道德的历史审判</div><div class="card-arrow">→</div></a>
+<a href="glp1-solution.html" class="card bk"><div class="card-cat">医学健康</div><div class="card-title">《The GLP-1 Solution》</div><div class="card-desc">GLP-1药物使用完整指南：保住肌肉，减掉脂肪</div><div class="card-arrow">→</div></a>
+<a href="nuclear-war-scenario.html" class="card bk"><div class="card-cat">军事历史·风险</div><div class="card-title">《核战争：一种场景预测》</div><div class="card-desc">雅各布森著·72分钟：从核弹发射到文明终结的真实时间线</div><div class="card-arrow">→</div></a>
+<a href="material-world.html" class="card bk"><div class="card-cat">经济地理·资源</div><div class="card-title">《物质世界》</div><div class="card-desc">康威著·沙、盐、铁、铜、石油、锂——6种材料塑造文明</div><div class="card-arrow">→</div></a>
+<a href="city-on-mars.html" class="card bk"><div class="card-cat">太空探索·政策</div><div class="card-title">《火星之城》</div><div class="card-desc">韦纳史密斯著·爱太空，也要爱真相——对火星定居的清醒评估</div><div class="card-arrow">→</div></a>
+<a href="bunshin.html" class="card bk"><div class="card-cat">悬疑小说·克隆伦理</div><div class="card-title">《分身》</div><div class="card-desc">东野圭吾著·DNA相同的两个人，谁才是真正的你？</div><div class="card-arrow">→</div></a>
 </div>
 
 <div class="section-title">📊 研究分析报告</div>
 <div class="grid">
-<a href="nvda-citadel-equity-research-2026.html" class="card research-card"><div class="card-cat">投资研究</div><div class="card-title">英伟达深度投研报告 2026</div><div class="card-desc">Citadel风格深度股票分析 · AI基础设施核心受益</div><div class="card-arrow">→</div></a>
-<a href="ionq-equity-research-2026.html" class="card research-card"><div class="card-cat">投资研究</div><div class="card-title">IonQ量子计算投研报告 2026</div><div class="card-desc">量子计算赛道领头羊深度分析</div><div class="card-arrow">→</div></a>
-<a href="rgti-rigetti-equity-research-2026.html" class="card research-card"><div class="card-cat">投资研究</div><div class="card-title">Rigetti Computing投研报告 2026</div><div class="card-desc">量子计算赛道深度研究报告</div><div class="card-arrow">→</div></a>
+<a href="nvda-citadel-equity-research-2026.html" class="card rsch"><div class="card-cat">投资研究</div><div class="card-title">英伟达深度投研报告 2026</div><div class="card-desc">Citadel风格深度股票分析·AI基础设施核心受益</div><div class="card-arrow">→</div></a>
+<a href="ionq-equity-research-2026.html" class="card rsch"><div class="card-cat">投资研究</div><div class="card-title">IonQ量子计算投研报告 2026</div><div class="card-desc">量子计算赛道领头羊深度分析</div><div class="card-arrow">→</div></a>
+<a href="rgti-rigetti-equity-research-2026.html" class="card rsch"><div class="card-cat">投资研究</div><div class="card-title">Rigetti Computing投研报告 2026</div><div class="card-desc">量子计算赛道深度研究报告</div><div class="card-arrow">→</div></a>
+<a href="infinite-machine-deepmind.html" class="card rsch"><div class="card-cat">AI研究</div><div class="card-title">《无限机器》DeepMind深度解构</div><div class="card-desc">DeepMind与超级智能的探索之路</div><div class="card-arrow">→</div></a>
 </div>
 </div>
-<div class="footer">johnnyweb.netlify.app · 持续更新 · 共 25 本书深度解构 + 4 份研究报告</div>
+<div class="footer">johnnyweb.netlify.app · 持续更新 · 共 47 本书深度解构 + 4 份研究报告</div>
 </body>
 </html>
