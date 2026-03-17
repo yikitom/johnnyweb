@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AlphaFold 深度分析报告</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=DM+Mono:wght@400;500&family=Playfair+Display:wght@700;800&display=swap');
+
+  :root {
+    --bg: #f7f6f2;
+    --surface: #ffffff;
+    --text: #1a1a1a;
+    --text-muted: #6b6b6b;
+    --teal: #0d7377;
+    --teal-light: #14a085;
+    --teal-pale: #e8f5f4;
+    --gold: #c9962a;
+    --gold-pale: #fdf6e3;
+    --red: #c0392b;
+    --purple: #6c3483;
+    --border: #e2e0d8;
+    --shadow: 0 2px 20px rgba(0,0,0,0.07);
+    --shadow-lg: 0 8px 40px rgba(0,0,0,0.1);
+    --radius: 16px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Serif SC', Georgia, serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.9;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(247,246,242,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    max-width: 1000px; margin: 0 auto;
+    display: flex; align-items: center; gap: 4px;
+    padding: 12px 24px; overflow-x: auto; scrollbar-width: none;
+  }
+  .nav-inner::-webkit-scrollbar { display: none; }
+  .nav-brand { font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 500; color: var(--teal); margin-right: 16px; white-space: nowrap; text-decoration: none; }
+  nav a:not(.nav-brand) {
+    font-family: 'DM Mono', monospace; font-size: 12px;
+    color: var(--text-muted); text-decoration: none; white-space: nowrap;
+    padding: 4px 12px; border-radius: 20px; transition: all .2s;
+  }
+  nav a:not(.nav-brand):hover { background: var(--teal-pale); color: var(--teal); }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 120px 24px 80px;
+    background: linear-gradient(160deg, #0a4a4d 0%, #0d7377 45%, #117a65 100%);
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(20,160,133,0.25) 0%, transparent 60%),
+                radial-gradient(ellipse at 20% 80%, rgba(201,150,42,0.1) 0%, transparent 50%);
+  }
+  .hero-inner { max-width: 1000px; margin: 0 auto; position: relative; }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    color: rgba(255,255,255,0.7); border: 1px solid rgba(255,255,255,0.2);
+    padding: 5px 14px; border-radius: 20px; margin-bottom: 28px;
+  }
+  .hero-tag span { width: 6px; height: 6px; border-radius: 50%; background: #4ecca3; display: inline-block; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+  .hero h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(36px, 6vw, 64px); font-weight: 800;
+    color: white; line-height: 1.15; margin-bottom: 20px;
+  }
+  .hero h1 em { font-style: normal; color: #7effd4; }
+  .hero-desc { color: rgba(255,255,255,0.75); font-size: 17px; max-width: 580px; line-height: 1.8; margin-bottom: 48px; }
+  .hero-stats {
+    display: flex; gap: 40px; flex-wrap: wrap;
+    padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.15);
+  }
+  .stat-item { text-align: left; }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 700; color: #7effd4; display: block; line-height: 1; }
+  .stat-lbl { font-family: 'DM Mono', monospace; font-size: 11px; color: rgba(255,255,255,0.55); letter-spacing: 1px; text-transform: uppercase; margin-top: 4px; display: block; }
+
+  /* ── LAYOUT ── */
+  .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+  section { padding: 80px 24px; }
+  section:nth-child(even) { background: #f0ede6; }
+
+  /* ── SECTION HEADER ── */
+  .section-label {
+    font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--teal); margin-bottom: 10px; display: flex; align-items: center; gap: 10px;
+  }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--teal); opacity: 0.25; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: clamp(24px, 3.5vw, 36px); font-weight: 700; color: var(--text); margin-bottom: 40px; line-height: 1.3; }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--surface); border-radius: var(--radius);
+    padding: 32px; box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+  }
+  .card + .card { margin-top: 20px; }
+  .card-accent-teal { border-top: 3px solid var(--teal); }
+  .card-accent-gold { border-top: 3px solid var(--gold); }
+  .card-accent-red  { border-top: 3px solid var(--red); }
+  .card-accent-purple { border-top: 3px solid var(--purple); }
+
+  .card h3 { font-size: 18px; font-weight: 700; margin-bottom: 14px; color: var(--text); }
+  .card p { color: #444; line-height: 1.85; }
+  .card p + p { margin-top: 12px; }
+
+  /* ── GRID ── */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  @media (max-width: 700px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } }
+
+  /* ── SVG CONTAINER ── */
+  .svg-wrap {
+    background: var(--surface); border-radius: var(--radius);
+    padding: 32px; box-shadow: var(--shadow); border: 1px solid var(--border);
+    margin-bottom: 24px; overflow: hidden;
+  }
+  .svg-caption {
+    font-family: 'DM Mono', monospace; font-size: 12px; color: var(--text-muted);
+    text-align: center; margin-top: 16px; letter-spacing: 0.5px;
+  }
+
+  /* ── HIGHLIGHT BOX ── */
+  .highlight {
+    background: var(--teal-pale); border-left: 4px solid var(--teal);
+    border-radius: 0 12px 12px 0; padding: 20px 24px; margin: 24px 0;
+  }
+  .highlight p { color: #1a4a4d; line-height: 1.8; }
+
+  .gold-highlight {
+    background: var(--gold-pale); border-left: 4px solid var(--gold);
+    border-radius: 0 12px 12px 0; padding: 20px 24px; margin: 24px 0;
+  }
+  .gold-highlight p { color: #5a4010; line-height: 1.8; }
+
+  /* ── TIMELINE ── */
+  .timeline { position: relative; padding-left: 32px; }
+  .timeline::before { content: ''; position: absolute; left: 10px; top: 8px; bottom: 8px; width: 2px; background: linear-gradient(to bottom, var(--teal), var(--teal-light), transparent); }
+  .tl-item { position: relative; margin-bottom: 32px; }
+  .tl-dot { position: absolute; left: -28px; top: 6px; width: 14px; height: 14px; border-radius: 50%; background: var(--teal); border: 3px solid var(--bg); box-shadow: 0 0 0 2px var(--teal); }
+  .tl-year { font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 500; color: var(--teal); margin-bottom: 4px; }
+  .tl-title { font-weight: 700; font-size: 16px; margin-bottom: 6px; }
+  .tl-body { color: #555; font-size: 15px; line-height: 1.8; }
+
+  /* ── TABLE ── */
+  .data-table { width: 100%; border-collapse: collapse; font-size: 15px; }
+  .data-table th { background: var(--teal); color: white; padding: 12px 16px; text-align: left; font-size: 13px; font-family: 'DM Mono', monospace; letter-spacing: 0.5px; font-weight: 500; }
+  .data-table th:first-child { border-radius: 8px 0 0 0; }
+  .data-table th:last-child { border-radius: 0 8px 0 0; }
+  .data-table td { padding: 12px 16px; border-bottom: 1px solid var(--border); color: #444; line-height: 1.7; }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr:nth-child(even) td { background: var(--teal-pale); }
+
+  /* ── IMPACT PILLS ── */
+  .pill {
+    display: inline-block; font-family: 'DM Mono', monospace; font-size: 11px;
+    padding: 3px 12px; border-radius: 20px; font-weight: 500; letter-spacing: 0.3px;
+  }
+  .pill-teal { background: var(--teal-pale); color: var(--teal); }
+  .pill-gold { background: var(--gold-pale); color: #7a5c10; }
+  .pill-red  { background: #fdecea; color: var(--red); }
+
+  /* ── PULL QUOTE ── */
+  .pull-quote {
+    background: linear-gradient(135deg, #0d7377, #0a5255);
+    border-radius: var(--radius); padding: 40px 44px; margin: 32px 0;
+    position: relative; overflow: hidden;
+  }
+  .pull-quote::before {
+    content: '"'; position: absolute; top: -30px; left: 20px;
+    font-size: 180px; color: rgba(255,255,255,0.05); font-family: Georgia, serif; line-height: 1;
+  }
+  .pull-quote p { font-size: 20px; color: white; line-height: 1.7; font-style: italic; position: relative; }
+  .pull-quote .attr { font-family: 'DM Mono', monospace; font-size: 12px; color: rgba(255,255,255,0.55); margin-top: 14px; position: relative; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #111; color: rgba(255,255,255,0.5);
+    text-align: center; padding: 48px 24px;
+    font-family: 'DM Mono', monospace; font-size: 12px; line-height: 2;
+  }
+  footer strong { color: rgba(255,255,255,0.8); }
+
+  /* ── MISC ── */
+  strong { color: var(--text); }
+  .mono { font-family: 'DM Mono', monospace; font-size: 13px; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">AlphaFold · 深度报告</a>
+    <a href="#s0">背景</a>
+    <a href="#s1">核心原理</a>
+    <a href="#s2">技术突破</a>
+    <a href="#s3">影响力</a>
+    <a href="#s4">局限</a>
+    <a href="#s5">未来</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag"><span></span> DeepMind · 2020 · 诺贝尔化学奖</div>
+    <h1>AlphaFold<br><em>蛋白质折叠</em><br>的终结者</h1>
+    <p class="hero-desc">一个AI系统，用72小时做到了人类科学家50年没做到的事——精准预测蛋白质的三维结构。这不是一个技术故事，而是一场科学革命。</p>
+    <div class="hero-stats">
+      <div class="stat-item"><span class="stat-num">2亿+</span><span class="stat-lbl">蛋白质结构已开源</span></div>
+      <div class="stat-item"><span class="stat-num">92%</span><span class="stat-lbl">预测精度达实验水平</span></div>
+      <div class="stat-item"><span class="stat-num">2024</span><span class="stat-lbl">诺贝尔化学奖</span></div>
+      <div class="stat-item"><span class="stat-num">190+</span><span class="stat-lbl">国家研究机构使用</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 0: 背景 -->
+<section id="s0">
+  <div class="container">
+    <div class="section-label">01 · 背景</div>
+    <h2 class="section-title">为什么蛋白质折叠<br>是生物学50年的圣杯？</h2>
+
+    <!-- SVG: DNA → 蛋白质 → 功能 -->
+    <div class="svg-wrap">
+      <svg viewBox="0 0 900 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <defs>
+          <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#0d7377"/>
+          </marker>
+        </defs>
+
+        <!-- Step 1: DNA -->
+        <rect x="30" y="60" width="160" height="80" rx="12" fill="#e8f5f4" stroke="#0d7377" stroke-width="1.5"/>
+        <text x="110" y="88" text-anchor="middle" font-family="Georgia,serif" font-size="15" font-weight="700" fill="#0d7377">DNA序列</text>
+        <text x="110" y="110" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#555">ATGCGTAA...</text>
+        <text x="110" y="128" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#888">基因编码</text>
+
+        <!-- Arrow 1 -->
+        <line x1="194" y1="100" x2="240" y2="100" stroke="#0d7377" stroke-width="2" marker-end="url(#arrow)"/>
+        <text x="217" y="90" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#888">转录翻译</text>
+
+        <!-- Step 2: 氨基酸序列 -->
+        <rect x="244" y="60" width="180" height="80" rx="12" fill="#fdf6e3" stroke="#c9962a" stroke-width="1.5"/>
+        <text x="334" y="88" text-anchor="middle" font-family="Georgia,serif" font-size="15" font-weight="700" fill="#c9962a">氨基酸序列</text>
+        <text x="334" y="110" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#555">Met-Ala-Gly...</text>
+        <text x="334" y="128" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#888">一维链状结构</text>
+
+        <!-- Arrow 2: Big question mark -->
+        <line x1="428" y1="100" x2="474" y2="100" stroke="#c0392b" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrow)"/>
+        <text x="451" y="84" text-anchor="middle" font-family="Georgia,serif" font-size="22" fill="#c0392b" font-weight="700">?</text>
+        <text x="451" y="145" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#c0392b">50年难题</text>
+
+        <!-- Step 3: 3D结构 -->
+        <rect x="478" y="60" width="160" height="80" rx="12" fill="#f3e5f5" stroke="#6c3483" stroke-width="1.5"/>
+        <text x="558" y="88" text-anchor="middle" font-family="Georgia,serif" font-size="15" font-weight="700" fill="#6c3483">三维结构</text>
+        <!-- Simple helix-like shape -->
+        <path d="M510,110 Q530,98 550,110 Q570,122 590,110 Q610,98 620,108" stroke="#6c3483" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <text x="558" y="132" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#888">折叠后的形状</text>
+
+        <!-- Arrow 3 -->
+        <line x1="642" y1="100" x2="688" y2="100" stroke="#0d7377" stroke-width="2" marker-end="url(#arrow)"/>
+        <text x="665" y="90" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#888">决定</text>
+
+        <!-- Step 4: 功能 -->
+        <rect x="692" y="60" width="178" height="80" rx="12" fill="#e8f5f4" stroke="#0d7377" stroke-width="1.5"/>
+        <text x="781" y="88" text-anchor="middle" font-family="Georgia,serif" font-size="15" font-weight="700" fill="#0d7377">生物功能</text>
+        <text x="781" y="108" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#555">酶催化 / 信号传导</text>
+        <text x="781" y="126" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#555">药物靶点 / 免疫应答</text>
+
+        <!-- Bottom labels -->
+        <text x="110" y="170" text-anchor="middle" font-family="'DM Mono',monospace" font-size="10" fill="#aaa">已知</text>
+        <text x="334" y="170" text-anchor="middle" font-family="'DM Mono',monospace" font-size="10" fill="#aaa">已知</text>
+        <text x="558" y="170" text-anchor="middle" font-family="'DM Mono',monospace" font-size="10" fill="#c0392b">← 这步是难题</text>
+        <text x="781" y="170" text-anchor="middle" font-family="'DM Mono',monospace" font-size="10" fill="#aaa">由结构决定</text>
+      </svg>
+      <p class="svg-caption">图1 · 从DNA到蛋白质功能的信息流——"折叠"是整条链上最难突破的环节</p>
+    </div>
+
+    <div class="grid-2">
+      <div class="card card-accent-teal">
+        <h3>🧬 蛋白质是什么？</h3>
+        <p>把蛋白质想象成一条超长的珠串，每颗珠子是一种氨基酸（共20种）。这条珠串在水溶液里会自动卷曲折叠，形成特定的三维形状——这个形状就决定了它能干什么。</p>
+        <p>酶能催化反应、抗体能识别病毒、激素能传递信号……背后全是蛋白质的形状在起作用。<strong>形状即功能。</strong></p>
+      </div>
+      <div class="card card-accent-gold">
+        <h3>❓ 难在哪里？</h3>
+        <p>一个中等大小的蛋白质有300个氨基酸，理论上的折叠方式是天文数字（10<sup>300</sup>种）。实验室用X射线晶体学测定一个结构，往往需要<strong>数年时间</strong>和数百万美元。</p>
+        <p>这就是"蛋白质折叠问题"——知道序列，猜不出形状。50年里，全球最聪明的生物学家和计算机科学家都在尝试，进展缓慢。</p>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <p>📌 <strong>大白话一句话</strong>：蛋白质折叠问题，就像你拿到一堆乐高积木（氨基酸序列），但不知道它们最终拼出来是什么形状（三维结构）——而这个形状直接决定这堆积木能做什么用。</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 1: 核心原理 -->
+<section id="s1">
+  <div class="container">
+    <div class="section-label">02 · 核心原理</div>
+    <h2 class="section-title">AlphaFold 是怎么解题的？</h2>
+
+    <!-- SVG: AlphaFold 工作流程 -->
+    <div class="svg-wrap">
+      <svg viewBox="0 0 900 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <defs>
+          <marker id="arr2" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+            <polygon points="0 0, 8 3, 0 6" fill="#0d7377"/>
+          </marker>
+          <linearGradient id="gradCard" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#0d7377" stop-opacity="0.08"/>
+            <stop offset="100%" stop-color="#0d7377" stop-opacity="0.02"/>
+          </linearGradient>
+        </defs>
+
+        <!-- Input -->
+        <rect x="20" y="110" width="130" height="70" rx="10" fill="#e8f5f4" stroke="#0d7377" stroke-width="1.5"/>
+        <text x="85" y="138" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-weight="700" fill="#0d7377">输入</text>
+        <text x="85" y="158" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#555">氨基酸序列</text>
+        <text x="85" y="174" text-anchor="middle" font-family="'DM Mono',monospace" font-size="10" fill="#888">1D String</text>
+
+        <line x1="154" y1="145" x2="182" y2="145" stroke="#0d7377" stroke-width="1.8" marker-end="url(#arr2)"/>
+
+        <!-- MSA -->
+        <rect x="186" y="80" width="145" height="130" rx="10" fill="url(#gradCard)" stroke="#0d7377" stroke-width="1.5"/>
+        <text x="258" y="108" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="700" fill="#0d7377">多序列比对</text>
+        <text x="258" y="124" text-anchor="middle" font-family="'DM Mono',monospace" font-size="9" fill="#888">MSA</text>
+        <!-- Mini alignment visual -->
+        <text x="204" y="148" font-family="'DM Mono',monospace" font-size="9" fill="#0d7377">MALGKRT---A</text>
+        <text x="204" y="162" font-family="'DM Mono',monospace" font-size="9" fill="#555">MA-GKRTVCB</text>
+        <text x="204" y="176" font-family="'DM Mono',monospace" font-size="9" fill="#888">MKLGKRT--DA</text>
+        <text x="258" y="200" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#666">找进化相似序列</text>
+
+        <line x1="334" y1="145" x2="362" y2="145" stroke="#0d7377" stroke-width="1.8" marker-end="url(#arr2)"/>
+
+        <!-- Evoformer -->
+        <rect x="366" y="60" width="168" height="170" rx="10" fill="#0d7377" fill-opacity="0.06" stroke="#0d7377" stroke-width="2"/>
+        <text x="450" y="90" text-anchor="middle" font-family="Georgia,serif" font-size="14" font-weight="700" fill="#0d7377">Evoformer</text>
+        <text x="450" y="108" text-anchor="middle" font-family="'DM Mono',monospace" font-size="9" fill="#888">核心神经网络模块</text>
+        <!-- Attention heads visualization -->
+        <circle cx="410" cy="145" r="20" fill="none" stroke="#0d7377" stroke-width="1.5" opacity="0.6"/>
+        <circle cx="450" cy="135" r="20" fill="none" stroke="#14a085" stroke-width="1.5" opacity="0.6"/>
+        <circle cx="490" cy="148" r="20" fill="none" stroke="#0d7377" stroke-width="1.5" opacity="0.6"/>
+        <text x="410" y="149" text-anchor="middle" font-family="'DM Mono',monospace" font-size="8" fill="#0d7377">注意力</text>
+        <text x="450" y="139" text-anchor="middle" font-family="'DM Mono',monospace" font-size="8" fill="#14a085">头1</text>
+        <text x="490" y="152" text-anchor="middle" font-family="'DM Mono',monospace" font-size="8" fill="#0d7377">头2</text>
+        <text x="450" y="200" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#666">学习氨基酸间</text>
+        <text x="450" y="216" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#666">的相互关系</text>
+
+        <line x1="537" y1="145" x2="565" y2="145" stroke="#0d7377" stroke-width="1.8" marker-end="url(#arr2)"/>
+
+        <!-- Structure Module -->
+        <rect x="569" y="80" width="145" height="130" rx="10" fill="url(#gradCard)" stroke="#6c3483" stroke-width="1.5"/>
+        <text x="641" y="108" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="700" fill="#6c3483">结构模块</text>
+        <!-- 3D structure hint -->
+        <path d="M605,148 Q620,135 635,148 Q650,161 665,148 Q675,140 685,145" stroke="#6c3483" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <circle cx="605" cy="148" r="4" fill="#6c3483" opacity="0.6"/>
+        <circle cx="635" cy="148" r="4" fill="#6c3483" opacity="0.6"/>
+        <circle cx="665" cy="148" r="4" fill="#6c3483" opacity="0.6"/>
+        <text x="641" y="200" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#666">预测每个原子</text>
+        <text x="641" y="216" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#666">的三维坐标</text>
+
+        <line x1="717" y1="145" x2="745" y2="145" stroke="#0d7377" stroke-width="1.8" marker-end="url(#arr2)"/>
+
+        <!-- Output -->
+        <rect x="749" y="110" width="130" height="70" rx="10" fill="#e8f5f4" stroke="#0d7377" stroke-width="1.5"/>
+        <text x="814" y="138" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-weight="700" fill="#0d7377">输出</text>
+        <text x="814" y="158" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#555">三维结构 + 置信</text>
+        <text x="814" y="174" text-anchor="middle" font-family="'DM Mono',monospace" font-size="10" fill="#888">pLDDT分数</text>
+
+        <!-- Bottom confidence bar -->
+        <rect x="186" y="250" width="693" height="8" rx="4" fill="#e0e0e0"/>
+        <rect x="186" y="250" width="200" height="8" rx="4" fill="#c0392b" opacity="0.7"/>
+        <rect x="386" y="250" width="200" height="8" rx="4" fill="#f39c12" opacity="0.7"/>
+        <rect x="586" y="250" width="200" height="8" rx="4" fill="#27ae60" opacity="0.7"/>
+        <rect x="786" y="250" width="93" height="8" rx="4" fill="#0d7377" opacity="0.9"/>
+
+        <text x="286" y="278" text-anchor="middle" font-family="'DM Mono',monospace" font-size="10" fill="#c0392b">低置信 &lt;50</text>
+        <text x="486" y="278" text-anchor="middle" font-family="'DM Mono',monospace" font-size="10" fill="#e67e22">中置信 50-70</text>
+        <text x="686" y="278" text-anchor="middle" font-family="'DM Mono',monospace" font-size="10" fill="#27ae60">高置信 70-90</text>
+        <text x="833" y="278" text-anchor="middle" font-family="'DM Mono',monospace" font-size="10" fill="#0d7377">极高 &gt;90</text>
+
+        <text x="450" y="305" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#888">pLDDT置信度评分条 · 蓝色区域表示预测最为可靠</text>
+      </svg>
+      <p class="svg-caption">图2 · AlphaFold 2 工作流程：从氨基酸序列到三维结构的端到端预测</p>
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <div style="font-size:28px;margin-bottom:12px;">🔬</div>
+        <h3>第一步：找亲戚</h3>
+        <p>在已有的蛋白质数据库里，找出与目标序列相似的蛋白（进化上的"亲戚"）。相似序列的共同位置往往会共同变异——这暗示了哪些氨基酸在空间上靠近。</p>
+      </div>
+      <div class="card">
+        <div style="font-size:28px;margin-bottom:12px;">🧠</div>
+        <h3>第二步：学关系</h3>
+        <p>Evoformer 是 AlphaFold 的核心模块，本质是一种"注意力网络"。它学习每对氨基酸之间的空间关系——哪两个氨基酸倾向于互相靠近，哪些会互相排斥。</p>
+      </div>
+      <div class="card">
+        <div style="font-size:28px;margin-bottom:12px;">📐</div>
+        <h3>第三步：定坐标</h3>
+        <p>结构模块把"关系预测"转化成具体的三维原子坐标，同时输出每个位置的置信度分数（pLDDT），让研究者知道哪里预测可靠、哪里需要谨慎对待。</p>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <p>💡 <strong>关键洞见</strong>：AlphaFold 不是暴力枚举所有可能的折叠方式，而是学会了"蛋白质的折叠语法"——通过进化信息中的协变信号，推断空间约束，再组装成三维结构。这是方法论上的根本创新。</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2: 技术突破 -->
+<section id="s2">
+  <div class="container">
+    <div class="section-label">03 · 技术突破</div>
+    <h2 class="section-title">从 AlphaFold 1 到 AlphaFold 3<br>三代进化的逻辑</h2>
+
+    <!-- SVG: 精度对比图 -->
+    <div class="svg-wrap">
+      <svg viewBox="0 0 860 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <!-- Grid -->
+        <line x1="80" y1="20" x2="80" y2="240" stroke="#e0e0e0" stroke-width="1"/>
+        <line x1="80" y1="240" x2="820" y2="240" stroke="#e0e0e0" stroke-width="1"/>
+
+        <!-- Y-axis labels -->
+        <text x="70" y="244" text-anchor="end" font-family="'DM Mono',monospace" font-size="11" fill="#aaa">0</text>
+        <text x="70" y="194" text-anchor="end" font-family="'DM Mono',monospace" font-size="11" fill="#aaa">25</text>
+        <text x="70" y="144" text-anchor="end" font-family="'DM Mono',monospace" font-size="11" fill="#aaa">50</text>
+        <text x="70" y="94" text-anchor="end" font-family="'DM Mono',monospace" font-size="11" fill="#aaa">75</text>
+        <text x="70" y="44" text-anchor="end" font-family="'DM Mono',monospace" font-size="11" fill="#aaa">100</text>
+
+        <!-- Grid lines -->
+        <line x1="80" y1="194" x2="820" y2="194" stroke="#f0f0f0" stroke-width="1"/>
+        <line x1="80" y1="144" x2="820" y2="144" stroke="#f0f0f0" stroke-width="1"/>
+        <line x1="80" y1="94" x2="820" y2="94" stroke="#f0f0f0" stroke-width="1"/>
+        <line x1="80" y1="44" x2="820" y2="44" stroke="#f0f0f0" stroke-width="1"/>
+
+        <!-- Accuracy target line -->
+        <line x1="80" y1="56" x2="820" y2="56" stroke="#27ae60" stroke-width="1.5" stroke-dasharray="8,5"/>
+        <text x="825" y="60" font-family="'DM Mono',monospace" font-size="10" fill="#27ae60">实验精度基准</text>
+
+        <!-- Bars: CASP12 (2018) traditional -->
+        <rect x="120" y="196" width="60" height="44" rx="4" fill="#c0c0c0" opacity="0.6"/>
+        <text x="150" y="188" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#888">传统方法</text>
+        <text x="150" y="174" text-anchor="middle" font-family="'DM Mono',monospace" font-size="12" fill="#888">~25</text>
+        <text x="150" y="264" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#999">2018前</text>
+
+        <!-- AlphaFold 1 2018 -->
+        <rect x="230" y="140" width="60" height="100" rx="4" fill="#c9962a" opacity="0.8"/>
+        <text x="260" y="132" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#c9962a">AF1</text>
+        <text x="260" y="118" text-anchor="middle" font-family="'DM Mono',monospace" font-size="12" fill="#c9962a">~58</text>
+        <text x="260" y="264" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#999">2018</text>
+
+        <!-- AlphaFold 2 2020 -->
+        <rect x="380" y="36" width="80" height="204" rx="4" fill="#0d7377" opacity="0.9"/>
+        <text x="420" y="28" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="700" fill="#0d7377">AF2 🏆</text>
+        <text x="420" y="14" text-anchor="middle" font-family="'DM Mono',monospace" font-size="13" font-weight="700" fill="#0d7377">92.4</text>
+        <text x="420" y="264" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#555">2020</text>
+        <text x="420" y="278" text-anchor="middle" font-family="'DM Mono',monospace" font-size="10" fill="#0d7377">CASP14冠军</text>
+
+        <!-- AlphaFold 3 2024 -->
+        <rect x="520" y="30" width="80" height="210" rx="4" fill="#117a65" opacity="0.9"/>
+        <text x="560" y="22" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="700" fill="#117a65">AF3</text>
+        <text x="560" y="8" text-anchor="middle" font-family="'DM Mono',monospace" font-size="13" font-weight="700" fill="#117a65">~95+</text>
+        <text x="560" y="264" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#555">2024</text>
+        <text x="560" y="278" text-anchor="middle" font-family="'DM Mono',monospace" font-size="10" fill="#117a65">支持DNA/RNA</text>
+
+        <!-- ESMFold -->
+        <rect x="660" y="80" width="60" height="160" rx="4" fill="#9b59b6" opacity="0.7"/>
+        <text x="690" y="72" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#9b59b6">ESMFold</text>
+        <text x="690" y="58" text-anchor="middle" font-family="'DM Mono',monospace" font-size="11" fill="#9b59b6">~80</text>
+        <text x="690" y="264" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#999">Meta AI</text>
+        <text x="690" y="278" text-anchor="middle" font-family="'DM Mono',monospace" font-size="10" fill="#9b59b6">速度更快</text>
+
+        <!-- Y-axis title -->
+        <text x="20" y="140" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#888" transform="rotate(-90,20,140)">CASP GDT_TS 分数（越高越好）</text>
+      </svg>
+      <p class="svg-caption">图3 · 蛋白质结构预测精度演变：AlphaFold 2 是历史性跨越，将精度从60%跳升至92%+</p>
+    </div>
+
+    <div class="card" style="margin-bottom:20px;">
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-year">2018 · CASP13</div>
+          <div class="tl-title">AlphaFold 1：初次惊艳</div>
+          <div class="tl-body">首次参赛，以较大优势夺冠。用卷积神经网络预测氨基酸间距离，再用梯度下降优化结构。但精度仍不足以替代实验，是"有希望的尝试"。</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot" style="background:#c9962a;box-shadow:0 0 0 2px #c9962a;"></div>
+          <div class="tl-year">2020 · CASP14</div>
+          <div class="tl-title">AlphaFold 2：历史性突破 🏆</div>
+          <div class="tl-body">完全重新设计。引入 Evoformer（基于 Transformer 的注意力模块）+ 等变结构模块。GDT_TS 分数从 ~58 跳至 92.4，多数靶点精度<strong>达到实验精度</strong>。评委们说"已经解决了这个问题"。</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot" style="background:#c9962a;box-shadow:0 0 0 2px #c9962a;"></div>
+          <div class="tl-year">2021 · 7月</div>
+          <div class="tl-title">开源数据库：把成果送给全世界</div>
+          <div class="tl-body">DeepMind 与 EMBL-EBI 合作，发布含 <strong>2亿+种</strong> 蛋白质结构的免费数据库，几乎覆盖所有已知生物体。这是科学史上规模最大的生物数据集之一。</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot" style="background:#117a65;box-shadow:0 0 0 2px #117a65;"></div>
+          <div class="tl-year">2024 · AlphaFold 3</div>
+          <div class="tl-title">超越蛋白质：涵盖所有生物分子</div>
+          <div class="tl-body">不再局限于蛋白质，可以预测蛋白质与 DNA、RNA、小分子、离子的复合物结构。对药物发现意义巨大——因为药物作用的核心就是小分子与靶蛋白的结合。</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot" style="background:#c9962a;box-shadow:0 0 0 2px #c9962a;"></div>
+          <div class="tl-year">2024 · 10月</div>
+          <div class="tl-title">诺贝尔化学奖</div>
+          <div class="tl-body">哈萨比斯与 John Jumper 共同获得 2024 年诺贝尔化学奖，同获奖的还有预测蛋白质设计的 David Baker。瑞典皇家科学院称其为"破解生命密码的工具"。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: 影响力 -->
+<section id="s3">
+  <div class="container">
+    <div class="section-label">04 · 影响力</div>
+    <h2 class="section-title">它究竟改变了什么？</h2>
+
+    <!-- SVG: Impact Map -->
+    <div class="svg-wrap">
+      <svg viewBox="0 0 860 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <!-- Center -->
+        <circle cx="430" cy="170" r="55" fill="#0d7377" opacity="0.9"/>
+        <text x="430" y="164" text-anchor="middle" font-family="Georgia,serif" font-size="14" font-weight="700" fill="white">Alpha</text>
+        <text x="430" y="182" text-anchor="middle" font-family="Georgia,serif" font-size="14" font-weight="700" fill="white">Fold</text>
+
+        <!-- Branch lines -->
+        <line x1="380" y1="130" x2="240" y2="70" stroke="#0d7377" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.5"/>
+        <line x1="480" y1="130" x2="620" y2="70" stroke="#0d7377" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.5"/>
+        <line x1="380" y1="210" x2="240" y2="270" stroke="#0d7377" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.5"/>
+        <line x1="480" y1="210" x2="620" y2="270" stroke="#0d7377" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.5"/>
+        <line x1="430" y1="115" x2="430" y2="40" stroke="#0d7377" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.5"/>
+        <line x1="375" y1="170" x2="170" y2="170" stroke="#0d7377" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.5"/>
+        <line x1="487" y1="170" x2="690" y2="170" stroke="#0d7377" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.5"/>
+
+        <!-- Impact nodes -->
+        <!-- Drug Discovery -->
+        <rect x="340" y="10" width="180" height="56" rx="10" fill="#e8f5f4" stroke="#0d7377" stroke-width="1.5"/>
+        <text x="430" y="35" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="700" fill="#0d7377">💊 药物研发</text>
+        <text x="430" y="52" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#555">靶点发现速度×10</text>
+
+        <!-- Left: Structural Biology -->
+        <rect x="20" y="138" width="150" height="64" rx="10" fill="#fdf6e3" stroke="#c9962a" stroke-width="1.5"/>
+        <text x="95" y="162" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="700" fill="#c9962a">🔬 结构生物学</text>
+        <text x="95" y="178" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#555">实验验证转为AI辅助</text>
+        <text x="95" y="194" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#555">加速数十倍</text>
+
+        <!-- Right: Synthetic biology -->
+        <rect x="690" y="138" width="150" height="64" rx="10" fill="#f3e5f5" stroke="#6c3483" stroke-width="1.5"/>
+        <text x="765" y="162" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="700" fill="#6c3483">🧫 蛋白设计</text>
+        <text x="765" y="178" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#555">从头设计全新</text>
+        <text x="765" y="194" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#555">功能蛋白质</text>
+
+        <!-- Top-left: Vaccine -->
+        <rect x="140" y="36" width="150" height="64" rx="10" fill="#e8f5f4" stroke="#0d7377" stroke-width="1.5"/>
+        <text x="215" y="60" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="700" fill="#0d7377">💉 疫苗开发</text>
+        <text x="215" y="76" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#555">快速识别病原体</text>
+        <text x="215" y="92" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#555">抗原靶点</text>
+
+        <!-- Top-right: Agriculture -->
+        <rect x="570" y="36" width="150" height="64" rx="10" fill="#e8f5f4" stroke="#117a65" stroke-width="1.5"/>
+        <text x="645" y="60" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="700" fill="#117a65">🌱 农业育种</text>
+        <text x="645" y="76" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#555">作物抗性蛋白</text>
+        <text x="645" y="92" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#555">精准改造</text>
+
+        <!-- Bottom-left: Rare Disease -->
+        <rect x="140" y="236" width="150" height="64" rx="10" fill="#fdecea" stroke="#c0392b" stroke-width="1.5"/>
+        <text x="215" y="260" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="700" fill="#c0392b">🏥 罕见病</text>
+        <text x="215" y="276" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#555">解析致病突变</text>
+        <text x="215" y="292" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#555">机制理解</text>
+
+        <!-- Bottom-right: Enzyme Engineering -->
+        <rect x="570" y="236" width="150" height="64" rx="10" fill="#fdf6e3" stroke="#c9962a" stroke-width="1.5"/>
+        <text x="645" y="260" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="700" fill="#c9962a">⚙️ 酶工程</text>
+        <text x="645" y="276" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#555">工业催化与</text>
+        <text x="645" y="292" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#555">生物降解材料</text>
+      </svg>
+      <p class="svg-caption">图4 · AlphaFold 影响辐射图：从基础科研到产业应用的七大方向</p>
+    </div>
+
+    <div class="card card-accent-teal" style="margin-bottom:20px;">
+      <h3>📊 具体数字：有多大影响？</h3>
+      <div style="overflow-x:auto; margin-top:16px;">
+        <table class="data-table">
+          <thead>
+            <tr><th>领域</th><th>之前</th><th>AlphaFold之后</th><th>影响量级</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>单个蛋白质结构测定</td>
+              <td>数年 + 数百万美元</td>
+              <td>分钟级 + 几乎免费</td>
+              <td><span class="pill pill-teal">效率×百万倍</span></td>
+            </tr>
+            <tr>
+              <td>已知蛋白质结构数量</td>
+              <td>约20万（50年积累）</td>
+              <td>2亿+（一次性开源）</td>
+              <td><span class="pill pill-teal">覆盖率×1000倍</span></td>
+            </tr>
+            <tr>
+              <td>药物靶点识别</td>
+              <td>结构未知，靠试错</td>
+              <td>直接从结构设计候选分子</td>
+              <td><span class="pill pill-gold">早期筛选加速×10</span></td>
+            </tr>
+            <tr>
+              <td>疟疾蛋白研究</td>
+              <td>~100种结构已知</td>
+              <td>5000+种结构一次发布</td>
+              <td><span class="pill pill-red">可研究蛋白×50倍</span></td>
+            </tr>
+            <tr>
+              <td>全球使用机构</td>
+              <td>仅DeepMind内部</td>
+              <td>190+国家，数十万研究者</td>
+              <td><span class="pill pill-teal">全球开放</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="pull-quote">
+      <p>这相当于在全球每一个生物实验室的工作台上，放了一台已经工作了50年的结构生物学家——而且是免费的。</p>
+      <div class="attr">—— 对 AlphaFold 开源意义的比喻</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4: 局限性 -->
+<section id="s4">
+  <div class="container">
+    <div class="section-label">05 · 局限性</div>
+    <h2 class="section-title">AlphaFold 做不到什么？<br>冷静看待这场革命</h2>
+
+    <div class="grid-2">
+      <div class="card card-accent-red">
+        <h3>❌ 静态 vs 动态</h3>
+        <p>AlphaFold 预测的是蛋白质的"最稳定静态构象"，但蛋白质在细胞里是<strong>动态运动</strong>的——它会抖动、翻转、在不同功能状态间切换。</p>
+        <p>很多药物靶点依赖的正是蛋白质的构象变化（如G蛋白偶联受体），静态结构无法完整描述这类行为。</p>
+      </div>
+      <div class="card card-accent-red">
+        <h3>❌ 单体 vs 复合物</h3>
+        <p>生物体内的蛋白质很少单独行动，往往以<strong>复合物形式</strong>（多个蛋白配合）发挥功能。AF2 对单个蛋白精度极高，但多蛋白复合物的预测仍有明显缺口（AF3 在改善但仍不完美）。</p>
+      </div>
+      <div class="card card-accent-gold">
+        <h3>⚠️ 结构 ≠ 功能</h3>
+        <p>知道形状，不等于知道功能。许多蛋白质功能还取决于<strong>翻译后修饰</strong>（磷酸化、糖基化等）、与其他分子的相互作用、细胞内的局部环境。这些 AlphaFold 都无法预测。</p>
+      </div>
+      <div class="card card-accent-gold">
+        <h3>⚠️ 固有无序区域</h3>
+        <p>约30%~40%的人类蛋白质含有<strong>天然无序区域</strong>（IDP），这些区域本身就没有固定结构，其功能恰恰依赖于这种无序性。AlphaFold 对这类区域的预测置信度低，且方法论上并不适用。</p>
+      </div>
+    </div>
+
+    <div class="gold-highlight" style="margin-top:28px;">
+      <p>📌 <strong>正确理解 AlphaFold</strong>：它是一把极其强大的"侦察工具"，让科学家能快速缩小研究范围、形成假设。但它无法替代实验验证，更无法从头理解一个蛋白质做什么、怎么做、什么条件下失效。它是加速器，不是终点。</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5: 未来 -->
+<section id="s5">
+  <div class="container">
+    <div class="section-label">06 · 未来</div>
+    <h2 class="section-title">下一步在哪里？<br>蛋白质之后的生命科学AI</h2>
+
+    <!-- SVG: Roadmap -->
+    <div class="svg-wrap">
+      <svg viewBox="0 0 860 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+        <!-- Horizontal line -->
+        <line x1="40" y1="100" x2="820" y2="100" stroke="#e0e0e0" stroke-width="2"/>
+
+        <!-- Nodes -->
+        <!-- Done -->
+        <circle cx="120" cy="100" r="16" fill="#0d7377"/>
+        <text x="120" y="105" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="white" font-weight="700">✓</text>
+        <text x="120" y="130" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#0d7377" font-weight="700">蛋白质折叠</text>
+        <text x="120" y="144" text-anchor="middle" font-family="'DM Mono',monospace" font-size="9" fill="#888">已实现</text>
+
+        <circle cx="270" cy="100" r="16" fill="#0d7377"/>
+        <text x="270" y="105" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="white" font-weight="700">✓</text>
+        <text x="270" y="130" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#0d7377" font-weight="700">蛋白质设计</text>
+        <text x="270" y="144" text-anchor="middle" font-family="'DM Mono',monospace" font-size="9" fill="#888">RFDiffusion等</text>
+
+        <!-- In progress -->
+        <circle cx="430" cy="100" r="16" fill="#c9962a"/>
+        <text x="430" y="105" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="white" font-weight="700">→</text>
+        <text x="430" y="75" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#c9962a" font-weight="700">动态结构模拟</text>
+        <text x="430" y="61" text-anchor="middle" font-family="'DM Mono',monospace" font-size="9" fill="#888">进行中</text>
+
+        <circle cx="590" cy="100" r="16" fill="#c9962a"/>
+        <text x="590" y="105" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="white" font-weight="700">→</text>
+        <text x="590" y="130" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#c9962a" font-weight="700">全细胞模拟</text>
+        <text x="590" y="144" text-anchor="middle" font-family="'DM Mono',monospace" font-size="9" fill="#888">早期探索</text>
+
+        <!-- Future -->
+        <circle cx="750" cy="100" r="16" fill="none" stroke="#9b59b6" stroke-width="2" stroke-dasharray="4,3"/>
+        <text x="750" y="105" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#9b59b6">?</text>
+        <text x="750" y="75" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#9b59b6" font-weight="700">生命系统AI</text>
+        <text x="750" y="61" text-anchor="middle" font-family="'DM Mono',monospace" font-size="9" fill="#888">远期愿景</text>
+
+        <!-- Labels at bottom -->
+        <rect x="60" y="160" width="50" height="14" rx="7" fill="#0d7377" opacity="0.2"/>
+        <text x="85" y="171" text-anchor="middle" font-family="'DM Mono',monospace" font-size="9" fill="#0d7377">已实现</text>
+        <rect x="370" y="160" width="50" height="14" rx="7" fill="#c9962a" opacity="0.2"/>
+        <text x="395" y="171" text-anchor="middle" font-family="'DM Mono',monospace" font-size="9" fill="#c9962a">进行中</text>
+        <rect x="690" y="160" width="50" height="14" rx="7" fill="#9b59b6" opacity="0.2"/>
+        <text x="715" y="171" text-anchor="middle" font-family="'DM Mono',monospace" font-size="9" fill="#9b59b6">未来</text>
+      </svg>
+      <p class="svg-caption">图5 · 生命科学AI发展路线图：AlphaFold 是起点，全细胞模拟是终极目标</p>
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <div style="font-size:24px;margin-bottom:10px;">⚡</div>
+        <h3>动态模拟</h3>
+        <p>下一代工具需要预测蛋白质随时间变化的构象——结合分子动力学模拟与AI，描述蛋白质的"运动轨迹"而非单一快照。</p>
+      </div>
+      <div class="card">
+        <div style="font-size:24px;margin-bottom:10px;">🏗️</div>
+        <h3>蛋白质从头设计</h3>
+        <p>反过来跑：不是预测已有蛋白的结构，而是<strong>设计出自然界从未存在的蛋白质</strong>，令其具备特定功能（如降解塑料、中和毒素）。</p>
+      </div>
+      <div class="card">
+        <div style="font-size:24px;margin-bottom:10px;">🌐</div>
+        <h3>虚拟细胞</h3>
+        <p>终极愿景：将细胞内所有分子互作关系整合进一个可计算的模型，实现"数字细胞"——在计算机里测试任何干预的效果，再决定是否进行实验。</p>
+      </div>
+    </div>
+
+    <div class="card card-accent-teal" style="margin-top:20px;">
+      <h3>🔑 一句话总结 AlphaFold 的历史意义</h3>
+      <p>AlphaFold 不是"一个很厉害的预测工具"，而是第一次证明了：<strong>AI可以解决人类最顶尖科学家几十年未能攻克的核心科学难题</strong>，并将成果无偿还给全世界。</p>
+      <p style="margin-top:12px;">它开创的不仅是蛋白质科学的新纪元，更是"AI作为科学基础设施"的新范式。接下来，气候、材料、神经科学——下一个被AI重塑的领域，只是时间问题。</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <strong>AlphaFold 深度分析报告</strong><br>
+  DeepMind · Demis Hassabis · John Jumper · 2020—2024<br>
+  数据来源：Nature, CASP竞赛, EMBL-EBI数据库, 2024诺贝尔奖委员会<br><br>
+  本报告基于公开研究信息整理 · 仅供学习参考 · 生成日期 2026.03.16
+</footer>
+
+</body>
+</html>
