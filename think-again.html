@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>《重新思考》 · 深度解构</title><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f9f7f2;--bg2:#fff;--card:#fff;--text:#2c2c2c;--text-sub:#5a5a5a;--text-dim:#888;--accent:#c0392b;--accent2:#2c3e50;--gold:#b8860b;--border:#e0dcd5;--serif:"Noto Serif SC",serif;--sans:"Noto Sans SC",sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.8;-webkit-font-smoothing:antialiased}
+.nav{position:fixed;top:0;left:0;right:0;z-index:99;background:rgba(249,247,242,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:14px 24px;display:flex;align-items:center;gap:16px}
+.nav-back{color:var(--text-dim);text-decoration:none;font-size:13px}.nav-back:hover{color:var(--text)}
+.nav-title{font-family:var(--serif);font-size:14px;font-weight:600;color:var(--accent2);flex:1;text-align:center}
+.hero{padding:100px 24px 60px;max-width:800px;margin:0 auto;text-align:center}
+.hero-cat{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:16px}
+.hero-title{font-family:var(--serif);font-size:clamp(26px,4vw,42px);font-weight:900;line-height:1.2;color:var(--accent2);margin-bottom:12px}
+.hero-sub{font-size:15px;color:var(--text-sub);margin-bottom:24px}
+.hero-meta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.meta-tag{background:var(--accent2);color:#fff;font-size:11px;padding:4px 12px;border-radius:20px;letter-spacing:.5px}
+.wrap{max-width:800px;margin:0 auto;padding:0 24px 80px}
+.sec{margin-bottom:56px;padding-top:8px}
+.sec-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:14px}
+.sec h2{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--accent2);margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid var(--border)}
+.qa{margin-bottom:16px}.qa-q{font-weight:600;color:var(--accent2);margin-bottom:6px}
+.qa-q::before{content:"Q: ";color:var(--accent)}.qa-a{color:var(--text-sub);padding-left:20px;border-left:3px solid var(--border)}
+.concept{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px 22px;margin-bottom:14px}
+.concept-name{font-weight:700;color:var(--accent2);margin-bottom:6px;font-family:var(--serif);font-size:16px}
+.concept-def{font-size:13px;color:var(--text-sub);margin-bottom:8px}
+.concept-case{font-size:13px;background:var(--bg);border-radius:8px;padding:10px 14px;color:var(--text);border-left:3px solid var(--gold)}
+.method-chain{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px;margin-bottom:16px}
+.method-step{display:flex;gap:14px;margin-bottom:16px;align-items:flex-start}
+.step-num{width:28px;height:28px;background:var(--accent2);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px}
+.step-title{font-weight:600;color:var(--accent2);margin-bottom:4px}
+.step-desc{font-size:14px;color:var(--text-sub)}
+.dial{border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:14px}
+.dial-pro{background:#f0faf0;padding:16px 20px;border-bottom:1px solid var(--border)}
+.dial-con{background:#fdf5f5;padding:16px 20px}
+.dial-label{font-size:11px;letter-spacing:1px;text-transform:uppercase;font-weight:600;margin-bottom:6px}
+.dial-pro .dial-label{color:#2d6a4f}.dial-con .dial-label{color:#c0392b}
+.chapter-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px 22px;margin-bottom:14px}
+.chapter-badge{display:inline-block;background:var(--accent);color:#fff;font-size:11px;padding:3px 10px;border-radius:20px;margin-bottom:10px;font-weight:600}
+.chapter-name{font-family:var(--serif);font-size:16px;font-weight:700;color:var(--accent2);margin-bottom:8px}
+.chapter-reason{font-size:13px;color:var(--gold);font-weight:500;margin-bottom:8px}
+.blockquote{border-left:4px solid var(--gold);padding:14px 20px;background:var(--bg);border-radius:0 8px 8px 0;font-style:italic;color:var(--text-sub);margin:14px 0;font-size:15px}
+p{color:var(--text-sub);line-height:1.8;margin-bottom:12px}strong{color:var(--text)}
+.footer{text-align:center;padding:32px;color:var(--text-dim);font-size:12px;border-top:1px solid var(--border)}
+</style></head>
+<body>
+<div class="nav"><a href="index.html" class="nav-back">← 返回</a><div class="nav-title">《重新思考》</div></div>
+<div class="hero"><div class="hero-cat">思维·认知升级</div><div class="hero-title">《重新思考》</div>
+<div class="hero-sub">Adam Grant 著 · 知道自己错了，是最难的能力，也是最重要的能力</div><div class="hero-meta"><span class="meta-tag">元认知</span> <span class="meta-tag">Adam Grant</span> <span class="meta-tag">认知灵活性</span> <span class="meta-tag">辩证思维</span></div></div>
+<div class="wrap"><div class="sec"><div class="sec-label">🧠 作者画像</div><h2>这本书解决什么问题？</h2><div class="qa"><div class="qa-q">Q1：表面讲什么？</div><div class="qa-a">讲重新思考的能力——当新信息出现时，如何更新自己的信念和知识。</div></div><div class="qa"><div class="qa-q">Q2：为什么这很难？</div><div class="qa-a">人类大脑天生不喜欢改变立场——这让我们感到不安全、好像承认了失败。结果是：越聪明的人，往往越擅长为错误的信念辩护。</div></div><div class="qa"><div class="qa-q">Q3：终极命题？</div><div class="qa-a">在快速变化的世界里，已知的保质期越来越短。保持科学家思维——随时愿意被新证据说服——可能是21世纪最重要的认知能力。</div></div><p><strong>Adam Grant</strong>是宾大沃顿商学院最年轻的终身教授，《纽约时报》畅销书作者，专研工作动机和创造力。他自己就是重新思考的实践者——书中有大量他改变自己旧观点的案例。</p></div><div class="sec"><div class="sec-label">🗝️ 核心概念</div><h2>大白话解码</h2><div class="concept"><div class="concept-name">传教士、检察官、政治家vs科学家</div><div class="concept-def">更新信念的四种方式：传教士（捍卫自己的信仰）、检察官（找对方的漏洞）、政治家（迎合观众）、科学家（寻找证伪自己的证据）。只有科学家模式才是真正的重新思考。</div><div class="concept-case">💡 发现自己可能错了，好的反应是太好了我又学到了，而不是我要为自己辩护。</div></div><div class="concept"><div class="concept-name">认知懒惰</div><div class="concept-def">当我们找到一个解释后，大脑倾向于停止搜索其他可能性。这不是智力问题，而是思维习惯问题。</div><div class="concept-case">💡 你知道正确答案了，就不再想还有没有其他可能。破解：主动问自己如果我错了，会有什么证据？</div></div><div class="concept"><div class="concept-name">辩证式思考</div><div class="concept-def">不是在两个立场中选一个，而是同时持有看似矛盾的观点，找到更高维的整合。</div><div class="concept-case">💡 自信又谦逊不矛盾——对自己的价值观自信，对自己的知识边界谦逊。</div></div></div><div class="sec"><div class="sec-label">🛠️ 核心方法论</div><h2>如何养成重新思考的习惯</h2><div class="method-chain"><div class="method-step"><div class="step-num">1</div><div class="step-body"><div class="step-title">建立我曾经认为但现在我认为的习惯</div><div class="step-desc">定期回顾自己的旧观点，明确说出我改变了想法——这不是软弱，这是成长。</div></div></div><div class="method-step"><div class="step-num">2</div><div class="step-body"><div class="step-title">学会区分身份和观点</div><div class="step-desc">当你把一个观点变成我的一部分，改变它就等于攻击你自己。把观点变成当下最好的假设，改变就变得容易。</div></div></div><div class="method-step"><div class="step-num">3</div><div class="step-body"><div class="step-title">寻找持续对话者而不是辩论赢家</div><div class="step-desc">真正有价值的讨论目标是共同找到真相，而不是证明对方错了。</div></div></div><div class="method-step"><div class="step-num">4</div><div class="step-body"><div class="step-title">主动寻找反例</div><div class="step-desc">对于自己最确信的观点，主动问：什么样的证据会让我改变想法？如果找不到答案，说明这已经成了信仰而不是观点。</div></div></div></div></div><div class="sec"><div class="sec-label">🛡️ 辩证审视</div><h2>优缺点</h2><div class="dial"><div class="dial-pro"><div class="dial-label">✓ 价值所在</div><p>Grant用大量经实证研究支持的案例，说明重新思考不只是一种美德，而是一种可以学习的技能。科学家思维框架简洁实用。</p></div><div class="dial-con"><div class="dial-label">⚠ 局限性</div><p>有些场景下，坚持立场是必要的——不是所有的固执都是认知懒惰。另外Grant的案例有时过度依赖精英群体，普通职场的适用性需要验证。</p></div></div></div><div class="sec"><div class="sec-label">📖 帕累托精选</div><h2>必读章节</h2><div class="chapter-card"><span class="chapter-badge">必读 #1</span><div class="chapter-name">传教士、检察官、政治家、科学家——你是哪种思考者？</div><div class="chapter-reason">全书核心框架，立刻能自我诊断</div><p>多数人在争论时会自动切换到传教士或检察官模式——因为这更符合社会奖励（捍卫立场等于勇气，承认错误等于软弱）。这章给出了切换到科学家模式的具体方法：把信念当假设，把讨论当实验。</p></div><div class="chapter-card"><span class="chapter-badge">必读 #2</span><div class="chapter-name">如何说服那些不愿意被说服的人</div><div class="chapter-reason">把理论转化为人际沟通技巧的精华章节</div><p>Grant研究了最有效的说服方式：不是用更多证据轰炸，而是问问题——让对方自己发现矛盾。如果你能再想一想，你会不会有不同的结论？比你错了因为……有效十倍。</p></div></div></div>
+<div class="footer">深度阅读解构 · 苏格拉底式提问 · 辩证批判</div>
+</body></html>
