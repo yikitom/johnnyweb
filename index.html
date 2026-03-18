@@ -7,34 +7,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#0b0d14;
-  --bg2:#0f1219;
-  --card:#141720;
-  --card-h:#191d28;
-  --border:#252c3d;
-  --border-h:#3a4560;
-  --text:#eef1f8;
-  --text-sub:#a8b2c8;
-  --text-dim:#6b7690;
-  --accent-bio:#f0b84a;
-  --accent-phi:#b78fff;
-  --accent-sci:#38c4f5;
-  --accent-mind:#6ee79e;
-  --accent-ai:#5fa8ff;
-  --accent-chain:#fb924c;
-  --accent-mgmt:#f871b0;
-  --accent-hist:#2de0c4;
-  --accent-health:#6be898;
-  --accent-rsch:#7dd3fc;
-  --serif:"Noto Serif SC",serif;
-  --sans:"Noto Sans SC",sans-serif;
-  --mono:"DM Mono",monospace;
+  --bg:#0b0d14;--bg2:#0f1219;--card:#141720;--card-h:#191d28;
+  --border:#252c3d;--border-h:#3a4560;
+  --text:#eef1f8;--text-sub:#a8b2c8;--text-dim:#6b7690;
+  --accent-bio:#f0b84a;--accent-phi:#b78fff;--accent-sci:#38c4f5;
+  --accent-mind:#6ee79e;--accent-ai:#5fa8ff;--accent-chain:#fb924c;
+  --accent-mgmt:#f871b0;--accent-hist:#2de0c4;--accent-health:#6be898;--accent-rsch:#7dd3fc;
+  --serif:"Noto Serif SC",serif;--sans:"Noto Sans SC",sans-serif;--mono:"DM Mono",monospace;
 }
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
 body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;-webkit-font-smoothing:antialiased}
-
-/* ---- TOPBAR ---- */
 #topbar{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(11,13,20,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:0 24px;height:52px;display:flex;align-items:center;gap:0}
 #topbar-logo{font-family:var(--serif);font-weight:700;font-size:16px;color:var(--text);white-space:nowrap;margin-right:28px;letter-spacing:.5px}
 #topbar-logo span{color:var(--accent-bio);margin-right:6px}
@@ -43,8 +25,6 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:
 .tnav{text-decoration:none;color:var(--text-dim);font-size:12px;font-weight:400;white-space:nowrap;padding:5px 11px;border-radius:6px;transition:.15s;letter-spacing:.3px}
 .tnav:hover{color:var(--text);background:rgba(255,255,255,.06)}
 .tnav.bio{color:var(--accent-bio)}.tnav.phi{color:var(--accent-phi)}.tnav.sci{color:var(--accent-sci)}.tnav.mind{color:var(--accent-mind)}.tnav.ai{color:var(--accent-ai)}.tnav.chain{color:var(--accent-chain)}.tnav.mgmt{color:var(--accent-mgmt)}.tnav.hist{color:var(--accent-hist)}.tnav.health{color:var(--accent-health)}.tnav.rsch{color:var(--accent-rsch)}
-
-/* ---- HERO ---- */
 .hero{padding:120px 24px 72px;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr auto;align-items:end;gap:40px}
 .hero-left h1{font-family:var(--serif);font-size:clamp(32px,5vw,52px);font-weight:900;line-height:1.15;margin-bottom:16px;color:var(--text);letter-spacing:-.5px}
 .hero-left h1 em{font-style:normal;background:linear-gradient(135deg,#f0b84a,#e87c3e);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
@@ -53,45 +33,31 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:
 .stat-pill{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px 20px;text-align:center;min-width:100px}
 .stat-n{font-family:var(--mono);font-size:28px;font-weight:500;color:var(--text);display:block;line-height:1}
 .stat-l{font-size:11px;color:var(--text-dim);letter-spacing:1px;text-transform:uppercase;margin-top:4px;display:block}
-.hero-divider{height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:0 auto 56px;max-width:1100px;margin-left:24px;margin-right:24px}
-
-/* ---- SECTION ---- */
+.hero-divider{height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:0 24px 56px}
 .wrap{max-width:1100px;margin:0 auto;padding:0 24px 80px}
 .sec{margin-bottom:60px;scroll-margin-top:72px}
 .sec-hd{display:flex;align-items:center;gap:12px;margin-bottom:22px;padding-bottom:14px;border-bottom:1px solid var(--border)}
 .sec-icon{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
 .sec-title{font-family:var(--serif);font-size:19px;font-weight:700;color:var(--text);letter-spacing:-.3px}
 .sec-count{font-family:var(--mono);font-size:12px;color:var(--text-dim);margin-left:auto;letter-spacing:.5px}
-.bio .sec-icon{background:rgba(240,184,74,.12)} .phi .sec-icon{background:rgba(183,143,255,.12)} .sci .sec-icon{background:rgba(56,196,245,.12)} .mind .sec-icon{background:rgba(110,231,158,.12)} .ai .sec-icon{background:rgba(95,168,255,.12)} .chain .sec-icon{background:rgba(251,146,76,.12)} .mgmt .sec-icon{background:rgba(248,113,176,.12)} .hist .sec-icon{background:rgba(45,224,196,.12)} .health .sec-icon{background:rgba(107,232,152,.12)} .rsch .sec-icon{background:rgba(125,211,252,.12)}
-
-/* ---- GRID + CARDS ---- */
+.bio .sec-icon{background:rgba(240,184,74,.12)}.phi .sec-icon{background:rgba(183,143,255,.12)}.sci .sec-icon{background:rgba(56,196,245,.12)}.mind .sec-icon{background:rgba(110,231,158,.12)}.ai .sec-icon{background:rgba(95,168,255,.12)}.chain .sec-icon{background:rgba(251,146,76,.12)}.mgmt .sec-icon{background:rgba(248,113,176,.12)}.hist .sec-icon{background:rgba(45,224,196,.12)}.health .sec-icon{background:rgba(107,232,152,.12)}.rsch .sec-icon{background:rgba(125,211,252,.12)}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(252px,1fr));gap:12px}
 .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px 20px 16px;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:0;transition:.2s;position:relative;overflow:hidden}
 .card::before{content:"";position:absolute;top:0;left:0;width:3px;height:100%;border-radius:3px 0 0 3px;opacity:.7}
-.bio .card::before{background:var(--accent-bio)} .phi .card::before{background:var(--accent-phi)} .sci .card::before{background:var(--accent-sci)} .mind .card::before{background:var(--accent-mind)} .ai .card::before{background:var(--accent-ai)} .chain .card::before{background:var(--accent-chain)} .mgmt .card::before{background:var(--accent-mgmt)} .hist .card::before{background:var(--accent-hist)} .health .card::before{background:var(--accent-health)} .rsch .card::before{background:var(--accent-rsch)}
+.bio .card::before{background:var(--accent-bio)}.phi .card::before{background:var(--accent-phi)}.sci .card::before{background:var(--accent-sci)}.mind .card::before{background:var(--accent-mind)}.ai .card::before{background:var(--accent-ai)}.chain .card::before{background:var(--accent-chain)}.mgmt .card::before{background:var(--accent-mgmt)}.hist .card::before{background:var(--accent-hist)}.health .card::before{background:var(--accent-health)}.rsch .card::before{background:var(--accent-rsch)}
 .card:hover{border-color:var(--border-h);background:var(--card-h);transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,0,0,.4)}
 .cc{font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;margin-bottom:7px;font-family:var(--sans)}
-.bio .cc{color:var(--accent-bio)} .phi .cc{color:var(--accent-phi)} .sci .cc{color:var(--accent-sci)} .mind .cc{color:var(--accent-mind)} .ai .cc{color:var(--accent-ai)} .chain .cc{color:var(--accent-chain)} .mgmt .cc{color:var(--accent-mgmt)} .hist .cc{color:var(--accent-hist)} .health .cc{color:var(--accent-health)} .rsch .cc{color:var(--accent-rsch)}
+.bio .cc{color:var(--accent-bio)}.phi .cc{color:var(--accent-phi)}.sci .cc{color:var(--accent-sci)}.mind .cc{color:var(--accent-mind)}.ai .cc{color:var(--accent-ai)}.chain .cc{color:var(--accent-chain)}.mgmt .cc{color:var(--accent-mgmt)}.hist .cc{color:var(--accent-hist)}.health .cc{color:var(--accent-health)}.rsch .cc{color:var(--accent-rsch)}
 .ct{font-family:var(--serif);font-size:15px;font-weight:600;color:var(--text);margin-bottom:8px;line-height:1.4;letter-spacing:-.2px}
 .cd{font-size:12.5px;color:var(--text-sub);line-height:1.65;flex:1}
 .ca{text-align:right;font-size:13px;color:var(--text-dim);margin-top:12px;transition:.15s}
 .card:hover .ca{color:var(--text-sub);transform:translateX(3px)}
-
-/* ---- FOOTER ---- */
 .footer{text-align:center;padding:40px 24px 48px;border-top:1px solid var(--border);color:var(--text-dim);font-size:12px;font-family:var(--mono);letter-spacing:.5px}
 .footer a{color:var(--text-dim);text-decoration:none}.footer a:hover{color:var(--text-sub)}
-
-@media(max-width:640px){
-  .hero{grid-template-columns:1fr;gap:24px}
-  .hero-stats{flex-direction:row;align-items:flex-start}
-  .hero-left h1{font-size:30px}
-  #topbar-logo{font-size:14px;margin-right:16px}
-}
+@media(max-width:640px){.hero{grid-template-columns:1fr;gap:24px}.hero-stats{flex-direction:row;align-items:flex-start}.hero-left h1{font-size:30px}#topbar-logo{font-size:14px;margin-right:16px}}
 </style>
 </head>
 <body>
-
-<!-- TOPBAR -->
 <div id="topbar">
   <div id="topbar-logo"><span>📚</span>JohnnyWeb</div>
   <nav id="topbar-nav">
@@ -103,214 +69,204 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:
     <a href="#chain" class="tnav chain">区块链</a>
     <a href="#mgmt" class="tnav mgmt">管理·变革</a>
     <a href="#hist" class="tnav hist">历史·文化</a>
-    <a href="#health" class="tnav health">健康·自然</a>
+    <a href="#health" class="tnav health">健康·心理</a>
     <a href="#rsch" class="tnav rsch">研究报告</a>
   </nav>
 </div>
 
-<!-- HERO -->
 <div class="hero">
   <div class="hero-left">
     <h1>知识的<em>光谱</em><br>从书页到洞见</h1>
-    <p>深度解构 71 本好书 · 研究报告 · 传记人物 · 科学思维 · AI 前沿<br>每一本书都值得被认真对待。</p>
+    <p>深度解构 195 本好书 · 研究报告 · 传记人物 · 科学思维 · AI 前沿<br>每一本书都值得被认真对待。</p>
   </div>
   <div class="hero-stats">
-    <div class="stat-pill">
-      <span class="stat-n">162</span>
-      <span class="stat-l">书籍解构</span>
-    </div>
-    <div class="stat-pill">
-      <span class="stat-n">10</span>
-      <span class="stat-l">知识领域</span>
-    </div>
-    <div class="stat-pill">
-      <span class="stat-n">持续</span>
-      <span class="stat-l">更新中</span>
-    </div>
+    <div class="stat-pill"><span class="stat-n">195</span><span class="stat-l">书籍解构</span></div>
+    <div class="stat-pill"><span class="stat-n">10</span><span class="stat-l">知识领域</span></div>
+    <div class="stat-pill"><span class="stat-n">持续</span><span class="stat-l">更新中</span></div>
   </div>
 </div>
 <div class="hero-divider"></div>
 
 <div class="wrap">
 
-<!-- 传记 -->
 <div class="sec bio" id="bio">
 <div class="sec-hd">
   <div class="sec-icon">👤</div>
   <div class="sec-title">传记·人物解构</div>
-  <div class="sec-count">10 本</div>
+  <div class="sec-count">15 本</div>
 </div>
 <div class="grid">
-<a href="source-code-gates.html" class="card bio"><div class="cc">传记·商业</div><div class="ct">《源代码》</div><div class="cd">比尔·盖茨自传 · 解码微软创始人的成功密码与思维模型</div><div class="ca">→</div></a>
-<a href="billionaires-nerds.html" class="card bk"><div class="cc">商业·权力批评</div><div class="ct">《亿万富翁，书呆子，救世主，国王》</div><div class="cd">解剖硅谷权贵：当科技亿万富翁成为比政府更有权力的存在</div><div class="ca">→</div></a>
-<a href="su-dongpo-biography.html" class="card bio"><div class="cc">传记·宋代</div><div class="ct">《苏东坡新传》</div><div class="cd">李一冰著 · 把苦难变成诗，中国文人的最高典范</div><div class="ca">→</div></a>
+<a href="musk-biography.html" class="card bio"><div class="cc">传记·科技创业</div><div class="ct">《马斯克传》</div><div class="cd">艾萨克森著 · 第一性原理驱动，文明级创业者的极端人格</div><div class="ca">→</div></a>
 <a href="hassabis-ai-biography.html" class="card bio"><div class="cc">传记·AI</div><div class="ct">《哈萨比斯：谷歌AI之脑》</div><div class="cd">马拉比著 · 从国际象棋神童到AlphaFold的破局之路</div><div class="ca">→</div></a>
-<a href="musk-biography.html" class="card bio"><div class="cc">传记·科技创业</div><div class="ct">《马斯克传》</div><div class="cd">艾萨克森著 · 第一性原理驱动的文明级创业者</div><div class="ca">→</div></a>
+<a href="source-code-gates.html" class="card bio"><div class="cc">传记·商业</div><div class="ct">《源代码》</div><div class="cd">比尔·盖茨首部自传 · 解码微软创始人的成功密码与思维模型</div><div class="ca">→</div></a>
 <a href="einstein-biography.html" class="card bio"><div class="cc">传记·物理学</div><div class="ct">《爱因斯坦传》</div><div class="cd">艾萨克森著 · 想象力比知识更重要的一生</div><div class="ca">→</div></a>
-<a href="franklin-biography.html" class="card bio"><div class="cc">传记·美国开国</div><div class="ct">《富兰克林传》</div><div class="cd">艾萨克森著 · 终极务实主义者的知识改变命运</div><div class="ca">→</div></a>
+<a href="franklin-biography.html" class="card bio"><div class="cc">传记·美国开国</div><div class="ct">《富兰克林传》</div><div class="cd">艾萨克森著 · 终极务实主义者，用知识改变阶层命运</div><div class="ca">→</div></a>
+<a href="paypal-founders.html" class="card bio"><div class="cc">传记·创业史</div><div class="ct">《The Founders》</div><div class="cd">Jimmy Soni著 · PayPal黑帮：马斯克政变、欺诈战争、危机铸炼文化</div><div class="ca">→</div></a>
+<a href="su-dongpo-biography.html" class="card bio"><div class="cc">传记·宋代</div><div class="ct">《苏东坡新传》</div><div class="cd">李一冰著 · 把苦难写成诗，中国文人的最高典范</div><div class="ca">→</div></a>
 <a href="lula-biography.html" class="card bio"><div class="cc">传记·巴西政治</div><div class="ct">《卢拉传》</div><div class="cd">四次竞选才赢的工厂工人 · 战略性耐心的极致案例</div><div class="ca">→</div></a>
 <a href="johnson-biography.html" class="card bio"><div class="cc">传记·英国文学</div><div class="ct">《塞缪尔·约翰逊传》</div><div class="cd">鲍斯韦尔著 · 用知识垄断取代阶层垄断的编词典者</div><div class="ca">→</div></a>
 <a href="puyi-biography.html" class="card bio"><div class="cc">传记·清末民国</div><div class="ct">《我的前半生》</div><div class="cd">溥仪著 · 被时代碾碎又重塑的末代皇帝</div><div class="ca">→</div></a>
 <a href="anne-frank-diary.html" class="card bio"><div class="cc">传记·二战·人性</div><div class="ct">《安妮日记》</div><div class="cd">安妮·弗兰克著 · 在密室里把内心世界扩张到无限大</div><div class="ca">→</div></a>
+<a href="feynman-biography.html" class="card bio"><div class="cc">传记·科学</div><div class="ct">《别闹了，费曼先生》</div><div class="cd">Richard Feynman著 · 好奇心是最好的驱动力</div><div class="ca">→</div></a>
+<a href="shaw-biography.html" class="card bio"><div class="cc">传记·文学</div><div class="ct">《萧伯纳传》</div><div class="cd">用讽刺改变社会的爱尔兰剧作家，嘲笑是最高明的批评武器</div><div class="ca">→</div></a>
 <a href="ducks-oil-sands.html" class="card bio"><div class="cc">图像小说·社会</div><div class="ct">《Ducks: Two Years in the Oil Sands》</div><div class="cd">Kate Beaton著 · 从一种荒芜逃向另一种荒芜</div><div class="ca">→</div></a>
+<a href="legends-and-soles.html" class="card bio"><div class="cc">传记·商业</div><div class="ct">《传奇与鞋底》</div><div class="cd">在全球化时代坚守工艺灵魂的商业哲学</div><div class="ca">→</div></a>
 </div></div>
 
-<a href="critical-thinking-positions.html" class="card phi"><div class="cc">逻辑·批判思维</div><div class="ct">《思辨与立场》</div><div class="cd">理查德·保罗著 · 你以为自己在批判性思考，其实只是在为既有立场辩护</div><div class="ca">→</div></a>
-<a href="careless-people.html" class="card phi"><div class="cc">科技·社会批判</div><div class="ct">《轻率的人们》</div><div class="cd">Facebook前高管内幕揭露 · 从缅甸种族屠杀到中国审查工具——连接世界使命背后的商业真相</div><div class="ca">→</div></a>
-<a href="obedience-authority.html" class="card sci"><div class="cc">社会心理学·权威</div><div class="ct">《服从权威》</div><div class="cd">斯坦利·米尔格拉姆著 · 65%的普通人会服从权威电死陌生人——平庸之恶的实验室证明</div><div class="ca">→</div></a>
-<a href="paradox-delusion.html" class="card bk"><div class="cc">心理学·自我欺骗</div><div class="ct">《妄想的悖论》</div><div class="cd">安慰剂为什么有效？乐观主义者为何活得更好——适度自我欺骗是进化赋予的礼物</div><div class="ca">→</div></a>
-<a href="ego-enemy.html" class="card bk"><div class="cc">哲学·自我成长</div><div class="ct">《Ego Is the Enemy》</div><div class="cd">Ryan Holiday著 · 自我是你最强大的敌人——志向、成功、失败三个阶段如何对抗傲慢</div><div class="ca">→</div></a>
-<a href="obedience-authority.html" class="card phi"><div class="cc">心理学·社会</div><div class="ct">《服从权威》</div><div class="cd">米尔格伦著 · 65%的普通人会服从命令电击陌生人——人类的道德究竟有多脆弱</div><div class="ca">→</div></a>
-<a href="do-epic-shit.html" class="card bk"><div class="cc">思维·成长</div><div class="ct">《Do Epic Shit》</div><div class="cd">Ankur Warikoo著 · 印度创业者的人生哲学：失败履历表比简历更诚实，习惯比目标更持久</div><div class="ca">→</div></a>
-<!-- 哲学社会 -->
 <div class="sec phi" id="phi">
 <div class="sec-hd">
   <div class="sec-icon">🌐</div>
   <div class="sec-title">哲学·社会·思想</div>
-  <div class="sec-count">8 本</div>
+  <div class="sec-count">18 本</div>
 </div>
 <div class="grid">
-<a href="tao-te-ching.html" class="card biz"><div class="cc">哲学·东方智慧</div><div class="ct">《道德经》</div><div class="cd">老子著 · 5000字，2500年，无数人的精神根源</div><div class="ca">→</div></a>
-<a href="dao-de-jing.html" class="card bk"><div class="cc">哲学·智慧</div><div class="ct">《道德经》</div><div class="cd">老子著 · 五千字，讲透了柔弱胜刚强的宇宙法则</div><div class="ca">→</div></a>
-<a href="yi-jing.html" class="card bk"><div class="cc">哲学·系统论</div><div class="ct">《易经》</div><div class="cd">古代先贤著 · 六十四卦，中国人理解变化的系统论框架</div><div class="ca">→</div></a>
-<a href="modern-soul.html" class="card bk"><div class="cc">心理学·荣格</div><div class="ct">《现代人的心灵问题》</div><div class="cd">Carl Jung著 · 现代人失去了与灵魂的连接，这是真正的心理危机</div><div class="ca">→</div></a>
-<a href="bauman-understanding-world.html" class="card phi"><div class="cc">社会学</div><div class="ct">《我们如何理解这个世界》</div><div class="cd">鲍曼著 · 液态现代性与秩序建立的代价</div><div class="ca">→</div></a>
-<a href="how-world-thinks-baggini.html" class="card phi"><div class="cc">跨文化哲学</div><div class="ct">《世界是如何思考的》</div><div class="cd">巴吉尼著 · 哲学不是一棵树，而是一片森林</div><div class="ca">→</div></a>
-<a href="ridley-bottom-up.html" class="card phi"><div class="cc">演化经济学</div><div class="ct">《自下而上》</div><div class="cd">马特·里德利著 · 这个世界没有总设计师</div><div class="ca">→</div></a>
-<a href="mattering-instinct.html" class="card phi"><div class="cc">存在主义</div><div class="ct">《The Mattering Instinct》</div><div class="cd">Goldstein著 · 人不是为了活着，而是为了证明活着有意义</div><div class="ca">→</div></a>
+<a href="tao-te-ching.html" class="card phi"><div class="cc">哲学·东方智慧</div><div class="ct">《道德经》</div><div class="cd">老子著 · 5000字，2500年，无数人的精神根源</div><div class="ca">→</div></a>
+<a href="yi-jing.html" class="card phi"><div class="cc">哲学·系统论</div><div class="ct">《易经》</div><div class="cd">古代先贤著 · 六十四卦，中国人理解变化的系统论框架</div><div class="ca">→</div></a>
+<a href="modern-soul.html" class="card phi"><div class="cc">心理学·荣格</div><div class="ct">《现代人的心灵问题》</div><div class="cd">Carl Jung著 · 现代人失去了与灵魂的连接，这是真正的心理危机</div><div class="ca">→</div></a>
 <a href="religion-nature.html" class="card phi"><div class="cc">哲学·无神论</div><div class="ct">《宗教的本质》</div><div class="cd">费尔巴哈著 · 你跪拜的神，不过是你自己的倒影</div><div class="ca">→</div></a>
 <a href="shuniu.html" class="card phi"><div class="cc">历史哲学·中国</div><div class="ct">《枢纽》</div><div class="cd">施展著 · 中国是连接游牧与农耕的3000年战略节点</div><div class="ca">→</div></a>
+<a href="ridley-bottom-up.html" class="card phi"><div class="cc">演化经济学</div><div class="ct">《自下而上》</div><div class="cd">马特·里德利著 · 这个世界没有总设计师</div><div class="ca">→</div></a>
+<a href="mattering-instinct.html" class="card phi"><div class="cc">存在主义</div><div class="ct">《The Mattering Instinct》</div><div class="cd">Goldstein著 · 人不是为了活着，而是为了证明活着有意义</div><div class="ca">→</div></a>
+<a href="bauman-understanding-world.html" class="card phi"><div class="cc">社会学</div><div class="ct">《我们如何理解这个世界》</div><div class="cd">鲍曼著 · 液态现代性与秩序建立的代价</div><div class="ca">→</div></a>
+<a href="how-world-thinks-baggini.html" class="card phi"><div class="cc">跨文化哲学</div><div class="ct">《世界是如何思考的》</div><div class="cd">巴吉尼著 · 哲学不是一棵树，而是一片森林</div><div class="ca">→</div></a>
 <a href="atomized-humans.html" class="card phi"><div class="cc">社会学·现代性</div><div class="ct">《原子化人类》</div><div class="cd">维勒贝克著 · 现代性解放了个体，也让人失去了归属</div><div class="ca">→</div></a>
 <a href="the-cosmopolites.html" class="card phi"><div class="cc">政治学·移民</div><div class="ct">《世界公民》</div><div class="cd">护照的政治经济学 · 无国籍者的困境与护照商品化</div><div class="ca">→</div></a>
+<a href="careless-people.html" class="card phi"><div class="cc">科技·社会批判</div><div class="ct">《轻率的人们》</div><div class="cd">Facebook前高管内幕揭露 · 连接世界使命背后的商业真相</div><div class="ca">→</div></a>
+<a href="making-salmon.html" class="card phi"><div class="cc">生态·批判</div><div class="ct">《制造三文鱼》</div><div class="cd">你盘子里的三文鱼是怎么来的——工业养殖的谎言与代价</div><div class="ca">→</div></a>
+<a href="jesus-messy-house.html" class="card phi"><div class="cc">信仰·完美主义</div><div class="ct">《耶稣不在乎你杂乱的房子》</div><div class="cd">关于内心而非外表的信仰哲学——完美主义是真实关系的敌人</div><div class="ca">→</div></a>
+<a href="designing-bbc.html" class="card phi"><div class="cc">设计史·传媒</div><div class="ct">《设计BBC》</div><div class="cd">视觉设计如何成为机构软实力——BBC七十年品牌权威的构建逻辑</div><div class="ca">→</div></a>
+<a href="why-america-not-great.html" class="card phi"><div class="cc">政治·社会批评</div><div class="ct">《美国为什么不再伟大》</div><div class="cd">MAGA运动解剖：贸易保护主义和民粹口号为何无法解决结构性困境</div><div class="ca">→</div></a>
+<a href="minority-rule.html" class="card phi"><div class="cc">政治·社会批评</div><div class="ct">《少数派统治》</div><div class="cd">Ruy Teixeira著 · 激进少数派如何劫持多数沉默者的声音</div><div class="ca">→</div></a>
+<a href="why-nations-fail.html" class="card phi"><div class="cc">政治经济学</div><div class="ct">《国家为什么会失败》</div><div class="cd">Acemoglu & Robinson著 · 包容性制度 vs 提取性制度决定国家命运</div><div class="ca">→</div></a>
 </div></div>
 
-<!-- 科学认知 -->
 <div class="sec sci" id="sci">
 <div class="sec-hd">
   <div class="sec-icon">🔬</div>
-  <div class="sec-title">科学·神经认知</div>
-  <div class="sec-count">12 本</div>
+  <div class="sec-title">科学·神经·认知</div>
+  <div class="sec-count">36 本</div>
 </div>
 <div class="grid">
 <a href="livewired-eagleman.html" class="card sci"><div class="cc">神经科学·可塑性</div><div class="ct">《活线大脑》</div><div class="cd">David Eagleman著 · 你的大脑每时每刻都在重写自己</div><div class="ca">→</div></a>
-<a href="thousand-brains.html" class="card sci"><div class="cc">神经科学·AI</div><div class="ct">《千脑》</div><div class="cd">Jeff Hawkins著 · 大脑不是一台电脑，而是一千个大脑</div><div class="ca">→</div></a>
-<a href="livewired-brain.html" class="card sci"><div class="cc">大脑健康·认知</div><div class="ct">《大脑的不可思议》</div><div class="cd">Richard Restak著 · 你的大脑可以抵抗老化，如果你知道怎么训练它</div><div class="ca">→</div></a>
+<a href="thousand-brains.html" class="card sci"><div class="cc">神经科学·AI</div><div class="ct">《千脑》</div><div class="cd">Jeff Hawkins著 · 大脑不是一台电脑，而是一千个并行预测机器</div><div class="ca">→</div></a>
+<a href="livewired-brain.html" class="card sci"><div class="cc">大脑健康·认知</div><div class="ct">《神经可塑性》</div><div class="cd">大脑对抗老化的科学——你可以退休，但你的大脑不能退休</div><div class="ca">→</div></a>
 <a href="behave-sapolsky.html" class="card sci"><div class="cc">神经生物学</div><div class="ct">《Behave》</div><div class="cd">萨波斯基著 · 人类行为从1秒到千年的生物学解构</div><div class="ca">→</div></a>
-<a href="half-brain-world.html" class="card sci"><div class="cc">脑科学·意识</div><div class="ct">《半脑世界》</div><div class="cd">泰勒著 · 脑科学家中风亲历：平静是神经能力</div><div class="ca">→</div></a>
+<a href="half-brain-world.html" class="card sci"><div class="cc">脑科学·意识</div><div class="ct">《半脑世界》</div><div class="cd">脑科学家中风亲历：平静是神经能力，不是性格</div><div class="ca">→</div></a>
 <a href="metacognition-rewire.html" class="card sci"><div class="cc">认知科学</div><div class="ct">《元认知：改变大脑的顽固思维》</div><div class="cd">神经可塑性与元认知四步循环的实践指南</div><div class="ca">→</div></a>
-<a href="brief-history-time.html" class="card sci"><div class="cc">物理学·宇宙</div><div class="ct">《时间简史》</div><div class="cd">Stephen Hawking著 · 宇宙从哪里来？时间究竟是什么？</div><div class="ca">→</div></a>
+<a href="brief-history-of-time.html" class="card sci"><div class="cc">物理学·宇宙</div><div class="ct">《时间简史》</div><div class="cd">Stephen Hawking著 · 宇宙从哪里来？时间有没有起点？</div><div class="ca">→</div></a>
 <a href="what-is-life.html" class="card sci"><div class="cc">物理生物学</div><div class="ct">《生命是什么》</div><div class="cd">薛定谔著 · 物理学家预测了DNA的存在</div><div class="ca">→</div></a>
 <a href="consciousness-exploration.html" class="card sci"><div class="cc">神经科学·意识</div><div class="ct">《意识探索》</div><div class="cd">科赫著 · 意识的神经关联物与AI是否能有意识</div><div class="ca">→</div></a>
 <a href="ageless-brain.html" class="card sci"><div class="cc">神经科学·大脑健康</div><div class="ct">《The Ageless Brain》</div><div class="cd">Milstein著 · 你可以退休，但你的大脑不能退休</div><div class="ca">→</div></a>
 <a href="eve-book.html" class="card sci"><div class="cc">进化生物学</div><div class="ct">《夏娃》</div><div class="cd">波汉农著 · 以女性为主角重写200万年人类进化史</div><div class="ca">→</div></a>
 <a href="biased-book.html" class="card sci"><div class="cc">社会心理学·种族</div><div class="ct">《偏见》</div><div class="cd">埃伯哈特著 · 偏见是大脑的出厂设置，不是坏人的专利</div><div class="ca">→</div></a>
 <a href="the-black-swan.html" class="card sci"><div class="cc">风险·认知</div><div class="ct">《黑天鹅》</div><div class="cd">Nassim Taleb著 · 不可预测的极端事件，才是真正改变历史的力量</div><div class="ca">→</div></a>
-<a href="nudge-simple.html" class="card bk"><div class="cc">行为经济学·公共政策</div><div class="ct">《简单》</div><div class="cd">桑斯坦著 · 政府的规则如果像产品说明书一样简单，世界会更好运转</div><div class="ca">→</div></a>
-<a href="how-to-think-ai.html" class="card ai"><div class="cc">AI·认知科学</div><div class="ct">《如何思考人工智能》</div><div class="cd">Melanie Mitchell著 · 认知科学家写给困惑者的AI祛魅指南</div><div class="ca">→</div></a>
 <a href="misbehaving-thaler.html" class="card sci"><div class="cc">行为经济学</div><div class="ct">《不当行为》</div><div class="cd">Richard Thaler著 · 诺贝尔奖得主：人类根本不理性</div><div class="ca">→</div></a>
-<a href="tell-tale-brain.html" class="card sci"><div class="cc">神经科学</div><div class="ct">《会讲故事的大脑》</div><div class="cd">Ramachandran著 · 神经病例是解开意识之谜的钥匙</div><div class="ca">→</div></a>
-<a href="thousand-brains.html" class="card sci"><div class="cc">AI·认知科学</div><div class="ct">《千脑》</div><div class="cd">Jeff Hawkins著 · 智能的真正原理：大脑是一千个并行预测机器</div><div class="ca">→</div></a>
-<a href="flatland.html" class="card sci"><div class="cc">数学·哲学</div><div class="ct">《平面国》</div><div class="cd">Edwin Abbott著 · 维度寓言：你的现实，可能只是更高维度的投影</div><div class="ca">→</div></a>
+<a href="tell-tale-brain.html" class="card sci"><div class="cc">神经科学·认知</div><div class="ct">《会讲故事的大脑》</div><div class="cd">V.S.拉马钱德兰著 · 通过神经奇案，揭示大脑如何构建你的现实</div><div class="ca">→</div></a>
+<a href="phantoms-brain.html" class="card sci"><div class="cc">神经科学·意识</div><div class="ct">《脑中魅影》</div><div class="cd">V.S.拉马钱德兰著 · 从幻肢到卡普格拉症，神经奇案揭示大脑真相</div><div class="ca">→</div></a>
+<a href="astonishing-hypothesis.html" class="card sci"><div class="cc">神经科学·意识</div><div class="ct">《惊人的假说》</div><div class="cd">Francis Crick著 · 你的喜悦、痛苦和爱，只是神经元的集体行为</div><div class="ca">→</div></a>
 <a href="moral-animal.html" class="card sci"><div class="cc">进化心理学</div><div class="ct">《道德动物》</div><div class="cd">Robert Wright著 · 我们的道德感，其实是基因的自私表现</div><div class="ca">→</div></a>
-<a href="influential-mind.html" class="card sci"><div class="cc">心理学·影响力</div><div class="ct">《影响力的八大障碍》</div><div class="cd">Tali Sharot著 · 最无效的影响方式恰恰是摆事实讲道理</div><div class="ca">→</div></a>
 <a href="selfish-gene.html" class="card sci"><div class="cc">进化生物学</div><div class="ct">《自私的基因》</div><div class="cd">道金斯著 · 基因才是进化的主角，你的身体只是它的载体</div><div class="ca">→</div></a>
+<a href="obedience-authority.html" class="card sci"><div class="cc">社会心理学·权威</div><div class="ct">《服从权威》</div><div class="cd">斯坦利·米尔格拉姆著 · 65%的普通人会服从权威电死陌生人</div><div class="ca">→</div></a>
+<a href="influential-mind.html" class="card sci"><div class="cc">心理学·影响力</div><div class="ct">《影响力的八大障碍》</div><div class="cd">Tali Sharot著 · 最无效的影响方式恰恰是摆事实讲道理</div><div class="ca">→</div></a>
+<a href="paradox-delusion.html" class="card sci"><div class="cc">心理学·自欺</div><div class="ct">《妄想的悖论》</div><div class="cd">自我欺骗有时反而有益——安慰剂效应背后的进化逻辑</div><div class="ca">→</div></a>
 <a href="intelligence-trap.html" class="card sci"><div class="cc">认知心理学</div><div class="ct">《智识陷阱》</div><div class="cd">罗布森著 · 聪明的人更擅长为错误信念构建合理化论证</div><div class="ca">→</div></a>
-<a href="sharp-brain-science.html" class="card sci"><div class="cc">神经科学·生产力</div><div class="ct">《Sharp：14种让大脑更聪明的方法》</div><div class="cd">休斯顿著 · 经脑科学研究支持的认知提升方法</div><div class="ca">→</div></a>
+<a href="flatland.html" class="card sci"><div class="cc">数学·哲学</div><div class="ct">《平面国》</div><div class="cd">Edwin Abbott著 · 维度寓言：你的现实，可能只是更高维度的投影</div><div class="ca">→</div></a>
+<a href="simple-sunstein.html" class="card sci"><div class="cc">行为经济学·政策</div><div class="ct">《简单》</div><div class="cd">桑斯坦著 · 政府的规则如果像产品说明书一样简单，世界会更好运转</div><div class="ca">→</div></a>
+<a href="probability-dice-ai.html" class="card sci"><div class="cc">数学·AI</div><div class="ct">《从掷骰子到人工智能》</div><div class="cd">张天蓉著 · 从17世纪赌博到ChatGPT，概率论是理解AI的底层钥匙</div><div class="ca">→</div></a>
+<a href="extended-mind.html" class="card sci"><div class="cc">认知科学·学习</div><div class="ct">《思考如何超越思考》</div><div class="cd">安妮·墨菲·保罗著 · 身体、环境和社会是大脑的延伸</div><div class="ca">→</div></a>
+<a href="5-percent-change.html" class="card sci"><div class="cc">心理咨询·成长</div><div class="ct">《5%的改变》</div><div class="cd">李松蔚著 · 不是戒酒，是少喝一口——微小改变的惊人复利</div><div class="ca">→</div></a>
+<a href="spiritual-intelligence.html" class="card sci"><div class="cc">神经科学·心理学</div><div class="ct">《精神智能》</div><div class="cd">Lisa Miller著 · 灵性不是玄学，是可测量的大脑保护网络</div><div class="ca">→</div></a>
+<a href="in-search-of-memory.html" class="card sci"><div class="cc">神经科学·传记</div><div class="ct">《追寻记忆的痕迹》</div><div class="cd">Eric Kandel著 · 一位诺贝尔奖得主用海蛞蝓解开了记忆之谜</div><div class="ca">→</div></a>
+<a href="man-who-mistook-his-wife.html" class="card sci"><div class="cc">神经科学·人文</div><div class="ct">《错把妻子当帽子》</div><div class="cd">Oliver Sacks著 · 24个神经病例，24种关于大脑与人性的启示</div><div class="ca">→</div></a>
+<a href="descartes-error.html" class="card sci"><div class="cc">神经科学·情绪</div><div class="ct">《笛卡尔的错误》</div><div class="cd">Antonio Damasio著 · 理性与情感不是对立的——情感是理性决策的基础</div><div class="ca">→</div></a>
+<a href="sharp-brain-science.html" class="card sci"><div class="cc">神经科学·生产力</div><div class="ct">《Sharp：14种让大脑更聪明的方法》</div><div class="cd">经脑科学研究支持的认知提升方法</div><div class="ca">→</div></a>
+<a href="why-we-sleep.html" class="card sci"><div class="cc">神经科学·健康</div><div class="ct">《为什么我们睡觉》</div><div class="cd">Matthew Walker著 · 睡眠不是休息，它是大脑最重要的工作时间</div><div class="ca">→</div></a>
+<a href="judgment-10-ways.html" class="card sci"><div class="cc">批判性思维</div><div class="ct">《做出明智判断的10个方法》</div><div class="cd">Julian Baggini著 · 我们以为自己在理性思考，实际上大多数时候都不是</div><div class="ca">→</div></a>
 <a href="efficient-rest-method.html" class="card sci"><div class="cc">脑科学·正念</div><div class="ct">《高效休息法》</div><div class="cd">久贺谷亮著 · 真正的疲劳来自大脑停不下来的内部叙事</div><div class="ca">→</div></a>
 </div></div>
 
-<!-- 思维成长 -->
 <div class="sec mind" id="mind">
 <div class="sec-hd">
   <div class="sec-icon">💡</div>
   <div class="sec-title">思维·成长·学习</div>
-  <div class="sec-count">6 本</div>
+  <div class="sec-count">41 本</div>
 </div>
 <div class="grid">
+<a href="pyramid-principle.html" class="card mind"><div class="cc">思维·写作</div><div class="ct">《金字塔原理》</div><div class="cd">Barbara Minto著 · 麦肯锡的思考和表达方法论</div><div class="ca">→</div></a>
+<a href="thinking-in-systems.html" class="card mind"><div class="cc">系统思维</div><div class="ct">《系统之美》</div><div class="cd">Donella Meadows著 · 反馈回路、杠杆点与复杂系统的反直觉规律</div><div class="ca">→</div></a>
+<a href="success-and-luck.html" class="card mind"><div class="cc">经济学·成功</div><div class="ct">《成功与运气》</div><div class="cd">Robert Frank著 · 才能×努力×运气——成功者往往低估了哪个变量？</div><div class="ca">→</div></a>
+<a href="critical-thinking-positions.html" class="card mind"><div class="cc">逻辑·批判思维</div><div class="ct">《思辨与立场》</div><div class="cd">理查德·保罗著 · 你以为自己在批判性思考，其实只是在为立场辩护</div><div class="ca">→</div></a>
+<a href="logic-argumentation.html" class="card mind"><div class="cc">逻辑学</div><div class="ct">《论证逻辑入门》</div><div class="cd">Hurley著 · 全球最畅销逻辑学教材——好的论证 vs 花言巧语</div><div class="ca">→</div></a>
+<a href="logic-is-trained.html" class="card mind"><div class="cc">思维·逻辑</div><div class="ct">《逻辑是练出来的》</div><div class="cd">温明星著 · 逻辑思维是可以训练的系统技能，不是天生的</div><div class="ca">→</div></a>
+<a href="noise-kahneman.html" class="card mind"><div class="cc">思维·判断</div><div class="ct">《噪声》</div><div class="cd">卡尼曼等著 · 同一个人对同样案例做出不同判断——比偏见更隐蔽</div><div class="ca">→</div></a>
+<a href="madness-crowds.html" class="card mind"><div class="cc">投资·行为金融</div><div class="ct">《群体的疯狂》</div><div class="cd">威廉·伯恩斯坦著 · 郁金香到2008年——聪明人为何集体失智的3000年规律</div><div class="ca">→</div></a>
+<a href="think-again.html" class="card mind"><div class="cc">思维·认知升级</div><div class="ct">《重新思考》</div><div class="cd">Adam Grant著 · 知道自己错了，是最难的能力，也是最重要的能力</div><div class="ca">→</div></a>
+<a href="range-epstein.html" class="card mind"><div class="cc">学习·职业发展</div><div class="ct">《广度》</div><div class="cd">David Epstein著 · 在专业化的时代，博而不精的人为什么反而赢了？</div><div class="ca">→</div></a>
+<a href="outliers-gladwell.html" class="card mind"><div class="cc">成就·社会学</div><div class="ct">《异类》</div><div class="cd">Malcolm Gladwell著 · 成功不是个人天才，而是环境与时机的产物</div><div class="ca">→</div></a>
+<a href="inflection-point.html" class="card mind"><div class="cc">AI·思维</div><div class="ct">《拐点》</div><div class="cd">万维钢著 · 站在AI颠覆世界的前夜，你需要重新理解自己</div><div class="ca">→</div></a>
+<a href="impromptu-speaking.html" class="card mind"><div class="cc">表达·演讲</div><div class="ct">《即兴演讲》</div><div class="cd">汉弗莱著 · PREP框架——被老板突然点名发言不慌的底层结构</div><div class="ca">→</div></a>
+<a href="how-to-express.html" class="card mind"><div class="cc">表达·沟通</div><div class="ct">《如何清晰地表达》</div><div class="cd">MIT温斯顿教授46年心得 · 开场不废话、中间用故事、结尾留一句</div><div class="ca">→</div></a>
+<a href="atomic-habits.html" class="card mind"><div class="cc">成长·行为科学</div><div class="ct">《原子习惯》</div><div class="cd">James Clear著 · 每天进步1%，一年后你会强大37.78倍</div><div class="ca">→</div></a>
+<a href="seven-habits.html" class="card mind"><div class="cc">成长·效能</div><div class="ct">《高效能人士的7个习惯》</div><div class="cd">Stephen Covey著 · 从由内而外的思维重塑，找回真正的效能</div><div class="ca">→</div></a>
+<a href="grit-duckworth.html" class="card mind"><div class="cc">成长·心理学</div><div class="ct">《坚毅》</div><div class="cd">Angela Duckworth著 · 天赋决定上限？不，激情加坚持才是</div><div class="ca">→</div></a>
+<a href="drive-daniel-pink.html" class="card mind"><div class="cc">动机·行为</div><div class="ct">《驱动力》</div><div class="cd">Daniel Pink著 · 萝卜加大棒已经失效，真正让人行动的是第三种驱动力</div><div class="ca">→</div></a>
+<a href="mastery-robert-greene.html" class="card mind"><div class="cc">成长·人生设计</div><div class="ct">《掌握》</div><div class="cd">Robert Greene著 · 历史上所有的天才，都走过同一条路</div><div class="ca">→</div></a>
+<a href="getting-things-done.html" class="card mind"><div class="cc">效率·生产力</div><div class="ct">《搞定》</div><div class="cd">David Allen著 · 清空你的大脑，把它变成执行机器</div><div class="ca">→</div></a>
+<a href="ego-is-the-enemy.html" class="card mind"><div class="cc">成长·斯多葛</div><div class="ct">《自我是敌人》</div><div class="cd">Ryan Holiday著 · 阻碍你走得更远的，恰恰是你的自我</div><div class="ca">→</div></a>
+<a href="give-and-take.html" class="card mind"><div class="cc">成功·关系</div><div class="ct">《给予和索取》</div><div class="cd">Adam Grant著 · 给予者在底部，也在顶部——但为什么？</div><div class="ca">→</div></a>
+<a href="build-tony-fadell.html" class="card mind"><div class="cc">创业·产品</div><div class="ct">《创造》</div><div class="cd">Tony Fadell著 · iPod之父：创造真正有价值东西的非传统智慧</div><div class="ca">→</div></a>
+<a href="how-to-fail-win.html" class="card mind"><div class="cc">成长·系统</div><div class="ct">《在几乎所有事情上失败，依然大获全胜》</div><div class="cd">Scott Adams著 · 放弃目标，建立系统</div><div class="ca">→</div></a>
+<a href="do-epic-shit.html" class="card mind"><div class="cc">创业·人生哲学</div><div class="ct">《Do Epic Shit》</div><div class="cd">安库尔·瓦里科著 · 失败简历、习惯优于目标——印度创业者的人生观精华</div><div class="ca">→</div></a>
+<a href="smart-personal-growth.html" class="card mind"><div class="cc">思维·成长</div><div class="ct">《聪明人的个人成长》</div><div class="cd">Steve Pavlina著 · 真实、爱和力量——成长的三个根基</div><div class="ca">→</div></a>
+<a href="know-what-matters.html" class="card mind"><div class="cc">领导力·聚焦</div><div class="ct">《Know What Matters》</div><div class="cd">Ron Shaich著 · Panera创始人：在噪音中识别真正重要的事</div><div class="ca">→</div></a>
+<a href="user-friendly-design.html" class="card mind"><div class="cc">设计·用户体验</div><div class="ct">《用户友好》</div><div class="cd">克里夫·匡著 · 从飞机驾驶舱到iPhone——好设计让操作方式自明</div><div class="ca">→</div></a>
+<a href="solvable-book.html" class="card mind"><div class="cc">思维·决策·问题解决</div><div class="ct">《问题解决的逻辑》</div><div class="cd">IMD商学院著 · FrED框架：先定义正确的问题，再谈解决方案</div><div class="ca">→</div></a>
+<a href="strategic-thinking-complex.html" class="card mind"><div class="cc">战略·复杂问题</div><div class="ct">《复杂问题的战略性思维》</div><div class="cd">Chevallier著 · FDII框架：Frame→Diagnose→Identify→Implement</div><div class="ca">→</div></a>
+<a href="thanks-feedback.html" class="card mind"><div class="cc">沟通·反馈·成长</div><div class="ct">《感谢你的反馈》</div><div class="cd">哈佛谈判项目著 · 不研究如何给反馈，而是研究如何接收反馈</div><div class="ca">→</div></a>
 <a href="think-like-genius.html" class="card mind"><div class="cc">思维方法</div><div class="ct">《如何像天才一样思考》</div><div class="cd">天才不是智商碾压，而是一套不同的提问方式</div><div class="ca">→</div></a>
-<a href="influence-dual-analysis.html" class="card mind"><div class="cc">双书分析</div><div class="ct">影响力 × 影响力的八大障碍</div><div class="cd">西奥迪尼+莎罗特 · 推力工具与阻力地图的整合</div><div class="ca">→</div></a>
-<a href="multiple-intelligence.html" class="card mind"><div class="cc">教育心理学</div><div class="ct">《从多元智能到综合思维》</div><div class="cd">加德纳著 · 智能不止一种，综合才是最高级的能力</div><div class="ca">→</div></a>
-<a href="finding-focus.html" class="card mind"><div class="cc">注意力管理</div><div class="ct">《Finding Focus》</div><div class="cd">Montminy著 · 超日节律与注意力生态系统重建</div><div class="ca">→</div></a>
-<a href="could-should-might-dont.html" class="card mind"><div class="cc">未来学·设计思维</div><div class="ct">《Could Should Might Don't》</div><div class="cd">福斯特著 · 夺回对未来想象的主权</div><div class="ca">→</div></a>
 <a href="doomsday-calculation.html" class="card mind"><div class="cc">概率论·预测</div><div class="ct">《万物皆可预测》</div><div class="cd">庞德斯通著 · 用贝叶斯定理预测从未发生过的事</div><div class="ca">→</div></a>
+<a href="could-should-might-dont.html" class="card mind"><div class="cc">未来学·设计思维</div><div class="ct">《Could Should Might Don't》</div><div class="cd">福斯特著 · 夺回对未来想象的主权</div><div class="ca">→</div></a>
+<a href="finding-focus.html" class="card mind"><div class="cc">注意力管理</div><div class="ct">《Finding Focus》</div><div class="cd">Montminy著 · 超日节律与注意力生态系统重建</div><div class="ca">→</div></a>
+<a href="multiple-intelligence.html" class="card mind"><div class="cc">教育心理学</div><div class="ct">《从多元智能到综合思维》</div><div class="cd">加德纳著 · 智能不止一种，综合才是最高级的能力</div><div class="ca">→</div></a>
+<a href="influence-dual-analysis.html" class="card mind"><div class="cc">双书分析</div><div class="ct">《影响力 × 影响力的八大障碍》</div><div class="cd">西奥迪尼+莎罗特 · 推力工具与阻力地图的整合</div><div class="ca">→</div></a>
+<a href="wealth-while-you-sleep.html" class="card mind"><div class="cc">财务自由·被动收入</div><div class="ct">《睡觉时积累财富》</div><div class="cd">被动收入10策略：让钱为你工作的底层逻辑与方法论</div><div class="ca">→</div></a>
+<a href="the-one-thing.html" class="card mind"><div class="cc">效率·专注</div><div class="ct">《最重要的一件事》</div><div class="cd">Gary Keller著 · 缩减到一件事，其他的事会自然跟随</div><div class="ca">→</div></a>
+<a href="focus-goleman.html" class="card mind"><div class="cc">注意力·领导力</div><div class="ct">《专注》</div><div class="cd">Daniel Goleman著 · 注意力是隐藏的成功驱动力</div><div class="ca">→</div></a>
+<a href="poor-economics.html" class="card mind"><div class="cc">经济学·发展</div><div class="ct">《贫穷的本质》</div><div class="cd">Banerjee & Duflo著 · 穷人不是懒，他们只是生活在不同的决策环境</div><div class="ca">→</div></a>
 </div></div>
 
-<a href="careless-people.html" class="card biz"><div class="cc">商业·科技批判</div><div class="ct">《轻率的人们》</div><div class="cd">Facebook前政策主任告密录——权力·贪婪和失落的理想主义如何腐蚀科技巨头</div><div class="ca">→</div></a>
-<!-- AI技术 -->
 <div class="sec ai" id="ai">
 <div class="sec-hd">
   <div class="sec-icon">🤖</div>
   <div class="sec-title">AI·技术·未来</div>
-  <div class="sec-count">7 本 + 研究</div>
+  <div class="sec-count">23 本</div>
 </div>
 <div class="grid">
-<a href="llm-hands-on.html" class="card ai"><div class="cc">AI工程</div><div class="ct">《Hands-On Large Language Models》</div><div class="cd">Alammar著 · 从API调用到生产级LLM系统的工程判断力</div><div class="ca">→</div></a>
-<a href="thinking-with-machines.html" class="card ai"><div class="cc">AI与人类决策</div><div class="ct">《Thinking with Machines》</div><div class="cd">Vasant Dhar著 · AI是副驾驶，方向盘必须握在人手里</div><div class="ca">→</div></a>
-<a href="brave-new-words.html" class="card ai"><div class="cc">AI教育革命</div><div class="ct">《Brave New Words》</div><div class="cd">萨尔·汗著 · AI让每个孩子拥有私人家教</div><div class="ca">→</div></a>
-<a href="mastering-ai-agents.html" class="card ai"><div class="cc">AI工程·Agent</div><div class="ct">《Mastering AI Agents》</div><div class="cd">Bhavsar著 · 从Demo到生产级Agent系统的工程实践</div><div class="ca">→</div></a>
-<a href="genius-makers.html" class="card ai"><div class="cc">AI历史·传记</div><div class="ct">《天才制造者》</div><div class="cd">梅兹著 · 从被嘲笑的神经网络到改变世界的深度学习</div><div class="ca">→</div></a>
-<a href="master-algorithm.html" class="card ai"><div class="cc">机器学习·AI哲学</div><div class="ct">《主算法》</div><div class="cd">多明戈斯著 · 五大学习流派的哲学之争</div><div class="ca">→</div></a>
-<a href="alphafold-report.html" class="card ai"><div class="cc">科学研究</div><div class="ct">AlphaFold 技术深度解析</div><div class="cd">蛋白质折叠问题的AI解法 · 诺贝尔化学奖级别的突破</div><div class="ca">→</div></a>
 <a href="empire-of-ai.html" class="card ai"><div class="cc">AI历史·OpenAI纪实</div><div class="ct">《AI帝国》</div><div class="cd">卡伦·郝著 · 从理想主义实验室到万亿美元商业帝国的内幕</div><div class="ca">→</div></a>
+<a href="genius-makers.html" class="card ai"><div class="cc">AI历史·传记</div><div class="ct">《天才制造者》</div><div class="cd">梅兹著 · 从被嘲笑的神经网络到改变世界的深度学习</div><div class="ca">→</div></a>
 <a href="ai-superpowers.html" class="card ai"><div class="cc">AI·中美竞争</div><div class="ct">《AI超级大国》</div><div class="cd">李开复著 · 硅谷与中国，谁将赢得AI时代？</div><div class="ca">→</div></a>
-<a href="homo-deus.html" class="card ai"><div class="cc">历史·未来</div><div class="ct">《智人之上》</div><div class="cd">Yuval Harari著 · 智人征服饥荒瘟疫和战争之后，下一步要征服什么？</div><div class="ca">→</div></a>
 <a href="billionaires-nerds.html" class="card ai"><div class="cc">商业·权力批评</div><div class="ct">《亿万富翁、书呆子、救世主与国王》</div><div class="cd">硅谷精英越有权势，世界问题越难解决</div><div class="ca">→</div></a>
-<a href="ai-bottom-logic.html" class="card ai"><div class="cc">AI·底层原理</div><div class="ct">《人工智能的底层逻辑》</div><div class="cd">数据质量>数量、模型是模式匹配机器——AI没有那么神，也没有那么可怕</div><div class="ca">→</div></a>
-<a href="ai-new-era.html" class="card ai"><div class="cc">AI·实践</div><div class="ct">《AI新生》(AI新生代)</div><div class="cd">AI时代的生存法则：如何成为会用AI的人而不是被AI替代的人</div><div class="ca">→</div></a>
-<a href="ai-reborn.html" class="card ai"><div class="cc">AI·技术伦理</div><div class="ct">《AI新生》</div><div class="cd">AI是放大器不是替代器——如何在AI时代重塑人类独特价值</div><div class="ca">→</div></a>
-<a href="llm-30-lectures.html" class="card ai"><div class="cc">AI·技术</div><div class="ct">《大模型技术30讲》</div><div class="cd">从Transformer到RLHF，大语言模型核心原理白话解析</div><div class="ca">→</div></a>
+<a href="homo-deus.html" class="card ai"><div class="cc">历史·AI未来</div><div class="ct">《智人之上》</div><div class="cd">Yuval Harari著 · 智人征服饥荒瘟疫和战争之后，下一步要征服什么？</div><div class="ca">→</div></a>
 <a href="co-intelligence.html" class="card ai"><div class="cc">AI协作·人机关系</div><div class="ct">《协作智能》</div><div class="cd">Ethan Mollick著 · 如何与这个外星智慧共存共创？</div><div class="ca">→</div></a>
 <a href="superintelligence-bostrom.html" class="card ai"><div class="cc">AI安全·存在风险</div><div class="ct">《超级智能》</div><div class="cd">Nick Bostrom著 · 如果有一天AI比所有人类都聪明，会发生什么？</div><div class="ca">→</div></a>
-<a href="deep-learning.html" class="card ai"><div class="cc">AI·技术</div><div class="ct">《深度学习》</div><div class="cd">Goodfellow & Bengio著 · 深度学习领域最权威教科书，俗称"花书"</div><div class="ca">→</div></a>
-<a href="uncomputable.html" class="card ai"><div class="cc">AI·政治哲学</div><div class="ct">《不可计算》</div><div class="cd">数字时代哪些问题永远无法被算法解决——技术中立是最危险的政治神话</div><div class="ca">→</div></a>
 <a href="alignment-problem.html" class="card ai"><div class="cc">AI安全·价值对齐</div><div class="ct">《对齐问题》</div><div class="cd">Brian Christian著 · 我们如何让机器做我们真正想要的事？</div><div class="ca">→</div></a>
-<a href="brief-history-intelligence.html" class="card ai"><div class="cc">进化·神经科学·AI</div><div class="ct">《智能简史》</div><div class="cd">Max Bennett著 · 5亿年的智能进化，5个突破，一个统一框架</div><div class="ca">→</div></a>
+<a href="uncomputable.html" class="card ai"><div class="cc">AI·政治哲学</div><div class="ct">《不可计算》</div><div class="cd">数字时代哪些问题永远无法被算法解决——技术中立是最危险的政治神话</div><div class="ca">→</div></a>
 <a href="last-human-job.html" class="card ai"><div class="cc">社会学·劳动</div><div class="ct">《最后的人类工作》</div><div class="cd">帕夫著 · 被看见和理解的价值，是AI最难替代的</div><div class="ca">→</div></a>
-<a href="poor-economics.html" class="card bk"><div class="cc">经济学·发展</div><div class="ct">《贫穷的本质》</div><div class="cd">Banerjee &amp; Duflo著 · 穷人不是懒，他们只是生活在不同的决策环境</div><div class="ca">→</div></a>
-<a href="give-and-take-grant.html" class="card bk"><div class="cc">成功·关系</div><div class="ct">《给予和索取》</div><div class="cd">Adam Grant著 · 给予者才是最终的赢家</div><div class="ca">→</div></a>
-<a href="build-tony-fadell.html" class="card bk"><div class="cc">创业·产品</div><div class="ct">《创造》</div><div class="cd">Tony Fadell著 · iPod之父的非传统创业智慧</div><div class="ca">→</div></a>
-<a href="how-to-fail.html" class="card bk"><div class="cc">成长·系统</div><div class="ct">《如何在几乎所有事情上失败》</div><div class="cd">Scott Adams著 · 放弃目标，建立系统</div><div class="ca">→</div></a>
-<a href="moral-animal.html" class="card bk"><div class="cc">进化心理学</div><div class="ct">《道德动物》</div><div class="cd">Robert Wright著 · 人类的道德感，是进化的产物</div><div class="ca">→</div></a>
-<a href="give-and-take.html" class="card bk"><div class="cc">心理学·职场</div><div class="ct">《给予和索取》</div><div class="cd">Adam Grant著 · 给予者在底部，也在顶部——但为什么？</div><div class="ca">→</div></a>
-<a href="poor-economics.html" class="card bk"><div class="cc">经济学·发展</div><div class="ct">《贫穷的本质》</div><div class="cd">Banerjee & Duflo著 · 用随机实验破解贫困陷阱的真正逻辑</div><div class="ca">→</div></a>
-<a href="inflection-point.html" class="card bk"><div class="cc">AI·科技</div><div class="ct">《拐点》</div><div class="cd">万维钢著 · 站在AI颠覆世界的前夜，你需要重新理解自己</div><div class="ca">→</div></a>
-<a href="logic-is-trained.html" class="card bk"><div class="cc">思维·逻辑</div><div class="ct">《逻辑是练出来的》</div><div class="cd">温明星著 · 逻辑思维是可以训练的，不是天生的</div><div class="ca">→</div></a>
-<a href="poor-and-smart.html" class="card bk"><div class="cc">成长·哲学</div><div class="ct">《聪明人的个人成长》</div><div class="cd">Steve Pavlina著 · 真实、爱和力量——成长的三个根基</div><div class="ca">→</div></a>
-<a href="good-morning-monster.html" class="card bk"><div class="cc">心理学·创伤</div><div class="ct">《早安，怪物》</div><div class="cd">Catherine Gildiner著 · 五个患者，五种童年创伤，五个走向痊愈的故事</div><div class="ca">→</div></a>
-<a href="wealth-while-you-sleep.html" class="card bk"><div class="cc">财务自由·被动收入</div><div class="ct">《睡觉时积累财富的终极指南》</div><div class="cd">被动收入10策略：让钱为你工作的底层逻辑与方法论</div><div class="ca">→</div></a>
-<a href="why-america-not-great.html" class="card bk"><div class="cc">政治·社会批评</div><div class="ct">《美国为什么不再伟大》</div><div class="cd">MAGA运动解剖：贸易保护主义和民粹口号为何无法解决结构性困境</div><div class="ca">→</div></a>
-<a href="grit-duckworth.html" class="card bk"><div class="cc">成长·心理学</div><div class="ct">《坚毅》</div><div class="cd">Angela Duckworth著 · 天赋决定上限？不，激情加坚持才是</div><div class="ca">→</div></a>
-<a href="atomic-habits.html" class="card bk"><div class="cc">成长·行为科学</div><div class="ct">《原子习惯》</div><div class="cd">James Clear著 · 每天进步1%，一年后你会强大37.78倍</div><div class="ca">→</div></a>
-<a href="seven-habits.html" class="card bk"><div class="cc">成长·效能</div><div class="ct">《高效能人士的7个习惯》</div><div class="cd">Stephen Covey著 · 从由内而外的思维重塑，找回真正的效能</div><div class="ca">→</div></a>
-<a href="drive-daniel-pink.html" class="card bk"><div class="cc">管理·动机</div><div class="ct">《驱动力》</div><div class="cd">Daniel Pink著 · 萝卜加大棒已经失效，让人真正行动的是第三种驱动力</div><div class="ca">→</div></a>
-<a href="mastery-robert-greene.html" class="card bk"><div class="cc">成长·人生设计</div><div class="ct">《掌握》</div><div class="cd">Robert Greene著 · 历史上所有的天才，都走过同一条路</div><div class="ca">→</div></a>
-<a href="black-swan.html" class="card bk"><div class="cc">哲学·风险</div><div class="ct">《黑天鹅》</div><div class="cd">Nassim Taleb著 · 极端的、稀有的、不可预测的事件，才真正塑造历史</div><div class="ca">→</div></a>
-<a href="build-tony-fadell.html" class="card bk"><div class="cc">创业·产品设计</div><div class="ct">《创造》</div><div class="cd">Tony Fadell著 · iPod和iPhone之父教你如何创造真正有价值的东西</div><div class="ca">→</div></a>
-<a href="getting-things-done.html" class="card bk"><div class="cc">效率·生产力</div><div class="ct">《搞定》</div><div class="cd">David Allen著 · 清空你的大脑，把它变成执行机器</div><div class="ca">→</div></a>
-<a href="effective-executive.html" class="card bk"><div class="cc">管理学经典</div><div class="ct">《卓有成效的管理者》</div><div class="cd">Peter Drucker著 · 管理者的效能不是天生的，是可以学会的</div><div class="ca">→</div></a>
-<a href="no-rules-rules.html" class="card bk"><div class="cc">管理·组织文化</div><div class="ct">《不拘一格》</div><div class="cd">Reed Hastings著 · Netflix为什么废除了大多数公司规则？</div><div class="ca">→</div></a>
-<a href="dare-to-lead.html" class="card bk"><div class="cc">领导力·勇气</div><div class="ct">《敢于领导》</div><div class="cd">Brene Brown著 · 真正的勇敢领导者，敢于承认自己不知道</div><div class="ca">→</div></a>
-<a href="never-eat-alone.html" class="card bk"><div class="cc">人脉·职业发展</div><div class="ct">《别独自用餐》</div><div class="cd">Keith Ferrazzi著 · 真正的人脉不是交换，而是慷慨地给予</div><div class="ca">→</div></a>
-<a href="crucial-conversations.html" class="card bk"><div class="cc">沟通·冲突管理</div><div class="ct">《关键对话》</div><div class="cd">VitalSmarts著 · 高风险对话决定你的职业和关系</div><div class="ca">→</div></a>
-<a href="why-nations-fail.html" class="card bk"><div class="cc">政治经济学</div><div class="ct">《国家为什么会失败》</div><div class="cd">Acemoglu & Robinson著 · 包容性制度 vs 提取性制度决定国家命运</div><div class="ca">→</div></a>
-<a href="true-needs.html" class="card bk"><div class="cc">产品设计·商业</div><div class="ct">《真需求》</div><div class="cd">梁宁著 · 如何识别真正的用户需求，而不是被伪需求骗了</div><div class="ca">→</div></a>
-<a href="know-what-matters.html" class="card bk"><div class="cc">领导力·聚焦</div><div class="ct">《Know What Matters》</div><div class="cd">Ron Shaich著 · Panera创始人：在噪音中识别真正重要的事</div><div class="ca">→</div></a>
-<a href="ego-is-the-enemy.html" class="card bk"><div class="cc">成长·斯多葛</div><div class="ct">《自我是敌人》</div><div class="cd">Ryan Holiday著 · 阻碍你走得更远的，恰恰是你的自我</div><div class="ca">→</div></a>
-<a href="pyramid-principle.html" class="card bk"><div class="cc">思维·写作</div><div class="ct">《金字塔原理》</div><div class="cd">Barbara Minto著 · 麦肯锡的思考和表达方法论</div><div class="ca">→</div></a>
-<a href="thinking-in-systems.html" class="card bk"><div class="cc">系统思考</div><div class="ct">《系统之美》</div><div class="cd">Donella Meadows著 · 用系统的眼睛，看懂世界真正的运作方式</div><div class="ca">→</div></a>
-<a href="success-and-luck.html" class="card bk"><div class="cc">经济学·公平</div><div class="ct">《成功与运气》</div><div class="cd">Robert Frank著 · 成功者往往低估了运气，这有深远的社会后果</div><div class="ca">→</div></a>
-<a href="smart-personal-growth.html" class="card bk"><div class="cc">思维·成长</div><div class="ct">《聪明人的个人成长》</div><div class="cd">Steve Pavlina著 · 七原则：从真实到爱，活得更完整更有力量</div><div class="ca">→</div></a>
-<a href="think-again.html" class="card bk"><div class="cc">思维·认知升级</div><div class="ct">《重新思考》</div><div class="cd">Adam Grant著 · 知道自己错了，是最难的能力，也是最重要的能力</div><div class="ca">→</div></a>
-<a href="range-epstein.html" class="card bk"><div class="cc">学习·职业发展</div><div class="ct">《广度》</div><div class="cd">David Epstein著 · 在专业化的时代，为什么博而不精的人反而赢了？</div><div class="ca">→</div></a>
-<a href="in-search-of-memory.html" class="card sci"><div class="cc">神经科学·传记</div><div class="ct">《追寻记忆的痕迹》</div><div class="cd">Eric Kandel著 · 一位诺贝尔奖得主用海蛞蝓解开了记忆之谜</div><div class="ca">→</div></a>
-<a href="why-we-sleep.html" class="card sci"><div class="cc">神经科学·健康</div><div class="ct">《为什么我们睡觉》</div><div class="cd">Matthew Walker著 · 睡眠不是休息，它是大脑最重要的工作时间</div><div class="ca">→</div></a>
-<a href="feynman-biography.html" class="card sci"><div class="cc">传记·科学</div><div class="ct">《别闹了，费曼先生》</div><div class="cd">Richard Feynman著 · 好奇心是最好的驱动力</div><div class="ca">→</div></a>
-<a href="judgment-10-ways.html" class="card sci"><div class="cc">批判性思维</div><div class="ct">《做出明智判断的10个方法》</div><div class="cd">Julian Baggini著 · 我们以为自己在理性思考，实际上大多数时候都不是</div><div class="ca">→</div></a>
-<a href="man-who-mistook-his-wife.html" class="card sci"><div class="cc">神经科学·人文</div><div class="ct">《错把妻子当帽子》</div><div class="cd">Oliver Sacks著 · 24个神经病例，24种关于大脑与人性的启示</div><div class="ca">→</div></a>
-<a href="descartes-error.html" class="card sci"><div class="cc">神经科学·情绪</div><div class="ct">《笛卡尔的错误》</div><div class="cd">Antonio Damasio著 · 理性与情感不是对立的——你需要情感，才能做出理性决策</div><div class="ca">→</div></a>
+<a href="how-to-think-ai.html" class="card ai"><div class="cc">AI·认知科学</div><div class="ct">《如何思考人工智能》</div><div class="cd">Melanie Mitchell著 · 认知科学家写给困惑者的AI祛魅指南</div><div class="ca">→</div></a>
+<a href="brief-history-intelligence.html" class="card ai"><div class="cc">进化·神经科学·AI</div><div class="ct">《智能简史》</div><div class="cd">Max Bennett著 · 5亿年的智能进化，5个突破，一个统一框架</div><div class="ca">→</div></a>
+<a href="brave-new-words.html" class="card ai"><div class="cc">AI教育革命</div><div class="ct">《Brave New Words》</div><div class="cd">萨尔·汗著 · AI让每个孩子拥有私人家教</div><div class="ca">→</div></a>
+<a href="llm-hands-on.html" class="card ai"><div class="cc">AI工程</div><div class="ct">《Hands-On Large Language Models》</div><div class="cd">Alammar著 · 从API调用到生产级LLM系统的工程判断力</div><div class="ca">→</div></a>
+<a href="thinking-with-machines.html" class="card ai"><div class="cc">AI与人类决策</div><div class="ct">《Thinking with Machines》</div><div class="cd">Vasant Dhar著 · AI是副驾驶，方向盘必须握在人手里</div><div class="ca">→</div></a>
+<a href="mastering-ai-agents.html" class="card ai"><div class="cc">AI工程·Agent</div><div class="ct">《Mastering AI Agents》</div><div class="cd">Bhavsar著 · 从Demo到生产级Agent系统的工程实践</div><div class="ca">→</div></a>
+<a href="master-algorithm.html" class="card ai"><div class="cc">机器学习·AI哲学</div><div class="ct">《主算法》</div><div class="cd">多明戈斯著 · 五大学习流派的哲学之争</div><div class="ca">→</div></a>
+<a href="deep-learning.html" class="card ai"><div class="cc">AI·技术教材</div><div class="ct">《深度学习》</div><div class="cd">Goodfellow & Bengio著 · 深度学习领域最权威教科书，俗称"花书"</div><div class="ca">→</div></a>
+<a href="ai-new-era.html" class="card ai"><div class="cc">AI·实践</div><div class="ct">《AI新生》</div><div class="cd">AI时代的生存法则：如何成为会用AI的人而不是被AI替代的人</div><div class="ca">→</div></a>
+<a href="llm-30-lectures.html" class="card ai"><div class="cc">AI·技术</div><div class="ct">《大模型技术30讲》</div><div class="cd">从Transformer到RLHF，大语言模型核心原理白话解析</div><div class="ca">→</div></a>
+<a href="ai-bottom-logic.html" class="card ai"><div class="cc">AI·底层原理</div><div class="ct">《人工智能的底层逻辑》</div><div class="cd">数据质量>数量、模型是模式匹配机器——AI没有那么神，也没有那么可怕</div><div class="ca">→</div></a>
+<a href="ai-modern-approach.html" class="card ai"><div class="cc">AI·经典教材</div><div class="ct">《人工智能：一种现代的方法》</div><div class="cd">Russell & Norvig著 · 全球1500+大学教材，AI的圣经级系统化框架</div><div class="ca">→</div></a>
+<a href="concept-drift-llm.html" class="card ai"><div class="cc">AI·语言模型</div><div class="ct">《大模型中的概念漂移》</div><div class="cd">AI模型如何应对语言演变——RAG与持续学习的工程解法</div><div class="ca">→</div></a>
 </div></div>
 
-<!-- 区块链 -->
 <div class="sec chain" id="chain">
 <div class="sec-hd">
   <div class="sec-icon">⛓️</div>
@@ -321,93 +277,60 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:
 <a href="bitcoin-virtual-real-world.html" class="card chain"><div class="cc">区块链·加密货币</div><div class="ct">《比特币：一个虚幻而真实的金融世界》</div><div class="cd">没有政府背书的数字货币，凭什么有价值？</div><div class="ca">→</div></a>
 <a href="blockchain-basics.html" class="card chain"><div class="cc">区块链技术入门</div><div class="ct">《Blockchain Basics》</div><div class="cd">Drescher著 · 25步让非技术人真正理解区块链</div><div class="ca">→</div></a>
 <a href="blockchain-credit-society.html" class="card chain"><div class="cc">区块链应用前景</div><div class="ct">《区块链：从数字货币到信用社会》</div><div class="cd">长铗·韩锋著 · 信任的三次跃迁：血缘→机构→算法</div><div class="ca">→</div></a>
-<a href="concept-drift-llm.html" class="card ai"><div class="cc">AI·语言模型</div><div class="ct">《大模型中的概念漂移》</div><div class="cd">AI模型如何应对语言演变——RAG与持续学习的工程解法</div><div class="ca">→</div></a>
-<a href="ai-modern-approach.html" class="card ai"><div class="cc">AI·经典教材</div><div class="ct">《人工智能：一种现代的方法》</div><div class="cd">Russell & Norvig著 · 全球1500+大学教材，AI的圣经级系统化框架</div><div class="ca">→</div></a>
 </div></div>
 
-<a href="probability-dice-ai.html" class="card ai"><div class="cc">AI·数学·概率</div><div class="ct">《从掷骰子到人工智能》</div><div class="cd">张天蓉著 · 从17世纪赌博到ChatGPT，概率论是理解AI的底层钥匙</div><div class="ca">→</div></a>
-<a href="marriott-spirit.html" class="card mgmt"><div class="cc">企业管理·酒店</div><div class="ct">《毫无保留》</div><div class="cd">小比尔·马里奥特著 · 万豪创始人：员工第一、客户第二、股东第三——这不是慈善，是商业逻辑</div><div class="ca">→</div></a>
-<a href="netflix-no-rules.html" class="card mgmt"><div class="cc">企业文化·管理</div><div class="ct">《不拘一格：Netflix的自由与责任》</div><div class="cd">里德·哈斯廷斯著 · 无年假、无报销审批、无打卡——高人才密度+极端诚实的管理实验</div><div class="ca">→</div></a>
-<a href="amp-it-up.html" class="card mgmt"><div class="cc">领导力·执行力</div><div class="ct">《Amp It Up》</div><div class="cd">Snowflake CEO弗兰克·斯隆特曼著 · 驾驶员vs乘客、极端聚焦、停止做的清单——三次百亿美元公司的领导秘诀</div><div class="ca">→</div></a>
-<a href="paypal-founders.html" class="card bio"><div class="cc">商业·创业史</div><div class="ct">《The Founders》</div><div class="cd">Jimmy Soni著 · PayPal黑帮传奇：马斯克与彼得·蒂尔用混乱和执念打造出改变世界的团队</div><div class="ca">→</div></a>
-<a href="amp-it-up.html" class="card mgmt"><div class="cc">管理·领导力</div><div class="ct">《Amp It Up》</div><div class="cd">Frank Slootman著 · Snowflake CEO：提高标准·加快节奏·削减不必要——三家公司市值破千亿的增长法则</div><div class="ca">→</div></a>
-<a href="thanks-feedback.html" class="card mgmt"><div class="cc">管理·沟通</div><div class="ct">《感谢你的反馈》</div><div class="cd">Stone & Heen著 · 为什么收到反馈那么难？真相·关系·身份三重触发器</div><div class="ca">→</div></a>
-<a href="solvable.html" class="card bk"><div class="cc">思维·方法论</div><div class="ct">《Solvable》</div><div class="cd">IMD商学院著 · FrED框架：定义框架·多方探索·明智决策——解决任何复杂问题的三步法</div><div class="ca">→</div></a>
-<a href="no-reserve.html" class="card bk"><div class="cc">管理·企业文化</div><div class="ct">《毫无保留》</div><div class="cd">小比尔·马里奥特著 · 万豪百年成功法则：先照顾员工，员工照顾一切</div><div class="ca">→</div></a>
-<a href="strategic-thinking-complex.html" class="card bk"><div class="cc">战略·复杂问题</div><div class="ct">《复杂问题的战略性思维》</div><div class="cd">Arnaud Chevallier著 · FDII框架：Frame定框架→Diagnose诊断→Identify找方案→Implement执行</div><div class="ca">→</div></a>
-<!-- 管理变革 -->
 <div class="sec mgmt" id="mgmt">
 <div class="sec-hd">
   <div class="sec-icon">🏢</div>
   <div class="sec-title">管理·领导力·变革</div>
-  <div class="sec-count">9 本</div>
+  <div class="sec-count">26 本</div>
 </div>
 <div class="grid">
-<a href="built-to-last.html" class="card biz"><div class="cc">商业·战略</div><div class="ct">《基业长青》</div><div class="cd">Jim Collins著 · 是什么让某些企业穿越百年仍然伟大？</div><div class="ca">→</div></a>
-<a href="pour-heart-starbucks.html" class="card biz"><div class="cc">传记·企业文化</div><div class="ct">《将心注入》</div><div class="cd">Howard Schultz著 · 用一杯咖啡，重建美国人的社区感</div><div class="ca">→</div></a>
-<a href="innovators-dilemma.html" class="card biz"><div class="cc">商业·创新</div><div class="ct">《创新者的窘境》</div><div class="cd">Clayton Christensen著 · 为什么好公司会被差技术打败？</div><div class="ca">→</div></a>
-<a href="source-code-gates.html" class="card biz"><div class="cc">传记·技术</div><div class="ct">《源代码》</div><div class="cd">Bill Gates著 · 微软创始人首部自传：天才少年如何用软件改变世界</div><div class="ca">→</div></a>
-<a href="nudge-sunstein.html" class="card biz"><div class="cc">行为经济学·政策</div><div class="ct">《助推》</div><div class="cd">Thaler & Sunstein著 · 在不强迫任何人的情况下，引导人们做出更好的选择</div><div class="ca">→</div></a>
-<a href="nudge-simple.html" class="card bk"><div class="cc">行为经济学·公共政策</div><div class="ct">《简单》</div><div class="cd">桑斯坦著 · 政府的规则如果像产品说明书一样简单，世界会更好运转</div><div class="ca">→</div></a>
-<a href="how-to-think-ai.html" class="card ai"><div class="cc">AI·认知科学</div><div class="ct">《如何思考人工智能》</div><div class="cd">Melanie Mitchell著 · 认知科学家写给困惑者的AI祛魅指南</div><div class="ca">→</div></a>
-<a href="misbehaving-thaler.html" class="card biz"><div class="cc">行为经济学</div><div class="ct">《不当行为》</div><div class="cd">Richard Thaler著 · 诺贝尔奖得主讲述：经济学家如何发现了人类的不理性</div><div class="ca">→</div></a>
-<a href="nudge-simple.html" class="card biz"><div class="cc">政策设计</div><div class="ct">《Simple》</div><div class="cd">Cass Sunstein著 · 政府如何通过简化来改善生活</div><div class="ca">→</div></a>
-<a href="greatness-deconstructed.html" class="card bk"><div class="cc">成长·方法论</div><div class="ct">《伟大可以被拆解》</div><div class="cd">伟大不是玄学，是可以分析、学习和实践的系统</div><div class="ca">→</div></a>
-<a href="how-to-fail-win.html" class="card bk"><div class="cc">成长·系统思考</div><div class="ct">《在几乎所有事情上失败，依然大获全胜》</div><div class="cd">Scott Adams著 · 呆伯特之父：用系统替代目标，用技能叠加替代专精</div><div class="ca">→</div></a>
+<a href="innovators-dilemma.html" class="card mgmt"><div class="cc">商业·创新</div><div class="ct">《创新者的窘境》</div><div class="cd">Clayton Christensen著 · 为什么好公司会被差技术打败？</div><div class="ca">→</div></a>
+<a href="built-to-last.html" class="card mgmt"><div class="cc">商业·战略</div><div class="ct">《基业长青》</div><div class="cd">Jim Collins著 · 是什么让某些企业穿越百年仍然伟大？</div><div class="ca">→</div></a>
+<a href="pour-heart-starbucks.html" class="card mgmt"><div class="cc">传记·企业文化</div><div class="ct">《将心注入》</div><div class="cd">Howard Schultz著 · 用一杯咖啡，重建美国人的社区感</div><div class="ca">→</div></a>
+<a href="marriott-spirit.html" class="card mgmt"><div class="cc">管理·酒店文化</div><div class="ct">《毫无保留》</div><div class="cd">小比尔·马里奥特著 · 员工第一、客户第二——这不是慈善，是商业逻辑</div><div class="ca">→</div></a>
+<a href="netflix-no-rules.html" class="card mgmt"><div class="cc">企业文化·管理</div><div class="ct">《不拘一格》</div><div class="cd">里德·哈斯廷斯著 · 无年假无报销无打卡——高人才密度+极端诚实的管理实验</div><div class="ca">→</div></a>
+<a href="nudge-book.html" class="card mgmt"><div class="cc">行为经济学·决策</div><div class="ct">《助推》</div><div class="cd">Thaler & Sunstein著 · 不强迫任何人，却能引导所有人做出更好选择</div><div class="ca">→</div></a>
+<a href="fifth-discipline.html" class="card mgmt"><div class="cc">管理·系统思考</div><div class="ct">《第五项修炼》</div><div class="cd">彼得·圣吉著 · 比你努力的人，还懂得如何看见系统全貌</div><div class="ca">→</div></a>
+<a href="effective-executive.html" class="card mgmt"><div class="cc">管理学经典</div><div class="ct">《卓有成效的管理者》</div><div class="cd">Peter Drucker著 · 管理者的效能不是天生的，是可以学会的</div><div class="ca">→</div></a>
+<a href="dare-to-lead.html" class="card mgmt"><div class="cc">领导力·勇气</div><div class="ct">《敢于领导》</div><div class="cd">Brene Brown著 · 真正的勇敢领导者，敢于承认自己不知道</div><div class="ca">→</div></a>
+<a href="team-of-teams.html" class="card mgmt"><div class="cc">组织管理·军事</div><div class="ct">《赋能》</div><div class="cd">麦克里斯特尔著 · 共享意识+赋权执行=应对复杂世界</div><div class="ca">→</div></a>
+<a href="amp-it-up.html" class="card mgmt"><div class="cc">领导力·执行力</div><div class="ct">《Amp It Up》</div><div class="cd">Snowflake CEO著 · 极端聚焦、停止做的清单——三次百亿美元公司的领导秘诀</div><div class="ca">→</div></a>
 <a href="going-on-offense.html" class="card mgmt"><div class="cc">创新组织文化</div><div class="ct">《Going on Offense》</div><div class="cd">Tabrizi著 · 8大基因解析Amazon/Tesla的永续进攻</div><div class="ca">→</div></a>
 <a href="rapid-transformation.html" class="card mgmt"><div class="cc">组织变革管理</div><div class="ct">《Rapid Transformation》</div><div class="cd">Tabrizi著 · 90天变革法：先赢一把，用胜利喂养信心</div><div class="ca">→</div></a>
 <a href="inside-out-effect.html" class="card mgmt"><div class="cc">领导力转型</div><div class="ct">《The Inside-Out Effect》</div><div class="cd">Tabrizi著 · 你这个人本身，配不配得上你想要的变革？</div><div class="ca">→</div></a>
-<a href="team-of-teams.html" class="card mgmt"><div class="cc">组织管理·军事</div><div class="ct">《赋能》</div><div class="cd">麦克里斯特尔著 · 共享意识+赋权执行=应对复杂世界</div><div class="ca">→</div></a>
 <a href="octopus-organization.html" class="card mgmt"><div class="cc">管理·组织变革</div><div class="ct">《章鱼型组织》</div><div class="cd">Le-Brun著 · 分布式智能对抗复杂世界的组织设计</div><div class="ca">→</div></a>
 <a href="wired-to-resist.html" class="card mgmt"><div class="cc">变革·神经科学</div><div class="ct">《抗拒变化的大脑》</div><div class="cd">安德烈阿塔著 · 员工不是在反对你，他们的大脑在保护他们</div><div class="ca">→</div></a>
 <a href="story-intelligence.html" class="card mgmt"><div class="cc">叙事·领导力</div><div class="ct">《故事智慧》</div><div class="cd">斯通著 · 故事智能是AI时代最难被替代的人类能力</div><div class="ca">→</div></a>
-<a href="how-to-do-the-work.html" class="card mgmt"><div class="cc">自我疗愈·心理</div><div class="ct">《如何做内心的功课》</div><div class="cd">勒佩拉著 · 你不是你的模式，疗愈是一个主动的过程</div><div class="ca">→</div></a>
 <a href="atlas-of-the-heart.html" class="card mgmt"><div class="cc">情感心理学</div><div class="ct">《心的地图：87种人类情感》</div><div class="cd">布芮尼·布朗著 · 你能命名它，才能感受它；能感受它，才能放下它</div><div class="ca">→</div></a>
-<a href="fifth-discipline.html" class="card mgmt"><div class="cc">管理·系统思考</div><div class="ct">《第五项修炼》</div><div class="cd">彼得·圣吉著 · 比你努力的人，还懂得如何看见系统全貌</div><div class="ca">→</div></a>
-<a href="nudge-book.html" class="card biz"><div class="cc">行为经济学·决策</div><div class="ct">《助推》(Nudge)</div><div class="cd">Thaler & Sunstein著 · 不强迫任何人，却能引导所有人做出更好选择</div><div class="ca">→</div></a>
-<a href="simple-sunstein.html" class="card biz"><div class="cc">公共政策·简化</div><div class="ct">《Simple》</div><div class="cd">桑斯坦著 · 政府的规定越简单，老百姓越能遵守</div><div class="ca">→</div></a>
+<a href="never-eat-alone.html" class="card mgmt"><div class="cc">人脉·职业发展</div><div class="ct">《别独自用餐》</div><div class="cd">Keith Ferrazzi著 · 真正的人脉不是交换，而是慷慨地给予</div><div class="ca">→</div></a>
+<a href="crucial-conversations.html" class="card mgmt"><div class="cc">沟通·冲突管理</div><div class="ct">《关键对话》</div><div class="cd">VitalSmarts著 · 高风险对话决定你的职业和关系</div><div class="ca">→</div></a>
+<a href="difficult-conversations.html" class="card mgmt"><div class="cc">沟通·对话</div><div class="ct">《困难的对话》</div><div class="cd">哈佛谈判项目著 · 大多数困难对话之所以困难，是因为目标错了</div><div class="ca">→</div></a>
+<a href="true-needs.html" class="card mgmt"><div class="cc">产品设计·商业</div><div class="ct">《真需求》</div><div class="cd">梁宁著 · 如何识别真正的用户需求，而不是被伪需求骗了</div><div class="ca">→</div></a>
+<a href="how-to-do-the-work.html" class="card mgmt"><div class="cc">自我疗愈·心理</div><div class="ct">《如何做内心的功课》</div><div class="cd">勒佩拉著 · 你不是你的模式，疗愈是一个主动的过程</div><div class="ca">→</div></a>
+<a href="greatness-deconstructed.html" class="card mgmt"><div class="cc">成长·方法论</div><div class="ct">《伟大可以被拆解》</div><div class="cd">伟大不是玄学，是可以分析、学习和实践的系统</div><div class="ca">→</div></a>
+<a href="ali-iron-army.html" class="card mgmt"><div class="cc">企业管理·销售</div><div class="ct">《阿里铁军》</div><div class="cd">宋金波著 · 中供铁军：价值观高压线+军事化量化管理的孵化器</div><div class="ca">→</div></a>
+<a href="jnj-dark-secrets.html" class="card mgmt"><div class="cc">企业批判·调查</div><div class="ct">《No More Tears》</div><div class="cd">加德纳·哈里斯著 · 强生公司"婴儿般温柔"品牌背后的黑暗秘密</div><div class="ca">→</div></a>
 </div></div>
 
-<a href="making-salmon.html" class="card phi"><div class="cc">生态·批判</div><div class="ct">《制造三文鱼》</div><div class="cd">你盘子里的三文鱼是怎么来的——工业养殖的谎言与代价</div><div class="ca">→</div></a>
-<a href="logic-argumentation.html" class="card bk"><div class="cc">逻辑学·批判思维</div><div class="ct">《论证逻辑入门（第五版）》</div><div class="cd">Hurley著 · 全球最畅销逻辑学教材——什么是好的论证，如何识别谬误</div><div class="ca">→</div></a>
-<a href="madness-crowds.html" class="card bk"><div class="cc">投资·行为金融</div><div class="ct">《群体的疯狂》</div><div class="cd">威廉·伯恩斯坦著 · 郁金香、南海泡沫到2008年——聪明人为何集体失智的3000年规律</div><div class="ca">→</div></a>
-<a href="ali-iron-army.html" class="card mgmt"><div class="cc">企业管理·销售</div><div class="ct">《阿里铁军》</div><div class="cd">宋金波著 · 中供铁军如何用价值观高压线+军事化量化管理，孵化了一批互联网创业者</div><div class="ca">→</div></a>
-<a href="impromptu-speaking.html" class="card bk"><div class="cc">表达·领导力</div><div class="ct">《即兴演讲》</div><div class="cd">汉弗莱著 · 被老板突然点名发言不慌——用PREP框架让即兴表达变成本能</div><div class="ca">→</div></a>
-<a href="how-to-express.html" class="card bk"><div class="cc">表达·沟通</div><div class="ct">《如何清晰地表达》</div><div class="cd">MIT温斯顿教授40年心得 · 开场不废话、中间用故事、结尾留一句——表达是可训练的技能</div><div class="ca">→</div></a>
-<a href="paypal-founders.html" class="card bk"><div class="cc">创业·硅谷历史</div><div class="ct">《The Founders》</div><div class="cd">Jimmy Soni著 · PayPal黑帮的内幕——马斯克政变、欺诈战争、危机铸炼文化</div><div class="ca">→</div></a>
-<a href="solvable-book.html" class="card bk"><div class="cc">思维·决策·问题解决</div><div class="ct">《问题解决的逻辑》</div><div class="cd">IMD商学院教授著 · FrED框架：先定义正确的问题，再谈解决方案——60%时间用在问题定义上</div><div class="ca">→</div></a>
-<a href="thanks-feedback.html" class="card bk"><div class="cc">沟通·反馈·成长</div><div class="ct">《谢谢你的反馈》</div><div class="cd">哈佛谈判项目著 · 不研究如何给反馈，而是研究如何接收反馈——三种触发器和盲点理论</div><div class="ca">→</div></a>
-<a href="do-epic-shit.html" class="card bk"><div class="cc">创业·人生哲学</div><div class="ct">《Do Epic Shit》</div><div class="cd">安库尔·瓦里科著 · 失败简历、习惯优于目标、早期金钱观——印度创业者的人生观精华</div><div class="ca">→</div></a>
-<a href="user-friendly-design.html" class="card bk"><div class="cc">设计·用户体验</div><div class="ct">《用户友好》</div><div class="cd">克里夫·匡著 · 从飞机驾驶舱到iPhone——好设计让操作方式自明，不需要说明书</div><div class="ca">→</div></a>
-<a href="success-luck.html" class="card bk"><div class="cc">经济学·成功</div><div class="ct">《成功与运气》</div><div class="cd">罗伯特·弗兰克著 · 才能×努力×运气，你缺少了哪个变量？</div><div class="ca">→</div></a>
-<a href="systems-thinking.html" class="card bk"><div class="cc">系统思维·复杂性</div><div class="ct">《系统之美》</div><div class="cd">多内拉·梅多斯著 · 反馈回路、杠杆点与复杂系统的反直觉规律</div><div class="ca">→</div></a>
-<a href="impromptu-speech.html" class="card bk"><div class="cc">表达·演讲</div><div class="ct">《即兴演讲》</div><div class="cd">朱迪思·汉弗雷著 · PREP法则与领导者脚本——告别临场混乱</div><div class="ca">→</div></a>
-<a href="clear-expression.html" class="card bk"><div class="cc">表达·思维</div><div class="ct">《如何清晰地表达》</div><div class="cd">帕特里克·亨利·温斯顿著 · MIT教授46年精炼的表达秘诀</div><div class="ca">→</div></a>
-<a href="when-breath-air.html" class="card bk"><div class="cc">生命·意义·传记</div><div class="ct">《当呼吸化为空气》</div><div class="cd">保罗·卡拉尼提著 · 神经外科医生确诊肺癌后，对生死和意义最深切的追问</div><div class="ca">→</div></a>
-<!-- 历史文化 -->
 <div class="sec hist" id="hist">
 <div class="sec-hd">
   <div class="sec-icon">🌍</div>
-  <div class="sec-title">历史·科技·文化</div>
-  <div class="sec-count">8 本</div>
+  <div class="sec-title">历史·文化·地理</div>
+  <div class="sec-count">17 本</div>
 </div>
 <div class="grid">
-<a href="tipping-point.html" class="card hist"><div class="cc">社会传播·营销</div><div class="ct">《引爆点》</div><div class="cd">Malcolm Gladwell著 · 为什么有些想法和产品会突然爆发？</div><div class="ca">→</div></a>
-<a href="outliers-gladwell.html" class="card hist"><div class="cc">成就·社会学</div><div class="ct">《异类》</div><div class="cd">Malcolm Gladwell著 · 成功不是个人天才，而是环境与时机的产物</div><div class="ca">→</div></a>
 <a href="sapiens-harari.html" class="card hist"><div class="cc">历史·人类学</div><div class="ct">《人类简史》</div><div class="cd">Yuval Harari著 · 智人统治地球的秘密武器：虚构故事</div><div class="ca">→</div></a>
-<a href="brief-history-of-time.html" class="card hist"><div class="cc">物理学·宇宙</div><div class="ct">《时间简史》</div><div class="cd">Stephen Hawking著 · 宇宙从哪里来？时间有没有起点？</div><div class="ca">→</div></a>
-<a href="korean-society-culture.html" class="card hist"><div class="cc">历史·文化</div><div class="ct">《韩国社会与文化》</div><div class="cd">财阀、儒家、K-Pop背后的真实韩国社会逻辑</div><div class="ca">→</div></a>
-<a href="chrysanthemum-sword.html" class="card hist"><div class="cc">文化人类学</div><div class="ct">《菊与刀》</div><div class="cd">Ruth Benedict著 · 日本文化的两面：唯美的菊花与嗜血的刀</div><div class="ca">→</div></a>
 <a href="nexus-harari.html" class="card hist"><div class="cc">历史·科技</div><div class="ct">《连结》</div><div class="cd">Yuval Harari著 · 从石器时代到AI，人类靠什么建立文明网络？</div><div class="ca">→</div></a>
-<a href="korean-society-culture.html" class="card hist"><div class="cc">历史·文化</div><div class="ct">《韩国社会与文化》</div><div class="cd">财阀、儒家、K-Pop背后的真实韩国社会逻辑</div><div class="ca">→</div></a>
+<a href="tipping-point.html" class="card hist"><div class="cc">社会传播·营销</div><div class="ct">《引爆点》</div><div class="cd">Malcolm Gladwell著 · 为什么有些想法和产品会突然爆发？</div><div class="ca">→</div></a>
 <a href="chrysanthemum-sword.html" class="card hist"><div class="cc">文化人类学</div><div class="ct">《菊与刀》</div><div class="cd">Ruth Benedict著 · 日本人为什么既爱美又崇武？一个二元对立的文化密码</div><div class="ca">→</div></a>
-<a href="sapiens-harari.html" class="card hist"><div class="cc">历史·人文</div><div class="ct">《人类简史》</div><div class="cd">Yuval Harari著 · 智人之所以主宰地球，靠的是讲故事的能力</div><div class="ca">→</div></a>
-<a href="why-nothing-works-harris.html" class="card hist"><div class="cc">社会人类学</div><div class="ct">《当一切都失效》</div><div class="cd">Marvin Harris著 · 美国社会失灵的根源不是道德败坏，而是物质条件变化</div><div class="ca">→</div></a>
-<a href="why-nothing-works.html" class="card hist"><div class="cc">社会学·人类学</div><div class="ct">《当一切都失效》</div><div class="cd">Marvin Harris著 · 美国的社会问题不是道德问题，而是系统问题</div><div class="ca">→</div></a>
+<a href="korean-society-culture.html" class="card hist"><div class="cc">历史·文化</div><div class="ct">《韩国社会与文化》</div><div class="cd">财阀、儒家、K-Pop背后的真实韩国社会逻辑</div><div class="ca">→</div></a>
+<a href="korean-culture-intro.html" class="card hist"><div class="cc">文化入门·东亚</div><div class="ct">《韩国文化导论》</div><div class="cd">Koo & Nahm著 · 谚文、恨文化与儒学韩国化：理解真实的韩国</div><div class="ca">→</div></a>
 <a href="naive-anthropologist.html" class="card hist"><div class="cc">人类学·文化</div><div class="ct">《天真的人类学家》</div><div class="cd">Nigel Barley著 · 一个英国人类学家在喀麦隆的文化冲击与自我解构</div><div class="ca">→</div></a>
-<a href="flatland.html" class="card hist"><div class="cc">数学·哲学</div><div class="ct">《平面国》</div><div class="cd">Edwin Abbott著 · 二维世界居民对三维的困惑，映射了我们的认知局限</div><div class="ca">→</div></a>
-<a href="mapping-siam.html" class="card hist"><div class="cc">历史·地缘政治</div><div class="ct">《图绘暹罗》</div><div class="cd">Thongchai Winichakul著 · 泰国作为民族国家是如何被地图绘制出来的</div><div class="ca">→</div></a>
-<a href="making-atomic-bomb.html" class="card hist"><div class="cc">历史</div><div class="ct">《原子弹的制造》</div><div class="cd">理查德·罗兹著 · 好奇心、恐惧与科学道德的历史审判</div><div class="ca">→</div></a>
+<a href="mapping-siam.html" class="card hist"><div class="cc">历史·地缘政治</div><div class="ct">《图绘暹罗》</div><div class="cd">Thongchai著 · 泰国作为民族国家是如何被地图绘制出来的</div><div class="ca">→</div></a>
+<a href="why-nothing-works-harris.html" class="card hist"><div class="cc">社会人类学</div><div class="ct">《当一切都失效》</div><div class="cd">Marvin Harris著 · 美国社会失灵的根源不是道德败坏，而是物质条件变化</div><div class="ca">→</div></a>
+<a href="making-atomic-bomb.html" class="card hist"><div class="cc">历史·科学</div><div class="ct">《原子弹的制造》</div><div class="cd">理查德·罗兹著 · 好奇心、恐惧与科学道德的历史审判</div><div class="ca">→</div></a>
 <a href="nuclear-war-scenario.html" class="card hist"><div class="cc">军事历史·风险</div><div class="ct">《核战争：一种场景预测》</div><div class="cd">雅各布森著 · 72分钟：从核弹发射到文明终结的真实时间线</div><div class="ca">→</div></a>
 <a href="material-world.html" class="card hist"><div class="cc">经济地理·资源</div><div class="ct">《物质世界》</div><div class="cd">康威著 · 沙、盐、铁、铜、石油、锂——6种材料塑造文明</div><div class="ca">→</div></a>
 <a href="city-on-mars.html" class="card hist"><div class="cc">太空探索·政策</div><div class="ct">《火星之城》</div><div class="cd">韦纳史密斯著 · 爱太空，也要爱真相——对火星定居的清醒评估</div><div class="ca">→</div></a>
@@ -417,66 +340,49 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:
 <a href="how-to-understand-industry.html" class="card hist"><div class="cc">商业分析·方法论</div><div class="ct">《如何快速了解一个行业》</div><div class="cd">肖璟著 · 了解行业靠的是好的问题清单，不是信息量</div><div class="ca">→</div></a>
 </div></div>
 
-<a href="astonishing-hypothesis.html" class="card sci"><div class="cc">神经科学·意识</div><div class="ct">《惊人的假说》</div><div class="cd">Francis Crick著 · 你的喜悦、痛苦和爱，只是神经元的集体行为</div><div class="ca">→</div></a>
-<a href="brain-storytelling.html" class="card sci"><div class="cc">神经科学·认知</div><div class="ct">《会讲故事的大脑》</div><div class="cd">V.S.拉马钱德兰著 · 通过神经奇案，揭示大脑如何构建你的现实</div><div class="ca">→</div></a>
-<a href="extended-mind.html" class="card sci"><div class="cc">认知科学·学习</div><div class="ct">《思考如何超越思考》</div><div class="cd">安妮·墨菲·保罗著 · 大脑之外的大脑：身体、空间、他人都是思维的延伸</div><div class="ca">→</div></a>
-<a href="5-percent-change.html" class="card bk"><div class="cc">心理学·自我成长</div><div class="ct">《5%的改变》</div><div class="cd">李松蔚著 · 彻底改变太难？从一个5%的微小行动开始，打破固化的生活模式</div><div class="ca">→</div></a>
-<a href="phantoms-brain.html" class="card sci"><div class="cc">神经科学·意识</div><div class="ct">《脑中魅影》</div><div class="cd">V.S.拉马钱德兰著 · 通过幻肢、失认症等神经奇案，揭示大脑如何构建我们的现实</div><div class="ca">→</div></a>
-<a href="paradox-delusion.html" class="card sci"><div class="cc">心理学·自欺</div><div class="ct">《妄想的悖论》</div><div class="cd">韦丹塔姆著 · 自我欺骗有时反而有益——安慰剂效应、婚姻积极幻觉背后的进化逻辑</div><div class="ca">→</div></a>
-<a href="huberman-protocols.html" class="card sci"><div class="cc">健康·神经科学</div><div class="ct">《协议：人体操作手册》</div><div class="cd">Stanford休伯曼教授著 · 早晨晒15分钟太阳、NSDR非睡眠深度休息——用生物节律编程身体</div><div class="ca">→</div></a>
-<a href="huberman-protocols.html" class="card health"><div class="cc">神经科学·健康</div><div class="ct">《协议：人体操作手册》</div><div class="cd">Andrew Huberman著 · 晨光照射·非睡眠深休息·运动顺序——用神经科学协议优化大脑与身体</div><div class="ca">→</div></a>
-<a href="think-beyond.html" class="card sci"><div class="cc">认知科学·学习</div><div class="ct">《思考如何超越思考》</div><div class="cd">安妮·墨菲·保罗著 · 身体、环境和社会是大脑的延伸——重新定义思维</div><div class="ca">→</div></a>
-<a href="5percent-change.html" class="card sci"><div class="cc">心理咨询·成长</div><div class="ct">《5%的改变》</div><div class="cd">李松蔚著 · 不是戒酒，是少喝一口——微小改变的惊人复利</div><div class="ca">→</div></a>
-<a href="brain-phantoms.html" class="card sci"><div class="cc">神经科学·意识</div><div class="ct">《脑中魅影》</div><div class="cd">V.S.拉马钱德兰著 · 从幻肢到卡普格拉症，神经奇案揭示大脑构造真相</div><div class="ca">→</div></a>
-<!-- 健康运动自然 -->
 <div class="sec health" id="health">
 <div class="sec-hd">
   <div class="sec-icon">💪</div>
-  <div class="sec-title">健康·运动·长寿</div>
-  <div class="sec-count">3 本</div>
+  <div class="sec-title">健康·心理·运动</div>
+  <div class="sec-count">16 本</div>
 </div>
 <div class="grid">
 <a href="outlive-longevity.html" class="card health"><div class="cc">医学·长寿</div><div class="ct">《Outlive：长寿的科学与艺术》</div><div class="cd">阿提亚著 · 80岁的状态取决于你40岁做了什么</div><div class="ca">→</div></a>
-<a href="slow-jogging.html" class="card health"><div class="cc">运动科学</div><div class="ct">《慢跑革命》</div><div class="cd">田中宏暁著 · 能笑着跑的速度是最佳训练强度</div><div class="ca">→</div></a>
-<a href="glp1-solution.html" class="card health"><div class="cc">医学健康</div><div class="ct">《The GLP-1 Solution》</div><div class="cd">GLP-1药物使用完整指南：保住肌肉，减掉脂肪</div><div class="ca">→</div></a>
-<a href="mindfulness-miracle.html" class="card bk"><div class="cc">禅修·心理健康</div><div class="ct">《正念的奇迹》</div><div class="cd">一行禅师著 · 洗碗时就洗碗，不要想着洗完碗后的茶</div><div class="ca">→</div></a>
-<a href="body-keeps-score.html" class="card bk"><div class="cc">心理健康·创伤</div><div class="ct">《身体从未忘记》</div><div class="cd">Bessel van der Kolk著 · 创伤不只留在记忆里，它住在你的身体里</div><div class="ca">→</div></a>
-<a href="strongest-body-mind.html" class="card bk"><div class="cc">运动科学·健康</div><div class="ct">《最强身心》</div><div class="cd">山本义德著 · 用运动科学破解越练越累的误区</div><div class="ca">→</div></a>
-<a href="addiction-abyss.html" class="card bk"><div class="cc">神经科学·心理健康</div><div class="ct">《成瘾的深渊》</div><div class="cd">Johann Hari著 · 成瘾的反面不是清醒，而是连接</div><div class="ca">→</div></a>
-<a href="spiritual-intelligence.html" class="card sci"><div class="cc">神经科学·心理学</div><div class="ct">《精神智能》</div><div class="cd">Lisa Miller著 · 灵性不是玄学，是可测量的大脑保护网络</div><div class="ca">→</div></a>
-<a href="minority-rule.html" class="card bk"><div class="cc">政治·社会批评</div><div class="ct">《少数派统治》</div><div class="cd">Ruy Teixeira著 · 激进少数派如何劫持多数沉默者的声音</div><div class="ca">→</div></a>
-<a href="jesus-messy-house.html" class="card phi"><div class="cc">信仰·完美主义</div><div class="ct">《耶稣不在乎你杂乱的房子》</div><div class="cd">关于内心而非外表的信仰哲学——完美主义是真实关系的敌人</div><div class="ca">→</div></a>
-<a href="korean-culture-intro.html" class="card hist"><div class="cc">文化入门·东亚</div><div class="ct">《韩国文化导论》</div><div class="cd">Koo & Nahm著 · 谚文、恨文化与儒学韩国化：理解真实的韩国</div><div class="ca">→</div></a>
-<a href="designing-bbc.html" class="card phi"><div class="cc">设计史·传媒</div><div class="ct">《设计BBC：动态图像史》</div><div class="cd">视觉设计如何成为机构软实力——BBC七十年品牌权威的构建逻辑</div><div class="ca">→</div></a>
-<a href="legends-and-soles.html" class="card bio"><div class="cc">传记·商业</div><div class="ct">《传奇与鞋底》</div><div class="cd">美国鞋业传奇：在全球化时代坚守工艺灵魂的商业哲学</div><div class="ca">→</div></a>
-<a href="feeling-good.html" class="card bk"><div class="cc">心理健康·CBT</div><div class="ct">《伯恩斯新情绪疗法》</div><div class="cd">David Burns著 · 战胜抑郁，不靠药，靠重建你的思维方式</div><div class="ca">→</div></a>
-<a href="noise-kahneman.html" class="card bk"><div class="cc">思维·判断</div><div class="ct">《噪声》</div><div class="cd">卡尼曼等著 · 同一个人对同样的案例做出不同判断——这比偏见更隐蔽</div><div class="ca">→</div></a>
-<a href="hooked-nir-eyal.html" class="card bk"><div class="cc">产品设计·行为心理</div><div class="ct">《上瘾》</div><div class="cd">Nir Eyal著 · 为什么你总在刷手机？设计者用了这个套路</div><div class="ca">→</div></a>
-<div class="cc">神经科学·健康</div><div class="ct">《我们为什么要睡觉》</div><div class="cd">Matthew Walker著 · 睡眠不是死亡的预演，而是生命的核心维护系统</div><div class="ca">→</div></a>
-<a href="yale-psychology.html" class="card bk"><div class="cc">心理学·科普</div><div class="ct">《耶鲁心理学第一课》</div><div class="cd">Paul Bloom著 · 耶鲁最受欢迎的心理学入门课</div><div class="ca">→</div></a>
-<a href="quiet-susan-cain.html" class="card bk"><div class="cc">心理学·性格科学</div><div class="ct">《安静》</div><div class="cd">Susan Cain著 · 内向者的力量，被外向世界低估的一半人</div><div class="ca">→</div></a>
+<a href="huberman-protocols.html" class="card health"><div class="cc">神经科学·健康</div><div class="ct">《协议：人体操作手册》</div><div class="cd">Andrew Huberman著 · 晨光照射·非睡眠深休息·运动顺序——用神经科学优化大脑</div><div class="ca">→</div></a>
+<a href="body-keeps-score.html" class="card health"><div class="cc">心理健康·创伤</div><div class="ct">《身体从未忘记》</div><div class="cd">Bessel van der Kolk著 · 创伤不只留在记忆里，它住在你的身体里</div><div class="ca">→</div></a>
+<a href="feeling-good.html" class="card health"><div class="cc">心理健康·CBT</div><div class="ct">《伯恩斯新情绪疗法》</div><div class="cd">David Burns著 · 战胜抑郁，不靠药，靠重建你的思维方式</div><div class="ca">→</div></a>
+<a href="addiction-abyss.html" class="card health"><div class="cc">神经科学·心理健康</div><div class="ct">《成瘾的深渊》</div><div class="cd">Johann Hari著 · 成瘾的反面不是清醒，而是连接</div><div class="ca">→</div></a>
 <a href="unbreakable-resilience.html" class="card health"><div class="cc">心理健康·韧性</div><div class="ct">《坚不可摧》</div><div class="cd">在混乱的世界中生存的10个核心法则——韧性不是恢复原状，而是转化成长</div><div class="ca">→</div></a>
+<a href="when-breath-air.html" class="card health"><div class="cc">生命·意义</div><div class="ct">《当呼吸化为空气》</div><div class="cd">保罗·卡拉尼提著 · 神经外科医生确诊肺癌后，对生死和意义最深切的追问</div><div class="ca">→</div></a>
+<a href="good-morning-monster.html" class="card health"><div class="cc">心理学·创伤</div><div class="ct">《早安，怪物》</div><div class="cd">Catherine Gildiner著 · 五个患者，五种童年创伤，五个走向痊愈的故事</div><div class="ca">→</div></a>
+<a href="quiet-susan-cain.html" class="card health"><div class="cc">心理学·性格科学</div><div class="ct">《安静》</div><div class="cd">Susan Cain著 · 内向者的力量，被外向世界低估的一半人</div><div class="ca">→</div></a>
+<a href="slow-jogging.html" class="card health"><div class="cc">运动科学</div><div class="ct">《慢跑革命》</div><div class="cd">田中宏暁著 · 能笑着跑的速度是最佳训练强度</div><div class="ca">→</div></a>
 <a href="stanford-anti-fatigue.html" class="card health"><div class="cc">运动科学·健康</div><div class="ct">《斯坦福抗疲劳法》</div><div class="cd">山本义德著 · 越努力越累？用科学呼吸法和主动恢复重建身体能量</div><div class="ca">→</div></a>
+<a href="strongest-body-mind.html" class="card health"><div class="cc">运动科学·健康</div><div class="ct">《最强身心》</div><div class="cd">山本义德著 · 用运动科学破解越练越累的误区</div><div class="ca">→</div></a>
+<a href="glp1-solution.html" class="card health"><div class="cc">医学健康</div><div class="ct">《The GLP-1 Solution》</div><div class="cd">GLP-1药物使用完整指南：保住肌肉，减掉脂肪</div><div class="ca">→</div></a>
+<a href="mindfulness-miracle.html" class="card health"><div class="cc">禅修·心理健康</div><div class="ct">《正念的奇迹》</div><div class="cd">一行禅师著 · 洗碗时就洗碗，不要想着洗完碗后的茶</div><div class="ca">→</div></a>
+<a href="hooked-nir-eyal.html" class="card health"><div class="cc">产品设计·行为心理</div><div class="ct">《上瘾》</div><div class="cd">Nir Eyal著 · 为什么你总在刷手机？设计者用了这个套路</div><div class="ca">→</div></a>
+<a href="yale-psychology.html" class="card health"><div class="cc">心理学·科普</div><div class="ct">《耶鲁心理学第一课》</div><div class="cd">Paul Bloom著 · 耶鲁最受欢迎的心理学入门课</div><div class="ca">→</div></a>
 </div></div>
 
-<!-- 研究报告 -->
 <div class="sec rsch" id="rsch">
 <div class="sec-hd">
   <div class="sec-icon">📊</div>
   <div class="sec-title">研究分析报告</div>
-  <div class="sec-count">4 份</div>
+  <div class="sec-count">5 份</div>
 </div>
 <div class="grid">
 <a href="nvda-citadel-equity-research-2026.html" class="card rsch"><div class="cc">投资研究</div><div class="ct">英伟达深度投研报告 2026</div><div class="cd">Citadel风格深度股票分析 · AI基础设施核心受益标的</div><div class="ca">→</div></a>
 <a href="ionq-equity-research-2026.html" class="card rsch"><div class="cc">投资研究</div><div class="ct">IonQ 量子计算投研报告 2026</div><div class="cd">量子计算赛道领头羊深度分析</div><div class="ca">→</div></a>
 <a href="rgti-rigetti-equity-research-2026.html" class="card rsch"><div class="cc">投资研究</div><div class="ct">Rigetti Computing 投研报告 2026</div><div class="cd">量子计算赛道深度研究报告</div><div class="ca">→</div></a>
 <a href="infinite-machine-deepmind.html" class="card rsch"><div class="cc">AI研究</div><div class="ct">《无限机器》DeepMind 深度解构</div><div class="cd">DeepMind与超级智能的探索之路</div><div class="ca">→</div></a>
+<a href="alphafold-report.html" class="card rsch"><div class="cc">科学研究</div><div class="ct">AlphaFold 技术深度解析</div><div class="cd">蛋白质折叠问题的AI解法 · 诺贝尔化学奖级别的突破</div><div class="ca">→</div></a>
 </div></div>
 
 </div><!-- /wrap -->
 
 <div class="footer">
-  johnnyweb.netlify.app &nbsp;·&nbsp; 202 本书深度解构 + 4 份研究报告 &nbsp;·&nbsp; 持续更新中
+  johnnyweb.netlify.app &nbsp;·&nbsp; 195 本书深度解构 + 5 份研究报告 &nbsp;·&nbsp; 持续更新中
 </div>
 
 </body>
