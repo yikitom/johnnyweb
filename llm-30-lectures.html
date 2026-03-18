@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>《大模型技术30讲》</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans SC','PingFang SC',sans-serif;background:#f9f7f2;color:#2c2c2c;line-height:1.8;-webkit-font-smoothing:antialiased}
+.hero{padding:100px 20px 60px;max-width:860px;margin:0 auto;text-align:center}
+.hero-cat{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#c0392b;font-weight:600;margin-bottom:12px}
+.hero-title{font-family:'Noto Serif SC',serif;font-size:clamp(24px,4vw,38px);font-weight:900;color:#2c3e50;margin-bottom:10px;line-height:1.3}
+.hero-sub{font-size:15px;color:#5a5a5a;margin-bottom:20px}
+.hero-tags{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.tag{background:#2c3e50;color:#fff;font-size:11px;padding:4px 12px;border-radius:20px}
+.wrap{max-width:860px;margin:0 auto;padding:0 20px 80px}
+.sec{margin-bottom:52px}
+.sec-header{display:flex;align-items:center;gap:10px;margin-bottom:18px;padding-bottom:12px;border-bottom:2px solid #e0dcd5}
+.sec-emoji{font-size:22px}
+.sec-title{font-family:'Noto Serif SC',serif;font-size:20px;font-weight:700;color:#2c3e50}
+.card{background:#fff;border:1px solid #e0dcd5;border-radius:12px;padding:20px 22px;margin-bottom:14px}
+.card-title{font-weight:700;color:#2c3e50;margin-bottom:8px;font-size:15px}
+.card-def{font-size:13px;color:#5a5a5a;margin-bottom:10px}
+.card-case{font-size:13px;background:#f9f7f2;border-radius:8px;padding:10px 14px;color:#2c2c2c;border-left:3px solid #b8860b}
+.qa{margin-bottom:14px}
+.qa-q{font-weight:600;color:#2c3e50;margin-bottom:6px}
+.qa-q::before{content:"Q: ";color:#c0392b}
+.qa-a{color:#5a5a5a;padding-left:18px;border-left:3px solid #e0dcd5;font-size:14px}
+.chapter{background:#fff;border:1px solid #e0dcd5;border-radius:12px;padding:18px 22px;margin-bottom:14px}
+.ch-badge{display:inline-block;background:#c0392b;color:#fff;font-size:11px;padding:3px 10px;border-radius:20px;margin-bottom:8px;font-weight:600}
+.ch-name{font-family:'Noto Serif SC',serif;font-size:15px;font-weight:700;color:#2c3e50;margin-bottom:6px}
+.ch-why{font-size:13px;color:#b8860b;font-weight:500;margin-bottom:8px}
+.dial{border:1px solid #e0dcd5;border-radius:12px;overflow:hidden;margin-bottom:14px}
+.dial-pro{background:#f0faf0;padding:14px 18px;border-bottom:1px solid #e0dcd5}
+.dial-con{background:#fdf5f5;padding:14px 18px}
+.dial-label{font-size:11px;letter-spacing:1px;text-transform:uppercase;font-weight:600;margin-bottom:6px}
+.dial-pro .dial-label{color:#2d6a4f}
+.dial-con .dial-label{color:#c0392b}
+.bq{border-left:4px solid #b8860b;padding:12px 18px;background:#f9f7f2;border-radius:0 8px 8px 0;font-style:italic;color:#5a5a5a;margin:14px 0;font-size:15px}
+.action-list{list-style:none;counter-reset:al}
+.action-list li{counter-increment:al;display:flex;gap:12px;margin-bottom:10px;align-items:flex-start}
+.action-list li::before{content:counter(al);min-width:26px;height:26px;background:#2c3e50;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:1px}
+p{color:#5a5a5a;margin-bottom:12px;line-height:1.8}
+strong{color:#2c2c2c}
+.footer{text-align:center;padding:28px;color:#aaa;font-size:12px;border-top:1px solid #e0dcd5}
+</style></head>
+<body>
+<nav style="position:fixed;top:0;left:0;right:0;z-index:99;background:rgba(249,247,242,.96);backdrop-filter:blur(10px);border-bottom:1px solid #e0dcd5;padding:12px 20px;display:flex;align-items:center;gap:12px">
+<a href="index.html" style="color:#888;text-decoration:none;font-size:13px">← 返回</a>
+<div style="flex:1;text-align:center;font-family:'Noto Serif SC',serif;font-size:14px;font-weight:600;color:#2c3e50">《大模型技术30讲》</div>
+</nav>
+<div class="hero"><div class="hero-cat">AI·技术</div>
+<div class="hero-title">《大模型技术30讲》</div>
+<div class="hero-sub">技术人必读：从Transformer到RLHF，大语言模型的核心原理白话解析</div>
+<div class="hero-tags"><span class="tag">大语言模型</span><span class="tag">Transformer</span><span class="tag">RLHF</span><span class="tag">AI技术</span></div></div>
+<div class="wrap"><div class="sec"><div class="sec-header"><span class="sec-emoji">🧠</span><span class="sec-title">作者画像与核心使命</span></div><div class="qa"><div class="qa-q">这本书表面在谈什么？</div><div class="qa-a">讲大语言模型（LLM）背后的核心技术原理——从Transformer架构、预训练、指令微调、到RLHF对齐，用30个关键技术点解构现代AI的工作机制。</div></div><div class="qa"><div class="qa-q">它解决什么问题？</div><div class="qa-a">大多数AI科普要么太简单（只讲应用），要么太复杂（直接上论文）。这本书定位在中间：有技术基础的读者能真正理解"AI为什么这么做"，而不只是"AI能做什么"。</div></div><div class="qa"><div class="qa-q">终极价值？</div><div class="qa-a">理解大模型的原理，意味着你能预判它的能力边界和失败模式，从而更好地设计提示词、构建产品，以及判断哪些任务适合AI、哪些不适合。</div></div><p>本书综合了机器学习领域最重要的学术论文和工程实践，适合有一定技术背景的读者深度理解大模型的工作机制。</p></div><div class="sec"><div class="sec-header"><span class="sec-emoji">🗝️</span><span class="sec-title">核心概念大白话解码</span></div><div class="card"><div class="card-title">Transformer的注意力机制——"读书时知道什么重要"</div><div class="card-def">传统语言模型按序列处理文字（一个字接一个字），无法理解上下文关联。Transformer通过"注意力机制"让每个词都能同时"看"全文所有词，并动态决定哪些关联最重要。</div><div class="card-case">把文章理解比作考试：传统RNN模型是逐字阅读，读到最后忘了开头；Transformer是打开书能同时看所有页，自动标注哪些段落与当前问题最相关。这就是为什么GPT能理解超长文本的连贯性。</div></div><div class="card"><div class="card-title">预训练与微调——先博学，再专精</div><div class="card-def">预训练是让模型吃掉海量互联网文本，学习语言的统计规律；微调是在预训练基础上，用特定任务数据进一步调整，让它在特定场景表现更好。</div><div class="card-case">预训练就像让孩子读完人类历史上所有的书，获得广博的基础知识；微调就像送他去法学院专门学法律。没有博学基础，专精学不好；但博学本身不等于专精。</div></div><div class="card"><div class="card-title">RLHF——用人类反馈教AI什么是"好的回答"</div><div class="card-def">Reinforcement Learning from Human Feedback：先让AI生成多个答案，人类标注哪些好，然后训练一个"奖励模型"学习人类的偏好，再用强化学习让AI持续优化向人类认为"好"的方向走。</div><div class="card-case">ChatGPT在GPT-3基础上的核心改进就是RLHF。没有RLHF，GPT-3会生成语言流畅但内容有害或无意义的输出；RLHF让它学会了什么是有帮助的、无害的、诚实的回答。</div></div></div><div class="sec"><div class="sec-header"><span class="sec-emoji">🛠️</span><span class="sec-title">核心方法论逻辑链</span></div><p><strong>逻辑链：</strong>因为大模型是从统计规律中学习语言，它的"理解"本质上是预测下一个词的概率 → 所以它在需要精确事实的任务上会产生"幻觉"（自信地生成错误内容）→ 进而理解这个机制就能设计更好的提示词（提供具体事实，要求引用来源）和应用架构（RAG检索增强）。</p><div class="bq">大模型不是在"知道"什么，它是在"最可能说什么"——这个区别决定了它的能力边界。</div></div><div class="sec"><div class="sec-header"><span class="sec-emoji">🛡️</span><span class="sec-title">辩证审视</span></div><div class="dial"><div class="dial-pro"><div class="dial-label">价值所在</div><p>这本书把学术论文中的核心概念转化为工程师和产品经理能理解的语言，是目前最系统的中文大模型技术入门书之一，可以直接提升AI产品决策质量。</p></div><div class="dial-con"><div class="dial-label">局限性</div><p>技术领域更新极快，大模型在2024-2026年的发展速度意味着书中某些细节可能已经过时。另外，本书侧重原理解释，实际工程实现需要结合动手练习。</p></div></div></div><div class="sec"><div class="sec-header"><span class="sec-emoji">📖</span><span class="sec-title">帕累托精选</span></div><div class="chapter"><span class="ch-badge">必读1</span><div class="ch-name">注意力机制：为什么Transformer比RNN强十倍</div><div class="ch-why">📌 理解大模型能力的基础</div><p>这章从数学直觉而非公式出发，解释了为什么注意力机制让模型能处理长文本并理解跨句关联。读完这章，你就能理解为什么GPT能写完整的小说，而不只是一段话。</p></div><div class="chapter"><span class="ch-badge">必读2</span><div class="ch-name">RLHF与对齐问题：AI是如何"学会做好人"的</div><div class="ch-why">📌 最有现实意义的章节</div><p>这章讲述了从GPT-3到ChatGPT的关键跃升，解释了为什么技术能力的提升并不等于AI有用性的提升，以及RLHF如何解决这个问题。同时也指出了RLHF的局限——AI学的是"让人类满意"，不一定是"客观正确"。</p></div></div><div class="sec"><div class="sec-header"><span class="sec-emoji">⚡</span><span class="sec-title">知行合一</span></div><p><strong>技术碰撞：</strong>Scaling Laws（规模定律）显示随着参数和数据的增加，模型能力会涌现出新的能力——但这个规律是否持续有效，是当前AI研究的核心争议。理解这个争议有助于判断AI能力的发展轨迹。</p><p><strong>平台生态演进：</strong>RAG（检索增强生成）正在成为解决大模型幻觉问题的主流方案——把大模型的语言能力与实时知识库结合。这是理解当前AI产品架构的关键。</p><ol class="action-list"><li>用"它在预测什么词"的视角来理解任何AI回答，就能识别其可靠性边界。</li><li>当AI给出事实类答案时，要求它提供来源——这利用了模型的引用能力，也减少了幻觉。</li><li>了解RAG架构，任何需要精确事实的AI应用都应该使用RAG而非纯依赖模型记忆。</li></ol></div></div>
+<div class="footer">深度阅读解构 · 苏格拉底式追问 · 辩证批判</div>
+</body></html>
