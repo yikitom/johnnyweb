@@ -1,0 +1,21 @@
+name: Deploy
+on: {push: {branches: [main]}}
+permissions: {contents: write}
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: 22}
+      - run: npm install -g netlify-cli@26.1.0
+      - name: deploy
+        shell: bash
+        env: {NETLIFY_AUTH_TOKEN: "${{ secrets.NETLIFY_AUTH_TOKEN }}"}
+        run: netlify deploy --prod --dir=. --site=${{ secrets.NETLIFY_SITE_ID }} 2>&1 | tee deploy.log
+      - name: report-error
+        if: failure()
+        env: {GH_TOKEN: "${{ github.token }}"}
+        run: |
+          TAIL=$(tail -c 1000 deploy.log | sed "s/nfp_[A-Za-z0-9_]*/[TOKEN]/g; s/\"/'/g")
+          gh api repos/${{ github.repository }}/commits/${{ github.sha }}/comments -f body="DEPLOY-ERR: $TAIL" || true

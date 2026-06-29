@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>2026五一假期 · 核心目的地数据观察</title>
+<style>
+:root{
+  --bg:#F2F2F7; --card:#FFFFFF;
+  --lbl:#1C1C1E; --lbl2:rgba(60,60,67,.6); --lbl3:rgba(60,60,67,.3);
+  --sep:rgba(60,60,67,.12);
+  --blue:#007AFF; --green:#34C759; --orange:#FF9500; --red:#FF3B30; --purple:#AF52DE;
+  --teal:#30B0C7; --indigo:#5856D6;
+  --rel-bg:#E8F8EE; --rel-bd:#34C759; --rel-tx:#1B7F3B;
+  --unr-bg:#FDECEA; --unr-bd:#FF3B30; --unr-tx:#C0291E;
+  --radius:18px;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Helvetica Neue',sans-serif;
+  background:var(--bg); color:var(--lbl); line-height:1.55;
+  padding-bottom:60px;
+}
+.nav{
+  position:sticky; top:0; z-index:100;
+  background:rgba(242,242,247,.82); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+  border-bottom:.5px solid var(--sep); height:48px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:15px; font-weight:600; letter-spacing:-.01em;
+}
+.wrap{max-width:860px; margin:0 auto; padding:0 20px}
+.hero{padding:44px 0 28px}
+.eyebrow{font-size:13px; font-weight:600; color:var(--orange); letter-spacing:.04em; text-transform:uppercase; margin-bottom:10px}
+h1{font-size:34px; font-weight:800; letter-spacing:-.02em; line-height:1.15; margin-bottom:14px}
+.lead{font-size:17px; color:var(--lbl2); max-width:680px}
+.meta-row{display:flex; flex-wrap:wrap; gap:8px; margin-top:20px}
+.pill{font-size:12px; font-weight:600; padding:5px 12px; border-radius:20px; background:var(--card); color:var(--lbl2); border:.5px solid var(--sep)}
+
+/* 可靠性图例 */
+.legend{
+  display:flex; gap:12px; flex-wrap:wrap; margin:8px 0 28px;
+  padding:16px 18px; background:var(--card); border-radius:var(--radius); border:.5px solid var(--sep);
+}
+.legend-item{display:flex; align-items:center; gap:8px; font-size:13px; font-weight:500; color:var(--lbl2)}
+.dot{width:14px; height:14px; border-radius:50%; flex-shrink:0}
+.dot.g{background:var(--green)} .dot.r{background:var(--red)}
+
+.section{margin:36px 0}
+.section-title{font-size:22px; font-weight:700; letter-spacing:-.015em; margin-bottom:6px}
+.section-sub{font-size:14px; color:var(--lbl2); margin-bottom:18px}
+
+.card{background:var(--card); border-radius:var(--radius); border:.5px solid var(--sep); padding:22px 24px; margin-bottom:16px; box-shadow:0 1px 3px rgba(0,0,0,.04)}
+
+/* KPI 大数字网格 */
+.kpi-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:14px; margin-bottom:8px}
+.kpi{background:var(--card); border-radius:16px; border:.5px solid var(--sep); padding:18px; position:relative; overflow:hidden}
+.kpi .tag{position:absolute; top:10px; right:10px; font-size:10px; font-weight:700; padding:2px 7px; border-radius:8px}
+.tag.g{background:var(--rel-bg); color:var(--rel-tx)} .tag.r{background:var(--unr-bg); color:var(--unr-tx)}
+.kpi .num{font-size:30px; font-weight:800; letter-spacing:-.02em; line-height:1.1; margin:4px 0}
+.kpi .unit{font-size:14px; font-weight:600; color:var(--lbl2)}
+.kpi .lbl{font-size:12px; color:var(--lbl2); margin-bottom:2px}
+.kpi .chg{font-size:13px; font-weight:700; margin-top:6px}
+.chg.up{color:var(--green)} .chg.down{color:var(--red)} .chg.flat{color:var(--lbl2)}
+.kpi .src{font-size:10px; color:var(--lbl3); margin-top:8px}
+
+/* 数据条目 */
+.data-row{display:flex; align-items:flex-start; gap:12px; padding:13px 0; border-bottom:.5px solid var(--sep)}
+.data-row:last-child{border-bottom:none}
+.data-row .badge{flex-shrink:0; width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; margin-top:1px}
+.badge.g{background:var(--rel-bg)} .badge.r{background:var(--unr-bg)}
+.data-row .body{flex:1}
+.data-row .metric{font-size:15px; font-weight:600; color:var(--lbl)}
+.data-row .metric .v{font-weight:800}
+.data-row .ref{font-size:12px; color:var(--lbl3); margin-top:2px}
+.chgtag{font-size:12px; font-weight:700; padding:1px 8px; border-radius:7px; margin-left:6px; white-space:nowrap}
+.chgtag.up{background:var(--rel-bg); color:var(--rel-tx)} 
+.chgtag.down{background:var(--unr-bg); color:var(--unr-tx)}
+.chgtag.flat{background:rgba(60,60,67,.08); color:var(--lbl2)}
+
+/* 目的地卡片 */
+.dest-head{display:flex; align-items:center; gap:10px; margin-bottom:4px}
+.dest-flag{font-size:26px}
+.dest-name{font-size:19px; font-weight:700}
+.dest-status{font-size:11px; font-weight:700; padding:3px 9px; border-radius:8px; margin-left:auto}
+.st-official{background:var(--rel-bg); color:var(--rel-tx)}
+.st-pending{background:#FFF4E5; color:#9A6200}
+.st-ota{background:var(--unr-bg); color:var(--unr-tx)}
+
+table{width:100%; border-collapse:collapse; margin-top:6px}
+th,td{text-align:left; padding:9px 8px; font-size:13px; border-bottom:.5px solid var(--sep)}
+th{font-size:11px; font-weight:700; color:var(--lbl2); text-transform:uppercase; letter-spacing:.03em}
+td.r{font-weight:700; text-align:right}
+
+.note{font-size:13px; color:var(--lbl2); background:#FFF9EC; border-left:3px solid var(--orange); padding:12px 16px; border-radius:10px; margin-top:12px}
+.warn{font-size:13px; color:var(--unr-tx); background:var(--unr-bg); border-left:3px solid var(--red); padding:12px 16px; border-radius:10px; margin:12px 0}
+.takeaway{font-size:14px; color:var(--lbl); background:#F0F7FF; border-left:3px solid var(--blue); padding:12px 16px; border-radius:10px; margin-top:12px}
+.takeaway b{color:var(--blue)}
+
+.footer{margin-top:48px; padding-top:24px; border-top:.5px solid var(--sep); font-size:12px; color:var(--lbl3); text-align:center; line-height:1.8}
+.method{background:var(--card); border-radius:var(--radius); border:.5px solid var(--sep); padding:20px 24px; margin-top:16px}
+.method h3{font-size:15px; font-weight:700; margin-bottom:10px}
+.method li{font-size:13px; color:var(--lbl2); margin:6px 0 6px 18px}
+.sig{font-size:13px; color:var(--lbl2); text-align:right; margin-top:20px; font-style:italic}
+</style>
+</head>
+<body>
+<div class="nav">2026 五一假期 · 核心目的地数据观察</div>
+<div class="wrap">
+
+<div class="hero">
+  <div class="eyebrow">劳动节黄金周 · 2026年5月1–5日</div>
+  <h1>中国五一出境与口岸<br>核心目的地数据观察</h1>
+  <p class="lead">本报告聚焦2026年五一假期（5月1–5日）中国出入境总体表现与港澳等核心目的地客流。所有数据均经反幻觉核查并标注来源与可靠性等级——<b style="color:var(--rel-tx)">官方权威数据标绿</b>，<b style="color:var(--unr-tx)">平台预估/搜索热度/节前预测标红</b>。</p>
+  <div class="meta-row">
+    <span class="pill">📅 假期：5月1–5日（5天）</span>
+    <span class="pill">🔍 数据采集：2026-06-07</span>
+    <span class="pill">🛡️ 反幻觉核查：已执行</span>
+  </div>
+</div>
+
+<div class="legend">
+  <div class="legend-item"><span class="dot g"></span><b style="color:var(--rel-tx)">绿色</b>：官方机构发布（移民局/文旅部/港澳政府），高可靠</div>
+  <div class="legend-item"><span class="dot r"></span><b style="color:var(--unr-tx)">红色</b>：OTA平台数据/搜索热度/节前预测，仅供参考</div>
+</div>
+
+<!-- ===== 全国总览 ===== -->
+<div class="section">
+  <div class="section-title">一、全国出入境总览</div>
+  <div class="section-sub">国家移民管理局 & 文旅部官方口径 · 全部为🟢高可靠数据</div>
+
+  <div class="kpi-grid">
+    <div class="kpi">
+      <span class="tag g">✅官方</span>
+      <div class="lbl">全国边检出入境</div>
+      <div class="num">1127.9<span class="unit">万人次</span></div>
+      <div class="chg up">↑ 3.5% 同比</div>
+      <div class="src">国家移民管理局 · 新华社05-06</div>
+    </div>
+    <div class="kpi">
+      <span class="tag g">✅官方</span>
+      <div class="lbl">日均出入境</div>
+      <div class="num">225.6<span class="unit">万/日</span></div>
+      <div class="chg flat">5月2日峰值 252.9万</div>
+      <div class="src">国家移民管理局 · 新华社05-06</div>
+    </div>
+    <div class="kpi">
+      <span class="tag g">✅官方</span>
+      <div class="lbl">外国人入出境</div>
+      <div class="num">125.5<span class="unit">万人次</span></div>
+      <div class="chg up">↑ 12.5% 同比</div>
+      <div class="src">国家移民管理局 · 新华社05-06</div>
+    </div>
+    <div class="kpi">
+      <span class="tag g">✅官方</span>
+      <div class="lbl">免签入境外国人</div>
+      <div class="num">43.6<span class="unit">万人次</span></div>
+      <div class="chg up">↑ 14.7% 同比</div>
+      <div class="src">国家移民管理局 · 新华社05-06</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="data-row">
+      <div class="badge g">✅</div>
+      <div class="body">
+        <div class="metric">出入境交通运输工具 <span class="v">53.1万架（艘/列/辆）次</span><span class="chgtag up">↑16.6%</span></div>
+        <div class="ref">国家移民管理局 · 新华社 2026-05-06</div>
+      </div>
+    </div>
+    <div class="data-row">
+      <div class="badge g">✅</div>
+      <div class="body">
+        <div class="metric">全国国内出游 <span class="v">3.25亿人次</span><span class="chgtag up">↑3.6%</span></div>
+        <div class="ref">文化和旅游部数据中心 · 文旅之声 2026-05-07</div>
+      </div>
+    </div>
+    <div class="data-row">
+      <div class="badge g">✅</div>
+      <div class="body">
+        <div class="metric">国内旅游总花费 <span class="v">1854.92亿元</span><span class="chgtag up">↑2.9%</span></div>
+        <div class="ref">文化和旅游部数据中心 · 文旅之声 2026-05-07</div>
+      </div>
+    </div>
+  </div>
+  <div class="takeaway">
+    <b>核心研判：</b>五一出入境总量1127.9万人次、同比+3.5%，增速较2025年五一（彼时同比+28.7%）大幅放缓——这是因为2025年处于免签政策红利的高基数爆发期，2026年回归常态化稳健增长。外国人入境（+12.5%）与免签入境（+14.7%）增速显著高于整体，<b>"入境中国"热度强于"出境"</b>仍是本假期主轴。
+  </div>
+</div>
+
+<!-- ===== 港澳 ===== -->
+<div class="section">
+  <div class="section-title">二、核心目的地：港澳（官方数据已发布）</div>
+  <div class="section-sub">港澳政府在假期结束次日即公布数据 · 🟢高可靠</div>
+
+  <!-- 澳门 -->
+  <div class="card">
+    <div class="dest-head">
+      <span class="dest-flag">🇲🇴</span>
+      <span class="dest-name">澳门</span>
+      <span class="dest-status st-official">✅ 官方已发布</span>
+    </div>
+    <table>
+      <tr><th>指标</th><th>数值</th><th>同比/说明</th></tr>
+      <tr><td>入境旅客（5月1–5日）</td><td class="r">87.3万人次</td><td><span class="chgtag up">↑2.8%</span></td></tr>
+      <tr><td>全澳出入境总量</td><td class="r">381.2万人次</td><td><span class="chgtag up">↑1.6%</span></td></tr>
+      <tr><td>5月2日单日入境</td><td class="r">24.8万人次</td><td><span class="chgtag flat">单日历史新高</span></td></tr>
+      <tr><td>内地游客占比</td><td class="r">约83%</td><td><span class="chgtag flat">内地稳居主力</span></td></tr>
+      <tr><td>酒店平均入住率</td><td class="r">约九成</td><td><span class="chgtag flat">5月1–2日多间100%</span></td></tr>
+    </table>
+    <div class="note">来源：澳门治安警察局 / 旅游业界（中新社、新华社、人民日报海外版，2026-05-06～07）。✅ 全部为官方或官方转述数据。</div>
+  </div>
+
+  <!-- 香港 -->
+  <div class="card">
+    <div class="dest-head">
+      <span class="dest-flag">🇭🇰</span>
+      <span class="dest-name">香港</span>
+      <span class="dest-status st-official">✅ 官方已发布</span>
+    </div>
+    <table>
+      <tr><th>指标</th><th>数值</th><th>说明</th></tr>
+      <tr><td>内地旅客入境（5月1–5日）</td><td class="r">约101万人次</td><td><span class="chgtag flat">入境处统计</span></td></tr>
+    </table>
+    <div class="note">来源：香港特区政府入境事务处（人民日报海外版，2026-05-07）。✅ 官方数据。<br><span style="color:var(--unr-tx)">⚠️ 注意：香港尚未公布五一假期的总访港旅客数与同比增幅，仅有"内地旅客约101万"这一口径，其余维度暂缺。</span></div>
+  </div>
+
+  <div class="takeaway">
+    <b>港澳研判：</b>港澳作为内地客"短途确定性首选"延续稳健。澳门入境+2.8%、内地占83%，结构高度依赖内地；5月2日因大型演艺活动创单日入境新高（24.8万）。香港内地客约101万人次。两地共同特征是<b>"同日往返/短途化"</b>——增长温和而非爆发，符合假期错峰与高基数背景。
+  </div>
+</div>
+
+<!-- ===== 出境目的地 ===== -->
+<div class="section">
+  <div class="section-title">三、主要出境目的地（官方专项数据未发布）</div>
+  <div class="section-sub">日/韩/泰/新/马的五一国别客流官方数据滞后30–50天，目前仅有OTA平台与调查数据 · 🔴需谨慎</div>
+
+  <div class="warn">
+    <b>反幻觉重要声明：</b>截至2026年6月7日，日本(JNTO)、韩国(KTO)、泰国(TAT)、新加坡(STB)、马来西亚(MOTAC)<b>均未发布</b>五一假期（5月1–5日）期间的中国游客专项客流数字——这类官方月度数据通常滞后30–50天。因此下方仅能提供OTA平台预订/搜索数据与节前意向调查，<b>全部标红，不可作为实际客流引用</b>。
+  </div>
+
+  <div class="card">
+    <div class="dest-head">
+      <span class="dest-flag">🌏</span>
+      <span class="dest-name">OTA平台 & 调查数据（仅供参考）</span>
+      <span class="dest-status st-ota">🔴 平台/预估</span>
+    </div>
+    <div class="data-row">
+      <div class="badge r">❓</div>
+      <div class="body">
+        <div class="metric">携程：五一出境游订单 <span class="v">同比双位数增长</span></div>
+        <div class="ref">携程集团 2026-05-05 · 平台订单口径，非客流；首日入境游订单+141%</div>
+      </div>
+    </div>
+    <div class="data-row">
+      <div class="badge r">❓</div>
+      <div class="body">
+        <div class="metric">携程：日/韩/泰/马/新 <span class="v">仍是最受欢迎海外目的地</span></div>
+        <div class="ref">携程 2026-05 · 排名为平台预订热度，非到访人数</div>
+      </div>
+    </div>
+    <div class="data-row">
+      <div class="badge r">❓</div>
+      <div class="body">
+        <div class="metric">Airbnb：韩国热搜 <span class="v">同比+5倍</span>，越南+3倍</div>
+        <div class="ref">Airbnb《2026五一出境游趋势报告》· 搜索热度，非实际客流</div>
+      </div>
+    </div>
+    <div class="data-row">
+      <div class="badge r">❓</div>
+      <div class="body">
+        <div class="metric">飞猪：乌兹别克斯坦预订量 <span class="v">+100%</span></div>
+        <div class="ref">飞猪平台数据（huxiu 2026-05-05）· 平台预订量，小基数高增长</div>
+      </div>
+    </div>
+    <div class="data-row">
+      <div class="badge r">❓</div>
+      <div class="body">
+        <div class="metric">龙途国际：五一目的地意向 <span class="v">韩国第1 / 澳门第2 / 泰国回升</span></div>
+        <div class="ref">《中国游客意向报告》TTG China 2026-04-24 · 节前意向调查，非实际数据</div>
+      </div>
+    </div>
+    <div class="data-row">
+      <div class="badge r">❓</div>
+      <div class="body">
+        <div class="metric">行业观察：国际航线均价 <span class="v">同比+15–20%</span>；取消率3.6%→7.4%（中东达34%）</div>
+        <div class="ref">huxiu 2026-05-05 · 行业观察/估算</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">
+    <b>趋势线索（定性，非定量）：</b>多个平台口径共同指向——①<b>韩国</b>受益于中日关系紧张的客源分流与K-culture热度，搜索/预订领跑；②<b>泰国</b>出现回升迹象但全年仍承压（安全感知、强势泰铢）；③<b>日本</b>受2025年底涉台言论旅行提醒影响，中国客仍处低位（参见4月JNTO数据：访日中国客-56.8%）；④<b>中亚/小众目的地</b>（乌兹别克斯坦等）因免签政策出现高增长但基数小。以上均为平台信号，<b>实际客流以各目的地官方后续发布为准</b>。
+  </div>
+</div>
+
+<!-- ===== 参照系 ===== -->
+<div class="section">
+  <div class="section-title">四、参照系：4月官方月度数据（已发布）</div>
+  <div class="section-sub">虽非五一专项，但4月官方数据可作为五一临近期的客流趋势参照 · 🟢高可靠</div>
+  <div class="card">
+    <table>
+      <tr><th>目的地</th><th>2026年4月入境总量</th><th>同比</th><th>中国/内地客</th><th>来源</th></tr>
+      <tr><td>🇯🇵 日本</td><td class="r">369.2万</td><td><span class="chgtag down">↓5.5%</span></td><td>33.1万 <span class="chgtag down">↓56.8%</span></td><td>✅JNTO</td></tr>
+      <tr><td>🇰🇷 韩国</td><td class="r">202.8万</td><td><span class="chgtag up">↑18.8%</span></td><td>57.4万 <span class="chgtag up">↑29.6%</span></td><td>✅KTO</td></tr>
+      <tr><td>🇲🇴 澳门</td><td class="r">344.1万</td><td><span class="chgtag up">↑11.3%</span></td><td>240.5万 <span class="chgtag up">↑13.1%</span></td><td>✅DSEC</td></tr>
+      <tr><td>🇭🇰 香港</td><td class="r">约422万</td><td><span class="chgtag up">↑10.0%</span></td><td>约308万</td><td>✅HKTB</td></tr>
+      <tr><td>🇹🇭 泰国</td><td class="r">约237万</td><td><span class="chgtag down">↓7.0%</span></td><td>41.8万 <span class="chgtag up">↑31.9%</span></td><td>✅TAT/BangkokPost</td></tr>
+      <tr><td>🇸🇬 新加坡</td><td class="r">133.2万</td><td><span class="chgtag down">↓5.1%</span></td><td>21.8万 <span class="chgtag up">↑5.0%</span></td><td>✅STB</td></tr>
+      <tr><td>🇲🇾 马来西亚</td><td class="r" style="color:var(--unr-tx)">4月暂无</td><td><span class="chgtag flat">待发布</span></td><td>—</td><td>❌滞后60天</td></tr>
+    </table>
+    <div class="note">说明：此表为4月<b>整月</b>官方数据，非五一假期专项。日/韩/澳/港为✅官方精确值；泰/新为~第三方/估算。<b style="color:var(--unr-tx)">🇲🇾 马来西亚4月数据官方尚未发布（MOTAC月度数据滞后约60天），最新可得为2026年Q1累计约1,100万人次（Power BI），故此处如实标注"暂无"，不作估算。</b>中国客方面延续两极分化：<b>日本-56.8%</b>（涉台言论旅行提醒+减班）vs <b>韩国+29.6%</b>（分流受益）。</div>
+  </div>
+</div>
+
+<!-- ===== 方法论 ===== -->
+<div class="method">
+  <h3>🛡️ 反幻觉核查方法</h3>
+  <ul>
+    <li><b>三级置信度：</b>✅官方精确值（移民局/文旅部/港澳政府）→绿；~第三方可信估算→需标注；❓平台预订/搜索/节前预测→红。</li>
+    <li><b>区分"预订/搜索"与"实际客流"：</b>OTA订单量、搜索热度≠到访人数，全部归类为红色参考数据。</li>
+    <li><b>区分2025与2026：</b>多篇报道含2025五一旧数据，已剔除，不与2026混用。</li>
+    <li><b>数据缺失如实说明：</b>日/韩/泰/新/马五一国别专项客流官方未发布，明确标注"暂无"，不以历史比例编造数字。</li>
+    <li><b>同比基数提示：</b>2025五一出入境同比+28.7%为政策红利高基数，2026回落至+3.5%属常态化，非"失速"。</li>
+  </ul>
+</div>
+
+<div class="sig">理海 / 飞猪度假 &amp; 国际酒店事业部</div>
+
+<div class="footer">
+  数据采集日期：2026年6月7日 · 假期口径：2026年5月1–5日<br>
+  官方来源：国家移民管理局、文化和旅游部、澳门治安警察局、香港入境事务处、JNTO、KTO、DSEC、HKTB<br>
+  平台来源（红色）：携程、飞猪、Airbnb、龙途国际、航班管家、众信旅游<br>
+  ⚠️ 本报告区分官方数据与平台预估，各目的地五一国别专项客流以官方后续发布为准
+</div>
+
+</div>
+</body>
+</html>

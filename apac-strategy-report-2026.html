@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>亚太旅游入境结构分化与平台生态应对报告 · 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --sys-bg:#F2F2F7;
+  --card:#FFFFFF;
+  --lbl:#000000;
+  --lbl2:rgba(60,60,67,.6);
+  --lbl3:rgba(60,60,67,.3);
+  --sep:rgba(60,60,67,.15);
+  --blue:#007AFF;
+  --green:#34C759;
+  --orange:#FF9500;
+  --red:#FF3B30;
+}
+body{background:var(--sys-bg);color:var(--lbl);
+  font-family:-apple-system,'PingFang SC','Helvetica Neue',sans-serif;
+  font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+/* NAV 44pt */
+.nav{position:sticky;top:0;z-index:99;height:44px;
+  background:rgba(242,242,247,.88);backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border-bottom:.5px solid var(--sep);
+  display:flex;align-items:center;padding:0 20px;
+  justify-content:space-between}
+.nav-t{font-size:17px;font-weight:600}
+.nav-b{font-size:12px;color:var(--blue);font-weight:600}
+/* LAYOUT */
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+.section{padding:40px 0;border-top:.5px solid var(--sep)}
+.section:first-child{border-top:none}
+/* HERO */
+.hero{padding:52px 0 40px}
+.eyebrow{font-size:13px;font-weight:600;color:var(--blue);letter-spacing:.02em;margin-bottom:12px}
+.h1{font-size:34px;font-weight:700;letter-spacing:-.02em;line-height:1.15;margin-bottom:10px}
+.h1 b{color:var(--blue)}
+.sub{font-size:17px;color:var(--lbl2);margin-bottom:24px;max-width:580px;line-height:1.55}
+.pills{display:flex;flex-wrap:wrap;gap:6px}
+.pill{font-size:13px;color:var(--lbl2);font-weight:500;padding:6px 12px;
+  background:#fff;border-radius:20px;border:.5px solid var(--sep);
+  box-shadow:0 1px 2px rgba(0,0,0,.05)}
+/* HEADINGS */
+.sec-label{font-size:13px;font-weight:600;color:var(--lbl3);letter-spacing:.06em;
+  text-transform:uppercase;margin-bottom:8px}
+.h2{font-size:28px;font-weight:700;letter-spacing:-.015em;line-height:1.2;margin-bottom:8px}
+.h2-sub{font-size:15px;color:var(--lbl2);margin-bottom:24px;max-width:640px;line-height:1.55}
+/* SCQA */
+.scqa{display:grid;grid-template-columns:1fr 1fr;gap:.5px;
+  background:var(--sep);border-radius:16px;overflow:hidden;margin:20px 0}
+.scqa-cell{background:#fff;padding:20px}
+.scqa-tag{font-size:11px;font-weight:800;letter-spacing:.1em;
+  text-transform:uppercase;margin-bottom:8px}
+.scqa-txt{font-size:14px;color:var(--lbl2);line-height:1.65}
+/* KPI */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:20px 0}
+.kpi{background:#fff;border-radius:16px;padding:16px;
+  box-shadow:0 1px 3px rgba(0,0,0,.06),0 0 0 .5px var(--sep)}
+.kpi-lbl{font-size:12px;color:var(--lbl3);margin-bottom:6px;font-weight:500}
+.kpi-val{font-size:24px;font-weight:700;letter-spacing:-.01em;line-height:1.15}
+.kpi-chg{font-size:13px;font-weight:600;margin-top:4px}
+/* DATA TABLE */
+.dtbl{width:100%;border-collapse:collapse;font-size:13px;
+  background:#fff;border-radius:16px;overflow:hidden;
+  box-shadow:0 1px 3px rgba(0,0,0,.06),0 0 0 .5px var(--sep)}
+.dtbl th{background:rgba(242,242,247,.6);color:var(--lbl3);
+  font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;
+  padding:10px 12px;text-align:left;border-bottom:.5px solid var(--sep)}
+.dtbl td{padding:11px 12px;border-bottom:.5px solid rgba(60,60,67,.06);
+  color:var(--lbl2);vertical-align:middle}
+.dtbl tr:last-child td{border-bottom:none}
+.dtbl .dn{color:var(--lbl);font-weight:600;font-size:14px}
+/* MATRIX */
+.matrix{display:grid;grid-template-columns:1fr 1fr;gap:.5px;
+  background:var(--sep);border-radius:16px;overflow:hidden;margin:16px 0}
+.mc{background:#fff;padding:18px}
+.mc-lbl{font-size:11px;font-weight:700;letter-spacing:.05em;
+  text-transform:uppercase;margin-bottom:10px}
+.mc-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+.mc-tag{font-size:12px;font-weight:600;border-radius:20px;padding:4px 12px}
+.mc-d{font-size:12px;color:var(--lbl3)}
+/* CATEGORY BAND */
+.cat-band{border-radius:16px;overflow:hidden;margin-bottom:20px}
+.cat-hdr{padding:18px 22px;display:flex;align-items:flex-start;gap:14px}
+.cat-icon{font-size:22px;font-weight:700;line-height:1.3;flex-shrink:0}
+.cat-name{font-size:17px;font-weight:700;margin-bottom:4px}
+.cat-tagline{font-size:14px;line-height:1.5;opacity:.75}
+.cat-badge{margin-left:auto;flex-shrink:0;font-size:11px;font-weight:700;
+  letter-spacing:.05em;text-transform:uppercase;border-radius:20px;
+  padding:4px 12px;align-self:flex-start}
+/* ACTION GRID */
+.acts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0}
+.act{background:#fff;border-radius:16px;padding:18px;
+  box-shadow:0 1px 3px rgba(0,0,0,.06),0 0 0 .5px var(--sep)}
+.act-hor{font-size:11px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;margin-bottom:8px}
+.act-title{font-size:15px;font-weight:700;margin-bottom:10px}
+.act ul{list-style:none}
+.act li{font-size:13px;color:var(--lbl2);padding:4px 0 4px 14px;
+  position:relative;line-height:1.5}
+.act li::before{content:"·";position:absolute;left:4px;font-weight:700;color:var(--lbl3)}
+/* RISK */
+.risks{background:#fff;border-radius:16px;overflow:hidden;
+  box-shadow:0 1px 3px rgba(0,0,0,.06),0 0 0 .5px var(--sep)}
+.risk-row{display:flex;gap:12px;padding:14px 16px;
+  border-bottom:.5px solid rgba(60,60,67,.07);align-items:flex-start}
+.risk-row:last-child{border-bottom:none}
+.rbadge{font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;
+  border-radius:6px;padding:3px 8px;flex-shrink:0;white-space:nowrap}
+.rt{font-size:14px;font-weight:700;margin-bottom:4px}
+.rd{font-size:13px;color:var(--lbl2);line-height:1.5}
+/* TOC */
+.toc{display:flex;gap:6px;overflow-x:auto;padding-bottom:10px;margin-bottom:24px;
+  -webkit-overflow-scrolling:touch;scrollbar-width:none}
+.toc::-webkit-scrollbar{display:none}
+.toc a{flex-shrink:0;font-size:13px;font-weight:600;border-radius:20px;
+  padding:7px 14px;background:#fff;color:var(--lbl2);text-decoration:none;
+  min-height:44px;display:flex;align-items:center;
+  box-shadow:0 1px 2px rgba(0,0,0,.06),0 0 0 .5px var(--sep)}
+.toc a:hover{color:var(--blue);background:#E8F0FE}
+/* FOOTER */
+.footer{padding:32px 0;text-align:center;font-size:12px;color:var(--lbl3);line-height:1.9}
+/* RESPONSIVE */
+@media(max-width:768px){
+  .kpis{grid-template-columns:1fr 1fr}
+  .scqa{grid-template-columns:1fr}
+  .acts{grid-template-columns:1fr}
+  .matrix{grid-template-columns:1fr}
+  .h1{font-size:26px}
+  .h2{font-size:22px}
+}
+/* Chip helper */
+.chip{display:inline-flex;align-items:center;font-size:11px;font-weight:600;
+  border-radius:20px;padding:2px 10px;white-space:nowrap}
+.c-g{background:rgba(48,209,88,.1);color:#1D9E3E}
+.c-a{background:rgba(255,159,10,.1);color:#C97400}
+.c-r{background:rgba(255,59,48,.1);color:#CC2200}
+.c-b{background:rgba(0,122,255,.1);color:#0071E3}
+.up{color:#1D9E3E;font-weight:600;font-size:12px}
+.dn{color:#CC2200;font-weight:600;font-size:12px}
+.fl{color:#8E8E93;font-weight:600;font-size:12px}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <span class="nav-t">亚太旅游战略报告</span>
+  <span class="nav-b">2026 Q1 · 机密</span>
+</nav>
+
+<div class="wrap">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="eyebrow">OTA高管战略简报 · 麦肯锡方法论 · Apple HIG</div>
+  <h1 class="h1">亚太旅游入境结构分化<br>与<b>平台生态应对</b>报告</h1>
+  <p class="sub">7大目的地 2025全年 + 2026 Q1最新数据，MECE三大逻辑盘重构框架，面向OTA高管团队</p>
+  <div class="pills">
+    <span class="pill">数据截至 2026年3月</span>
+    <span class="pill">覆盖 7大目的地</span>
+    <span class="pill">总入境约 2.44亿 / 2025年</span>
+    <span class="pill">生成于 2026-05-04</span>
+  </div>
+</div>
+
+<!-- TOC -->
+<div class="toc">
+  <a href="#exec">执行摘要</a>
+  <a href="#overview">全局概览</a>
+  <a href="#red-li">🟢 红利溢出盘</a>
+  <a href="#high-pos">🟡 高位重组盘</a>
+  <a href="#recovery">🔴 受阻修复盘</a>
+  <a href="#actions">行动路线图</a>
+</div>
+
+<!-- EXEC SUMMARY -->
+<section id="exec" class="section" style="border-top:none;padding-top:0">
+  <div class="sec-label">Executive Summary</div>
+  <h2 class="h2">中国客源大规模地缘性重配，<br>平台须在 6 个月内完成生态重构</h2>
+  <p class="h2-sub">SCQA 框架呈现全局逻辑链条，一图读懂核心矛盾与应对策略</p>
+  <div class="scqa">
+    <div class="scqa-cell">
+      <div class="scqa-tag" style="color:var(--blue)">S · 情境</div>
+      <div class="scqa-txt">2025年亚太7目的地总入境约 <strong>2.44亿</strong>，整体 +7%，后疫情复苏红利持续释放。日元弱势、世博会、中马免签等多重催化剂叠加，日本与马来西亚双双打破历史纪录。</div>
+    </div>
+    <div class="scqa-cell">
+      <div class="scqa-tag" style="color:var(--red)">C · 冲突</div>
+      <div class="scqa-txt">总量增长掩盖结构性断裂：<strong>中国客源正在地缘性大迁移</strong>——日本涉台外交风波致中国客 2026 Q1 暴跌 54.6%；泰国安全感知危机致中国客恢复率仅 41%；而韩国与马来西亚逆势收割溢出红利。</div>
+    </div>
+    <div class="scqa-cell">
+      <div class="scqa-tag" style="color:var(--orange)">Q · 疑问</div>
+      <div class="scqa-txt">在此极端分化格局下：平台的供应链储备、产品矩阵和流量分发机制是否已对应调整？过去依赖日本高客单价中国客的 GMV 模型，是否需要全面重构？</div>
+    </div>
+    <div class="scqa-cell">
+      <div class="scqa-tag" style="color:var(--green)">A · 回答</div>
+      <div class="scqa-txt">必须执行<strong>三轨并行战略</strong>：① 韩国/马来西亚红利溢出盘<strong>提速收割</strong>；② 日本/港澳高位重组盘<strong>结构防守</strong>，快速填补品类缺口；③ 泰国/新加坡受阻修复盘<strong>精准托底</strong>，重建用户信心。</div>
+    </div>
+  </div>
+  <div class="kpis">
+    <div class="kpi">
+      <div class="kpi-lbl">7目的地总入境</div>
+      <div class="kpi-val" style="color:var(--blue)">2.44亿</div>
+      <div class="kpi-chg up">↑ 7.0% vs 2024</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-lbl">中国客格局</div>
+      <div class="kpi-val" style="font-size:18px">极端分化</div>
+      <div class="kpi-chg" style="color:var(--lbl2)">日本-55% ↔ 韩国+29%</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-lbl">最大赢家 2025</div>
+      <div class="kpi-val" style="font-size:18px;color:#1D9E3E">马来西亚</div>
+      <div class="kpi-chg up">中国客 ↑110% · 历史纪录</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-lbl">最大风险 2026</div>
+      <div class="kpi-val" style="font-size:18px;color:var(--red)">日本中国客</div>
+      <div class="kpi-chg dn">Q1仅107万 ↓54.6%</div>
+    </div>
+  </div>
+</section>
+
+<!-- OVERVIEW -->
+<section id="overview" class="section">
+  <div class="sec-label">Part 01 · 全局格局</div>
+  <h2 class="h2">三大逻辑盘：地缘博弈正在重写<br>亚太中国客的分发地图</h2>
+  <p class="h2-sub">按平台生态运营态势 MECE 归类，打破目的地流水账式分析</p>
+  <table class="dtbl">
+    <thead><tr>
+      <th>目的地</th><th>2025全年</th><th>YoY</th>
+      <th>中国客</th><th>中国客YoY</th>
+      <th style="color:var(--blue)">2026 Q1</th><th style="color:var(--blue)">Q1同比</th>
+      <th style="color:var(--red)">Q1中国客</th><th style="color:var(--red)">Q1同比</th>
+      <th>生态定位</th>
+    </tr></thead>
+    <tbody>
+      <tr><td class="dn">🇰🇷 韩国</td><td>1,894万</td><td class="up">↑15.7%</td><td>550万</td><td class="up">↑19.6%</td><td style="color:var(--blue);font-weight:600">476万</td><td class="up">↑22.9%</td><td style="color:var(--red);font-weight:600">145万</td><td class="up">↑29.0%</td><td><span class="chip c-g">★ 红利溢出</span></td></tr>
+      <tr><td class="dn">🇲🇾 马来西亚</td><td>4,220万</td><td class="up">↑11.2%</td><td>500万</td><td class="up">↑110.1%</td><td style="color:var(--blue);font-weight:600">1,100万</td><td class="fl">≈持平</td><td style="color:var(--lbl3)">—</td><td class="up">↑22.7%</td><td><span class="chip c-g">★ 红利溢出</span></td></tr>
+      <tr><td class="dn">🇯🇵 日本</td><td>4,268万</td><td class="up">↑15.8%</td><td>910万</td><td class="up">↑30.3%</td><td style="color:var(--blue);font-weight:600">1,068万</td><td class="fl">↑1.4%</td><td style="color:var(--red);font-weight:600">107万</td><td class="dn">↓54.6%</td><td><span class="chip c-a">⚑ 高位重组</span></td></tr>
+      <tr><td class="dn">🇭🇰 香港</td><td>4,990万</td><td class="up">↑12.0%</td><td>3,780万</td><td class="up">↑10.9%</td><td style="color:var(--blue);font-weight:600">1,430万</td><td class="up">↑17.0%</td><td style="color:var(--red);font-weight:600">1,110万</td><td class="up">↑20.0%</td><td><span class="chip c-a">⚑ 高位重组</span></td></tr>
+      <tr><td class="dn">🇲🇴 澳门</td><td>4,007万</td><td class="up">↑14.7%</td><td>2,902万</td><td class="up">↑18.4%</td><td style="color:var(--blue);font-weight:600">1,121万</td><td class="up">↑13.7%</td><td style="color:var(--red);font-weight:600">839万</td><td class="up">↑16.4%</td><td><span class="chip c-a">⚑ 高位重组</span></td></tr>
+      <tr><td class="dn">🇹🇭 泰国</td><td>3,297万</td><td class="dn">↓7.3%</td><td>447万</td><td class="dn">↓33.7%</td><td style="color:var(--blue);font-weight:600">932万</td><td class="dn">↓2.8%</td><td style="color:var(--red);font-weight:600">140万</td><td class="fl">est.</td><td><span class="chip c-r">▼ 受阻修复</span></td></tr>
+      <tr><td class="dn">🇸🇬 新加坡</td><td>1,691万</td><td class="up">↑2.3%</td><td>310万</td><td class="fl">↑0.6%</td><td style="color:var(--blue);font-weight:600">443万</td><td class="up">↑2.8%</td><td style="color:var(--red);font-weight:600">91万</td><td class="up">↑9.8%</td><td><span class="chip c-r">▼ 受阻修复</span></td></tr>
+    </tbody>
+  </table>
+  <div style="margin-top:24px;font-size:15px;font-weight:600;margin-bottom:6px">OTA 平台机会矩阵</div>
+  <div style="font-size:13px;color:var(--lbl2);margin-bottom:12px">横轴：2026 Q1同比增速 / 纵轴：中国客份额</div>
+  <div class="matrix">
+    <div class="mc"><div class="mc-lbl" style="color:#1D9E3E">★ 重点投入<br><span style="font-size:9px;color:var(--lbl3);font-weight:400">高增速 × 高中国客份额</span></div><div class="mc-tags"><span class="mc-tag" style="background:rgba(48,209,88,.1);color:#1D9E3E">🇰🇷 韩国</span><span class="mc-tag" style="background:rgba(48,209,88,.1);color:#1D9E3E">🇭🇰 香港Q1</span><span class="mc-tag" style="background:rgba(48,209,88,.1);color:#1D9E3E">🇲🇴 澳门Q1</span></div><div class="mc-d">激进投放+深化供应链+爆款套餐</div></div>
+    <div class="mc"><div class="mc-lbl" style="color:var(--blue)">◆ 培育市场<br><span style="font-size:9px;color:var(--lbl3);font-weight:400">高增速 × 低中国客份额</span></div><div class="mc-tags"><span class="mc-tag" style="background:rgba(0,122,255,.1);color:var(--blue)">🇲🇾 马来西亚</span><span class="mc-tag" style="background:rgba(0,122,255,.1);color:var(--blue)">🇸🇬 新加坡</span></div><div class="mc-d">主题化产品切入，提升中国客渗透率</div></div>
+    <div class="mc"><div class="mc-lbl" style="color:#C97400">● 维持防守<br><span style="font-size:9px;color:var(--lbl3);font-weight:400">低增速 × 高中国客份额</span></div><div class="mc-tags"><span class="mc-tag" style="background:rgba(255,159,10,.1);color:#C97400">🇯🇵 日本（重组期）</span></div><div class="mc-d">非中国客源品类扩展，等待地缘回暖</div></div>
+    <div class="mc"><div class="mc-lbl" style="color:#CC2200">○ 观察跟进<br><span style="font-size:9px;color:var(--lbl3);font-weight:400">低增速 × 低中国客份额</span></div><div class="mc-tags"><span class="mc-tag" style="background:rgba(255,59,48,.1);color:#CC2200">🇹🇭 泰国</span></div><div class="mc-d">安心保障品牌+低位进入储备</div></div>
+  </div>
+</section>
+
+<!-- RED-LI -->
+<section id="red-li" class="section">
+  <div class="sec-label">Part 02 · 第一类</div>
+  <h2 class="h2">红利溢出盘</h2>
+  <p class="h2-sub">两国以"地缘安全感+高性价比+免签便利"三要素，在中日博弈格局中脱颖而出，是 2026 年平台 GMV 增量最确定的押注方向</p>
+  <div class="cat-band" style="background:rgba(48,209,88,.07);border:.5px solid rgba(48,209,88,.2)">
+    <div class="cat-hdr">
+      <div class="cat-icon" style="color:#1D9E3E">●</div>
+      <div><div class="cat-name" style="color:#1D9E3E">红利溢出盘 · 韩国 + 马来西亚</div><div class="cat-tagline" style="color:#1D9E3E">正在接管中国客的"逃离日本"流量，地缘博弈最大受益者</div></div>
+      <span class="cat-badge" style="background:rgba(48,209,88,.15);color:#1D9E3E;border:.5px solid rgba(48,209,88,.3)">重点投入</span>
+    </div>
+  </div>
+  
+<div id="dest-korea" style="background:#fff;border-radius:16px;overflow:hidden;margin-bottom:12px;box-shadow:0 1px 4px rgba(0,0,0,0.07),0 0 0 0.5px rgba(60,60,67,0.15)">
+  <div style="padding:20px 20px 14px;border-bottom:0.5px solid rgba(60,60,67,0.1)">
+    <div style="display:flex;align-items:flex-start;gap:14px;flex-wrap:wrap">
+      <div style="font-size:36px;line-height:1;flex-shrink:0">🇰🇷</div>
+      <div style="flex:1;min-width:220px">
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:14px">
+          <span style="font-size:18px;font-weight:700;color:#000;letter-spacing:-0.01em">韩国</span>
+          <span style="font-size:12px;color:rgba(60,60,67,0.4)">Korea</span>
+          <span style="font-size:11px;font-weight:600;color:#1D9E3E;background:rgba(48,209,88,0.07);border-radius:20px;padding:2px 10px;white-space:nowrap">红利溢出盘</span>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:0;border:0.5px solid rgba(60,60,67,0.12);border-radius:12px;overflow:hidden">
+          <div style="padding:12px 14px;border-right:0.5px solid rgba(60,60,67,0.08)">
+            <div style="font-size:11px;color:rgba(60,60,67,0.45);margin-bottom:4px">2025全年</div>
+            <div style="font-size:19px;font-weight:700;letter-spacing:-0.01em">1,894万</div>
+            <span style="font-size:12px;font-weight:600;color:#1D9E3E">+15.7%</span>
+          </div>
+          <div style="padding:12px 14px;border-right:0.5px solid rgba(60,60,67,0.08)">
+            <div style="font-size:11px;color:rgba(60,60,67,0.45);margin-bottom:4px">2025中国客</div>
+            <div style="font-size:19px;font-weight:700;color:#FF3B30;letter-spacing:-0.01em">550万</div>
+            <span style="font-size:12px;font-weight:600;color:#1D9E3E">+19.6%</span>
+          </div>
+          <div style="padding:12px 14px;border-right:0.5px solid rgba(60,60,67,0.08);background:rgba(0,122,255,0.03)">
+            <div style="font-size:11px;color:#0071E3;margin-bottom:4px;font-weight:500">2026 Q1总量</div>
+            <div style="font-size:19px;font-weight:700;color:#0071E3;letter-spacing:-0.01em">476万</div>
+            <span style="font-size:12px;font-weight:600;color:#1D9E3E">+22.9%</span>
+          </div>
+          <div style="padding:12px 14px;background:rgba(0,122,255,0.03)">
+            <div style="font-size:11px;color:rgba(60,60,67,0.45);margin-bottom:4px">Q1中国客</div>
+            <div style="font-size:19px;font-weight:700;letter-spacing:-0.01em">145万</div>
+            <span style="font-size:12px;font-weight:600;color:#1D9E3E">+29.0%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="padding:16px 20px 12px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+      <span style="font-size:12px;font-weight:600;color:rgba(60,60,67,0.5)">月度入境量 · 2025年1月—2026年3月（15个月）</span>
+      <div style="display:flex;gap:14px">
+        <span style="display:flex;align-items:center;gap:5px;font-size:11px;color:rgba(60,60,67,0.5)">
+          <svg width="18" height="3" style="flex-shrink:0"><line x1="0" y1="1.5" x2="18" y2="1.5" stroke="#1D9E3E" stroke-width="2" stroke-linecap="round"/></svg>总入境
+        </span>
+        <span style="display:flex;align-items:center;gap:5px;font-size:11px;color:rgba(60,60,67,0.5)">
+          <svg width="18" height="3" style="flex-shrink:0"><line x1="0" y1="1.5" x2="18" y2="1.5" stroke="#FF3B30" stroke-width="1.5" stroke-dasharray="5,2" stroke-linecap="round"/></svg>中国客
+        </span>
+      </div>
+    </div>
+    <div style="position:relative">
+      <svg viewBox="0 0 800 230" xmlns="http://www.w3.org/2000/svg" class="dest-chart" data-key="korea" style="width:100%;height:auto;display:block;overflow:visible"><defs><linearGradient id="ag_korea" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1D9E3E" stop-opacity="0.1"/><stop offset="100%" stop-color="#1D9E3E" stop-opacity="0.01"/></linearGradient></defs><polygon points="52,121 103,120 155,118 206,105 257,96 308,98 360,83 411,72 462,97 514,97 565,87 616,93 667,111 719,99 770,55 770,200 52,200" fill="url(#ag_korea)"/><line x1="44" y1="156" x2="774" y2="156" stroke="#E5E5EA" stroke-width="0.5"/><text x="40" y="160" text-anchor="end" fill="#8E8E93" font-size="9.5" font-family="-apple-system,PingFang SC,sans-serif">0.6M</text><line x1="44" y1="112" x2="774" y2="112" stroke="#E5E5EA" stroke-width="0.5"/><text x="40" y="116" text-anchor="end" fill="#8E8E93" font-size="9.5" font-family="-apple-system,PingFang SC,sans-serif">1.2M</text><line x1="44" y1="68" x2="774" y2="68" stroke="#E5E5EA" stroke-width="0.5"/><text x="40" y="72" text-anchor="end" fill="#8E8E93" font-size="9.5" font-family="-apple-system,PingFang SC,sans-serif">1.9M</text><line x1="44" y1="24" x2="774" y2="24" stroke="#E5E5EA" stroke-width="0.5"/><text x="40" y="28" text-anchor="end" fill="#8E8E93" font-size="9.5" font-family="-apple-system,PingFang SC,sans-serif">2.5M</text><line x1="641" y1="24" x2="641" y2="200" stroke="#007AFF" stroke-width="0.8" stroke-dasharray="4,3" opacity="0.35"/><text x="641" y="20" text-anchor="middle" fill="#007AFF" font-size="9" font-family="-apple-system,PingFang SC,sans-serif" opacity="0.7">2025 | 2026</text><polyline points="52,121 103,120 155,118 206,105 257,96 308,98 360,83 411,72 462,97 514,97 565,87 616,93 667,111 719,99 770,55" fill="none" stroke="#1D9E3E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="52,174 103,175 155,174 206,167 257,164 308,166 360,158 411,154 462,168 514,167 565,163 616,163 667,170 719,169 770,158" fill="none" stroke="#FF3B30" stroke-width="1.5" stroke-dasharray="5,2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="52" cy="121" r="3.5" fill="white" stroke="#1D9E3E" stroke-width="1.5"/><circle cx="103" cy="120" r="2" fill="white" stroke="#1D9E3E" stroke-width="1.5"/><circle cx="155" cy="118" r="2" fill="white" stroke="#1D9E3E" stroke-width="1.5"/><circle cx="206" cy="105" r="2" fill="white" stroke="#1D9E3E" stroke-width="1.5"/><circle cx="257" cy="96" r="2" fill="white" stroke="#1D9E3E" stroke-width="1.5"/><circle cx="308" cy="98" r="2" fill="white" stroke="#1D9E3E" stroke-width="1.5"/><circle cx="360" cy="83" r="2" fill="white" stroke="#1D9E3E" stroke-width="1.5"/><circle cx="411" cy="72" r="2" fill="white" stroke="#1D9E3E" stroke-width="1.5"/><circle cx="462" cy="97" r="2" fill="white" stroke="#1D9E3E" stroke-width="1.5"/><circle cx="514" cy="97" r="2" fill="white" stroke="#1D9E3E" stroke-width="1.5"/><circle cx="565" cy="87" r="2" fill="white" stroke="#1D9E3E" stroke-width="1.5"/><circle cx="616" cy="93" r="2" fill="white" stroke="#1D9E3E" stroke-width="1.5"/><circle cx="667" cy="111" r="2" fill="#1D9E3E" stroke="#1D9E3E" stroke-width="0"/><circle cx="719" cy="99" r="2" fill="#1D9E3E" stroke="#1D9E3E" stroke-width="0"/><circle cx="770" cy="55" r="3.5" fill="#1D9E3E" stroke="#1D9E3E" stroke-width="0"/><circle cx="52" cy="174" r="2.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="103" cy="175" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="155" cy="174" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="206" cy="167" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="257" cy="164" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="308" cy="166" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="360" cy="158" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="411" cy="154" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="462" cy="168" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="514" cy="167" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="565" cy="163" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="616" cy="163" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="667" cy="170" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="719" cy="169" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="770" cy="158" r="2.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><line x1="44" y1="200" x2="774" y2="200" stroke="#C7C7CC" stroke-width="0.5"/><text x="52" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">1月</text><text x="103" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">2月</text><text x="155" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">3月</text><text x="206" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">4月</text><text x="257" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">5月</text><text x="308" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">6月</text><text x="360" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">7月</text><text x="411" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">8月</text><text x="462" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">9月</text><text x="514" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">10月</text><text x="565" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">11月</text><text x="616" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">12月</text><text x="667" y="213" text-anchor="middle" fill="#0071E3" font-size="9.5" font-weight="600" font-family="-apple-system,PingFang SC,sans-serif">1月</text><text x="719" y="213" text-anchor="middle" fill="#0071E3" font-size="9.5" font-weight="600" font-family="-apple-system,PingFang SC,sans-serif">2月</text><text x="770" y="213" text-anchor="middle" fill="#0071E3" font-size="9.5" font-weight="600" font-family="-apple-system,PingFang SC,sans-serif">3月</text><text x="52" y="112" text-anchor="middle" fill="#1D9E3E" font-size="9" font-weight="600" font-family="-apple-system,PingFang SC,sans-serif">1.12M</text><text x="770" y="46" text-anchor="middle" fill="#1D9E3E" font-size="9" font-weight="600" font-family="-apple-system,PingFang SC,sans-serif">2.06M</text><rect x="27" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="1月" data-year="2025" data-total="1.120" data-china="0.368" data-share="32.9" data-tx="52" data-ty="121" data-cy="174"/><rect x="78" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="2月" data-year="2025" data-total="1.140" data-china="0.360" data-share="31.6" data-tx="103" data-ty="120" data-cy="175"/><rect x="130" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="3月" data-year="2025" data-total="1.160" data-china="0.375" data-share="32.3" data-tx="155" data-ty="118" data-cy="174"/><rect x="181" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="4月" data-year="2025" data-total="1.350" data-china="0.470" data-share="34.8" data-tx="206" data-ty="105" data-cy="167"/><rect x="232" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="5月" data-year="2025" data-total="1.480" data-china="0.510" data-share="34.5" data-tx="257" data-ty="96" data-cy="164"/><rect x="283" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="6月" data-year="2025" data-total="1.450" data-china="0.490" data-share="33.8" data-tx="308" data-ty="98" data-cy="166"/><rect x="335" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="7月" data-year="2025" data-total="1.660" data-china="0.590" data-share="35.5" data-tx="360" data-ty="83" data-cy="158"/><rect x="386" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="8月" data-year="2025" data-total="1.818" data-china="0.650" data-share="35.8" data-tx="411" data-ty="72" data-cy="154"/><rect x="437" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="9月" data-year="2025" data-total="1.460" data-china="0.460" data-share="31.5" data-tx="462" data-ty="97" data-cy="168"/><rect x="489" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="10月" data-year="2025" data-total="1.460" data-china="0.470" data-share="32.2" data-tx="514" data-ty="97" data-cy="167"/><rect x="540" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="11月" data-year="2025" data-total="1.600" data-china="0.530" data-share="33.1" data-tx="565" data-ty="87" data-cy="163"/><rect x="591" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="12月" data-year="2025" data-total="1.516" data-china="0.520" data-share="34.3" data-tx="616" data-ty="93" data-cy="163"/><rect x="642" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="1月" data-year="2026" data-total="1.265" data-china="0.420" data-share="33.2" data-tx="667" data-ty="111" data-cy="170"/><rect x="694" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="2月" data-year="2026" data-total="1.431" data-china="0.443" data-share="31.0" data-tx="719" data-ty="99" data-cy="169"/><rect x="745" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="3月" data-year="2026" data-total="2.060" data-china="0.600" data-share="29.1" data-tx="770" data-ty="55" data-cy="158"/></svg>
+      <div id="tip-korea" style="display:none;position:absolute;pointer-events:none;background:rgba(0,0,0,0.8);color:#fff;border-radius:10px;padding:8px 12px;font-size:12px;line-height:1.7;min-width:130px;white-space:nowrap;z-index:10;box-shadow:0 4px 12px rgba(0,0,0,0.15)"></div>
+    </div>
+  </div>
+  <div style="padding:0 20px 16px">
+    <div style="background:rgba(60,60,67,0.035);border-radius:12px;padding:14px 16px;margin-bottom:10px">
+      <div style="font-size:11px;font-weight:600;color:rgba(60,60,67,0.4);letter-spacing:0.04em;text-transform:uppercase;margin-bottom:8px">核心发现</div>
+      <ul style="list-style:none;margin:0;padding:0"><li style="padding:5px 0 5px 18px;position:relative;font-size:14px;color:rgba(60,60,67,0.75);line-height:1.55"><span style="position:absolute;left:0;color:#1D9E3E;font-weight:700;font-size:12px">→</span>2026年3月206万(+27%)，BTS归队单月历史新高</li><li style="padding:5px 0 5px 18px;position:relative;font-size:14px;color:rgba(60,60,67,0.75);line-height:1.55"><span style="position:absolute;left:0;color:#1D9E3E;font-weight:700;font-size:12px">→</span>中国客Q1累计145万(+29%)，已超日本成韩第一大客源</li><li style="padding:5px 0 5px 18px;position:relative;font-size:14px;color:rgba(60,60,67,0.75);line-height:1.55"><span style="position:absolute;left:0;color:#1D9E3E;font-weight:700;font-size:12px">→</span>签证：多次入境扩至中越菲，自动通关扩至42国</li></ul>
+    </div>
+    <div style="background:rgba(0,0,0,0);border:0.5px solid rgba(48,209,88,0.2);border-radius:12px;padding:11px 16px">
+      <span style="font-size:11px;font-weight:700;color:#1D9E3E;text-transform:uppercase;letter-spacing:0.04em;margin-right:8px">→ 平台策略</span>
+      <span style="font-size:13.5px;color:rgba(60,60,67,0.75)">韩国供应链快跑：6个月内可售SKU增500+；K-pop演唱会+酒店套包为核心爆款</span>
+    </div>
+  </div>
+</div>
+<div id="dest-malaysia" style="background:#fff;border-radius:16px;overflow:hidden;margin-bottom:12px;box-shadow:0 1px 4px rgba(0,0,0,0.07),0 0 0 0.5px rgba(60,60,67,0.15)">
+  <div style="padding:20px 20px 14px;border-bottom:0.5px solid rgba(60,60,67,0.1)">
+    <div style="display:flex;align-items:flex-start;gap:14px;flex-wrap:wrap">
+      <div style="font-size:36px;line-height:1;flex-shrink:0">🇲🇾</div>
+      <div style="flex:1;min-width:220px">
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:14px">
+          <span style="font-size:18px;font-weight:700;color:#000;letter-spacing:-0.01em">马来西亚</span>
+          <span style="font-size:12px;color:rgba(60,60,67,0.4)">Malaysia</span>
+          <span style="font-size:11px;font-weight:600;color:#1D9E3E;background:rgba(48,209,88,0.07);border-radius:20px;padding:2px 10px;white-space:nowrap">红利溢出盘</span>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:0;border:0.5px solid rgba(60,60,67,0.12);border-radius:12px;overflow:hidden">
+          <div style="padding:12px 14px;border-right:0.5px solid rgba(60,60,67,0.08)">
+            <div style="font-size:11px;color:rgba(60,60,67,0.45);margin-bottom:4px">2025全年</div>
+            <div style="font-size:19px;font-weight:700;letter-spacing:-0.01em">4,220万</div>
+            <span style="font-size:12px;font-weight:600;color:#1D9E3E">+11.2%</span>
+          </div>
+          <div style="padding:12px 14px;border-right:0.5px solid rgba(60,60,67,0.08)">
+            <div style="font-size:11px;color:rgba(60,60,67,0.45);margin-bottom:4px">2025中国客</div>
+            <div style="font-size:19px;font-weight:700;color:#FF3B30;letter-spacing:-0.01em">500万</div>
+            <span style="font-size:12px;font-weight:600;color:#1D9E3E">+110.1%</span>
+          </div>
+          <div style="padding:12px 14px;border-right:0.5px solid rgba(60,60,67,0.08);background:rgba(0,122,255,0.03)">
+            <div style="font-size:11px;color:#0071E3;margin-bottom:4px;font-weight:500">2026 Q1总量</div>
+            <div style="font-size:19px;font-weight:700;color:#0071E3;letter-spacing:-0.01em">1,100万</div>
+            <span style="font-size:12px;font-weight:600;color:#8E8E93">≈持平</span>
+          </div>
+          <div style="padding:12px 14px;background:rgba(0,122,255,0.03)">
+            <div style="font-size:11px;color:rgba(60,60,67,0.45);margin-bottom:4px">Q1中国客</div>
+            <div style="font-size:19px;font-weight:700;letter-spacing:-0.01em">—</div>
+            <span style="font-size:12px;font-weight:600;color:#1D9E3E">+22.7%(中国)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="padding:16px 20px 12px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+      <span style="font-size:12px;font-weight:600;color:rgba(60,60,67,0.5)">月度入境量 · 2025年1月—2026年3月（15个月）</span>
+      <div style="display:flex;gap:14px">
+        <span style="display:flex;align-items:center;gap:5px;font-size:11px;color:rgba(60,60,67,0.5)">
+          <svg width="18" height="3" style="flex-shrink:0"><line x1="0" y1="1.5" x2="18" y2="1.5" stroke="#1D9E3E" stroke-width="2" stroke-linecap="round"/></svg>总入境
+        </span>
+        <span style="display:flex;align-items:center;gap:5px;font-size:11px;color:rgba(60,60,67,0.5)">
+          <svg width="18" height="3" style="flex-shrink:0"><line x1="0" y1="1.5" x2="18" y2="1.5" stroke="#FF3B30" stroke-width="1.5" stroke-dasharray="5,2" stroke-linecap="round"/></svg>中国客
+        </span>
+      </div>
+    </div>
+    <div style="position:relative">
+      <svg viewBox="0 0 800 230" xmlns="http://www.w3.org/2000/svg" class="dest-chart" data-key="malaysia" style="width:100%;height:auto;display:block;overflow:visible"><defs><linearGradient id="ag_malaysia" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1D9E3E" stop-opacity="0.1"/><stop offset="100%" stop-color="#1D9E3E" stop-opacity="0.01"/></linearGradient></defs><polygon points="52,51 103,51 155,67 206,59 257,55 308,47 360,55 411,55 462,71 514,67 565,67 616,51 667,47 719,47 770,75 770,200 52,200" fill="url(#ag_malaysia)"/><line x1="44" y1="156" x2="774" y2="156" stroke="#E5E5EA" stroke-width="0.5"/><text x="40" y="160" text-anchor="end" fill="#8E8E93" font-size="9.5" font-family="-apple-system,PingFang SC,sans-serif">1.1M</text><line x1="44" y1="112" x2="774" y2="112" stroke="#E5E5EA" stroke-width="0.5"/><text x="40" y="116" text-anchor="end" fill="#8E8E93" font-size="9.5" font-family="-apple-system,PingFang SC,sans-serif">2.2M</text><line x1="44" y1="68" x2="774" y2="68" stroke="#E5E5EA" stroke-width="0.5"/><text x="40" y="72" text-anchor="end" fill="#8E8E93" font-size="9.5" font-family="-apple-system,PingFang SC,sans-serif">3.4M</text><line x1="44" y1="24" x2="774" y2="24" stroke="#E5E5EA" stroke-width="0.5"/><text x="40" y="28" text-anchor="end" fill="#8E8E93" font-size="9.5" font-family="-apple-system,PingFang SC,sans-serif">4.5M</text><line x1="641" y1="24" x2="641" y2="200" stroke="#007AFF" stroke-width="0.8" stroke-dasharray="4,3" opacity="0.35"/><text x="641" y="20" text-anchor="middle" fill="#007AFF" font-size="9" font-family="-apple-system,PingFang SC,sans-serif" opacity="0.7">2025 | 2026</text><polyline points="52,51 103,51 155,67 206,59 257,55 308,47 360,55 411,55 462,71 514,67 565,67 616,51 667,47 719,47 770,75" fill="none" stroke="#1D9E3E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="52,183 103,185 155,186 206,185 257,184 308,183 360,183 411,183 462,185 514,185 565,185 616,184 667,181 719,182 770,186" fill="none" stroke="#FF3B30" stroke-width="1.5" stroke-dasharray="5,2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="52" cy="51" r="3.5" fill="white" stroke="#1D9E3E" stroke-width="1.5"/><circle cx="103" cy="51" r="2" fill="white" stroke="#1D9E3E" stroke-width="1.5"/><circle cx="155" cy="67" r="2" fill="white" stroke="#1D9E3E" stroke-width="1.5"/><circle cx="206" cy="59" r="2" fill="white" stroke="#1D9E3E" stroke-width="1.5"/><circle cx="257" cy="55" r="2" fill="white" stroke="#1D9E3E" stroke-width="1.5"/><circle cx="308" cy="47" r="3.5" fill="white" stroke="#1D9E3E" stroke-width="1.5"/><circle cx="360" cy="55" r="2" fill="white" stroke="#1D9E3E" stroke-width="1.5"/><circle cx="411" cy="55" r="2" fill="white" stroke="#1D9E3E" stroke-width="1.5"/><circle cx="462" cy="71" r="2" fill="white" stroke="#1D9E3E" stroke-width="1.5"/><circle cx="514" cy="67" r="2" fill="white" stroke="#1D9E3E" stroke-width="1.5"/><circle cx="565" cy="67" r="2" fill="white" stroke="#1D9E3E" stroke-width="1.5"/><circle cx="616" cy="51" r="2" fill="white" stroke="#1D9E3E" stroke-width="1.5"/><circle cx="667" cy="47" r="2" fill="#1D9E3E" stroke="#1D9E3E" stroke-width="0"/><circle cx="719" cy="47" r="2" fill="#1D9E3E" stroke="#1D9E3E" stroke-width="0"/><circle cx="770" cy="75" r="3.5" fill="#1D9E3E" stroke="#1D9E3E" stroke-width="0"/><circle cx="52" cy="183" r="2.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="103" cy="185" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="155" cy="186" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="206" cy="185" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="257" cy="184" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="308" cy="183" r="2.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="360" cy="183" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="411" cy="183" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="462" cy="185" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="514" cy="185" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="565" cy="185" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="616" cy="184" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="667" cy="181" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="719" cy="182" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="770" cy="186" r="2.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><line x1="44" y1="200" x2="774" y2="200" stroke="#C7C7CC" stroke-width="0.5"/><text x="52" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">1月</text><text x="103" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">2月</text><text x="155" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">3月</text><text x="206" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">4月</text><text x="257" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">5月</text><text x="308" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">6月</text><text x="360" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">7月</text><text x="411" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">8月</text><text x="462" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">9月</text><text x="514" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">10月</text><text x="565" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">11月</text><text x="616" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">12月</text><text x="667" y="213" text-anchor="middle" fill="#0071E3" font-size="9.5" font-weight="600" font-family="-apple-system,PingFang SC,sans-serif">1月</text><text x="719" y="213" text-anchor="middle" fill="#0071E3" font-size="9.5" font-weight="600" font-family="-apple-system,PingFang SC,sans-serif">2月</text><text x="770" y="213" text-anchor="middle" fill="#0071E3" font-size="9.5" font-weight="600" font-family="-apple-system,PingFang SC,sans-serif">3月</text><text x="52" y="42" text-anchor="middle" fill="#1D9E3E" font-size="9" font-weight="600" font-family="-apple-system,PingFang SC,sans-serif">3.80M</text><text x="308" y="38" text-anchor="middle" fill="#1D9E3E" font-size="9" font-weight="600" font-family="-apple-system,PingFang SC,sans-serif">3.90M</text><text x="770" y="66" text-anchor="middle" fill="#1D9E3E" font-size="9" font-weight="600" font-family="-apple-system,PingFang SC,sans-serif">3.20M</text><rect x="27" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="1月" data-year="2025" data-total="3.800" data-china="0.430" data-share="11.3" data-tx="52" data-ty="51" data-cy="183"/><rect x="78" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="2月" data-year="2025" data-total="3.800" data-china="0.380" data-share="10.0" data-tx="103" data-ty="51" data-cy="185"/><rect x="130" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="3月" data-year="2025" data-total="3.400" data-china="0.370" data-share="10.9" data-tx="155" data-ty="67" data-cy="186"/><rect x="181" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="4月" data-year="2025" data-total="3.600" data-china="0.395" data-share="11.0" data-tx="206" data-ty="59" data-cy="185"/><rect x="232" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="5月" data-year="2025" data-total="3.700" data-china="0.415" data-share="11.2" data-tx="257" data-ty="55" data-cy="184"/><rect x="283" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="6月" data-year="2025" data-total="3.900" data-china="0.440" data-share="11.3" data-tx="308" data-ty="47" data-cy="183"/><rect x="335" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="7月" data-year="2025" data-total="3.700" data-china="0.430" data-share="11.6" data-tx="360" data-ty="55" data-cy="183"/><rect x="386" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="8月" data-year="2025" data-total="3.700" data-china="0.435" data-share="11.8" data-tx="411" data-ty="55" data-cy="183"/><rect x="437" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="9月" data-year="2025" data-total="3.300" data-china="0.385" data-share="11.7" data-tx="462" data-ty="71" data-cy="185"/><rect x="489" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="10月" data-year="2025" data-total="3.400" data-china="0.395" data-share="11.6" data-tx="514" data-ty="67" data-cy="185"/><rect x="540" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="11月" data-year="2025" data-total="3.400" data-china="0.385" data-share="11.3" data-tx="565" data-ty="67" data-cy="185"/><rect x="591" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="12月" data-year="2025" data-total="3.800" data-china="0.418" data-share="11.0" data-tx="616" data-ty="51" data-cy="184"/><rect x="642" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="1月" data-year="2026" data-total="3.900" data-china="0.498" data-share="12.8" data-tx="667" data-ty="47" data-cy="181"/><rect x="694" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="2月" data-year="2026" data-total="3.900" data-china="0.450" data-share="11.5" data-tx="719" data-ty="47" data-cy="182"/><rect x="745" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="3月" data-year="2026" data-total="3.200" data-china="0.350" data-share="10.9" data-tx="770" data-ty="75" data-cy="186"/></svg>
+      <div id="tip-malaysia" style="display:none;position:absolute;pointer-events:none;background:rgba(0,0,0,0.8);color:#fff;border-radius:10px;padding:8px 12px;font-size:12px;line-height:1.7;min-width:130px;white-space:nowrap;z-index:10;box-shadow:0 4px 12px rgba(0,0,0,0.15)"></div>
+    </div>
+  </div>
+  <div style="padding:0 20px 16px">
+    <div style="background:rgba(60,60,67,0.035);border-radius:12px;padding:14px 16px;margin-bottom:10px">
+      <div style="font-size:11px;font-weight:600;color:rgba(60,60,67,0.4);letter-spacing:0.04em;text-transform:uppercase;margin-bottom:8px">核心发现</div>
+      <ul style="list-style:none;margin:0;padding:0"><li style="padding:5px 0 5px 18px;position:relative;font-size:14px;color:rgba(60,60,67,0.75);line-height:1.55"><span style="position:absolute;left:0;color:#1D9E3E;font-weight:700;font-size:12px">→</span>中国客500万同比+110%，中马免签+演唱会经济双催化</li><li style="padding:5px 0 5px 18px;position:relative;font-size:14px;color:rgba(60,60,67,0.75);line-height:1.55"><span style="position:absolute;left:0;color:#1D9E3E;font-weight:700;font-size:12px">→</span>VM2026启动，1-2月同比+30%（MOTAC）；3月中东客-40%被中国弥补</li><li style="padding:5px 0 5px 18px;position:relative;font-size:14px;color:rgba(60,60,67,0.75);line-height:1.55"><span style="position:absolute;left:0;color:#1D9E3E;font-weight:700;font-size:12px">→</span>Power BI实时数据：Q1约1100万（data.tourism.gov.my）</li></ul>
+    </div>
+    <div style="background:rgba(0,0,0,0);border:0.5px solid rgba(48,209,88,0.2);border-radius:12px;padding:11px 16px">
+      <span style="font-size:11px;font-weight:700;color:#1D9E3E;text-transform:uppercase;letter-spacing:0.04em;margin-right:8px">→ 平台策略</span>
+      <span style="font-size:13.5px;color:rgba(60,60,67,0.75)">演唱会旅游包+精品度假村；Power BI月度数据自动化监控；槟城/亚庇小众目的地差异化</span>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- HIGH-POS -->
+<section id="high-pos" class="section">
+  <div class="sec-label">Part 03 · 第二类</div>
+  <h2 class="h2">高位重组盘</h2>
+  <p class="h2-sub">三地总量均处于历史高位，但结构性错位需要平台快速填补——日本缺失中国客，港澳缺失过夜深度消费</p>
+  <div class="cat-band" style="background:rgba(255,159,10,.07);border:.5px solid rgba(255,159,10,.2)">
+    <div class="cat-hdr">
+      <div class="cat-icon" style="color:#C97400">▲</div>
+      <div><div class="cat-name" style="color:#C97400">高位重组盘 · 日本 + 香港 + 澳门</div><div class="cat-tagline" style="color:#C97400">总量创纪录，但中国客断崖或过夜率下滑形成结构性缺口</div></div>
+      <span class="cat-badge" style="background:rgba(255,159,10,.15);color:#C97400;border:.5px solid rgba(255,159,10,.3)">深度防守</span>
+    </div>
+  </div>
+  
+<div id="dest-japan" style="background:#fff;border-radius:16px;overflow:hidden;margin-bottom:12px;box-shadow:0 1px 4px rgba(0,0,0,0.07),0 0 0 0.5px rgba(60,60,67,0.15)">
+  <div style="padding:20px 20px 14px;border-bottom:0.5px solid rgba(60,60,67,0.1)">
+    <div style="display:flex;align-items:flex-start;gap:14px;flex-wrap:wrap">
+      <div style="font-size:36px;line-height:1;flex-shrink:0">🇯🇵</div>
+      <div style="flex:1;min-width:220px">
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:14px">
+          <span style="font-size:18px;font-weight:700;color:#000;letter-spacing:-0.01em">日本</span>
+          <span style="font-size:12px;color:rgba(60,60,67,0.4)">Japan</span>
+          <span style="font-size:11px;font-weight:600;color:#C97400;background:rgba(255,159,10,0.07);border-radius:20px;padding:2px 10px;white-space:nowrap">高位重组盘</span>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:0;border:0.5px solid rgba(60,60,67,0.12);border-radius:12px;overflow:hidden">
+          <div style="padding:12px 14px;border-right:0.5px solid rgba(60,60,67,0.08)">
+            <div style="font-size:11px;color:rgba(60,60,67,0.45);margin-bottom:4px">2025全年</div>
+            <div style="font-size:19px;font-weight:700;letter-spacing:-0.01em">4,268万</div>
+            <span style="font-size:12px;font-weight:600;color:#1D9E3E">+15.8%</span>
+          </div>
+          <div style="padding:12px 14px;border-right:0.5px solid rgba(60,60,67,0.08)">
+            <div style="font-size:11px;color:rgba(60,60,67,0.45);margin-bottom:4px">2025中国客</div>
+            <div style="font-size:19px;font-weight:700;color:#FF3B30;letter-spacing:-0.01em">910万</div>
+            <span style="font-size:12px;font-weight:600;color:#1D9E3E">+30.3%</span>
+          </div>
+          <div style="padding:12px 14px;border-right:0.5px solid rgba(60,60,67,0.08);background:rgba(0,122,255,0.03)">
+            <div style="font-size:11px;color:#0071E3;margin-bottom:4px;font-weight:500">2026 Q1总量</div>
+            <div style="font-size:19px;font-weight:700;color:#0071E3;letter-spacing:-0.01em">1,068万</div>
+            <span style="font-size:12px;font-weight:600;color:#1D9E3E">+1.4%</span>
+          </div>
+          <div style="padding:12px 14px;background:rgba(0,122,255,0.03)">
+            <div style="font-size:11px;color:rgba(60,60,67,0.45);margin-bottom:4px">Q1中国客</div>
+            <div style="font-size:19px;font-weight:700;letter-spacing:-0.01em">107万</div>
+            <span style="font-size:12px;font-weight:600;color:#CC2200">-54.6%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="padding:16px 20px 12px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+      <span style="font-size:12px;font-weight:600;color:rgba(60,60,67,0.5)">月度入境量 · 2025年1月—2026年3月（15个月）</span>
+      <div style="display:flex;gap:14px">
+        <span style="display:flex;align-items:center;gap:5px;font-size:11px;color:rgba(60,60,67,0.5)">
+          <svg width="18" height="3" style="flex-shrink:0"><line x1="0" y1="1.5" x2="18" y2="1.5" stroke="#C97400" stroke-width="2" stroke-linecap="round"/></svg>总入境
+        </span>
+        <span style="display:flex;align-items:center;gap:5px;font-size:11px;color:rgba(60,60,67,0.5)">
+          <svg width="18" height="3" style="flex-shrink:0"><line x1="0" y1="1.5" x2="18" y2="1.5" stroke="#FF3B30" stroke-width="1.5" stroke-dasharray="5,2" stroke-linecap="round"/></svg>中国客
+        </span>
+      </div>
+    </div>
+    <div style="position:relative">
+      <svg viewBox="0 0 800 230" xmlns="http://www.w3.org/2000/svg" class="dest-chart" data-key="japan" style="width:100%;height:auto;display:block;overflow:visible"><defs><linearGradient id="ag_japan" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#C97400" stop-opacity="0.1"/><stop offset="100%" stop-color="#C97400" stop-opacity="0.01"/></linearGradient></defs><polygon points="52,67 103,85 155,77 206,62 257,70 308,81 360,79 411,79 462,85 514,63 565,76 616,73 667,73 719,78 770,73 770,200 52,200" fill="url(#ag_japan)"/><line x1="44" y1="156" x2="774" y2="156" stroke="#E5E5EA" stroke-width="0.5"/><text x="40" y="160" text-anchor="end" fill="#8E8E93" font-size="9.5" font-family="-apple-system,PingFang SC,sans-serif">1.2M</text><line x1="44" y1="112" x2="774" y2="112" stroke="#E5E5EA" stroke-width="0.5"/><text x="40" y="116" text-anchor="end" fill="#8E8E93" font-size="9.5" font-family="-apple-system,PingFang SC,sans-serif">2.5M</text><line x1="44" y1="68" x2="774" y2="68" stroke="#E5E5EA" stroke-width="0.5"/><text x="40" y="72" text-anchor="end" fill="#8E8E93" font-size="9.5" font-family="-apple-system,PingFang SC,sans-serif">3.8M</text><line x1="44" y1="24" x2="774" y2="24" stroke="#E5E5EA" stroke-width="0.5"/><text x="40" y="28" text-anchor="end" fill="#8E8E93" font-size="9.5" font-family="-apple-system,PingFang SC,sans-serif">5.0M</text><line x1="641" y1="24" x2="641" y2="200" stroke="#007AFF" stroke-width="0.8" stroke-dasharray="4,3" opacity="0.35"/><text x="641" y="20" text-anchor="middle" fill="#007AFF" font-size="9" font-family="-apple-system,PingFang SC,sans-serif" opacity="0.7">2025 | 2026</text><polyline points="52,67 103,85 155,77 206,62 257,70 308,81 360,79 411,79 462,85 514,63 565,76 616,73 667,73 719,78 770,73" fill="none" stroke="#C97400" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="52,165 103,175 155,177 206,173 257,172 308,172 360,166 411,164 462,173 514,175 565,180 616,188 667,186 719,186 770,190" fill="none" stroke="#FF3B30" stroke-width="1.5" stroke-dasharray="5,2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="52" cy="67" r="3.5" fill="white" stroke="#C97400" stroke-width="1.5"/><circle cx="103" cy="85" r="3.5" fill="white" stroke="#C97400" stroke-width="1.5"/><circle cx="155" cy="77" r="2" fill="white" stroke="#C97400" stroke-width="1.5"/><circle cx="206" cy="62" r="3.5" fill="white" stroke="#C97400" stroke-width="1.5"/><circle cx="257" cy="70" r="2" fill="white" stroke="#C97400" stroke-width="1.5"/><circle cx="308" cy="81" r="2" fill="white" stroke="#C97400" stroke-width="1.5"/><circle cx="360" cy="79" r="2" fill="white" stroke="#C97400" stroke-width="1.5"/><circle cx="411" cy="79" r="2" fill="white" stroke="#C97400" stroke-width="1.5"/><circle cx="462" cy="85" r="2" fill="white" stroke="#C97400" stroke-width="1.5"/><circle cx="514" cy="63" r="2" fill="white" stroke="#C97400" stroke-width="1.5"/><circle cx="565" cy="76" r="2" fill="white" stroke="#C97400" stroke-width="1.5"/><circle cx="616" cy="73" r="2" fill="white" stroke="#C97400" stroke-width="1.5"/><circle cx="667" cy="73" r="2" fill="#C97400" stroke="#C97400" stroke-width="0"/><circle cx="719" cy="78" r="2" fill="#C97400" stroke="#C97400" stroke-width="0"/><circle cx="770" cy="73" r="3.5" fill="#C97400" stroke="#C97400" stroke-width="0"/><circle cx="52" cy="165" r="2.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="103" cy="175" r="2.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="155" cy="177" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="206" cy="173" r="2.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="257" cy="172" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="308" cy="172" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="360" cy="166" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="411" cy="164" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="462" cy="173" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="514" cy="175" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="565" cy="180" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="616" cy="188" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="667" cy="186" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="719" cy="186" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="770" cy="190" r="2.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><line x1="44" y1="200" x2="774" y2="200" stroke="#C7C7CC" stroke-width="0.5"/><text x="52" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">1月</text><text x="103" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">2月</text><text x="155" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">3月</text><text x="206" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">4月</text><text x="257" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">5月</text><text x="308" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">6月</text><text x="360" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">7月</text><text x="411" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">8月</text><text x="462" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">9月</text><text x="514" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">10月</text><text x="565" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">11月</text><text x="616" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">12月</text><text x="667" y="213" text-anchor="middle" fill="#0071E3" font-size="9.5" font-weight="600" font-family="-apple-system,PingFang SC,sans-serif">1月</text><text x="719" y="213" text-anchor="middle" fill="#0071E3" font-size="9.5" font-weight="600" font-family="-apple-system,PingFang SC,sans-serif">2月</text><text x="770" y="213" text-anchor="middle" fill="#0071E3" font-size="9.5" font-weight="600" font-family="-apple-system,PingFang SC,sans-serif">3月</text><text x="52" y="58" text-anchor="middle" fill="#C97400" font-size="9" font-weight="600" font-family="-apple-system,PingFang SC,sans-serif">3.78M</text><text x="103" y="76" text-anchor="middle" fill="#C97400" font-size="9" font-weight="600" font-family="-apple-system,PingFang SC,sans-serif">3.26M</text><text x="206" y="53" text-anchor="middle" fill="#C97400" font-size="9" font-weight="600" font-family="-apple-system,PingFang SC,sans-serif">3.91M</text><text x="770" y="64" text-anchor="middle" fill="#C97400" font-size="9" font-weight="600" font-family="-apple-system,PingFang SC,sans-serif">3.62M</text><rect x="27" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="1月" data-year="2025" data-total="3.782" data-china="0.981" data-share="25.9" data-tx="52" data-ty="67" data-cy="165"/><rect x="78" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="2月" data-year="2025" data-total="3.258" data-china="0.723" data-share="22.2" data-tx="103" data-ty="85" data-cy="175"/><rect x="130" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="3月" data-year="2025" data-total="3.498" data-china="0.661" data-share="18.9" data-tx="155" data-ty="77" data-cy="177"/><rect x="181" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="4月" data-year="2025" data-total="3.909" data-china="0.765" data-share="19.6" data-tx="206" data-ty="62" data-cy="173"/><rect x="232" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="5月" data-year="2025" data-total="3.693" data-china="0.790" data-share="21.4" data-tx="257" data-ty="70" data-cy="172"/><rect x="283" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="6月" data-year="2025" data-total="3.378" data-china="0.798" data-share="23.6" data-tx="308" data-ty="81" data-cy="172"/><rect x="335" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="7月" data-year="2025" data-total="3.437" data-china="0.975" data-share="28.4" data-tx="360" data-ty="79" data-cy="166"/><rect x="386" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="8月" data-year="2025" data-total="3.428" data-china="1.019" data-share="29.7" data-tx="411" data-ty="79" data-cy="164"/><rect x="437" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="9月" data-year="2025" data-total="3.268" data-china="0.776" data-share="23.7" data-tx="462" data-ty="85" data-cy="173"/><rect x="489" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="10月" data-year="2025" data-total="3.896" data-china="0.716" data-share="18.4" data-tx="514" data-ty="63" data-cy="175"/><rect x="540" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="11月" data-year="2025" data-total="3.518" data-china="0.563" data-share="16.0" data-tx="565" data-ty="76" data-cy="180"/><rect x="591" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="12月" data-year="2025" data-total="3.618" data-china="0.330" data-share="9.1" data-tx="616" data-ty="73" data-cy="188"/><rect x="642" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="1月" data-year="2026" data-total="3.598" data-china="0.385" data-share="10.7" data-tx="667" data-ty="73" data-cy="186"/><rect x="694" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="2月" data-year="2026" data-total="3.467" data-china="0.396" data-share="11.4" data-tx="719" data-ty="78" data-cy="186"/><rect x="745" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="3月" data-year="2026" data-total="3.619" data-china="0.292" data-share="8.1" data-tx="770" data-ty="73" data-cy="190"/></svg>
+      <div id="tip-japan" style="display:none;position:absolute;pointer-events:none;background:rgba(0,0,0,0.8);color:#fff;border-radius:10px;padding:8px 12px;font-size:12px;line-height:1.7;min-width:130px;white-space:nowrap;z-index:10;box-shadow:0 4px 12px rgba(0,0,0,0.15)"></div>
+    </div>
+  </div>
+  <div style="padding:0 20px 16px">
+    <div style="background:rgba(60,60,67,0.035);border-radius:12px;padding:14px 16px;margin-bottom:10px">
+      <div style="font-size:11px;font-weight:600;color:rgba(60,60,67,0.4);letter-spacing:0.04em;text-transform:uppercase;margin-bottom:8px">核心发现</div>
+      <ul style="list-style:none;margin:0;padding:0"><li style="padding:5px 0 5px 18px;position:relative;font-size:14px;color:rgba(60,60,67,0.75);line-height:1.55"><span style="position:absolute;left:0;color:#C97400;font-weight:700;font-size:12px">→</span>2026 Q1中国客107万(-54.6%)，涉台外交风波+中国旅行警告</li><li style="padding:5px 0 5px 18px;position:relative;font-size:14px;color:rgba(60,60,67,0.75);line-height:1.55"><span style="position:absolute;left:0;color:#C97400;font-weight:700;font-size:12px">→</span>韩(796K)/台(653K)/美(376K)快速补位，3月总量创历史新高</li><li style="padding:5px 0 5px 18px;position:relative;font-size:14px;color:rgba(60,60,67,0.75);line-height:1.55"><span style="position:absolute;left:0;color:#C97400;font-weight:700;font-size:12px">→</span>Q2-Q3中国客短期回暖可能性低，地缘风险仍存</li></ul>
+    </div>
+    <div style="background:rgba(0,0,0,0);border:0.5px solid rgba(255,159,10,0.2);border-radius:12px;padding:11px 16px">
+      <span style="font-size:11px;font-weight:700;color:#C97400;text-transform:uppercase;letter-spacing:0.04em;margin-right:8px">→ 平台策略</span>
+      <span style="font-size:13.5px;color:rgba(60,60,67,0.75)">快速建设非中国客源品类；备好中国客复苏预备仓；世博二期+关西外围产品</span>
+    </div>
+  </div>
+</div>
+<div id="dest-hongkong" style="background:#fff;border-radius:16px;overflow:hidden;margin-bottom:12px;box-shadow:0 1px 4px rgba(0,0,0,0.07),0 0 0 0.5px rgba(60,60,67,0.15)">
+  <div style="padding:20px 20px 14px;border-bottom:0.5px solid rgba(60,60,67,0.1)">
+    <div style="display:flex;align-items:flex-start;gap:14px;flex-wrap:wrap">
+      <div style="font-size:36px;line-height:1;flex-shrink:0">🇭🇰</div>
+      <div style="flex:1;min-width:220px">
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:14px">
+          <span style="font-size:18px;font-weight:700;color:#000;letter-spacing:-0.01em">香港</span>
+          <span style="font-size:12px;color:rgba(60,60,67,0.4)">HK</span>
+          <span style="font-size:11px;font-weight:600;color:#C97400;background:rgba(255,159,10,0.07);border-radius:20px;padding:2px 10px;white-space:nowrap">高位重组盘</span>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:0;border:0.5px solid rgba(60,60,67,0.12);border-radius:12px;overflow:hidden">
+          <div style="padding:12px 14px;border-right:0.5px solid rgba(60,60,67,0.08)">
+            <div style="font-size:11px;color:rgba(60,60,67,0.45);margin-bottom:4px">2025全年</div>
+            <div style="font-size:19px;font-weight:700;letter-spacing:-0.01em">4,990万</div>
+            <span style="font-size:12px;font-weight:600;color:#1D9E3E">+12.0%</span>
+          </div>
+          <div style="padding:12px 14px;border-right:0.5px solid rgba(60,60,67,0.08)">
+            <div style="font-size:11px;color:rgba(60,60,67,0.45);margin-bottom:4px">2025中国客</div>
+            <div style="font-size:19px;font-weight:700;color:#FF3B30;letter-spacing:-0.01em">3,780万</div>
+            <span style="font-size:12px;font-weight:600;color:#1D9E3E">+10.9%</span>
+          </div>
+          <div style="padding:12px 14px;border-right:0.5px solid rgba(60,60,67,0.08);background:rgba(0,122,255,0.03)">
+            <div style="font-size:11px;color:#0071E3;margin-bottom:4px;font-weight:500">2026 Q1总量</div>
+            <div style="font-size:19px;font-weight:700;color:#0071E3;letter-spacing:-0.01em">1,430万</div>
+            <span style="font-size:12px;font-weight:600;color:#1D9E3E">+17.0%</span>
+          </div>
+          <div style="padding:12px 14px;background:rgba(0,122,255,0.03)">
+            <div style="font-size:11px;color:rgba(60,60,67,0.45);margin-bottom:4px">Q1中国客</div>
+            <div style="font-size:19px;font-weight:700;letter-spacing:-0.01em">1,110万</div>
+            <span style="font-size:12px;font-weight:600;color:#1D9E3E">+20.0%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="padding:16px 20px 12px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+      <span style="font-size:12px;font-weight:600;color:rgba(60,60,67,0.5)">月度入境量 · 2025年1月—2026年3月（15个月）</span>
+      <div style="display:flex;gap:14px">
+        <span style="display:flex;align-items:center;gap:5px;font-size:11px;color:rgba(60,60,67,0.5)">
+          <svg width="18" height="3" style="flex-shrink:0"><line x1="0" y1="1.5" x2="18" y2="1.5" stroke="#C97400" stroke-width="2" stroke-linecap="round"/></svg>总入境
+        </span>
+        <span style="display:flex;align-items:center;gap:5px;font-size:11px;color:rgba(60,60,67,0.5)">
+          <svg width="18" height="3" style="flex-shrink:0"><line x1="0" y1="1.5" x2="18" y2="1.5" stroke="#FF3B30" stroke-width="1.5" stroke-dasharray="5,2" stroke-linecap="round"/></svg>中国客
+        </span>
+      </div>
+    </div>
+    <div style="position:relative">
+      <svg viewBox="0 0 800 230" xmlns="http://www.w3.org/2000/svg" class="dest-chart" data-key="hongkong" style="width:100%;height:auto;display:block;overflow:visible"><defs><linearGradient id="ag_hongkong" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#C97400" stop-opacity="0.1"/><stop offset="100%" stop-color="#C97400" stop-opacity="0.01"/></linearGradient></defs><polygon points="52,82 103,109 155,101 206,97 257,92 308,101 360,87 411,92 462,96 514,84 565,87 616,74 667,70 719,61 770,82 770,200 52,200" fill="url(#ag_hongkong)"/><line x1="44" y1="156" x2="774" y2="156" stroke="#E5E5EA" stroke-width="0.5"/><text x="40" y="160" text-anchor="end" fill="#8E8E93" font-size="9.5" font-family="-apple-system,PingFang SC,sans-serif">1.6M</text><line x1="44" y1="112" x2="774" y2="112" stroke="#E5E5EA" stroke-width="0.5"/><text x="40" y="116" text-anchor="end" fill="#8E8E93" font-size="9.5" font-family="-apple-system,PingFang SC,sans-serif">3.2M</text><line x1="44" y1="68" x2="774" y2="68" stroke="#E5E5EA" stroke-width="0.5"/><text x="40" y="72" text-anchor="end" fill="#8E8E93" font-size="9.5" font-family="-apple-system,PingFang SC,sans-serif">4.9M</text><line x1="44" y1="24" x2="774" y2="24" stroke="#E5E5EA" stroke-width="0.5"/><text x="40" y="28" text-anchor="end" fill="#8E8E93" font-size="9.5" font-family="-apple-system,PingFang SC,sans-serif">6.5M</text><line x1="641" y1="24" x2="641" y2="200" stroke="#007AFF" stroke-width="0.8" stroke-dasharray="4,3" opacity="0.35"/><text x="641" y="20" text-anchor="middle" fill="#007AFF" font-size="9" font-family="-apple-system,PingFang SC,sans-serif" opacity="0.7">2025 | 2026</text><polyline points="52,82 103,109 155,101 206,97 257,92 308,101 360,87 411,92 462,96 514,84 565,87 616,74 667,70 719,61 770,82" fill="none" stroke="#C97400" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="52,108 103,132 155,124 206,120 257,116 308,124 360,113 411,118 462,120 514,110 565,112 616,102 667,101 719,85 770,113" fill="none" stroke="#FF3B30" stroke-width="1.5" stroke-dasharray="5,2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="52" cy="82" r="3.5" fill="white" stroke="#C97400" stroke-width="1.5"/><circle cx="103" cy="109" r="3.5" fill="white" stroke="#C97400" stroke-width="1.5"/><circle cx="155" cy="101" r="2" fill="white" stroke="#C97400" stroke-width="1.5"/><circle cx="206" cy="97" r="2" fill="white" stroke="#C97400" stroke-width="1.5"/><circle cx="257" cy="92" r="2" fill="white" stroke="#C97400" stroke-width="1.5"/><circle cx="308" cy="101" r="2" fill="white" stroke="#C97400" stroke-width="1.5"/><circle cx="360" cy="87" r="2" fill="white" stroke="#C97400" stroke-width="1.5"/><circle cx="411" cy="92" r="2" fill="white" stroke="#C97400" stroke-width="1.5"/><circle cx="462" cy="96" r="2" fill="white" stroke="#C97400" stroke-width="1.5"/><circle cx="514" cy="84" r="2" fill="white" stroke="#C97400" stroke-width="1.5"/><circle cx="565" cy="87" r="2" fill="white" stroke="#C97400" stroke-width="1.5"/><circle cx="616" cy="74" r="2" fill="white" stroke="#C97400" stroke-width="1.5"/><circle cx="667" cy="70" r="2" fill="#C97400" stroke="#C97400" stroke-width="0"/><circle cx="719" cy="61" r="3.5" fill="#C97400" stroke="#C97400" stroke-width="0"/><circle cx="770" cy="82" r="3.5" fill="#C97400" stroke="#C97400" stroke-width="0"/><circle cx="52" cy="108" r="2.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="103" cy="132" r="2.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="155" cy="124" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="206" cy="120" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="257" cy="116" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="308" cy="124" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="360" cy="113" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="411" cy="118" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="462" cy="120" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="514" cy="110" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="565" cy="112" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="616" cy="102" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="667" cy="101" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="719" cy="85" r="2.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="770" cy="113" r="2.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><line x1="44" y1="200" x2="774" y2="200" stroke="#C7C7CC" stroke-width="0.5"/><text x="52" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">1月</text><text x="103" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">2月</text><text x="155" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">3月</text><text x="206" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">4月</text><text x="257" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">5月</text><text x="308" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">6月</text><text x="360" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">7月</text><text x="411" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">8月</text><text x="462" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">9月</text><text x="514" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">10月</text><text x="565" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">11月</text><text x="616" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">12月</text><text x="667" y="213" text-anchor="middle" fill="#0071E3" font-size="9.5" font-weight="600" font-family="-apple-system,PingFang SC,sans-serif">1月</text><text x="719" y="213" text-anchor="middle" fill="#0071E3" font-size="9.5" font-weight="600" font-family="-apple-system,PingFang SC,sans-serif">2月</text><text x="770" y="213" text-anchor="middle" fill="#0071E3" font-size="9.5" font-weight="600" font-family="-apple-system,PingFang SC,sans-serif">3月</text><text x="52" y="73" text-anchor="middle" fill="#C97400" font-size="9" font-weight="600" font-family="-apple-system,PingFang SC,sans-serif">4.35M</text><text x="103" y="100" text-anchor="middle" fill="#C97400" font-size="9" font-weight="600" font-family="-apple-system,PingFang SC,sans-serif">3.35M</text><text x="719" y="52" text-anchor="middle" fill="#C97400" font-size="9" font-weight="600" font-family="-apple-system,PingFang SC,sans-serif">5.14M</text><text x="770" y="73" text-anchor="middle" fill="#C97400" font-size="9" font-weight="600" font-family="-apple-system,PingFang SC,sans-serif">4.35M</text><rect x="27" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="1月" data-year="2025" data-total="4.350" data-china="3.400" data-share="78.2" data-tx="52" data-ty="82" data-cy="108"/><rect x="78" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="2月" data-year="2025" data-total="3.350" data-china="2.500" data-share="74.6" data-tx="103" data-ty="109" data-cy="132"/><rect x="130" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="3月" data-year="2025" data-total="3.670" data-china="2.820" data-share="76.8" data-tx="155" data-ty="101" data-cy="124"/><rect x="181" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="4月" data-year="2025" data-total="3.820" data-china="2.950" data-share="77.2" data-tx="206" data-ty="97" data-cy="120"/><rect x="232" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="5月" data-year="2025" data-total="3.990" data-china="3.100" data-share="77.7" data-tx="257" data-ty="92" data-cy="116"/><rect x="283" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="6月" data-year="2025" data-total="3.670" data-china="2.820" data-share="76.8" data-tx="308" data-ty="101" data-cy="124"/><rect x="335" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="7月" data-year="2025" data-total="4.190" data-china="3.230" data-share="77.1" data-tx="360" data-ty="87" data-cy="113"/><rect x="386" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="8月" data-year="2025" data-total="3.990" data-china="3.040" data-share="76.2" data-tx="411" data-ty="92" data-cy="118"/><rect x="437" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="9月" data-year="2025" data-total="3.840" data-china="2.960" data-share="77.1" data-tx="462" data-ty="96" data-cy="120"/><rect x="489" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="10月" data-year="2025" data-total="4.290" data-china="3.310" data-share="77.2" data-tx="514" data-ty="84" data-cy="110"/><rect x="540" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="11月" data-year="2025" data-total="4.190" data-china="3.250" data-share="77.6" data-tx="565" data-ty="87" data-cy="112"/><rect x="591" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="12月" data-year="2025" data-total="4.645" data-china="3.620" data-share="77.9" data-tx="616" data-ty="74" data-cy="102"/><rect x="642" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="1月" data-year="2026" data-total="4.810" data-china="3.640" data-share="75.7" data-tx="667" data-ty="70" data-cy="101"/><rect x="694" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="2月" data-year="2026" data-total="5.140" data-china="4.260" data-share="82.9" data-tx="719" data-ty="61" data-cy="85"/><rect x="745" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="3月" data-year="2026" data-total="4.350" data-china="3.200" data-share="73.6" data-tx="770" data-ty="82" data-cy="113"/></svg>
+      <div id="tip-hongkong" style="display:none;position:absolute;pointer-events:none;background:rgba(0,0,0,0.8);color:#fff;border-radius:10px;padding:8px 12px;font-size:12px;line-height:1.7;min-width:130px;white-space:nowrap;z-index:10;box-shadow:0 4px 12px rgba(0,0,0,0.15)"></div>
+    </div>
+  </div>
+  <div style="padding:0 20px 16px">
+    <div style="background:rgba(60,60,67,0.035);border-radius:12px;padding:14px 16px;margin-bottom:10px">
+      <div style="font-size:11px;font-weight:600;color:rgba(60,60,67,0.4);letter-spacing:0.04em;text-transform:uppercase;margin-bottom:8px">核心发现</div>
+      <ul style="list-style:none;margin:0;padding:0"><li style="padding:5px 0 5px 18px;position:relative;font-size:14px;color:rgba(60,60,67,0.75);line-height:1.55"><span style="position:absolute;left:0;color:#C97400;font-weight:700;font-size:12px">→</span>2026年2月春节5140万创月度历史新高</li><li style="padding:5px 0 5px 18px;position:relative;font-size:14px;color:rgba(60,60,67,0.75);line-height:1.55"><span style="position:absolute;left:0;color:#C97400;font-weight:700;font-size:12px">→</span>Art Basel+ComplexCon推动国际访客占比升至27%</li><li style="padding:5px 0 5px 18px;position:relative;font-size:14px;color:rgba(60,60,67,0.75);line-height:1.55"><span style="position:absolute;left:0;color:#C97400;font-weight:700;font-size:12px">→</span>港人北上深圳消费分流形成结构性挑战</li></ul>
+    </div>
+    <div style="background:rgba(0,0,0,0);border:0.5px solid rgba(255,159,10,0.2);border-radius:12px;padding:11px 16px">
+      <span style="font-size:11px;font-weight:700;color:#C97400;text-transform:uppercase;letter-spacing:0.04em;margin-right:8px">→ 平台策略</span>
+      <span style="font-size:13.5px;color:rgba(60,60,67,0.75)">国际IP官方套包；港澳跨境联游；高净值中国客深度游专线</span>
+    </div>
+  </div>
+</div>
+<div id="dest-macau" style="background:#fff;border-radius:16px;overflow:hidden;margin-bottom:12px;box-shadow:0 1px 4px rgba(0,0,0,0.07),0 0 0 0.5px rgba(60,60,67,0.15)">
+  <div style="padding:20px 20px 14px;border-bottom:0.5px solid rgba(60,60,67,0.1)">
+    <div style="display:flex;align-items:flex-start;gap:14px;flex-wrap:wrap">
+      <div style="font-size:36px;line-height:1;flex-shrink:0">🇲🇴</div>
+      <div style="flex:1;min-width:220px">
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:14px">
+          <span style="font-size:18px;font-weight:700;color:#000;letter-spacing:-0.01em">澳门</span>
+          <span style="font-size:12px;color:rgba(60,60,67,0.4)">Macao</span>
+          <span style="font-size:11px;font-weight:600;color:#C97400;background:rgba(255,159,10,0.07);border-radius:20px;padding:2px 10px;white-space:nowrap">高位重组盘</span>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:0;border:0.5px solid rgba(60,60,67,0.12);border-radius:12px;overflow:hidden">
+          <div style="padding:12px 14px;border-right:0.5px solid rgba(60,60,67,0.08)">
+            <div style="font-size:11px;color:rgba(60,60,67,0.45);margin-bottom:4px">2025全年</div>
+            <div style="font-size:19px;font-weight:700;letter-spacing:-0.01em">4,007万</div>
+            <span style="font-size:12px;font-weight:600;color:#1D9E3E">+14.7%</span>
+          </div>
+          <div style="padding:12px 14px;border-right:0.5px solid rgba(60,60,67,0.08)">
+            <div style="font-size:11px;color:rgba(60,60,67,0.45);margin-bottom:4px">2025中国客</div>
+            <div style="font-size:19px;font-weight:700;color:#FF3B30;letter-spacing:-0.01em">2,902万</div>
+            <span style="font-size:12px;font-weight:600;color:#1D9E3E">+18.4%</span>
+          </div>
+          <div style="padding:12px 14px;border-right:0.5px solid rgba(60,60,67,0.08);background:rgba(0,122,255,0.03)">
+            <div style="font-size:11px;color:#0071E3;margin-bottom:4px;font-weight:500">2026 Q1总量</div>
+            <div style="font-size:19px;font-weight:700;color:#0071E3;letter-spacing:-0.01em">1,121万</div>
+            <span style="font-size:12px;font-weight:600;color:#1D9E3E">+13.7%</span>
+          </div>
+          <div style="padding:12px 14px;background:rgba(0,122,255,0.03)">
+            <div style="font-size:11px;color:rgba(60,60,67,0.45);margin-bottom:4px">Q1中国客</div>
+            <div style="font-size:19px;font-weight:700;letter-spacing:-0.01em">839万</div>
+            <span style="font-size:12px;font-weight:600;color:#1D9E3E">+16.4%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="padding:16px 20px 12px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+      <span style="font-size:12px;font-weight:600;color:rgba(60,60,67,0.5)">月度入境量 · 2025年1月—2026年3月（15个月）</span>
+      <div style="display:flex;gap:14px">
+        <span style="display:flex;align-items:center;gap:5px;font-size:11px;color:rgba(60,60,67,0.5)">
+          <svg width="18" height="3" style="flex-shrink:0"><line x1="0" y1="1.5" x2="18" y2="1.5" stroke="#C97400" stroke-width="2" stroke-linecap="round"/></svg>总入境
+        </span>
+        <span style="display:flex;align-items:center;gap:5px;font-size:11px;color:rgba(60,60,67,0.5)">
+          <svg width="18" height="3" style="flex-shrink:0"><line x1="0" y1="1.5" x2="18" y2="1.5" stroke="#FF3B30" stroke-width="1.5" stroke-dasharray="5,2" stroke-linecap="round"/></svg>中国客
+        </span>
+      </div>
+    </div>
+    <div style="position:relative">
+      <svg viewBox="0 0 800 230" xmlns="http://www.w3.org/2000/svg" class="dest-chart" data-key="macau" style="width:100%;height:auto;display:block;overflow:visible"><defs><linearGradient id="ag_macau" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#C97400" stop-opacity="0.1"/><stop offset="100%" stop-color="#C97400" stop-opacity="0.01"/></linearGradient></defs><polygon points="52,83 103,99 155,103 206,97 257,99 308,101 360,90 411,91 462,78 514,89 565,93 616,85 667,83 719,66 770,91 770,200 52,200" fill="url(#ag_macau)"/><line x1="44" y1="156" x2="774" y2="156" stroke="#E5E5EA" stroke-width="0.5"/><text x="40" y="160" text-anchor="end" fill="#8E8E93" font-size="9.5" font-family="-apple-system,PingFang SC,sans-serif">1.4M</text><line x1="44" y1="112" x2="774" y2="112" stroke="#E5E5EA" stroke-width="0.5"/><text x="40" y="116" text-anchor="end" fill="#8E8E93" font-size="9.5" font-family="-apple-system,PingFang SC,sans-serif">2.8M</text><line x1="44" y1="68" x2="774" y2="68" stroke="#E5E5EA" stroke-width="0.5"/><text x="40" y="72" text-anchor="end" fill="#8E8E93" font-size="9.5" font-family="-apple-system,PingFang SC,sans-serif">4.1M</text><line x1="44" y1="24" x2="774" y2="24" stroke="#E5E5EA" stroke-width="0.5"/><text x="40" y="28" text-anchor="end" fill="#8E8E93" font-size="9.5" font-family="-apple-system,PingFang SC,sans-serif">5.5M</text><line x1="641" y1="24" x2="641" y2="200" stroke="#007AFF" stroke-width="0.8" stroke-dasharray="4,3" opacity="0.35"/><text x="641" y="20" text-anchor="middle" fill="#007AFF" font-size="9" font-family="-apple-system,PingFang SC,sans-serif" opacity="0.7">2025 | 2026</text><polyline points="52,83 103,99 155,103 206,97 257,99 308,101 360,90 411,91 462,78 514,89 565,93 616,85 667,83 719,66 770,91" fill="none" stroke="#C97400" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="52,113 103,130 155,130 206,125 257,127 308,129 360,120 411,121 462,113 514,120 565,122 616,117 667,113 719,95 770,123" fill="none" stroke="#FF3B30" stroke-width="1.5" stroke-dasharray="5,2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="52" cy="83" r="3.5" fill="white" stroke="#C97400" stroke-width="1.5"/><circle cx="103" cy="99" r="2" fill="white" stroke="#C97400" stroke-width="1.5"/><circle cx="155" cy="103" r="3.5" fill="white" stroke="#C97400" stroke-width="1.5"/><circle cx="206" cy="97" r="2" fill="white" stroke="#C97400" stroke-width="1.5"/><circle cx="257" cy="99" r="2" fill="white" stroke="#C97400" stroke-width="1.5"/><circle cx="308" cy="101" r="2" fill="white" stroke="#C97400" stroke-width="1.5"/><circle cx="360" cy="90" r="2" fill="white" stroke="#C97400" stroke-width="1.5"/><circle cx="411" cy="91" r="2" fill="white" stroke="#C97400" stroke-width="1.5"/><circle cx="462" cy="78" r="2" fill="white" stroke="#C97400" stroke-width="1.5"/><circle cx="514" cy="89" r="2" fill="white" stroke="#C97400" stroke-width="1.5"/><circle cx="565" cy="93" r="2" fill="white" stroke="#C97400" stroke-width="1.5"/><circle cx="616" cy="85" r="2" fill="white" stroke="#C97400" stroke-width="1.5"/><circle cx="667" cy="83" r="2" fill="#C97400" stroke="#C97400" stroke-width="0"/><circle cx="719" cy="66" r="3.5" fill="#C97400" stroke="#C97400" stroke-width="0"/><circle cx="770" cy="91" r="3.5" fill="#C97400" stroke="#C97400" stroke-width="0"/><circle cx="52" cy="113" r="2.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="103" cy="130" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="155" cy="130" r="2.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="206" cy="125" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="257" cy="127" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="308" cy="129" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="360" cy="120" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="411" cy="121" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="462" cy="113" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="514" cy="120" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="565" cy="122" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="616" cy="117" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="667" cy="113" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="719" cy="95" r="2.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="770" cy="123" r="2.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><line x1="44" y1="200" x2="774" y2="200" stroke="#C7C7CC" stroke-width="0.5"/><text x="52" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">1月</text><text x="103" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">2月</text><text x="155" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">3月</text><text x="206" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">4月</text><text x="257" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">5月</text><text x="308" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">6月</text><text x="360" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">7月</text><text x="411" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">8月</text><text x="462" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">9月</text><text x="514" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">10月</text><text x="565" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">11月</text><text x="616" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">12月</text><text x="667" y="213" text-anchor="middle" fill="#0071E3" font-size="9.5" font-weight="600" font-family="-apple-system,PingFang SC,sans-serif">1月</text><text x="719" y="213" text-anchor="middle" fill="#0071E3" font-size="9.5" font-weight="600" font-family="-apple-system,PingFang SC,sans-serif">2月</text><text x="770" y="213" text-anchor="middle" fill="#0071E3" font-size="9.5" font-weight="600" font-family="-apple-system,PingFang SC,sans-serif">3月</text><text x="52" y="74" text-anchor="middle" fill="#C97400" font-size="9" font-weight="600" font-family="-apple-system,PingFang SC,sans-serif">3.65M</text><text x="155" y="94" text-anchor="middle" fill="#C97400" font-size="9" font-weight="600" font-family="-apple-system,PingFang SC,sans-serif">3.04M</text><text x="719" y="57" text-anchor="middle" fill="#C97400" font-size="9" font-weight="600" font-family="-apple-system,PingFang SC,sans-serif">4.17M</text><text x="770" y="82" text-anchor="middle" fill="#C97400" font-size="9" font-weight="600" font-family="-apple-system,PingFang SC,sans-serif">3.39M</text><rect x="27" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="1月" data-year="2025" data-total="3.647" data-china="2.705" data-share="74.2" data-tx="52" data-ty="83" data-cy="113"/><rect x="78" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="2月" data-year="2025" data-total="3.146" data-china="2.200" data-share="69.9" data-tx="103" data-ty="99" data-cy="130"/><rect x="130" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="3月" data-year="2025" data-total="3.040" data-china="2.190" data-share="72.0" data-tx="155" data-ty="103" data-cy="130"/><rect x="181" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="4月" data-year="2025" data-total="3.218" data-china="2.330" data-share="72.4" data-tx="206" data-ty="97" data-cy="125"/><rect x="232" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="5月" data-year="2025" data-total="3.143" data-china="2.270" data-share="72.2" data-tx="257" data-ty="99" data-cy="127"/><rect x="283" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="6月" data-year="2025" data-total="3.097" data-china="2.230" data-share="72.0" data-tx="308" data-ty="101" data-cy="129"/><rect x="335" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="7月" data-year="2025" data-total="3.437" data-china="2.490" data-share="72.4" data-tx="360" data-ty="90" data-cy="120"/><rect x="386" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="8月" data-year="2025" data-total="3.419" data-china="2.469" data-share="72.2" data-tx="411" data-ty="91" data-cy="121"/><rect x="437" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="9月" data-year="2025" data-total="3.800" data-china="2.729" data-share="71.8" data-tx="462" data-ty="78" data-cy="113"/><rect x="489" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="10月" data-year="2025" data-total="3.470" data-china="2.506" data-share="72.2" data-tx="514" data-ty="89" data-cy="120"/><rect x="540" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="11月" data-year="2025" data-total="3.350" data-china="2.430" data-share="72.5" data-tx="565" data-ty="93" data-cy="122"/><rect x="591" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="12月" data-year="2025" data-total="3.580" data-china="2.590" data-share="72.3" data-tx="616" data-ty="85" data-cy="117"/><rect x="642" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="1月" data-year="2026" data-total="3.647" data-china="2.705" data-share="74.2" data-tx="667" data-ty="83" data-cy="113"/><rect x="694" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="2月" data-year="2026" data-total="4.173" data-china="3.291" data-share="78.9" data-tx="719" data-ty="66" data-cy="95"/><rect x="745" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="3月" data-year="2026" data-total="3.394" data-china="2.393" data-share="70.5" data-tx="770" data-ty="91" data-cy="123"/></svg>
+      <div id="tip-macau" style="display:none;position:absolute;pointer-events:none;background:rgba(0,0,0,0.8);color:#fff;border-radius:10px;padding:8px 12px;font-size:12px;line-height:1.7;min-width:130px;white-space:nowrap;z-index:10;box-shadow:0 4px 12px rgba(0,0,0,0.15)"></div>
+    </div>
+  </div>
+  <div style="padding:0 20px 16px">
+    <div style="background:rgba(60,60,67,0.035);border-radius:12px;padding:14px 16px;margin-bottom:10px">
+      <div style="font-size:11px;font-weight:600;color:rgba(60,60,67,0.4);letter-spacing:0.04em;text-transform:uppercase;margin-bottom:8px">核心发现</div>
+      <ul style="list-style:none;margin:0;padding:0"><li style="padding:5px 0 5px 18px;position:relative;font-size:14px;color:rgba(60,60,67,0.75);line-height:1.55"><span style="position:absolute;left:0;color:#C97400;font-weight:700;font-size:12px">→</span>唯一超越2019年峰值的目的地（+1.7% vs 2019）</li><li style="padding:5px 0 5px 18px;position:relative;font-size:14px;color:rgba(60,60,67,0.75);line-height:1.55"><span style="position:absolute;left:0;color:#C97400;font-weight:700;font-size:12px">→</span>2026年2月417万创澳门单月历史新高</li><li style="padding:5px 0 5px 18px;position:relative;font-size:14px;color:rgba(60,60,67,0.75);line-height:1.55"><span style="position:absolute;left:0;color:#C97400;font-weight:700;font-size:12px">→</span>同日往返62.4%，过夜率下滑→酒店GMV增长慢于入境量</li></ul>
+    </div>
+    <div style="background:rgba(0,0,0,0);border:0.5px solid rgba(255,159,10,0.2);border-radius:12px;padding:11px 16px">
+      <span style="font-size:11px;font-weight:700;color:#C97400;text-transform:uppercase;letter-spacing:0.04em;margin-right:8px">→ 平台策略</span>
+      <span style="font-size:13.5px;color:rgba(60,60,67,0.75)">澳门2晚+非博彩体验套包；MGM/Wynn新设施开业前抢先上架体验产品</span>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- RECOVERY -->
+<section id="recovery" class="section">
+  <div class="sec-label">Part 04 · 第三类</div>
+  <h2 class="h2">受阻修复盘</h2>
+  <p class="h2-sub">两地面临不同来源的阻力，共同问题是中国客信心受损，处于触底修复阶段</p>
+  <div class="cat-band" style="background:rgba(255,59,48,.07);border:.5px solid rgba(255,59,48,.2)">
+    <div class="cat-hdr">
+      <div class="cat-icon" style="color:#CC2200">▼</div>
+      <div><div class="cat-name" style="color:#CC2200">受阻修复盘 · 泰国 + 新加坡</div><div class="cat-tagline" style="color:#CC2200">安全感知与高成本双重压制，触底区间，精准托底</div></div>
+      <span class="cat-badge" style="background:rgba(255,59,48,.15);color:#CC2200;border:.5px solid rgba(255,59,48,.3)">精准托底</span>
+    </div>
+  </div>
+  
+<div id="dest-thailand" style="background:#fff;border-radius:16px;overflow:hidden;margin-bottom:12px;box-shadow:0 1px 4px rgba(0,0,0,0.07),0 0 0 0.5px rgba(60,60,67,0.15)">
+  <div style="padding:20px 20px 14px;border-bottom:0.5px solid rgba(60,60,67,0.1)">
+    <div style="display:flex;align-items:flex-start;gap:14px;flex-wrap:wrap">
+      <div style="font-size:36px;line-height:1;flex-shrink:0">🇹🇭</div>
+      <div style="flex:1;min-width:220px">
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:14px">
+          <span style="font-size:18px;font-weight:700;color:#000;letter-spacing:-0.01em">泰国</span>
+          <span style="font-size:12px;color:rgba(60,60,67,0.4)">Thailand</span>
+          <span style="font-size:11px;font-weight:600;color:#CC2200;background:rgba(255,59,48,0.07);border-radius:20px;padding:2px 10px;white-space:nowrap">受阻修复盘</span>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:0;border:0.5px solid rgba(60,60,67,0.12);border-radius:12px;overflow:hidden">
+          <div style="padding:12px 14px;border-right:0.5px solid rgba(60,60,67,0.08)">
+            <div style="font-size:11px;color:rgba(60,60,67,0.45);margin-bottom:4px">2025全年</div>
+            <div style="font-size:19px;font-weight:700;letter-spacing:-0.01em">3,297万</div>
+            <span style="font-size:12px;font-weight:600;color:#CC2200">-7.3%</span>
+          </div>
+          <div style="padding:12px 14px;border-right:0.5px solid rgba(60,60,67,0.08)">
+            <div style="font-size:11px;color:rgba(60,60,67,0.45);margin-bottom:4px">2025中国客</div>
+            <div style="font-size:19px;font-weight:700;color:#FF3B30;letter-spacing:-0.01em">447万</div>
+            <span style="font-size:12px;font-weight:600;color:#CC2200">-33.7%</span>
+          </div>
+          <div style="padding:12px 14px;border-right:0.5px solid rgba(60,60,67,0.08);background:rgba(0,122,255,0.03)">
+            <div style="font-size:11px;color:#0071E3;margin-bottom:4px;font-weight:500">2026 Q1总量</div>
+            <div style="font-size:19px;font-weight:700;color:#0071E3;letter-spacing:-0.01em">932万</div>
+            <span style="font-size:12px;font-weight:600;color:#CC2200">-2.8%</span>
+          </div>
+          <div style="padding:12px 14px;background:rgba(0,122,255,0.03)">
+            <div style="font-size:11px;color:rgba(60,60,67,0.45);margin-bottom:4px">Q1中国客</div>
+            <div style="font-size:19px;font-weight:700;letter-spacing:-0.01em">140万</div>
+            <span style="font-size:12px;font-weight:600;color:#8E8E93">est.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="padding:16px 20px 12px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+      <span style="font-size:12px;font-weight:600;color:rgba(60,60,67,0.5)">月度入境量 · 2025年1月—2026年3月（15个月）</span>
+      <div style="display:flex;gap:14px">
+        <span style="display:flex;align-items:center;gap:5px;font-size:11px;color:rgba(60,60,67,0.5)">
+          <svg width="18" height="3" style="flex-shrink:0"><line x1="0" y1="1.5" x2="18" y2="1.5" stroke="#CC2200" stroke-width="2" stroke-linecap="round"/></svg>总入境
+        </span>
+        <span style="display:flex;align-items:center;gap:5px;font-size:11px;color:rgba(60,60,67,0.5)">
+          <svg width="18" height="3" style="flex-shrink:0"><line x1="0" y1="1.5" x2="18" y2="1.5" stroke="#FF3B30" stroke-width="1.5" stroke-dasharray="5,2" stroke-linecap="round"/></svg>中国客
+        </span>
+      </div>
+    </div>
+    <div style="position:relative">
+      <svg viewBox="0 0 800 230" xmlns="http://www.w3.org/2000/svg" class="dest-chart" data-key="thailand" style="width:100%;height:auto;display:block;overflow:visible"><defs><linearGradient id="ag_thailand" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#CC2200" stop-opacity="0.1"/><stop offset="100%" stop-color="#CC2200" stop-opacity="0.01"/></linearGradient></defs><polygon points="52,55 103,90 155,80 206,103 257,103 308,109 360,104 411,108 462,114 514,97 565,83 616,68 667,72 719,72 770,91 770,200 52,200" fill="url(#ag_thailand)"/><line x1="44" y1="156" x2="774" y2="156" stroke="#E5E5EA" stroke-width="0.5"/><text x="40" y="160" text-anchor="end" fill="#8E8E93" font-size="9.5" font-family="-apple-system,PingFang SC,sans-serif">1.1M</text><line x1="44" y1="112" x2="774" y2="112" stroke="#E5E5EA" stroke-width="0.5"/><text x="40" y="116" text-anchor="end" fill="#8E8E93" font-size="9.5" font-family="-apple-system,PingFang SC,sans-serif">2.2M</text><line x1="44" y1="68" x2="774" y2="68" stroke="#E5E5EA" stroke-width="0.5"/><text x="40" y="72" text-anchor="end" fill="#8E8E93" font-size="9.5" font-family="-apple-system,PingFang SC,sans-serif">3.4M</text><line x1="44" y1="24" x2="774" y2="24" stroke="#E5E5EA" stroke-width="0.5"/><text x="40" y="28" text-anchor="end" fill="#8E8E93" font-size="9.5" font-family="-apple-system,PingFang SC,sans-serif">4.5M</text><line x1="641" y1="24" x2="641" y2="200" stroke="#007AFF" stroke-width="0.8" stroke-dasharray="4,3" opacity="0.35"/><text x="641" y="20" text-anchor="middle" fill="#007AFF" font-size="9" font-family="-apple-system,PingFang SC,sans-serif" opacity="0.7">2025 | 2026</text><polyline points="52,55 103,90 155,80 206,103 257,103 308,109 360,104 411,108 462,114 514,97 565,83 616,68 667,72 719,72 770,91" fill="none" stroke="#CC2200" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="52,180 103,185 155,185 206,187 257,187 308,189 360,186 411,187 462,189 514,185 565,184 616,181 667,179 719,183 770,183" fill="none" stroke="#FF3B30" stroke-width="1.5" stroke-dasharray="5,2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="52" cy="55" r="3.5" fill="white" stroke="#CC2200" stroke-width="1.5"/><circle cx="103" cy="90" r="2" fill="white" stroke="#CC2200" stroke-width="1.5"/><circle cx="155" cy="80" r="2" fill="white" stroke="#CC2200" stroke-width="1.5"/><circle cx="206" cy="103" r="2" fill="white" stroke="#CC2200" stroke-width="1.5"/><circle cx="257" cy="103" r="2" fill="white" stroke="#CC2200" stroke-width="1.5"/><circle cx="308" cy="109" r="2" fill="white" stroke="#CC2200" stroke-width="1.5"/><circle cx="360" cy="104" r="2" fill="white" stroke="#CC2200" stroke-width="1.5"/><circle cx="411" cy="108" r="2" fill="white" stroke="#CC2200" stroke-width="1.5"/><circle cx="462" cy="114" r="3.5" fill="white" stroke="#CC2200" stroke-width="1.5"/><circle cx="514" cy="97" r="2" fill="white" stroke="#CC2200" stroke-width="1.5"/><circle cx="565" cy="83" r="2" fill="white" stroke="#CC2200" stroke-width="1.5"/><circle cx="616" cy="68" r="2" fill="white" stroke="#CC2200" stroke-width="1.5"/><circle cx="667" cy="72" r="2" fill="#CC2200" stroke="#CC2200" stroke-width="0"/><circle cx="719" cy="72" r="2" fill="#CC2200" stroke="#CC2200" stroke-width="0"/><circle cx="770" cy="91" r="3.5" fill="#CC2200" stroke="#CC2200" stroke-width="0"/><circle cx="52" cy="180" r="2.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="103" cy="185" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="155" cy="185" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="206" cy="187" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="257" cy="187" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="308" cy="189" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="360" cy="186" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="411" cy="187" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="462" cy="189" r="2.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="514" cy="185" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="565" cy="184" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="616" cy="181" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="667" cy="179" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="719" cy="183" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="770" cy="183" r="2.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><line x1="44" y1="200" x2="774" y2="200" stroke="#C7C7CC" stroke-width="0.5"/><text x="52" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">1月</text><text x="103" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">2月</text><text x="155" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">3月</text><text x="206" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">4月</text><text x="257" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">5月</text><text x="308" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">6月</text><text x="360" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">7月</text><text x="411" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">8月</text><text x="462" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">9月</text><text x="514" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">10月</text><text x="565" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">11月</text><text x="616" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">12月</text><text x="667" y="213" text-anchor="middle" fill="#0071E3" font-size="9.5" font-weight="600" font-family="-apple-system,PingFang SC,sans-serif">1月</text><text x="719" y="213" text-anchor="middle" fill="#0071E3" font-size="9.5" font-weight="600" font-family="-apple-system,PingFang SC,sans-serif">2月</text><text x="770" y="213" text-anchor="middle" fill="#0071E3" font-size="9.5" font-weight="600" font-family="-apple-system,PingFang SC,sans-serif">3月</text><text x="52" y="46" text-anchor="middle" fill="#CC2200" font-size="9" font-weight="600" font-family="-apple-system,PingFang SC,sans-serif">3.71M</text><text x="462" y="105" text-anchor="middle" fill="#CC2200" font-size="9" font-weight="600" font-family="-apple-system,PingFang SC,sans-serif">2.21M</text><text x="770" y="82" text-anchor="middle" fill="#CC2200" font-size="9" font-weight="600" font-family="-apple-system,PingFang SC,sans-serif">2.77M</text><rect x="27" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="1月" data-year="2025" data-total="3.709" data-china="0.522" data-share="14.1" data-tx="52" data-ty="55" data-cy="180"/><rect x="78" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="2月" data-year="2025" data-total="2.808" data-china="0.390" data-share="13.9" data-tx="103" data-ty="90" data-cy="185"/><rect x="130" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="3月" data-year="2025" data-total="3.069" data-china="0.390" data-share="12.7" data-tx="155" data-ty="80" data-cy="185"/><rect x="181" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="4月" data-year="2025" data-total="2.487" data-china="0.320" data-share="12.9" data-tx="206" data-ty="103" data-cy="187"/><rect x="232" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="5月" data-year="2025" data-total="2.489" data-china="0.320" data-share="12.9" data-tx="257" data-ty="103" data-cy="187"/><rect x="283" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="6月" data-year="2025" data-total="2.338" data-china="0.290" data-share="12.4" data-tx="308" data-ty="109" data-cy="189"/><rect x="335" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="7月" data-year="2025" data-total="2.459" data-china="0.360" data-share="14.6" data-tx="360" data-ty="104" data-cy="186"/><rect x="386" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="8月" data-year="2025" data-total="2.350" data-china="0.340" data-share="14.5" data-tx="411" data-ty="108" data-cy="187"/><rect x="437" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="9月" data-year="2025" data-total="2.207" data-china="0.290" data-share="13.1" data-tx="462" data-ty="114" data-cy="189"/><rect x="489" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="10月" data-year="2025" data-total="2.624" data-china="0.380" data-share="14.5" data-tx="514" data-ty="97" data-cy="185"/><rect x="540" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="11月" data-year="2025" data-total="2.984" data-china="0.420" data-share="14.1" data-tx="565" data-ty="83" data-cy="184"/><rect x="591" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="12月" data-year="2025" data-total="3.370" data-china="0.490" data-share="14.5" data-tx="616" data-ty="68" data-cy="181"/><rect x="642" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="1月" data-year="2026" data-total="3.278" data-china="0.537" data-share="16.4" data-tx="667" data-ty="72" data-cy="179"/><rect x="694" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="2月" data-year="2026" data-total="3.264" data-china="0.444" data-share="13.6" data-tx="719" data-ty="72" data-cy="183"/><rect x="745" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="3月" data-year="2026" data-total="2.775" data-china="0.444" data-share="16.0" data-tx="770" data-ty="91" data-cy="183"/></svg>
+      <div id="tip-thailand" style="display:none;position:absolute;pointer-events:none;background:rgba(0,0,0,0.8);color:#fff;border-radius:10px;padding:8px 12px;font-size:12px;line-height:1.7;min-width:130px;white-space:nowrap;z-index:10;box-shadow:0 4px 12px rgba(0,0,0,0.15)"></div>
+    </div>
+  </div>
+  <div style="padding:0 20px 16px">
+    <div style="background:rgba(60,60,67,0.035);border-radius:12px;padding:14px 16px;margin-bottom:10px">
+      <div style="font-size:11px;font-weight:600;color:rgba(60,60,67,0.4);letter-spacing:0.04em;text-transform:uppercase;margin-bottom:8px">核心发现</div>
+      <ul style="list-style:none;margin:0;padding:0"><li style="padding:5px 0 5px 18px;position:relative;font-size:14px;color:rgba(60,60,67,0.75);line-height:1.55"><span style="position:absolute;left:0;color:#CC2200;font-weight:700;font-size:12px">→</span>2025年十年首次下滑，安全感知危机+竞争分流双重打击</li><li style="padding:5px 0 5px 18px;position:relative;font-size:14px;color:rgba(60,60,67,0.75);line-height:1.55"><span style="position:absolute;left:0;color:#CC2200;font-weight:700;font-size:12px">→</span>中国客恢复率仅41%（vs 2019年1099万），Q1降幅收窄-2.8%</li><li style="padding:5px 0 5px 18px;position:relative;font-size:14px;color:rgba(60,60,67,0.75);line-height:1.55"><span style="position:absolute;left:0;color:#CC2200;font-weight:700;font-size:12px">→</span>马来西亚已反超成2026 Q1泰国第一大客源国</li></ul>
+    </div>
+    <div style="background:rgba(0,0,0,0);border:0.5px solid rgba(255,59,48,0.2);border-radius:12px;padding:11px 16px">
+      <span style="font-size:11px;font-weight:700;color:#CC2200;text-transform:uppercase;letter-spacing:0.04em;margin-right:8px">→ 平台策略</span>
+      <span style="font-size:13.5px;color:rgba(60,60,67,0.75)">"飞猪泰国安心行"品质标签+低位签约精品度假村储备反弹库存</span>
+    </div>
+  </div>
+</div>
+<div id="dest-singapore" style="background:#fff;border-radius:16px;overflow:hidden;margin-bottom:12px;box-shadow:0 1px 4px rgba(0,0,0,0.07),0 0 0 0.5px rgba(60,60,67,0.15)">
+  <div style="padding:20px 20px 14px;border-bottom:0.5px solid rgba(60,60,67,0.1)">
+    <div style="display:flex;align-items:flex-start;gap:14px;flex-wrap:wrap">
+      <div style="font-size:36px;line-height:1;flex-shrink:0">🇸🇬</div>
+      <div style="flex:1;min-width:220px">
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:14px">
+          <span style="font-size:18px;font-weight:700;color:#000;letter-spacing:-0.01em">新加坡</span>
+          <span style="font-size:12px;color:rgba(60,60,67,0.4)">Singapore</span>
+          <span style="font-size:11px;font-weight:600;color:#CC2200;background:rgba(255,59,48,0.07);border-radius:20px;padding:2px 10px;white-space:nowrap">受阻修复盘</span>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:0;border:0.5px solid rgba(60,60,67,0.12);border-radius:12px;overflow:hidden">
+          <div style="padding:12px 14px;border-right:0.5px solid rgba(60,60,67,0.08)">
+            <div style="font-size:11px;color:rgba(60,60,67,0.45);margin-bottom:4px">2025全年</div>
+            <div style="font-size:19px;font-weight:700;letter-spacing:-0.01em">1,691万</div>
+            <span style="font-size:12px;font-weight:600;color:#1D9E3E">+2.3%</span>
+          </div>
+          <div style="padding:12px 14px;border-right:0.5px solid rgba(60,60,67,0.08)">
+            <div style="font-size:11px;color:rgba(60,60,67,0.45);margin-bottom:4px">2025中国客</div>
+            <div style="font-size:19px;font-weight:700;color:#FF3B30;letter-spacing:-0.01em">310万</div>
+            <span style="font-size:12px;font-weight:600;color:#1D9E3E">+0.6%</span>
+          </div>
+          <div style="padding:12px 14px;border-right:0.5px solid rgba(60,60,67,0.08);background:rgba(0,122,255,0.03)">
+            <div style="font-size:11px;color:#0071E3;margin-bottom:4px;font-weight:500">2026 Q1总量</div>
+            <div style="font-size:19px;font-weight:700;color:#0071E3;letter-spacing:-0.01em">443万</div>
+            <span style="font-size:12px;font-weight:600;color:#1D9E3E">+2.8%</span>
+          </div>
+          <div style="padding:12px 14px;background:rgba(0,122,255,0.03)">
+            <div style="font-size:11px;color:rgba(60,60,67,0.45);margin-bottom:4px">Q1中国客</div>
+            <div style="font-size:19px;font-weight:700;letter-spacing:-0.01em">91万</div>
+            <span style="font-size:12px;font-weight:600;color:#1D9E3E">+9.8%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="padding:16px 20px 12px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+      <span style="font-size:12px;font-weight:600;color:rgba(60,60,67,0.5)">月度入境量 · 2025年1月—2026年3月（15个月）</span>
+      <div style="display:flex;gap:14px">
+        <span style="display:flex;align-items:center;gap:5px;font-size:11px;color:rgba(60,60,67,0.5)">
+          <svg width="18" height="3" style="flex-shrink:0"><line x1="0" y1="1.5" x2="18" y2="1.5" stroke="#CC2200" stroke-width="2" stroke-linecap="round"/></svg>总入境
+        </span>
+        <span style="display:flex;align-items:center;gap:5px;font-size:11px;color:rgba(60,60,67,0.5)">
+          <svg width="18" height="3" style="flex-shrink:0"><line x1="0" y1="1.5" x2="18" y2="1.5" stroke="#FF3B30" stroke-width="1.5" stroke-dasharray="5,2" stroke-linecap="round"/></svg>中国客
+        </span>
+      </div>
+    </div>
+    <div style="position:relative">
+      <svg viewBox="0 0 800 230" xmlns="http://www.w3.org/2000/svg" class="dest-chart" data-key="singapore" style="width:100%;height:auto;display:block;overflow:visible"><defs><linearGradient id="ag_singapore" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#CC2200" stop-opacity="0.1"/><stop offset="100%" stop-color="#CC2200" stop-opacity="0.01"/></linearGradient></defs><polygon points="52,56 103,79 155,86 206,76 257,79 308,90 360,52 411,58 462,90 514,79 565,86 616,80 667,68 719,68 770,74 770,200 52,200" fill="url(#ag_singapore)"/><line x1="44" y1="156" x2="774" y2="156" stroke="#E5E5EA" stroke-width="0.5"/><text x="40" y="160" text-anchor="end" fill="#8E8E93" font-size="9.5" font-family="-apple-system,PingFang SC,sans-serif">0.5M</text><line x1="44" y1="112" x2="774" y2="112" stroke="#E5E5EA" stroke-width="0.5"/><text x="40" y="116" text-anchor="end" fill="#8E8E93" font-size="9.5" font-family="-apple-system,PingFang SC,sans-serif">1.0M</text><line x1="44" y1="68" x2="774" y2="68" stroke="#E5E5EA" stroke-width="0.5"/><text x="40" y="72" text-anchor="end" fill="#8E8E93" font-size="9.5" font-family="-apple-system,PingFang SC,sans-serif">1.5M</text><line x1="44" y1="24" x2="774" y2="24" stroke="#E5E5EA" stroke-width="0.5"/><text x="40" y="28" text-anchor="end" fill="#8E8E93" font-size="9.5" font-family="-apple-system,PingFang SC,sans-serif">2.0M</text><line x1="641" y1="24" x2="641" y2="200" stroke="#007AFF" stroke-width="0.8" stroke-dasharray="4,3" opacity="0.35"/><text x="641" y="20" text-anchor="middle" fill="#007AFF" font-size="9" font-family="-apple-system,PingFang SC,sans-serif" opacity="0.7">2025 | 2026</text><polyline points="52,56 103,79 155,86 206,76 257,79 308,90 360,52 411,58 462,90 514,79 565,86 616,80 667,68 719,68 770,74" fill="none" stroke="#CC2200" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="52,167 103,176 155,184 206,182 257,179 308,183 360,164 411,165 462,182 514,180 565,182 616,185 667,174 719,162 770,183" fill="none" stroke="#FF3B30" stroke-width="1.5" stroke-dasharray="5,2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="52" cy="56" r="3.5" fill="white" stroke="#CC2200" stroke-width="1.5"/><circle cx="103" cy="79" r="2" fill="white" stroke="#CC2200" stroke-width="1.5"/><circle cx="155" cy="86" r="2" fill="white" stroke="#CC2200" stroke-width="1.5"/><circle cx="206" cy="76" r="2" fill="white" stroke="#CC2200" stroke-width="1.5"/><circle cx="257" cy="79" r="2" fill="white" stroke="#CC2200" stroke-width="1.5"/><circle cx="308" cy="90" r="3.5" fill="white" stroke="#CC2200" stroke-width="1.5"/><circle cx="360" cy="52" r="3.5" fill="white" stroke="#CC2200" stroke-width="1.5"/><circle cx="411" cy="58" r="2" fill="white" stroke="#CC2200" stroke-width="1.5"/><circle cx="462" cy="90" r="2" fill="white" stroke="#CC2200" stroke-width="1.5"/><circle cx="514" cy="79" r="2" fill="white" stroke="#CC2200" stroke-width="1.5"/><circle cx="565" cy="86" r="2" fill="white" stroke="#CC2200" stroke-width="1.5"/><circle cx="616" cy="80" r="2" fill="white" stroke="#CC2200" stroke-width="1.5"/><circle cx="667" cy="68" r="2" fill="#CC2200" stroke="#CC2200" stroke-width="0"/><circle cx="719" cy="68" r="2" fill="#CC2200" stroke="#CC2200" stroke-width="0"/><circle cx="770" cy="74" r="3.5" fill="#CC2200" stroke="#CC2200" stroke-width="0"/><circle cx="52" cy="167" r="2.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="103" cy="176" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="155" cy="184" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="206" cy="182" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="257" cy="179" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="308" cy="183" r="2.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="360" cy="164" r="2.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="411" cy="165" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="462" cy="182" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="514" cy="180" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="565" cy="182" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="616" cy="185" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="667" cy="174" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="719" cy="162" r="1.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><circle cx="770" cy="183" r="2.5" fill="white" stroke="#FF3B30" stroke-width="1.5"/><line x1="44" y1="200" x2="774" y2="200" stroke="#C7C7CC" stroke-width="0.5"/><text x="52" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">1月</text><text x="103" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">2月</text><text x="155" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">3月</text><text x="206" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">4月</text><text x="257" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">5月</text><text x="308" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">6月</text><text x="360" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">7月</text><text x="411" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">8月</text><text x="462" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">9月</text><text x="514" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">10月</text><text x="565" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">11月</text><text x="616" y="213" text-anchor="middle" fill="#8E8E93" font-size="9.5" font-weight="400" font-family="-apple-system,PingFang SC,sans-serif">12月</text><text x="667" y="213" text-anchor="middle" fill="#0071E3" font-size="9.5" font-weight="600" font-family="-apple-system,PingFang SC,sans-serif">1月</text><text x="719" y="213" text-anchor="middle" fill="#0071E3" font-size="9.5" font-weight="600" font-family="-apple-system,PingFang SC,sans-serif">2月</text><text x="770" y="213" text-anchor="middle" fill="#0071E3" font-size="9.5" font-weight="600" font-family="-apple-system,PingFang SC,sans-serif">3月</text><text x="52" y="47" text-anchor="middle" fill="#CC2200" font-size="9" font-weight="600" font-family="-apple-system,PingFang SC,sans-serif">1.63M</text><text x="308" y="81" text-anchor="middle" fill="#CC2200" font-size="9" font-weight="600" font-family="-apple-system,PingFang SC,sans-serif">1.25M</text><text x="360" y="43" text-anchor="middle" fill="#CC2200" font-size="9" font-weight="600" font-family="-apple-system,PingFang SC,sans-serif">1.68M</text><text x="770" y="65" text-anchor="middle" fill="#CC2200" font-size="9" font-weight="600" font-family="-apple-system,PingFang SC,sans-serif">1.43M</text><rect x="27" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="1月" data-year="2025" data-total="1.633" data-china="0.376" data-share="23.0" data-tx="52" data-ty="56" data-cy="167"/><rect x="78" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="2月" data-year="2025" data-total="1.378" data-china="0.268" data-share="19.4" data-tx="103" data-ty="79" data-cy="176"/><rect x="130" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="3月" data-year="2025" data-total="1.297" data-china="0.187" data-share="14.4" data-tx="155" data-ty="86" data-cy="184"/><rect x="181" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="4月" data-year="2025" data-total="1.404" data-china="0.208" data-share="14.8" data-tx="206" data-ty="76" data-cy="182"/><rect x="232" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="5月" data-year="2025" data-total="1.374" data-china="0.242" data-share="17.6" data-tx="257" data-ty="79" data-cy="179"/><rect x="283" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="6月" data-year="2025" data-total="1.246" data-china="0.197" data-share="15.8" data-tx="308" data-ty="90" data-cy="183"/><rect x="335" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="7月" data-year="2025" data-total="1.681" data-china="0.414" data-share="24.6" data-tx="360" data-ty="52" data-cy="164"/><rect x="386" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="8月" data-year="2025" data-total="1.609" data-china="0.398" data-share="24.7" data-tx="411" data-ty="58" data-cy="165"/><rect x="437" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="9月" data-year="2025" data-total="1.254" data-china="0.207" data-share="16.5" data-tx="462" data-ty="90" data-cy="182"/><rect x="489" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="10月" data-year="2025" data-total="1.379" data-china="0.226" data-share="16.4" data-tx="514" data-ty="79" data-cy="180"/><rect x="540" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="11月" data-year="2025" data-total="1.293" data-china="0.204" data-share="15.8" data-tx="565" data-ty="86" data-cy="182"/><rect x="591" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="12月" data-year="2025" data-total="1.364" data-china="0.173" data-share="12.7" data-tx="616" data-ty="80" data-cy="185"/><rect x="642" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="1月" data-year="2026" data-total="1.501" data-china="0.290" data-share="19.3" data-tx="667" data-ty="68" data-cy="174"/><rect x="694" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="2月" data-year="2026" data-total="1.501" data-china="0.432" data-share="28.8" data-tx="719" data-ty="68" data-cy="162"/><rect x="745" y="24" width="51" height="176" fill="transparent" rx="0" class="hover-col" data-month="3月" data-year="2026" data-total="1.428" data-china="0.191" data-share="13.4" data-tx="770" data-ty="74" data-cy="183"/></svg>
+      <div id="tip-singapore" style="display:none;position:absolute;pointer-events:none;background:rgba(0,0,0,0.8);color:#fff;border-radius:10px;padding:8px 12px;font-size:12px;line-height:1.7;min-width:130px;white-space:nowrap;z-index:10;box-shadow:0 4px 12px rgba(0,0,0,0.15)"></div>
+    </div>
+  </div>
+  <div style="padding:0 20px 16px">
+    <div style="background:rgba(60,60,67,0.035);border-radius:12px;padding:14px 16px;margin-bottom:10px">
+      <div style="font-size:11px;font-weight:600;color:rgba(60,60,67,0.4);letter-spacing:0.04em;text-transform:uppercase;margin-bottom:8px">核心发现</div>
+      <ul style="list-style:none;margin:0;padding:0"><li style="padding:5px 0 5px 18px;position:relative;font-size:14px;color:rgba(60,60,67,0.75);line-height:1.55"><span style="position:absolute;left:0;color:#CC2200;font-weight:700;font-size:12px">→</span>恢复率七国最低（88.5% vs 2019），高成本致中国客微增</li><li style="padding:5px 0 5px 18px;position:relative;font-size:14px;color:rgba(60,60,67,0.75);line-height:1.55"><span style="position:absolute;left:0;color:#CC2200;font-weight:700;font-size:12px">→</span>3月印尼超越中国成月度最大客源（开斋节效应）</li><li style="padding:5px 0 5px 18px;position:relative;font-size:14px;color:rgba(60,60,67,0.75);line-height:1.55"><span style="position:absolute;left:0;color:#CC2200;font-weight:700;font-size:12px">→</span>Herbalife大会+i-dle演唱会：MICE+演出双驱Q2预期强势</li></ul>
+    </div>
+    <div style="background:rgba(0,0,0,0);border:0.5px solid rgba(255,59,48,0.2);border-radius:12px;padding:11px 16px">
+      <span style="font-size:11px;font-weight:700;color:#CC2200;text-transform:uppercase;letter-spacing:0.04em;margin-right:8px">→ 平台策略</span>
+      <span style="font-size:13.5px;color:rgba(60,60,67,0.75)">MICE B2B套包+F1/演唱会IP高端绑定；定位"高端生活方式目的地"</span>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ACTIONS -->
+<section id="actions" class="section">
+  <div class="sec-label">Part 05 · 平台战略</div>
+  <h2 class="h2">三轨并行 · 六个月行动路线图</h2>
+  <p class="h2-sub">将以上分析转化为具体可执行的平台行动，按时间窗口分三个优先级梯队部署</p>
+  <div class="acts">
+    <div class="act" style="border-top:3px solid var(--green)">
+      <div class="act-hor" style="color:var(--green)">立即行动 · 0—3个月</div>
+      <div class="act-title">抓住溢出红利窗口</div>
+      <ul><li>韩国/马来西亚供应链快速签约计划启动</li><li>韩国BTS档期爆款套包预售上线</li><li>对"日本"用户推送"韩国替代"关联推荐</li><li>马来西亚演唱会旅游套包B2C全量投放</li><li>澳门非博彩新设施产品抢先上架</li><li>泰国"安心行"品质标签体系建立</li></ul>
+    </div>
+    <div class="act" style="border-top:3px solid var(--blue)">
+      <div class="act-hor" style="color:var(--blue)">中期布局 · 3—6个月</div>
+      <div class="act-title">供应链与产品深化</div>
+      <ul><li>韩国可售SKU增至目标（+500+）</li><li>日本非中国客源专属产品线完整上线</li><li>香港国际IP官方合作协议签署</li><li>澳门2晚+过夜套包量产与推广</li><li>新加坡MICE B2B产品线打通</li><li>泰国精品度假村低位签约10家</li></ul>
+    </div>
+    <div class="act" style="border-top:3px solid var(--orange)">
+      <div class="act-hor" style="color:var(--orange)">战略储备 · 6—12个月</div>
+      <div class="act-title">生态护城河建设</div>
+      <ul><li>建立"中日关系监测→产品快响"机制</li><li>马来西亚Power BI数据自动化采集</li><li>跨目的地联游套包标准化体系</li><li>高净值客群专属会员权益体系</li><li>中国客源地缘监测预警系统</li><li>泰国反弹信号触发投放自动化机制</li></ul>
+    </div>
+  </div>
+  <div style="margin-top:24px;font-size:15px;font-weight:600;margin-bottom:14px">核心风险矩阵</div>
+  <div class="risks">
+    <div class="risk-row"><span class="rbadge" style="background:rgba(255,59,48,.1);color:#CC2200">高风险</span><div><div class="rt">中日关系持续恶化 → 日本中国客2026年底前无法回暖</div><div class="rd">2026年日本GMV缺口约10-15亿元，若未建立非中国客源产品矩阵，损失无法弥补。对冲：快速建设韩/台/欧美客源品类。</div></div></div>
+    <div class="risk-row"><span class="rbadge" style="background:rgba(255,59,48,.1);color:#CC2200">高风险</span><div><div class="rt">泰国安全事件再度发酵 → 中国客继续出走东南亚</div><div class="rd">第二次重大负面事件将使泰国恢复率推迟至2028年。对冲：加速马来西亚/越南供应链建设作为替代出口。</div></div></div>
+    <div class="risk-row"><span class="rbadge" style="background:rgba(255,149,0,.12);color:#C97400">中风险</span><div><div class="rt">人民币大幅升值 → 日本性价比消失，中国客出行意愿下降</div><div class="rd">弱日元是日本2024-25年爆发的核心动因，若日元走强，目的地吸引力骤降。对冲：提前锁定性价比产品库存。</div></div></div>
+    <div class="risk-row"><span class="rbadge" style="background:rgba(255,149,0,.12);color:#C97400">中风险</span><div><div class="rt">澳门同日往返固化 → 酒店GMV与入境量增长严重背离</div><div class="rd">62.4%同日往返率意味着超60%入境客未贡献住宿GMV，长期恶化将重创澳门业务。对冲：绑定非博彩IP提升过夜吸引力。</div></div></div>
+  </div>
+</section>
+
+<div class="footer">
+  本报告严格基于 JNTO / HKTB / DSEC / KTO / MOTS / STB / MOTAC 官方数据<br>
+  麦肯锡方法论重构 · Apple HIG 设计规范 · 飞猪国际酒店战略洞察团队<br>
+  数据截至 2026年5月4日 · 机密报告，仅供内部决策参考
+</div>
+
+</div>
+<script>
+(function(){
+  document.querySelectorAll('.dest-chart').forEach(function(svg){
+    var key = svg.dataset.key;
+    var tip = document.getElementById('tip-'+key);
+    if(!tip) return;
+    var wrap = svg.parentElement;
+    svg.querySelectorAll('.hover-col').forEach(function(r){
+      r.addEventListener('mouseenter', function(e){
+        var mo=r.dataset.month, yr=r.dataset.year;
+        var tot=parseFloat(r.dataset.total), chi=parseFloat(r.dataset.china);
+        var sh=r.dataset.share, tx=parseInt(r.dataset.tx);
+        var label = yr==='2026' ? '<span style="color:#6eb3ff">'+yr+'年'+mo+'</span>' : yr+'年'+mo;
+        tip.innerHTML = label+'<br>'
+          +'<span style="color:#aaa">总入境：</span><b>'+tot.toFixed(2)+'M</b><br>'
+          +'<span style="color:#ff8080">中国客：</span><b style="color:#ff8080">'+chi.toFixed(2)+'M</b><br>'
+          +'<span style="color:#aaa">占比：</span><b>'+sh+'%</b>';
+        tip.style.display='block';
+        var rect=svg.getBoundingClientRect(), wRect=wrap.getBoundingClientRect();
+        var svgW=rect.width, scaledX=tx/800*svgW;
+        var tipW=tip.offsetWidth||140, tipH=tip.offsetHeight||80;
+        var left=scaledX+10;
+        if(left+tipW > wRect.width-8) left=scaledX-tipW-10;
+        tip.style.left=left+'px';
+        tip.style.top='10px';
+      });
+      r.addEventListener('mouseleave',function(){tip.style.display='none';});
+    });
+  });
+})();
+</script>
+</body></html>
