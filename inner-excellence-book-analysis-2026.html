@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>《内在卓越》详细解读 · 四层阅读动线</title>
+<style>
+:root{
+  --bg:#F2F2F7; --surface:#FFFFFF; --surface2:#FFFFFF;
+  --label:#101013; --sec:rgba(60,60,67,.62); --ter:rgba(60,60,67,.34);
+  --hair:rgba(60,60,67,.22);
+  --blue:#007AFF; --teal:#2E9BB4; --green:#34C759; --orange:#E8850C; --red:#E5372C; --purple:#9A3DD1; --indigo:#5856D6;
+  --blue-t:rgba(0,122,255,.08); --teal-t:rgba(46,155,180,.12); --green-t:rgba(52,199,89,.13);
+  --orange-t:rgba(232,133,12,.13); --red-t:rgba(229,55,44,.09); --purple-t:rgba(154,61,209,.10);
+  --indigo-t:rgba(88,86,214,.09); --fill:rgba(120,120,128,.10);
+  --nav:rgba(242,242,247,.80);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#000000; --surface:#1C1C1E; --surface2:#2C2C2E;
+    --label:#F5F5F7; --sec:rgba(235,235,245,.62); --ter:rgba(235,235,245,.32);
+    --hair:rgba(84,84,88,.55);
+    --blue:#0A84FF; --teal:#4CC2DD; --green:#30D158; --orange:#FF9F0A; --red:#FF453A; --purple:#BF5AF2; --indigo:#7D7AFF;
+    --blue-t:rgba(10,132,255,.16); --teal-t:rgba(76,194,221,.16); --green-t:rgba(48,209,88,.16);
+    --orange-t:rgba(255,159,10,.16); --red-t:rgba(255,69,58,.14); --purple-t:rgba(191,90,242,.16);
+    --indigo-t:rgba(125,122,255,.16); --fill:rgba(120,120,128,.22);
+    --nav:rgba(28,28,30,.74);
+  }
+}
+*{box-sizing:border-box}
+html{font-size:clamp(16.5px, .4vw + 15px, 18px); scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *,*::before,*::after{transition:none!important;animation:none!important} }
+body{margin:0;background:var(--bg);color:var(--label);
+  font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','SF Pro Text','Helvetica Neue',sans-serif;
+  line-height:1.85;letter-spacing:.015em;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+.wrap{max-width:none;padding:0 clamp(20px,4vw,72px)}
+p{margin:.6em 0}
+h1{font-size:clamp(1.8rem,3.4vw,2.35rem);line-height:1.25;font-weight:800;margin:.25em 0;letter-spacing:.002em}
+h2{font-size:1.5rem;line-height:1.3;font-weight:800;margin:.2em 0 .4em}
+h3{font-size:1.16rem;line-height:1.35;font-weight:700;margin:1.1em 0 .35em}
+h4{font-size:1rem;font-weight:700;margin:.9em 0 .3em}
+a{color:var(--blue)}
+[id]{scroll-margin-top:80px}
+.eyebrow{font-size:.76rem;font-weight:800;letter-spacing:.15em;color:var(--blue);text-transform:uppercase}
+.muted{color:var(--sec)} .small{font-size:.9rem}
+section{padding:40px 0 8px}
+
+/* ── 顶部进度步骤条（毛玻璃） ── */
+.stepper{position:sticky;top:0;z-index:60;background:var(--nav);
+  backdrop-filter:blur(22px) saturate(180%);-webkit-backdrop-filter:blur(22px) saturate(180%);
+  border-bottom:.5px solid var(--hair)}
+.stepper-in{display:flex;gap:6px;overflow-x:auto;padding:8px clamp(14px,3vw,48px);align-items:center;scrollbar-width:none}
+.stepper-in::-webkit-scrollbar{display:none}
+.step{display:flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;border-radius:12px;
+  text-decoration:none;color:var(--sec);font-size:.85rem;font-weight:700;white-space:nowrap;transition:background .2s ease}
+.step .num{width:22px;height:22px;border-radius:50%;border:1.5px solid currentColor;display:grid;place-items:center;font-size:.7rem;font-weight:800}
+.step.on{color:var(--blue);background:var(--blue-t)}
+.step:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.step-arrow{color:var(--ter);font-size:.8rem;flex:0 0 auto}
+
+/* ── 组件 ── */
+.chip{display:inline-flex;align-items:center;min-height:30px;padding:2px 13px;border-radius:999px;
+  background:var(--fill);font-size:.8rem;font-weight:600;color:var(--sec);margin:3px 6px 3px 0}
+.card{background:var(--surface);border:.5px solid var(--hair);border-radius:18px;
+  padding:clamp(18px,2.4vw,28px);margin:14px 0}
+.banner{border-left:4px solid var(--blue);background:var(--blue-t);border-radius:14px;
+  padding:16px 20px;margin:14px 0;font-weight:600;line-height:1.7}
+.banner .bt{font-size:.74rem;font-weight:800;letter-spacing:.12em;color:var(--blue);display:block;margin-bottom:4px}
+.take{display:flex;gap:10px;align-items:flex-start;background:var(--fill);border-radius:12px;
+  padding:10px 14px;font-weight:600;font-size:.95rem;margin:10px 0}
+.take b{color:var(--blue);flex:0 0 auto}
+.badge{display:inline-flex;align-items:center;gap:4px;height:21px;padding:0 8px;border-radius:999px;
+  font-size:.7rem;font-weight:800;vertical-align:2px;white-space:nowrap}
+.b-s{background:var(--green-t);color:var(--green)}
+.b-i{background:var(--orange-t);color:var(--orange)}
+.b-d{background:var(--fill);color:var(--sec)}
+.lhead{display:flex;gap:16px;align-items:flex-start;margin:6px 0 14px}
+.lnum{font-size:2.7rem;font-weight:900;color:var(--blue);opacity:.24;line-height:1;flex:0 0 auto;font-variant-numeric:tabular-nums}
+.grid{display:grid;gap:12px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.kv{background:var(--fill);border-radius:12px;padding:12px 16px;font-size:.93rem}
+.kv b{display:block;font-size:.78rem;letter-spacing:.08em;color:var(--sec);margin-bottom:2px;text-transform:uppercase}
+.socratic{border-left:3px solid var(--purple);background:var(--purple-t);padding:10px 14px;
+  border-radius:0 12px 12px 0;font-size:.94rem;margin:.7em 0}
+.socratic b{color:var(--purple)}
+.dial{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px;margin:.6em 0}
+.dial>div{background:var(--fill);border-radius:12px;padding:10px 14px;font-size:.9rem;line-height:1.7}
+.dial b{display:block;font-size:.76rem;letter-spacing:.1em;margin-bottom:2px}
+.dial .z b{color:var(--green)} .dial .f b{color:var(--red)} .dial .h b{color:var(--blue)}
+.rescue{background:var(--surface);border:.5px solid var(--hair);border-left:4px solid var(--indigo);
+  border-radius:16px;padding:20px 22px;margin:18px 0}
+.rescue h5{display:flex;align-items:center;gap:9px;margin:0 0 10px;font-size:.98rem;color:var(--indigo)}
+.rescue .row{margin:.55em 0;font-size:.95rem}
+.rescue .tag{display:inline-block;font-size:.7rem;font-weight:800;color:var(--indigo);
+  letter-spacing:.08em;background:var(--indigo-t);border-radius:6px;padding:1px 7px;margin-right:7px;vertical-align:1px}
+.bridge{margin:36px 0;padding:24px clamp(18px,3vw,36px);border-radius:18px;background:var(--surface);
+  border:1px dashed var(--blue);color:var(--sec);line-height:1.8}
+.bridge b{color:var(--label)}
+.bridge .bh{display:flex;align-items:center;gap:8px;color:var(--blue);font-weight:800;font-size:.82rem;letter-spacing:.12em;margin-bottom:6px}
+table{width:100%;border-collapse:collapse;font-size:.92rem}
+th,td{padding:10px 12px;border-bottom:.5px solid var(--hair);text-align:left;vertical-align:top;line-height:1.65}
+th{color:var(--sec);font-size:.8rem;letter-spacing:.06em;font-weight:700}
+tr:last-child td{border-bottom:none}
+.tbl-scroll{overflow-x:auto}
+details{background:var(--surface);border:.5px solid var(--hair);border-radius:12px;margin:8px 0;overflow:hidden}
+summary{min-height:44px;display:flex;align-items:center;padding:8px 16px;font-weight:700;cursor:pointer;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"";width:8px;height:8px;border-right:2px solid var(--blue);border-bottom:2px solid var(--blue);
+  transform:rotate(-45deg);margin-right:12px;transition:transform .2s ease;flex:0 0 auto}
+details[open] summary::before{transform:rotate(45deg)}
+details>div{padding:2px 18px 16px;color:var(--sec);font-size:.94rem}
+.svgbox{overflow-x:auto;background:var(--surface);border:.5px solid var(--hair);border-radius:18px;padding:10px;margin:14px 0}
+svg text{font-family:inherit}
+.legend{display:flex;flex-wrap:wrap;gap:16px;font-size:.82rem;color:var(--sec);padding:8px 8px 2px;font-weight:600}
+.legend span{display:inline-flex;align-items:center;gap:7px}
+.lg{display:inline-block;width:28px;border-top-width:2.5px;border-top-style:solid}
+.miscon{border-radius:16px;overflow:hidden;border:.5px solid var(--hair);margin:16px 0;background:var(--surface)}
+.miscon>header{padding:13px 20px;background:var(--red-t);color:var(--red);font-weight:800;font-size:1rem;display:flex;gap:10px;align-items:baseline}
+.miscon>header .no{font-variant-numeric:tabular-nums;opacity:.7;font-size:.85rem}
+.miscon .m-body{padding:14px 20px 18px}
+.m-truth{border-left:3px solid var(--teal);background:var(--teal-t);border-radius:0 12px 12px 0;padding:10px 14px;margin:.6em 0}
+.m-truth b{color:var(--teal)}
+.m-up{font-weight:700;background:var(--fill);border-radius:10px;padding:8px 13px;display:inline-block;margin-top:.4em;font-size:.93rem}
+.anchor-nav{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 4px}
+.anchor-nav a{display:inline-flex;align-items:center;min-height:34px;padding:2px 12px;border-radius:999px;
+  background:var(--fill);color:var(--sec);text-decoration:none;font-size:.8rem;font-weight:700}
+.anchor-nav a:hover{color:var(--blue);background:var(--blue-t)}
+.footer{margin-top:56px;padding:34px 0 60px;border-top:.5px solid var(--hair);color:var(--sec);font-size:.9rem}
+.sign{font-weight:800;color:var(--label);margin-top:10px}
+.hero{padding:52px 0 16px}
+.hero .sub{font-size:1.05rem;color:var(--sec);font-weight:600}
+.scqa{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px;margin:16px 0}
+.scqa>div{background:var(--surface);border:.5px solid var(--hair);border-radius:14px;padding:14px 16px;font-size:.93rem;line-height:1.75}
+.scqa b{display:block;font-size:.74rem;letter-spacing:.13em;margin-bottom:4px}
+.scqa .s b{color:var(--sec)} .scqa .c b{color:var(--orange)} .scqa .q b{color:var(--purple)} .scqa .a b{color:var(--green)}
+.essence{background:linear-gradient(135deg,var(--blue-t),var(--indigo-t));border:.5px solid var(--hair);
+  border-radius:18px;padding:clamp(20px,3vw,30px);margin:18px 0;font-size:1.12rem;font-weight:700;line-height:1.9}
+.essence .et{font-size:.74rem;letter-spacing:.15em;color:var(--blue);display:block;margin-bottom:8px;font-weight:800}
+.ch-card h3{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;margin-top:0}
+.ch-card h3 .cno{font-size:.78rem;font-weight:800;color:var(--blue);background:var(--blue-t);border-radius:8px;padding:2px 9px;letter-spacing:.06em}
+.ch-card h3 .cen{font-size:.82rem;color:var(--ter);font-weight:600}
+.cdef{border-radius:12px;background:var(--fill);padding:12px 15px;margin:.6em 0;font-size:.94rem}
+.cdef .t{font-size:.7rem;font-weight:800;letter-spacing:.09em;border-radius:6px;padding:1px 7px;margin-right:7px}
+.t-pro{background:var(--blue-t);color:var(--blue)} .t-plain{background:var(--green-t);color:var(--green)} .t-ana{background:var(--orange-t);color:var(--orange)}
+</style>
+</head>
+<body>
+
+<!-- ═══════ 进度步骤条：四层阅读动线 ═══════ -->
+<nav class="stepper" aria-label="四层阅读动线">
+  <div class="stepper-in">
+    <a class="step" href="#l1" data-t="l1"><span class="num">1</span>鸟瞰 · 知识关系图</a><span class="step-arrow">→</span>
+    <a class="step" href="#l2" data-t="l2"><span class="num">2</span>填充 · 逐章精读</a><span class="step-arrow">→</span>
+    <a class="step" href="#l3" data-t="l3"><span class="num">3</span>校准 · 认知纠正</a><span class="step-arrow">→</span>
+    <a class="step" href="#l4" data-t="l4"><span class="num">4</span>精研 · 五阶段解构</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<!-- ═══════ 封面 HERO ═══════ -->
+<header class="hero" id="top">
+  <div class="eyebrow">详细解读 · 四层阅读动线 · Deep Book Full Interpretation</div>
+  <h1>《内在卓越》<span class="muted" style="font-weight:600;font-size:.62em">Inner Excellence: Train Your Mind for Extraordinary Performance and the Best Possible Life</span></h1>
+  <p class="sub">吉姆·墨菲（Jim Murphy）· 2020 修订版 / 2025 Grand Central 再版 · 表现心理学 × 心智训练手册</p>
+  <div>
+    <span class="chip">《纽约时报》畅销书 <span class="badge b-s">✅ 确证</span></span>
+    <span class="chip">2025.1 AJ Brown 场边阅读破圈</span>
+    <span class="chip">高压表现 · 心智训练 · 领导力</span>
+    <span class="chip">中文版信息未核实，本报告基于英文版 <span class="badge b-d">❓</span></span>
+  </div>
+
+  <div class="scqa">
+    <div class="s"><b>S · 情境</b>你的技能、资源、努力都不缺——训练做足了，方案备齐了，关键场合也都到了。</div>
+    <div class="c"><b>C · 冲突</b>但越重要的时刻越紧：患得患失、脑内噪音、动作变形。「更想赢」反而更打不出来。</div>
+    <div class="q"><b>Q · 问题</b>顶级表现者在高压之下，到底靠什么保持从容、稳定输出？</div>
+    <div class="a"><b>A · 回答</b>墨菲的答案反直觉：瓶颈不在技能，在「自我」。把身份与结果解绑，用爱·智慧·勇气替换恐惧作为操作系统，再像练肌肉一样天天训练心智——卓越会作为副产品自己到来。</div>
+  </div>
+
+  <div class="essence">
+    <span class="et">全书一句话 · 塔尖结论</span>
+    卓越不是追出来的——当你把注意力从「保卫自我」转向「热爱与当下」，它是自己流出来的副产品；而这颗心，可以像肌肉一样天天训练。
+  </div>
+
+  <!-- 书籍 DNA -->
+  <div class="card">
+    <h3 style="margin-top:0">书籍 DNA：这本书从哪来、为什么突然全网皆知</h3>
+    <div class="grid g2">
+      <div class="kv"><b>作者</b>吉姆·墨菲（Jim Murphy，1967 年生）：前芝加哥小熊队体系职业棒球运动员，后任德州游骑兵队教练、南非奥运棒球队打击教练；教练科学（Coaching Science）硕士。<span class="badge b-s">✅</span></div>
+      <div class="kv"><b>成书方式</b>硕士毕业后投入约五到六年全职研究与写作；期间卖掉约一半家当（含电视），在索诺兰沙漠近乎隐居约两年半，得出核心洞见：「追求卓越表现」与「追求最好人生」是同一条路。<span class="badge b-s">✅</span></div>
+      <div class="kv"><b>版本史</b>2009/2010 初版（McGraw-Hill，商业心智韧性框架）→ 2020 修订版（自出版，即本报告底本）→ 2025.3 与 Grand Central（Hachette 旗下）签约再版。<span class="badge b-s">✅</span></div>
+      <div class="kv"><b>破圈事件</b>2025 年 1 月 12 日 NFL 外卡赛（老鹰 vs 包装工），老鹰外接手 AJ Brown 被 FOX 镜头拍到在场边读此书——次日冲上亚马逊总榜第一，随后登顶《纽约时报》畅销榜。Brown 说这本书给他「一种平静感」，每场比赛都读，队友称它为「the recipe」（秘方）。<span class="badge b-s">✅</span></div>
+      <div class="kv"><b>圈内口碑</b>高尔夫球手 Stewart Cink（英国公开赛冠军）称读此书是成功第一法则；Nelly Korda、Sam Burns、Vaughn Taylor 等均公开推荐。<span class="badge b-s">✅</span></div>
+      <div class="kv"><b>写给谁</b>不只运动员——书明确面向所有高压表现者：运动员、高管、以及任何需要在压力下发挥的人。作者 2026 年另有新作《The Best Possible Life》。<span class="badge b-s">✅</span></div>
+    </div>
+    <p class="small muted" style="margin-top:12px">❓ 关于中文版：检索未能确证官方简体中文版的出版社与译者信息；《内在卓越》为通行中文译名。本报告全部内容基于英文 2020 修订版的公开可靠信源交叉核验（信源清单见文末）。</p>
+  </div>
+
+  <div class="card" style="background:var(--fill);border-style:dashed">
+    <h4 style="margin-top:0">L0 · 开读前 60 秒（可选热身：空白纸法）</h4>
+    <p class="small">拿一张纸，写下你现在的答案：<b>「高压之下想表现好，靠什么？」</b>读完四层后回来对照——哪些被补上了，哪些被推翻了。这一步激活先验知识，会让后面的每一层都「挂得住」。</p>
+  </div>
+</header>
+
+<!-- ═══════════════ L1 · 知识关系图（鸟瞰） ═══════════════ -->
+<section id="l1">
+  <div class="lhead">
+    <div class="lnum">01</div>
+    <div>
+      <div class="eyebrow">Layer 1 · 鸟瞰 Survey · 先行组织者</div>
+      <h2>知识关系图：整本书就是一次「操作系统替换」</h2>
+    </div>
+  </div>
+
+  <div class="banner"><span class="bt">本层带走这句</span>
+    全书 10 个概念只讲一件事：诊断出「自我中心」是恐惧的引擎（病灶），用「无我 + 三美德」替换它（药方），再用日常心智训练固化（疗程）——从容与卓越是疗程的副产品。
+  </div>
+
+  <p>先拿地图再上路。下图是全书的概念骨架：<b>上半圈是「病」</b>（PALMS 文化 → 自我中心 → 三大内在对手），<b>下半圈是「药」</b>（三美德 → 无我交托 → 信念与工具 → 临在），最终汇入中心——<b>同一条路</b>。点击节点可跳到对应概念详解。</p>
+
+  <div class="svgbox">
+  <svg viewBox="0 0 1000 780" style="width:100%;min-width:880px;display:block" role="img" aria-label="内在卓越知识关系图">
+    <defs>
+      <marker id="mTeal" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L8,4.5 L0,9 Z" fill="var(--teal)"/></marker>
+      <marker id="mBlue" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L8,4.5 L0,9 Z" fill="var(--blue)"/></marker>
+      <marker id="mGrey" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L8,4.5 L0,9 Z" fill="var(--ter)"/></marker>
+    </defs>
+
+    <!-- 边 -->
+    <path d="M556,140 Q622,144 660,160" fill="none" stroke="var(--blue)" stroke-width="1.8" stroke-dasharray="7 5" marker-end="url(#mBlue)"/>
+    <path d="M712,206 Q762,258 772,308" fill="none" stroke="var(--ter)" stroke-width="1.8" marker-end="url(#mGrey)"/>
+    <path d="M668,206 C640,340 622,480 606,620" fill="none" stroke="var(--red)" stroke-width="1.8" stroke-dasharray="3 6"/>
+    <path d="M700,556 Q662,602 634,626" fill="none" stroke="var(--teal)" stroke-width="1.8" marker-end="url(#mTeal)"/>
+    <path d="M300,556 Q340,602 368,626" fill="none" stroke="var(--teal)" stroke-width="1.8" marker-end="url(#mTeal)"/>
+    <path d="M540,662 C360,724 148,582 220,378" fill="none" stroke="var(--blue)" stroke-width="1.8" stroke-dasharray="7 5" marker-end="url(#mBlue)"/>
+    <path d="M240,308 Q262,242 300,208" fill="none" stroke="var(--teal)" stroke-width="1.8" marker-end="url(#mTeal)"/>
+    <path d="M692,318 C600,238 400,238 308,318" fill="none" stroke="var(--red)" stroke-width="1.8" stroke-dasharray="3 6"/>
+    <path d="M352,206 Q422,290 454,350" fill="none" stroke="var(--teal)" stroke-width="1.8" marker-end="url(#mTeal)"/>
+    <path d="M430,622 Q470,540 490,432" fill="none" stroke="var(--teal)" stroke-width="1.8" marker-end="url(#mTeal)"/>
+    <path d="M572,618 Q540,540 514,432" fill="none" stroke="var(--teal)" stroke-width="1.8" marker-end="url(#mTeal)"/>
+
+    <!-- 边标签（底色卡片防重叠） -->
+    <g class="elabel"><rect x="562" y="114" width="76" height="24" rx="7" fill="var(--surface)" stroke="var(--hair)"/><text x="600" y="131" text-anchor="middle" font-size="12" font-weight="600" fill="var(--sec)">自我的温床</text></g>
+    <g class="elabel"><rect x="722" y="240" width="76" height="24" rx="7" fill="var(--surface)" stroke="var(--hair)"/><text x="760" y="257" text-anchor="middle" font-size="12" font-weight="600" fill="var(--sec)">三副面孔</text></g>
+    <g class="elabel"><rect x="616" y="388" width="76" height="24" rx="7" fill="var(--surface)" stroke="var(--hair)"/><text x="654" y="405" text-anchor="middle" font-size="12" font-weight="600" fill="var(--red)">根本对决</text></g>
+    <g class="elabel"><rect x="640" y="584" width="76" height="24" rx="7" fill="var(--surface)" stroke="var(--hair)"/><text x="678" y="601" text-anchor="middle" font-size="12" font-weight="600" fill="var(--sec)">修炼显化</text></g>
+    <g class="elabel"><rect x="286" y="584" width="76" height="24" rx="7" fill="var(--surface)" stroke="var(--hair)"/><text x="324" y="601" text-anchor="middle" font-size="12" font-weight="600" fill="var(--sec)">重塑信念</text></g>
+    <g class="elabel"><rect x="196" y="640" width="90" height="24" rx="7" fill="var(--surface)" stroke="var(--hair)"/><text x="241" y="657" text-anchor="middle" font-size="12" font-weight="600" fill="var(--sec)">放手 → 清明</text></g>
+    <g class="elabel"><rect x="192" y="240" width="90" height="24" rx="7" fill="var(--surface)" stroke="var(--hair)"/><text x="237" y="257" text-anchor="middle" font-size="12" font-weight="600" fill="var(--sec)">清明 → 从容</text></g>
+    <g class="elabel"><rect x="462" y="226" width="76" height="24" rx="7" fill="var(--surface)" stroke="var(--hair)"/><text x="500" y="243" text-anchor="middle" font-size="12" font-weight="600" fill="var(--red)">噪音干扰</text></g>
+    <g class="elabel"><rect x="336" y="262" width="64" height="24" rx="7" fill="var(--surface)" stroke="var(--hair)"/><text x="368" y="279" text-anchor="middle" font-size="12" font-weight="600" fill="var(--sec)">副产品</text></g>
+    <g class="elabel"><rect x="388" y="528" width="76" height="24" rx="7" fill="var(--surface)" stroke="var(--hair)"/><text x="426" y="545" text-anchor="middle" font-size="12" font-weight="600" fill="var(--sec)">信念驱动</text></g>
+    <g class="elabel"><rect x="518" y="518" width="76" height="24" rx="7" fill="var(--surface)" stroke="var(--hair)"/><text x="556" y="535" text-anchor="middle" font-size="12" font-weight="600" fill="var(--sec)">核心成分</text></g>
+
+    <!-- 节点 -->
+    <a href="#c1"><g class="node"><rect x="416" y="80" width="168" height="60" rx="14" fill="var(--surface2)" stroke="var(--red)" stroke-width="1.3"/><text x="500" y="105" text-anchor="middle" font-size="15" font-weight="700" fill="var(--label)">PALMS · 两条路</text><text x="500" y="126" text-anchor="middle" font-size="12" fill="var(--sec)">外求 vs 内求</text></g></a>
+    <a href="#c2"><g class="node"><rect x="596" y="145" width="168" height="60" rx="14" fill="var(--surface2)" stroke="var(--red)" stroke-width="1.3"/><text x="680" y="170" text-anchor="middle" font-size="15" font-weight="700" fill="var(--label)">自我中心</text><text x="680" y="191" text-anchor="middle" font-size="12" fill="var(--sec)">骄傲 · 恐惧 同根</text></g></a>
+    <a href="#c3"><g class="node"><rect x="692" y="311" width="168" height="60" rx="14" fill="var(--surface2)" stroke="var(--red)" stroke-width="1.3"/><text x="776" y="336" text-anchor="middle" font-size="15" font-weight="700" fill="var(--label)">三大内在对手</text><text x="776" y="357" text-anchor="middle" font-size="12" fill="var(--sec)">批评家·猴子心·骗子</text></g></a>
+    <a href="#c4"><g class="node"><rect x="658" y="500" width="168" height="60" rx="14" fill="var(--surface2)" stroke="var(--teal)" stroke-width="1.3"/><text x="742" y="525" text-anchor="middle" font-size="15" font-weight="700" fill="var(--label)">三美德 → 三支柱</text><text x="742" y="546" text-anchor="middle" font-size="12" fill="var(--sec)">爱 · 智慧 · 勇气</text></g></a>
+    <a href="#c5"><g class="node"><rect x="512" y="623" width="168" height="60" rx="14" fill="var(--surface2)" stroke="var(--teal)" stroke-width="1.3"/><text x="596" y="648" text-anchor="middle" font-size="15" font-weight="700" fill="var(--label)">无我 · 全然交托</text><text x="596" y="669" text-anchor="middle" font-size="12" fill="var(--sec)">卓越的核心成分</text></g></a>
+    <a href="#c6"><g class="node"><rect x="320" y="623" width="168" height="60" rx="14" fill="var(--surface2)" stroke="var(--teal)" stroke-width="1.3"/><text x="404" y="648" text-anchor="middle" font-size="15" font-weight="700" fill="var(--label)">信念系统</text><text x="404" y="669" text-anchor="middle" font-size="12" fill="var(--sec)">结果的第一变量</text></g></a>
+    <a href="#c7"><g class="node"><rect x="174" y="500" width="168" height="60" rx="14" fill="var(--surface2)" stroke="var(--teal)" stroke-width="1.3"/><text x="258" y="525" text-anchor="middle" font-size="15" font-weight="700" fill="var(--label)">心智工具箱</text><text x="258" y="546" text-anchor="middle" font-size="12" fill="var(--sec)">可视化·肯定语·状态</text></g></a>
+    <a href="#c8"><g class="node"><rect x="140" y="311" width="168" height="60" rx="14" fill="var(--surface2)" stroke="var(--teal)" stroke-width="1.3"/><text x="224" y="336" text-anchor="middle" font-size="15" font-weight="700" fill="var(--label)">全然临在</text><text x="224" y="357" text-anchor="middle" font-size="12" fill="var(--sec)">清明之心</text></g></a>
+    <a href="#c9"><g class="node"><rect x="236" y="145" width="168" height="60" rx="14" fill="var(--surface2)" stroke="var(--blue)" stroke-width="1.3"/><text x="320" y="170" text-anchor="middle" font-size="15" font-weight="700" fill="var(--label)">从容 · 领导力</text><text x="320" y="191" text-anchor="middle" font-size="12" fill="var(--sec)">压力下的表现</text></g></a>
+    <a href="#c0"><g class="node c0"><rect x="390" y="352" width="220" height="76" rx="16" fill="var(--blue-t)" stroke="var(--blue)" stroke-width="1.8"/><text x="500" y="384" text-anchor="middle" font-size="17" font-weight="800" fill="var(--label)">同一条路</text><text x="500" y="408" text-anchor="middle" font-size="12.5" fill="var(--sec)">最好的人生 ＝ 卓越表现</text></g></a>
+  </svg>
+  </div>
+  <div class="legend">
+    <span><i class="lg" style="border-color:var(--ter)"></i>隶属（是…的一部分）</span>
+    <span><i class="lg" style="border-color:var(--teal)"></i>推导（导向 / 产生）</span>
+    <span><i class="lg" style="border-color:var(--blue);border-top-style:dashed"></i>前提（先有…才有）</span>
+    <span><i class="lg" style="border-color:var(--red);border-top-style:dashed"></i>张力（相互对抗）</span>
+  </div>
+
+  <h3>10 个节点，各用一句大白话</h3>
+  <div class="grid g2">
+    <div class="card" id="c0" style="margin:0"><h4 style="margin-top:0">C0 · 同一条路 <span class="badge b-s">✅</span></h4><p class="small">全书总命题：追求「最好表现」与追求「最好人生」不是两件事——都通向「把心练对」。这是墨菲在沙漠隐居时的核心洞见。</p><div class="take"><b>带走→</b>不必在「拼事业」和「过好日子」之间二选一，练的是同一颗心。</div></div>
+    <div class="card" id="c1" style="margin:0"><h4 style="margin-top:0">C1 · PALMS 与两条路 <span class="badge b-s">✅</span></h4><p class="small">财物（Possessions）·成就（Achievements）·外貌（Looks）·金钱（Money）·地位（Status）——西方文化的「富贵病病毒」（affluenza）把人推上宽而拥挤的外求之路；窄路向内，通向自由。</p><div class="take"><b>带走→</b>路宽的那条，恰恰是堵车的那条。</div></div>
+    <div class="card" id="c2" style="margin:0"><h4 style="margin-top:0">C2 · 自我中心 <span class="badge b-s">✅</span></h4><p class="small">骄傲与恐惧同根同源——都来自把自己当「宇宙中心」。越自我关注（我表现如何、别人怎么看我），怕失败的力量越大。</p><div class="take"><b>带走→</b>恐惧不是性格弱点，是「过度看自己」的副作用。</div></div>
+    <div class="card" id="c3" style="margin:0"><h4 style="margin-top:0">C3 · 三大内在对手 <span class="badge b-s">✅</span></h4><p class="small">批评家（对人对事不停下负面判决）、猴子心（刷屏式的杂念流）、骗子（编造「你不行」的假故事）。它们是自我中心的三副面孔。</p><div class="take"><b>带走→</b>你最难缠的对手从不站在对面，它们住在脑子里。</div></div>
+    <div class="card" id="c4" style="margin:0"><h4 style="margin-top:0">C4 · 三美德 → 三支柱 <span class="badge b-s">✅</span></h4><p class="small">爱·智慧·勇气三大美德，在赛场与职场显化为热爱（passion）·目的（purpose）·从容（poise）。这是替换恐惧的新操作系统。（与第 4 章「三支柱」的严格对应关系为合理推断 <span class="badge b-i">⚠️</span>）</p><div class="take"><b>带走→</b>不是压住恐惧，是换掉燃料。</div></div>
+    <div class="card" id="c5" style="margin:0"><h4 style="margin-top:0">C5 · 无我 · 全然交托 <span class="badge b-s">✅</span></h4><p class="small">书中开篇「预设」明确：对自我的牵挂、担忧与恐惧的彻底放手（selflessness / complete surrender），是卓越表现的核心成分。</p><div class="take"><b>带走→</b>全力去做，结果交出去——这不是佛系，是注意力的最优分配。</div></div>
+    <div class="card" id="c6" style="margin:0"><h4 style="margin-top:0">C6 · 信念系统 <span class="badge b-s">✅</span></h4><p class="small">书的立场：信念是结果的第一决定因素——它决定你注意什么、坚持多久、身体呈现什么状态；且信念不是天生的，是可训练的。（此表述的科学边界，见 L4 辩证）</p><div class="take"><b>带走→</b>信念是给注意力和坚持下的预算。</div></div>
+    <div class="card" id="c7" style="margin:0"><h4 style="margin-top:0">C7 · 心智工具箱 <span class="badge b-s">✅</span></h4><p class="small">可视化、肯定语、视角转换、五步「心智更新」流程、情绪状态管理——把信念与状态当日常科目来练。（五步流程的具体步骤未能从公开信源核实 <span class="badge b-d">❓</span>）</p><div class="take"><b>带走→</b>心态不是鸡汤，是有课程表的训练科目。</div></div>
+    <div class="card" id="c8" style="margin:0"><h4 style="margin-top:0">C8 · 全然临在 <span class="badge b-s">✅</span></h4><p class="small">清明之心、人在此刻。书第 8 章给出「全然临在的五种最强方式」；临在是可刻意练习的技能，不是天赋。（五种方式的具体清单未核实，不代述 <span class="badge b-d">❓</span>）</p><div class="take"><b>带走→</b>表现只发生在「现在」，而「现在」是可以被训练占领的。</div></div>
+    <div class="card" id="c9" style="margin:0"><h4 style="margin-top:0">C9 · 从容与领导力 <span class="badge b-s">✅</span></h4><p class="small">压力下的从容 = 追求卓越而非成功、掌控自我而非放纵自我；领导力被重新定义为：自我掌控 + 让人们与「超越自我的愿景」相连。</p><div class="take"><b>带走→</b>领导者先赢下自己脑内那场比赛，才配指挥外面那场。</div></div>
+  </div>
+
+  <h3>概念关系总表</h3>
+  <div class="card tbl-scroll" style="padding:8px 16px">
+    <table>
+      <tr><th>关系</th><th>类型</th><th>一句话</th></tr>
+      <tr><td>PALMS → 自我中心</td><td><span class="badge" style="background:var(--blue-t);color:var(--blue)">前提</span></td><td>外求文化是「自我膨胀」的温床</td></tr>
+      <tr><td>自我中心 → 三大对手</td><td><span class="badge b-d">隶属</span></td><td>批评家、猴子心、骗子是自我的三副面孔</td></tr>
+      <tr><td>自我中心 ⇄ 无我</td><td><span class="badge" style="background:var(--red-t);color:var(--red)">张力</span></td><td>全书的根本对决：谁坐驾驶座</td></tr>
+      <tr><td>三美德 → 无我</td><td><span class="badge" style="background:var(--teal-t);color:var(--teal)">推导</span></td><td>爱·智慧·勇气是抵达无我的修炼路径</td></tr>
+      <tr><td>工具箱 → 信念</td><td><span class="badge" style="background:var(--teal-t);color:var(--teal)">推导</span></td><td>可视化与肯定语等工具重塑信念</td></tr>
+      <tr><td>无我 → 临在</td><td><span class="badge" style="background:var(--blue-t);color:var(--blue)">前提</span></td><td>放下自我牵挂，心才腾得出「现在」</td></tr>
+      <tr><td>三大对手 ⇄ 临在</td><td><span class="badge" style="background:var(--red-t);color:var(--red)">张力</span></td><td>脑内噪音与清明之心争夺同一份注意力</td></tr>
+      <tr><td>临在 → 从容</td><td><span class="badge" style="background:var(--teal-t);color:var(--teal)">推导</span></td><td>清明是从容的直接来源</td></tr>
+      <tr><td>信念 / 无我 → 同一条路</td><td><span class="badge" style="background:var(--teal-t);color:var(--teal)">推导</span></td><td>信念驱动结果；无我是核心成分</td></tr>
+      <tr><td>从容 → 同一条路</td><td><span class="badge" style="background:var(--teal-t);color:var(--teal)">推导</span></td><td>卓越表现是从容的副产品，闭环回总命题</td></tr>
+    </table>
+  </div>
+
+  <div class="bridge"><div class="bh">桥 → 第 2 层</div>
+    你已看清骨架——「病灶 → 药方 → 疗程 → 副产品」这条主线，以及 10 个概念怎么连。但此刻每个节点还是空壳。<b>下一层顺着作者的 11 章原始脉络，逐章把每个节点填上血肉</b>：故事、论证、工具，一章约三分钟。
+  </div>
+</section>
+
+<!-- ═══════════════ L2 · 逐章精读（填充） ═══════════════ -->
+<section id="l2">
+  <div class="lhead">
+    <div class="lnum">02</div>
+    <div>
+      <div class="eyebrow">Layer 2 · 填充 Read · 建立正确模型</div>
+      <h2>逐章精读：11 章原始脉络，把地图填上血肉</h2>
+    </div>
+  </div>
+
+  <div class="banner"><span class="bt">本层带走这句</span>
+    前 3 章是「诊断」（外求文化 → 自我中心 → 三大对手），第 4–5 章是「换操作系统」（三美德 + 武士式无我），第 6–9 章是「训练科目」（状态·信念·临在·破障），第 10–11 章是「结业场景」（高压从容 + 领导力）。章节顺序即治疗顺序。
+  </div>
+
+  <div class="anchor-nav">
+    <a href="#ch0">卷首</a><a href="#ch1">1 玛莎拉蒂</a><a href="#ch2">2 宇宙中心</a><a href="#ch3">3 三大对手</a><a href="#ch4">4 三支柱</a><a href="#ch5">5 武士</a><a href="#ch6">6 状态</a><a href="#ch7">7 信念</a><a href="#ch8">8 临在</a><a href="#ch9">9 破障</a><a href="#ch10">10 从容</a><a href="#ch11">11 领导力</a><a href="#ch12">结语</a>
+  </div>
+  <p class="small muted">章名均依 2020 修订版目录核实 <span class="badge b-s">✅</span>；单章内部细节以可靠信源交叉确认为限，未确认的具体清单一律注明、不代述。</p>
+
+  <div class="card ch-card" id="ch0">
+    <h3><span class="cno">卷首</span>序 · 预设 · 导言 <span class="cen">Preface / Presuppositions / Introduction</span></h3>
+    <div class="take"><b>主旨→</b>开局先立「预设」：<b>无我——对自我之牵挂、担忧与恐惧的彻底交托——是卓越表现的核心成分</b>。这是一本要反复回翻的手册，不是读一遍的故事。<span class="badge b-s">✅</span></div>
+    <div class="cdef"><span class="t t-pro">专业</span><b>预设（Presuppositions）</b>：先于论证被采纳的公理集，是后续全部训练的地基。<br><span class="t t-plain">大白话</span>游戏开始前先装好的规则包——不装规则包，后面每一关都玩不下去。<br><span class="t t-ana">类比</span>下棋前先认可「马走日」；不认可规则，就无从谈棋局。</div>
+    <p><b>观点 → 论证 → 案例</b>：墨菲当职业球员时，自我价值整个绑在成绩上——盯着成就，同时怕失败；转做教练后发现顶级选手同病。多年研究后他得出核心洞见：追求卓越表现与追求最好人生是同一条路。为写这本书，他卖掉约一半家当，在沙漠中近乎隐居写作数年。<span class="badge b-s">✅</span></p>
+    <div class="socratic"><b>苏格拉底之问：</b>你人生现在运行的「预设包」，是什么时候装上的？是你自己选的吗？</div>
+    <div class="dial"><div class="z"><b>正</b>先立公理，训练体系才自洽——手册类书的正确开法。</div><div class="f"><b>反</b>公理未经证明：信者得力，不信者可能开卷即出局。</div><div class="h"><b>边界</b>把预设当「训练立场」先试穿三十天，再评判，而不是当科学结论全盘接收。</div></div>
+  </div>
+
+  <div class="rescue">
+    <h5><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.6.6 1 1.4 1 2.5h6c0-1.1.4-1.9 1-2.5A6 6 0 0 0 12 3z"/></svg>卡住了？换个说法 · 钉子户 ①「全力以赴，却放下结果」</h5>
+    <div class="row"><span class="tag">朴素话</span>把 100% 力气花在「做」上，把 0% 花在「盯结果」上——因为盯结果的那部分力气本来就帮不上忙，只会发抖。</div>
+    <div class="row"><span class="tag">类比 A · 生活</span>骑自行车：看着前方路面骑得稳；低头死盯前轮，必摔。盯结果 = 盯前轮。</div>
+    <div class="row"><span class="tag">类比 B · 商业</span>顶级销售：满脑子「这单必须成」的人最容易吓跑客户；专注「帮客户解决问题」的人反而成单率最高。</div>
+    <div class="row"><span class="tag">递进拆解</span>① 表现质量由注意力质量决定 → ② 担忧结果会占用注意力带宽 → ③ 结果本就不受直接控制（对手、运气、评委都有票）→ ④ 所以把注意力全部投给唯一可控的「此刻动作」，是纯理性的资源分配，不是心灵鸡汤。</div>
+    <div class="row"><span class="tag">具象场景</span>罚点球的球员：想着「射失就成罪人」的那一秒，腿已经僵了；只看球与门角的人，身体自己知道怎么踢。</div>
+    <div class="row"><span class="tag">点破直觉</span>直觉以为「在乎结果 = 负责任」。但高压时刻，「在乎」以担忧的形式出现时，它是在给对手帮忙。</div>
+    <div class="row"><span class="tag">类比边界</span>「放下结果」不等于赛后不复盘——复盘时，结果是最好的老师；只是在<b>出手的那一刻</b>，它必须离场。</div>
+  </div>
+
+  <div class="card ch-card" id="ch1">
+    <h3><span class="cno">第 1 章</span>马斯洛与玛莎拉蒂：追逐「更多」<span class="cen">Maslow and the Maserati — The Pursuit of More</span></h3>
+    <div class="take"><b>主旨→</b>「更多」是个无底洞：PALMS 五件套给的满足感是租来的，而且到期自动涨租。</div>
+    <div class="cdef"><span class="t t-pro">专业</span><b>PALMS / 富贵病病毒（affluenza）</b>：以财物、成就、外貌、金钱、地位这五种外部条件定义自我价值的文化病症。<span class="badge b-s">✅</span><br><span class="t t-plain">大白话</span>把幸福外包给「下一个东西」。<br><span class="t t-ana">类比</span>喝海水解渴——越喝越渴。</div>
+    <p><b>观点 → 论证 → 案例</b>：成就带来的满足感消退极快，追逐循环反而制造持续焦虑，并把身份押在随时会变的外部环境上。全书由「两条路」的抉择开场：宽而舒适的外求之路 vs 窄而冒险、通向内在自由之路。两组对照叙事立住论点——作者的武士祖先文八郎（Bunpachiro）在武士时代终结时身份随头衔一同蒸发；跳台滑水选手 Ryan Dodd 在严重头部受伤后放下结果执念、转修内在成长，反而取得前所未有的成绩。<span class="badge b-s">✅</span></p>
+    <div class="socratic"><b>苏格拉底之问：</b>你上一次「得到就满足」的感觉，维持了几天？</div>
+    <div class="dial"><div class="z"><b>正</b>直指享乐适应跑步机，与幸福研究方向一致。</div><div class="f"><b>反</b>PALMS 也是文明与商业的引擎，全盘妖魔化有失公允。</div><div class="h"><b>边界</b>书反对的不是「拥有」，是把<b>身份</b>押在拥有物上。</div></div>
+  </div>
+
+  <div class="card ch-card" id="ch2">
+    <h3><span class="cno">第 2 章</span>野兽出没之地：骄傲、恐惧与「宇宙中心」<span class="cen">Where the Wild Things Are — Pride, Fear and the Center of the Universe</span></h3>
+    <div class="take"><b>主旨→</b>骄傲与恐惧是同一枚硬币的两面：都源自把自己放在宇宙中心。</div>
+    <div class="cdef"><span class="t t-pro">专业</span><b>自我中心（self-centeredness）</b>：注意力持续指向自我评价的认知模式——「我表现如何、别人怎么看我」。<br><span class="t t-plain">大白话</span>心里装了一台永远对准自己的摄像机。<br><span class="t t-ana">类比</span>舞台上盯着监视器里的自己跳舞，步子必乱。</div>
+    <p><b>观点 → 论证 → 案例</b>：怕失败，怕的从来不是事情本身，是「我」受损——形象、评价、身份。过度自我聚焦（我看起来如何、别人怎么想、我做得对不对）正是恐惧的来源；这台「自我摄像机」占用的注意力带宽，直接从表现里扣。<span class="badge b-s">✅</span></p>
+    <div class="socratic"><b>苏格拉底之问：</b>此刻让你紧张的那件事里，有多少成分是「事」，多少是「我」？</div>
+    <div class="dial"><div class="z"><b>正</b>与「聚光灯效应」等心理学发现同向。</div><div class="f"><b>反</b>适度自我监控是改进的必需，不能一刀切。</div><div class="h"><b>边界</b>训练与复盘时，自我监控是老师；上场那一刻，它是干扰源。分时使用。</div></div>
+  </div>
+
+  <div class="rescue">
+    <h5><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.6.6 1 1.4 1 2.5h6c0-1.1.4-1.9 1-2.5A6 6 0 0 0 12 3z"/></svg>卡住了？换个说法 · 钉子户 ②「无我，反而更强」</h5>
+    <div class="row"><span class="tag">朴素话</span>挡在你和最佳表现之间的，不是能力不够，而是那个忙着自保的「我」。</div>
+    <div class="row"><span class="tag">类比 A · 自然</span>走独木桥：木板放地上人人如履平地，架到十米高就走不动了——桥没变，是「怕摔的我」上桥了。</div>
+    <div class="row"><span class="tag">类比 B · 职场</span>开会发言：私下侃侃而谈的人，一对镜头就卡壳——注意力从「内容」切到了「我表现如何」。</div>
+    <div class="row"><span class="tag">递进拆解</span>① 大脑带宽有限 → ② 「自我监控」是最贵的后台进程 → ③ 关掉它，全部算力回到任务本身 → ④ 这正是「忘我」时超常发挥的机制。</div>
+    <div class="row"><span class="tag">点破直觉</span>直觉以为「多想想自己的表现」是敬业。真相是：表演进行时的自我监控是干扰源；「想自己」请放在训练和复盘时段。</div>
+    <div class="row"><span class="tag">类比边界</span>无我 ≠ 没有目标、没有身份。它只是不把「自我价值」押在<b>这一次</b>的结果上。</div>
+  </div>
+
+  <div class="card ch-card" id="ch3">
+    <h3><span class="cno">第 3 章</span>此生最大的对手：批评家、猴子心与骗子<span class="cen">The Greatest Opponents You'll Ever Face</span></h3>
+    <div class="take"><b>主旨→</b>给脑内噪音起名字，是驯服它的第一步——叫得出名字的敌人，才打得了。</div>
+    <div class="cdef"><span class="t t-pro">专业</span><b>三大内在对手</b>：批评家（对处境与他人不停下负面判决）、猴子心（刷屏式的、多为负面的杂念流）、骗子（编造「你不行」的假故事）。<span class="badge b-s">✅</span><br><span class="t t-plain">大白话</span>脑内三个不请自来的室友。<br><span class="t t-ana">类比</span>批评家＝毒舌评论区；猴子心＝永不停的弹幕；骗子＝造谣的营销号。</div>
+    <p><b>观点 → 论证 → 案例</b>：它们的话不是「你的判断」，是自动播放的节目。应对之道不是消灭（做不到），而是识别 → 不认同 → 转向任务。拟人化命名让运动员能在赛中一秒「点名」来袭的是哪一个，从被裹挟变成旁观。</p>
+    <div class="socratic"><b>苏格拉底之问：</b>今天你脑内的哪一句话，其实是「骗子」的台词？</div>
+    <div class="dial"><div class="z"><b>正</b>拟人化是元认知的好把手，与「认知解离」技术同向。</div><div class="f"><b>反</b>贴标签可能简化了负面情绪的信息功能。</div><div class="h"><b>边界</b>有些「负面念头」是真实风险信号——先分辨是警报还是噪音，再决定不理会。</div></div>
+  </div>
+
+  <div class="card ch-card" id="ch4">
+    <h3><span class="cno">第 4 章</span>无畏与暮光：卓越表现三支柱<span class="cen">The Daring and the Twilight — Three Pillars of Extraordinary Performance</span></h3>
+    <div class="take"><b>主旨→</b>换燃料：以爱·智慧·勇气替换恐惧，在场上显化为热爱、目的、从容。</div>
+    <div class="cdef"><span class="t t-pro">专业</span><b>三美德体系</b>：爱、智慧、勇气作为表现系统的底层价值排序，对应表现场景中的 passion / purpose / poise。<span class="badge b-s">✅</span>（与本章标题「三支柱」的一一对应关系为合理推断 <span class="badge b-i">⚠️</span>）<br><span class="t t-plain">大白话</span>决定你「为什么上场」的三块基石。<br><span class="t t-ana">类比</span>同一台发动机：烧恐惧＝劣质油，短期猛、长期伤缸；烧热爱＝清洁燃料，跑得久。</div>
+    <p><b>观点 → 论证 → 案例</b>：恐惧驱动的表现短期能冲、长期发抖，且收缩注意力与创造力；对事业本身的全心投入（爱）则扩展注意、稳定输出。这一章完成全书的「价值换轨」：技巧之前，先换动机。</p>
+    <div class="socratic"><b>苏格拉底之问：</b>你现在最重要的那件工作，烧的是哪种燃料？</div>
+    <div class="dial"><div class="z"><b>正</b>把价值排序放在技巧之前，补上了多数技巧书缺的地基。</div><div class="f"><b>反</b>「爱 vs 恐惧」二分过简：适度焦虑亦可促进表现（挑战态）。</div><div class="h"><b>边界</b>书谈的是「主导燃料」是什么，不是消灭一切紧张。</div></div>
+  </div>
+
+  <div class="card ch-card" id="ch5">
+    <h3><span class="cno">第 5 章</span>武士之道：一群战士如何驯服自我<span class="cen">Code of the Samurai</span></h3>
+    <div class="take"><b>主旨→</b>武士的可怕不在刀法，在「提前把生死放下」——放下自我的人，手不会抖。</div>
+    <div class="cdef"><span class="t t-pro">专业</span><b>驯服自我（ego mastery）</b>：通过纪律、礼法与使命感，把自我关切降到最低的系统训练传统。<br><span class="t t-plain">大白话</span>先把「怕丢脸、怕失去」清空，剩下的全是执行力。<br><span class="t t-ana">类比</span>清空后台进程，前台应用满帧运行。</div>
+    <p><b>观点 → 论证 → 案例</b>：武士阶层用日课与「向死而生」的心法，把无我制度化——这是历史上最接近「无我训练营」的群体样本。墨菲以自己的武士祖先为引，让传统智慧与现代表现心理接轨。<span class="badge b-s">✅</span>（章内修炼细目未逐条核实 <span class="badge b-i">⚠️</span>）</p>
+    <div class="socratic"><b>苏格拉底之问：</b>你的哪一个「怕」，一旦提前接受它最坏的版本，反而会释放出力量？</div>
+    <div class="dial"><div class="z"><b>正</b>传统武士心法与现代运动心理惊人同构。</div><div class="f"><b>反</b>武士文化亦有绝对服从与死亡美化的阴面。</div><div class="h"><b>边界</b>取其「预先接纳」的心法即可，不必连整套价值观打包收下。</div></div>
+  </div>
+
+  <div class="card ch-card" id="ch6">
+    <h3><span class="cno">第 6 章</span>改变状态，改变人生：如何掌控情绪<span class="cen">Change Your State, Change Your Life</span></h3>
+    <div class="take"><b>主旨→</b>情绪不是天气，是可以调的仪表盘：先动身体和注意力，感受会跟上来。</div>
+    <div class="cdef"><span class="t t-pro">专业</span><b>状态（state）</b>：生理唤醒 + 注意焦点 + 内部语言共同构成的即时心身条件。<br><span class="t t-plain">大白话</span>你此刻「人机状态」的总开关。<br><span class="t t-ana">类比</span>歌手开嗓、球员热身——不是等状态来，是把状态<b>做</b>出来。</div>
+    <p><b>观点 → 论证 → 案例</b>：与其「等心情好」，不如反向操作：改变可控的输入端（呼吸、姿态、注意焦点、语言），情绪输出随之改变。这是全书从「诊断」转入「日常训练科目」的第一章。<span class="badge b-s">✅</span>（章旨确证；具体入口清单为主题级概述 <span class="badge b-i">⚠️</span>）</p>
+    <div class="socratic"><b>苏格拉底之问：</b>你有没有一个「三分钟回到状态」的固定动作？没有的话，今天设计一个。</div>
+    <div class="dial"><div class="z"><b>正</b>身体先行调节情绪，与生理心理研究方向一致。</div><div class="f"><b>反</b>重度情绪困扰不是「调状态」能覆盖的范畴。</div><div class="h"><b>边界</b>适用于日常与赛场波动，不替代专业帮助。</div></div>
+  </div>
+
+  <div class="card ch-card" id="ch7">
+    <h3><span class="cno">第 7 章</span>「世界是平的」：建立与梦想同频的信念<span class="cen">The World Is Flat</span></h3>
+    <div class="take"><b>主旨→</b>「世界是平的」曾是全民信念，也照样是错的——所以信念不是用来「发现」的，是用来「选择」的。<span class="badge b-i">⚠️ 章名立意为推断</span></div>
+    <div class="cdef"><span class="t t-pro">专业</span><b>信念（belief）</b>：被当作真的心理表征——过滤你注意什么，决定你坚持多久。书的立场：信念是结果的第一决定因素。<span class="badge b-s">✅</span><br><span class="t t-plain">大白话</span>装在眼睛前的滤镜 + 装在油箱里的预算。<br><span class="t t-ana">类比</span>导航目的地设错了，车况再好也到不了。</div>
+    <p><b>观点 → 论证 → 案例</b>：信念决定尝试与坚持的量 → 从而系统性影响结果。转化工具链：可视化、肯定语、视角转换练习，以及一套五步「心智更新」流程。<span class="badge b-s">✅</span>（五步流程的具体步骤未能核实，不代述 <span class="badge b-d">❓</span>）</p>
+    <div class="socratic"><b>苏格拉底之问：</b>你有哪一条「从没验证过、却一直照办」的自我设定？</div>
+    <div class="dial"><div class="z"><b>正</b>信念影响注意、坚持与身体状态，有充分依据。</div><div class="f"><b>反</b>「第一决定因素」表述过强——禀赋、资源、运气同样是硬变量。</div><div class="h"><b>边界</b>信念改变的是你的投入函数，不是物理概率。详见下卡。</div></div>
+  </div>
+
+  <div class="rescue">
+    <h5><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.6.6 1 1.4 1 2.5h6c0-1.1.4-1.9 1-2.5A6 6 0 0 0 12 3z"/></svg>卡住了？换个说法 · 钉子户 ③「信念先于证据」</h5>
+    <div class="row"><span class="tag">朴素话</span>信念不是对现状的总结报告，而是给注意力和坚持下的<b>预算</b>——预算批多少，行为就投多少。</div>
+    <div class="row"><span class="tag">类比 A · 商业</span>投新品类：没人会等「市场证明成功」才投——先信，才有投入，才可能有结果。</div>
+    <div class="row"><span class="tag">类比 B · 生活</span>学游泳：相信「我能浮起来」的孩子敢放松，一放松真的浮了；不信的越挣扎越沉。</div>
+    <div class="row"><span class="tag">类比边界</span>信念改变的是你的注意、坚持与身体状态，<b>不改变物理概率</b>——「世界是平的」是全民信念也照样错。所以这一章的真正命题是：信念既强大又可错，因此必须<b>主动选择</b>信什么，而不是被动继承。</div>
+  </div>
+
+  <div class="card ch-card" id="ch8">
+    <h3><span class="cno">第 8 章</span>清明当下之美：全然临在的五种最强方式<span class="cen">A Clear and Present Beauty</span></h3>
+    <div class="take"><b>主旨→</b>表现只发生在「现在」；临在不是玄学，是一套有具体动作、可刻意练习的技能包。</div>
+    <div class="cdef"><span class="t t-pro">专业</span><b>临在（presence）</b>：注意力完全投注于当下任务的心理状态；书中强调它经由刻意练习养成。<span class="badge b-s">✅</span><br><span class="t t-plain">大白话</span>人到，心也到。<br><span class="t t-ana">类比</span>相机对焦——焦点落在此刻，画面才清晰。</div>
+    <p><b>观点 → 论证 → 案例</b>：本章给出「全然临在的五种最强方式」（具体清单未能从公开信源核实，不代述 <span class="badge b-d">❓</span>）。最有说服力的实证画面来自书外：AJ Brown 每场比赛在场边重读书开头段落作为「重置键」——他描述那段话讲的是保持清明之心、不被正负结果绑架、因谦卑而无从被羞辱，读完就能回到当下。<span class="badge b-s">✅</span></p>
+    <div class="socratic"><b>苏格拉底之问：</b>你上一次「完全在场」是什么时候？当时在做什么——那就是你的临在配方线索。</div>
+    <div class="dial"><div class="z"><b>正</b>与正念训练的证据方向一致。</div><div class="f"><b>反</b>「五法」是否优于标准正念课程，无对照可考。</div><div class="h"><b>边界</b>临在是技能不是境界：练了就有，停练就掉，和体能一样。</div></div>
+  </div>
+
+  <div class="card ch-card" id="ch9">
+    <h3><span class="cno">第 9 章</span>势不可挡：突破心理障碍、恐惧与恐惧症<span class="cen">Unstoppable</span></h3>
+    <div class="take"><b>主旨→</b>心理障碍多半不是墙，是贴了「墙」字条的门——旧恐惧和认知偏差把门画成了墙。</div>
+    <div class="cdef"><span class="t t-pro">专业</span><b>心理障碍（mental blocks）</b>：限制性信念 + 条件化恐惧 + 认知偏差共同构成的表现阻滞。<br><span class="t t-plain">大白话</span>身上还绑着早就该拆的旧绷带。<br><span class="t t-ana">类比</span>小象被细绳拴住，长成大象还站在原地——绳没变强，是信念没更新。</div>
+    <p><b>观点 → 论证 → 案例</b>：障碍多为「习得」，因此可逆。关键是<b>带着情绪去改写</b>——纯理性的自我说服改不动信念，情绪参与的转化才持久（本书要点之一：通过情绪投入转化限制性信念 <span class="badge b-s">✅</span>）。「怕失败 / 限制性信念 / 认知偏差 / 表现阻滞」四类障碍的归纳出自 Shortform 对本书的整理 <span class="badge b-i">⚠️</span>。</p>
+    <div class="socratic"><b>苏格拉底之问：</b>你哪一条「我不擅长 X」的结论，证据其实来自十年前？</div>
+    <div class="dial"><div class="z"><b>正</b>强调情绪参与，与记忆再巩固的研究方向契合。</div><div class="f"><b>反</b>真正的恐惧症与创伤需要专业干预。</div><div class="h"><b>边界</b>自助工具 ≠ 治疗；书本身也把严肃个案留给专业。</div></div>
+  </div>
+
+  <div class="card ch-card" id="ch10">
+    <h3><span class="cno">第 10 章</span>英雄与罪人：如何在压力下保持从容<span class="cen">The Hero and the Goat — Poise Under Pressure</span></h3>
+    <div class="take"><b>主旨→</b>同一个人，一球封神或一球背锅——把身份押在结果上的人，永远在英雄与罪人之间荡秋千。<span class="badge b-i">⚠️ 标题意象解读</span></div>
+    <div class="cdef"><span class="t t-pro">专业</span><b>从容（poise）</b>：高压下维持清明与执行力的能力；书中路径为「追求卓越而非成功、掌控自我而非放纵自我」。<span class="badge b-s">✅</span><br><span class="t t-plain">大白话</span>心跳可以快，心不能乱。<br><span class="t t-ana">类比</span>机长遇强气流：程序在手，情绪靠边——从容来自「有程序」，不是「没感觉」。</div>
+    <p><b>观点 → 论证 → 案例</b>：从容不是天赋，而是价值排序正确（卓越 &gt; 成功）加上日常演练的结果；书中以「共振（resonance）」描述其机制（该概念的具体展开未核实 <span class="badge b-d">❓</span>）。灵感样本横跨佛教僧侣、奥运选手与海豹突击队。<span class="badge b-s">✅</span></p>
+    <div class="socratic"><b>苏格拉底之问：</b>你的下一个高压场合，「程序」是什么？没有程序，上场的就只剩情绪。</div>
+    <div class="dial"><div class="z"><b>正</b>赛前例行程序与认知重构在运动心理学中有实证支持。</div><div class="f"><b>反</b>从容亦有气质与经验成分，训练非万能。</div><div class="h"><b>边界</b>从容是概率放大器，不是保胜符。</div></div>
+  </div>
+
+  <div class="card ch-card" id="ch11">
+    <h3><span class="cno">第 11 章</span>马斯洛、乔丹与海豹突击队：卓越领导者的三个标志<span class="cen">Three Hallmarks of Extraordinary Leaders</span></h3>
+    <div class="take"><b>主旨→</b>领导力 ＝ 先赢下自己 + 让团队看见比自己更大的东西。</div>
+    <div class="cdef"><span class="t t-pro">专业</span><b>领导力再定义</b>：自我掌控（self-mastery）+ 使人们与「超越自我的愿景」相连。<span class="badge b-s">✅</span>（第三个标志的具体表述未核实 <span class="badge b-d">❓</span>）<br><span class="t t-plain">大白话</span>自己先稳得住，还能给别人一个值得稳的理由。<br><span class="t t-ana">类比</span>灯塔：先自己立得住，才谈得上照亮别人。</div>
+    <p><b>观点 → 论证 → 案例</b>：本章把个人心法升维到组织：领导者的从容会被团队「传染」，领导者的结果焦虑同样会。作者官网用「selfless-actualization（无我实现）」一词呼应并超越马斯洛的自我实现——层级的顶端不是「实现自我」，而是「放下自我去成就更大的事」。<span class="badge b-s">✅</span></p>
+    <div class="socratic"><b>苏格拉底之问：</b>你的团队为之而战的「超越自我的愿景」，你能一句话说出来吗？他们能吗？</div>
+    <div class="dial"><div class="z"><b>正</b>与变革型领导理论方向一致。</div><div class="f"><b>反</b>「三标志」式清单有精英样本的幸存者偏差风险。</div><div class="h"><b>边界</b>愿景不能替代机制与激励设计，两者是与，不是或。</div></div>
+  </div>
+
+  <div class="card ch-card" id="ch12">
+    <h3><span class="cno">结语</span>一种新的活法 <span class="cen">Conclusion — A New Way of Life</span></h3>
+    <div class="take"><b>主旨→</b>这不是一次性技巧，是终身操作系统。书要当手册反复回翻——AJ Brown 每场比赛重读同一段落，就是官方示范用法。</div>
+    <p class="small">附录收录了「匿名戒酒会十二步」<span class="badge b-s">✅</span>——这个细节泄露了全书的精神传统底色：承认自身有限、交托、日课、服务他人。合上书那一刻，训练才刚开始。</p>
+  </div>
+
+  <div class="bridge"><div class="bh">桥 → 第 3 层</div>
+    内容你已走过一遍，正确模型在手。现在做最关键的一步——<b>把它和大多数人（包括过去的你）的「想当然」正面对撞</b>。概念改变研究早就发现：不主动纠偏，旧直觉会在三个月内悄悄夺回大脑。下一层列出 7 条最典型的误读，逐条拆。
+  </div>
+</section>
+
+<!-- ═══════════════ L3 · 认知纠正（校准） ═══════════════ -->
+<section id="l3">
+  <div class="lhead">
+    <div class="lnum">03</div>
+    <div>
+      <div class="eyebrow">Layer 3 · 校准 Question · 概念改变</div>
+      <h2>认知纠正：7 条最容易「想当然」的误读</h2>
+    </div>
+  </div>
+
+  <div class="banner"><span class="bt">本层带走这句</span>
+    7 条误解共用同一个病灶：<b>把「在乎结果」当成了「负责任」</b>。本书全部反直觉之处，都是在把因果链掰正——内在自由是表现的因，不是表现的奖品。
+  </div>
+
+  <div class="svgbox">
+  <svg viewBox="0 0 1000 560" style="width:100%;min-width:840px;display:block" role="img" aria-label="误解与真相对照图">
+    <text x="215" y="28" text-anchor="middle" font-size="15" font-weight="800" fill="var(--red)">大众怎么想 ✗</text>
+    <text x="785" y="28" text-anchor="middle" font-size="15" font-weight="800" fill="var(--teal)">书里怎么说 ✓</text>
+    <g font-size="14" font-weight="600">
+      <rect x="30" y="44" width="370" height="52" rx="12" fill="var(--red-t)"/><text x="215" y="76" text-anchor="middle" fill="var(--label)">更想赢，才能赢</text>
+      <rect x="600" y="44" width="370" height="52" rx="12" fill="var(--teal-t)"/><text x="785" y="76" text-anchor="middle" fill="var(--label)">对结果的执念正是恐惧引擎</text>
+      <rect x="30" y="116" width="370" height="52" rx="12" fill="var(--red-t)"/><text x="215" y="148" text-anchor="middle" fill="var(--label)">无我 ＝ 躺平、不在乎</text>
+      <rect x="600" y="116" width="370" height="52" rx="12" fill="var(--teal-t)"/><text x="785" y="148" text-anchor="middle" fill="var(--label)">全力投入 ＋ 放下结果，并存</text>
+      <rect x="30" y="188" width="370" height="52" rx="12" fill="var(--red-t)"/><text x="215" y="220" text-anchor="middle" fill="var(--label)">自信 ＝ 预测自己会赢</text>
+      <rect x="600" y="188" width="370" height="52" rx="12" fill="var(--teal-t)"/><text x="785" y="220" text-anchor="middle" fill="var(--label)">自信 ＝ 身份与结果解绑后的产物</text>
+      <rect x="30" y="260" width="370" height="52" rx="12" fill="var(--red-t)"/><text x="215" y="292" text-anchor="middle" fill="var(--label)">必须消灭负面念头</text>
+      <rect x="600" y="260" width="370" height="52" rx="12" fill="var(--teal-t)"/><text x="785" y="292" text-anchor="middle" fill="var(--label)">识别它、不认同、转向任务</text>
+      <rect x="30" y="332" width="370" height="52" rx="12" fill="var(--red-t)"/><text x="215" y="364" text-anchor="middle" fill="var(--label)">可视化 ＝ 玄学许愿</text>
+      <rect x="600" y="332" width="370" height="52" rx="12" fill="var(--teal-t)"/><text x="785" y="364" text-anchor="middle" fill="var(--label)">带情绪的多感官神经预演</text>
+      <rect x="30" y="404" width="370" height="52" rx="12" fill="var(--red-t)"/><text x="215" y="436" text-anchor="middle" fill="var(--label)">恐惧是最强燃料</text>
+      <rect x="600" y="404" width="370" height="52" rx="12" fill="var(--teal-t)"/><text x="785" y="436" text-anchor="middle" fill="var(--label)">恐惧点火快、烧引擎；爱才烧得久</text>
+      <rect x="30" y="476" width="370" height="52" rx="12" fill="var(--red-t)"/><text x="215" y="508" text-anchor="middle" fill="var(--label)">先成功 → 才自由满足</text>
+      <rect x="600" y="476" width="370" height="52" rx="12" fill="var(--teal-t)"/><text x="785" y="508" text-anchor="middle" fill="var(--label)">先内在自由 → 表现才释放</text>
+    </g>
+    <g font-size="18" fill="var(--sec)" font-weight="700">
+      <text x="500" y="77" text-anchor="middle">⇄</text><text x="500" y="149" text-anchor="middle">⇄</text><text x="500" y="221" text-anchor="middle">⇄</text><text x="500" y="293" text-anchor="middle">⇄</text><text x="500" y="365" text-anchor="middle">⇄</text><text x="500" y="437" text-anchor="middle">⇄</text><text x="500" y="509" text-anchor="middle">⇄</text>
+    </g>
+  </svg>
+  </div>
+
+  <div class="miscon"><header><span class="no">误解 1</span>「更想赢，才能赢」——把动机强度当成表现质量</header><div class="m-body">
+    <p class="small"><b>认知根源：</b>日常低压任务里，「更想要」确实带来更多努力，于是被错误外推到高压表现场景。</p>
+    <div class="m-truth"><b>真相 ✓</b> 高压之下，「想赢」的能量若以「怕输」的形式出现，会直接收缩注意力、僵化动作——对结果的执念正是恐惧的引擎（第 1–2 章的核心诊断）。</div>
+    <p class="small"><b>大白话类比：</b>握方向盘——想开稳而适度用力，车稳；因为怕出事而死死攥住，反而打摆。</p>
+    <div class="m-up">认知升级：动机放在赛前定方向，执念不许带进赛中。</div>
+    <div class="socratic"><b>反问：</b>你最近一次发挥失常，是因为不够想赢，还是因为太怕输？</div>
+  </div></div>
+
+  <div class="miscon"><header><span class="no">误解 2</span>「无我 ＝ 躺平、佛系、不在乎」</header><div class="m-body">
+    <p class="small"><b>认知根源：</b>中文语境里「放下」常与「放弃」混用；且「在乎」被默认为唯一的敬业表达。</p>
+    <div class="m-truth"><b>真相 ✓</b> 书中的无我是「全然投入 + 全然交托」的并存态：过程上 100% 承诺，结果上 100% 放手（开篇预设原义）。躺平是两头都放；无我只放一头。</div>
+    <p class="small"><b>大白话类比：</b>农夫种地——耕作施肥一天不落（全力），天何时下雨不归他管（交托）。躺平的农夫连地都不耕。</p>
+    <div class="m-up">认知升级：无我砍掉的是「自我保护」的开销，不是「投入」本身。</div>
+    <div class="socratic"><b>反问：</b>你团队里最拼的那个人，拼的是事，还是自己的安全感？</div>
+  </div></div>
+
+  <div class="miscon"><header><span class="no">误解 3</span>「自信 ＝ 相信自己这次会赢」</header><div class="m-body">
+    <p class="small"><b>认知根源：</b>把自信当成对结果的乐观预测——于是每次结果不如意，自信就塌一次。</p>
+    <div class="m-truth"><b>真相 ✓</b> 书中的自信建立在「自我价值与单次结果解绑」之上：因为我不等于这次结果，所以我敢冒险、输得起。AJ Brown 复述他每场重读的段落大意正是如此——保持清明、不被正负结果绑架，谦卑的人无从被羞辱。<span class="badge b-s">✅</span></p>
+    <p class="small"><b>大白话类比：</b>好的资产负债表——单笔交易亏了，公司还在；把全部身家押一单的人，才会在下单时手抖。</p>
+    <div class="m-up">认知升级：真自信是「输得起」，不是「稳赢的错觉」。</div>
+    <div class="socratic"><b>反问：</b>如果这次注定失败但无人知晓，你还敢不敢全力打？敢，才是自信。</div>
+  </div></div>
+
+  <div class="miscon"><header><span class="no">误解 4</span>「负面念头必须消灭干净，才能表现好」</header><div class="m-body">
+    <p class="small"><b>认知根源：</b>把「心态好」理解成脑内一片祥和——于是一有杂念就双倍焦虑：既焦虑事情，又焦虑「我怎么还在焦虑」。</p>
+    <div class="m-truth"><b>真相 ✓</b> 批评家、猴子心、骗子是常驻程序，消灭不了；书的方案是识别 → 不认同 → 转向（第 3 章）。目标不是无声，是「有声但不跟着走」。</div>
+    <p class="small"><b>大白话类比：</b>开车时收音机里有人唱衰路况——你不用砸收音机，知道那是电台不是导航，继续看路就行。</p>
+    <div class="m-up">认知升级：赢的不是「没杂念的人」，是「杂念来了也不换台面的人」。</div>
+    <div class="socratic"><b>反问：</b>今天脑内那句最响的负面话，你是把它当「我」，还是当「它」？</div>
+  </div></div>
+
+  <div class="miscon"><header><span class="no">误解 5</span>「可视化 ＝ 吸引力法则式许愿」</header><div class="m-body">
+    <p class="small"><b>认知根源：</b>畅销文化把心理意象和「宇宙下单」捆绑销售，败坏了这门正经技术的名声。</p>
+    <div class="m-truth"><b>真相 ✓</b> 书中的可视化是带情绪的多感官心理演练——大脑对生动排练的反应与真实练习部分重叠，本质是给动作与信念做「神经预演」，且必须与真实刻意练习配套（第 7、9 章工具链；「情绪投入才能改写信念」为本书确证要点 <span class="badge b-s">✅</span>）。</p>
+    <p class="small"><b>大白话类比：</b>飞行模拟器——飞行员在模拟舱里练上百次紧急程序，不是在「许愿不出事」，是在预装反应。</p>
+    <div class="m-up">认知升级：可视化是训练的延长线，不是努力的替代品。</div>
+    <div class="socratic"><b>反问：</b>你上次「想象成功」时，想的是领奖画面，还是过程中的每个动作？前者是许愿，后者才是训练。</div>
+  </div></div>
+
+  <div class="miscon"><header><span class="no">误解 6</span>「恐惧是最强燃料——商场如战场，就得靠怕」</header><div class="m-body">
+    <p class="small"><b>认知根源：</b>恐惧确实见效快（deadline 前效率飙升人人体验过），于是被误当成可持续引擎。</p>
+    <div class="m-truth"><b>真相 ✓</b> 恐惧点火快，但长期烧的是引擎本身：收缩注意力、扼杀创造、透支身心。书的换轨方案：以爱（对事的全心投入）、智慧、勇气为主导燃料，恐惧最多当短程点火器（第 4 章）。</div>
+    <p class="small"><b>大白话类比：</b>氮气加速 vs 正常油路——氮气偶尔冲刺可以，全程开着，发动机报废。</p>
+    <div class="m-up">认知升级：问自己「我为什么上场」，答案决定你能跑多久。</div>
+    <div class="socratic"><b>反问：</b>靠恐惧管理的团队，在你离开会议室之后，还在高速运转吗？</div>
+  </div></div>
+
+  <div class="miscon"><header><span class="no">误解 7</span>「先成功了，我才会满足和自由」</header><div class="m-body">
+    <p class="small"><b>认知根源：</b>整个 PALMS 文化的默认排序：成就 → 满足。人人都在等「到了那一天」。</p>
+    <div class="m-truth"><b>真相 ✓</b> 全书总命题恰是反向：内在自由是表现的<b>因</b>，不是表现的<b>奖品</b>。先解绑、先清明、先热爱，卓越才作为副产品到来——「两条路其实是同一条」说的就是这个顺序（C0）。</div>
+    <p class="small"><b>大白话类比：</b>睡眠与业绩——不是「做完业绩才配睡好」，是睡好了才做得出业绩。把因果排反的人，两头都拿不到。</p>
+    <div class="m-up">认知升级：自由不在终点线后面，它是你的起跑姿势。</div>
+    <div class="socratic"><b>反问：</b>你现在推迟享受的那份「内心安定」，推迟本身是否正在损耗你的表现？</div>
+  </div></div>
+
+  <div class="card" style="background:var(--purple-t);border-color:var(--purple)">
+    <h4 style="margin-top:0;color:var(--purple)">元认知收束：7 条误解的共同病灶</h4>
+    <p class="small">七条误解全部来自同一个根：<b>把自我价值和单次结果焊死</b>。焊死之后，「想赢」变执念（1）、「放下」像背叛（2）、自信随比分涨跌（3）、杂念成灾（4）、可视化沦为许愿（5）、恐惧被扶正（6）、自由被无限期推迟（7）。这正是「读经典 ＝ 纠偏」的价值：不是学了七个新知识，而是拆了一个旧焊点。</p>
+  </div>
+
+  <div class="bridge"><div class="bh">桥 → 第 4 层</div>
+    理解已校准。最后上到最高层：不再只问「我读懂了吗」，而是问「<b>这本书本身站得住吗</b>」「它在更大的知识网络里坐在哪个位置」——然后用提取练习把它焊进长期记忆，并落到你的下一个高压星期一。
+  </div>
+</section>
+
+<!-- ═══════════════ L4 · 五阶段深度解构（精研） ═══════════════ -->
+<section id="l4">
+  <div class="lhead">
+    <div class="lnum">04</div>
+    <div>
+      <div class="eyebrow">Layer 4 · 精研 Recite &amp; Review · 评判 · 主题 · 内化</div>
+      <h2>五阶段深度解构：评判这本书，放进网络，焊进记忆</h2>
+    </div>
+  </div>
+
+  <div class="banner"><span class="bt">本层带走这句</span>
+    这本书当「训练手册」读是上品，当「实验报告」读会失望——它的证据是轶事级的，但工具与循证运动心理学高度兼容，且补上了技巧书普遍缺失的地基：先换价值排序，再谈技巧。
+  </div>
+
+  <h3>Phase 0 · 检视（回指 L1）</h3>
+  <p class="small">全书骨架已在 L1 一图收束：<b>病灶（PALMS → 自我中心 → 三对手）→ 药方（三美德 + 无我）→ 疗程（信念·状态·临在训练）→ 副产品（从容 → 卓越 ＝ 最好人生）</b>。不再重复。</p>
+
+  <h3>Phase 1 · 分析：全书论证骨架</h3>
+  <div class="svgbox">
+  <svg viewBox="0 0 1000 150" style="width:100%;min-width:900px;display:block" role="img" aria-label="论证骨架链">
+    <g font-size="13.5" font-weight="700">
+      <rect x="12" y="30" width="148" height="92" rx="13" fill="var(--red-t)"/><text x="86" y="66" text-anchor="middle" fill="var(--sec)" font-size="11" font-weight="800">现象</text><text x="86" y="88" text-anchor="middle" fill="var(--label)">PALMS 式焦虑</text><text x="86" y="108" text-anchor="middle" fill="var(--sec)" font-size="11.5">越追越空</text>
+      <rect x="176" y="30" width="148" height="92" rx="13" fill="var(--red-t)"/><text x="250" y="66" text-anchor="middle" fill="var(--sec)" font-size="11" font-weight="800">诊断</text><text x="250" y="88" text-anchor="middle" fill="var(--label)">自我＝恐惧引擎</text><text x="250" y="108" text-anchor="middle" fill="var(--sec)" font-size="11.5">骄傲恐惧同根</text>
+      <rect x="340" y="30" width="148" height="92" rx="13" fill="var(--orange-t)"/><text x="414" y="66" text-anchor="middle" fill="var(--sec)" font-size="11" font-weight="800">机制</text><text x="414" y="88" text-anchor="middle" fill="var(--label)">三对手劫持注意</text><text x="414" y="108" text-anchor="middle" fill="var(--sec)" font-size="11.5">带宽被自我占用</text>
+      <rect x="504" y="30" width="148" height="92" rx="13" fill="var(--blue-t)"/><text x="578" y="66" text-anchor="middle" fill="var(--sec)" font-size="11" font-weight="800">转向</text><text x="578" y="88" text-anchor="middle" fill="var(--label)">无我＋三美德</text><text x="578" y="108" text-anchor="middle" fill="var(--sec)" font-size="11.5">换掉燃料与车主</text>
+      <rect x="668" y="30" width="148" height="92" rx="13" fill="var(--blue-t)"/><text x="742" y="66" text-anchor="middle" fill="var(--sec)" font-size="11" font-weight="800">训练</text><text x="742" y="88" text-anchor="middle" fill="var(--label)">信念·状态·临在</text><text x="742" y="108" text-anchor="middle" fill="var(--sec)" font-size="11.5">日课化、手册化</text>
+      <rect x="832" y="30" width="156" height="92" rx="13" fill="var(--green-t)"/><text x="910" y="66" text-anchor="middle" fill="var(--sec)" font-size="11" font-weight="800">结果</text><text x="910" y="88" text-anchor="middle" fill="var(--label)">从容 → 卓越</text><text x="910" y="108" text-anchor="middle" fill="var(--sec)" font-size="11.5">副产品，非目标</text>
+    </g>
+    <g stroke="var(--ter)" stroke-width="2" fill="var(--ter)">
+      <line x1="160" y1="76" x2="172" y2="76"/><path d="M170,71 L178,76 L170,81 Z"/>
+      <line x1="324" y1="76" x2="336" y2="76"/><path d="M334,71 L342,76 L334,81 Z"/>
+      <line x1="488" y1="76" x2="500" y2="76"/><path d="M498,71 L506,76 L498,81 Z"/>
+      <line x1="652" y1="76" x2="664" y2="76"/><path d="M662,71 L670,76 L662,81 Z"/>
+      <line x1="816" y1="76" x2="828" y2="76"/><path d="M826,71 L834,76 L826,81 Z"/>
+    </g>
+  </svg>
+  </div>
+  <p class="small"><b>方法论逻辑链（一句话版）：</b>身份与结果解绑 → 自我监控关闭、注意力带宽释放 → 状态可调、信念可选 → 临在成为默认 → 高压下从容 → 卓越作为副产品出现。每一环都是上一环的直接后果——这条链的强度取决于第一环：解绑做不到，后面全是空转。</p>
+
+  <h3>Phase 2 · 辩证：先替它把最强的批评说出来（Steelman）</h3>
+  <div class="grid g2">
+    <div class="card" style="margin:0"><h4 style="margin-top:0;color:var(--red)">反题 · 四记重拳 <span class="badge b-i">⚠️ 推断性评估</span></h4>
+      <p class="small"><b>① 证据级别：</b>核心论据是精英运动员轶事——读了书夺冠的被引用，读了没夺冠的沉默。幸存者偏差 + 无对照组，是这类书的原罪。</p>
+      <p class="small"><b>② 精神底色：</b>《小王子》与所罗门的题词、附录里的 AA 十二步、「交托」语汇——带明显精神传统（含基督教）色彩，世俗读者可能水土不服。</p>
+      <p class="small"><b>③ 原创性：</b>与 Gallwey《网球的内在游戏》（1974）、正念传统、既有运动心理学高度同源，概念上真正的新增量有限。</p>
+      <p class="small"><b>④ 表述过强：</b>「信念是结果的第一决定因素」在科学上站不住——禀赋、资源、运气同样是硬变量。</p></div>
+    <div class="card" style="margin:0"><h4 style="margin-top:0;color:var(--green)">合题 · 它仍然值得读的理由 <span class="badge b-i">⚠️</span></h4>
+      <p class="small"><b>① 体裁错配不是缺陷：</b>它是训练手册，不是学术专著——手册的检验标准是「照做有没有用」，而其核心工具（心理意象、自我对话、赛前例行程序、正念）恰恰都是运动心理学中有较充分实证支持的项目。书的包装是轶事，内核是共识。</p>
+      <p class="small"><b>② 真正的增量在排序：</b>多数技巧书教「怎么做」，本书先回答「为谁而做、烧什么燃料」——把价值排序放在技巧之前，这是它比同类书深一层的地方，也是精英选手反复重读它的原因。</p>
+      <p class="small"><b>③ 使用建议：</b>当操作系统装，别当实验报告读；「信念第一变量」按「信念决定投入函数」降档理解即可食用。</p></div>
+  </div>
+  <div class="card" style="background:var(--fill)"><h4 style="margin-top:0">偏差体检（读它时你自己会中的三个招）</h4>
+    <p class="small"><b>光环效应：</b>「AJ Brown 都在读」本身就是一次光环营销——书的走红路径与书的质量是两个变量。<b>确认偏差：</b>带着「想被激励」的心来，句句都像真理。<b>幸存者偏差：</b>见上。解药：读完做一次本层的自测，而不是只留下「被点燃」的感觉。</p></div>
+
+  <h3>Phase 3 · 主题阅读：把它放进书架的正确位置</h3>
+  <div class="tbl-scroll card" style="padding:8px 16px">
+    <table>
+      <tr><th>对话对象</th><th>共识</th><th>分歧 / 互补</th></tr>
+      <tr><td><b>Gallwey《网球的内在游戏》</b>（1974）</td><td>都认定「真正的对手在脑内」：Gallwey 的 Self 1（指手画脚的自我）≈ 墨菲的三大对手。</td><td>Gallwey 偏注意力技术（信任身体、非评判观察）；墨菲把根挖到「心」——爱、身份、价值排序。前者是术，后者补了道。<span class="badge b-i">⚠️</span></td></tr>
+      <tr><td><b>契克森米哈赖《心流》</b></td><td>「自成目的」体验 ≈ 「卓越是副产品」：最佳表现都出现在忘我投入时。</td><td>《心流》是描述性科学（何时会发生）；本书是训练手册（怎么让它更常发生）。互为表里。<span class="badge b-i">⚠️</span></td></tr>
+      <tr><td><b>MacKay《It's Lonely at the Top》</b>（2026）</td><td>都直面高位者的心理负荷。</td><td>MacKay 给的是<b>外部</b>脚手架（同伴支持、打破领导孤岛）；墨菲给的是<b>内在</b>脚手架（无我、临在、日课）。对高压管理者而言，两者是同一张安全网的经纬线。<span class="badge b-i">⚠️ 迁移推断</span></td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h4 style="margin-top:0">模型格栅（≤2 个，够用即止）</h4>
+    <p class="small"><b>① 古德哈特定律（Goodhart's Law）：</b>「指标一旦成为目标，就不再是好指标。」本书是它的个人版——把「赢」从过程指标扶正为身份目标的那一刻，产生「赢」的整个系统（注意力、松弛、创造力）开始被腐蚀。</p>
+    <p class="small"><b>② 芒格式逆向思维（Inversion）：</b>别问「怎么发挥更好」，先问「什么在阻止我发挥」然后移除——全书本质是一次大型逆向操作：不往你身上加技巧，而是把「自我」这块最大的绊脚石搬走。</p>
+  </div>
+
+  <div class="card">
+    <h4 style="margin-top:0">业务与生活迁移（高压管理场景）<span class="badge b-i">⚠️ 应用推断</span></h4>
+    <p class="small"><b>个人层：</b>给自己的「大场面」（大促作战室、季度述职、艰难谈判）配一套赛前程序——固定的呼吸、一张随身「清明卡」（写法见 Phase 4 的 72 小时行动）。AJ Brown 场边重读的做法，就是管理者版「会前 90 秒重置」的原型。</p>
+    <p class="small"><b>团队层：</b>复盘文化从「结果审判」转向「过程与成长」——把人的身份钉在单季 GMV 上，正是在团队里批量复制第 2 章的恐惧引擎（古德哈特的组织版）。</p>
+    <p class="small"><b>边界（必须说清）：</b>平台经营仍需结果问责。本书讲的是<b>注意力放哪里</b>与<b>身份押哪里</b>，不是取消 KPI；「无我」用于执行时刻，「结果」用于复盘时刻，分时不冲突。</p>
+  </div>
+
+  <h3>Phase 4 · 内化：焊进长期记忆</h3>
+  <div class="card">
+    <h4 style="margin-top:0">帕累托必读（约 20% 篇幅拿走 80% 价值）<span class="badge b-i">⚠️ 主观推荐</span></h4>
+    <p class="small">时间有限就读五处：<b>卷首预设</b>（全书公理）→ <b>第 2 章</b>（恐惧的病理）→ <b>第 3 章</b>（三对手点名手册）→ <b>第 8 章</b>（临在技能包）→ <b>第 10 章</b>（高压从容的组装）。第 11 章带团队者加读。</p>
+  </div>
+
+  <h4>提取练习 · 5 道自测（先答后翻）</h4>
+  <details><summary>1 · PALMS 五个字母各指什么？它为什么被称作「病毒」？</summary><div>财物 Possessions、成就 Achievements、外貌 Looks、金钱 Money、地位 Status。称「病毒」（affluenza）因为它自我复制：每次满足都自动生成下一个匮乏，且通过比较在人群中传染。</div></details>
+  <details><summary>2 · 三大内在对手分别是谁？各自的攻击方式？</summary><div>批评家——对处境与他人不停下负面判决；猴子心——刷屏式杂念流；骗子——编造「你不行」的假故事。共同点：都是自动播放，不是「你的」判断。</div></details>
+  <details><summary>3 · 书中定义的「卓越表现的核心成分」是什么？它和躺平的区别？</summary><div>无我 / 全然交托：对自我之牵挂、担忧、恐惧的彻底放手。与躺平的区别：躺平两头都放（投入＋结果），无我只放一头（结果），过程仍是 100% 承诺。</div></details>
+  <details><summary>4 · 三美德是哪三个？在表现场景中显化为什么？</summary><div>爱、智慧、勇气 → 显化为热爱（passion）、目的（purpose）、从容（poise）。功能：替换恐惧成为主导燃料。</div></details>
+  <details><summary>5 · AJ Brown 的用法给了我们哪个可复制的「微仪式」？</summary><div>把书当重置键：每逢高压场景，重读同一段「清明之心」文字，90 秒完成状态复位——可移植为管理者的会前卡片仪式。</div></details>
+
+  <div class="grid g3" style="margin-top:14px">
+    <div class="kv"><b>间隔复习 · 明天</b>不看书，口头复述：三大对手的名字 + 「无我」的书内定义。答不全就回 L1。</div>
+    <div class="kv"><b>间隔复习 · 一周后</b>教学反哺：用 3 分钟把这本书讲给一个完全没读过的人。讲不清的那一段，就是你没懂的那一段。</div>
+    <div class="kv"><b>间隔复习 · 一月后</b>重画 L1 关系图（见下），并检查 72 小时行动是否还活着。</div>
+  </div>
+
+  <div class="card" style="border-color:var(--green);background:var(--green-t)">
+    <h4 style="margin-top:0;color:var(--green)">72 小时行动：做一张自己的「清明卡」</h4>
+    <p class="small">三句话，写在手机备忘录置顶或一张实体卡上，带进下一个高压场合，开场前读一遍：<br>① <b>我不等于这一次的结果。</b>② <b>此刻唯一的任务是 ×××（写具体动作）。</b>③ <b>全力去做，结果交出去。</b><br>这就是 AJ Brown 场边仪式的管理者移植版——成本 90 秒，收益是把 L1 到 L4 的全部内容压缩成一个可执行动作。</p>
+  </div>
+
+  <div class="card" style="border-style:dashed">
+    <h4 style="margin-top:0">收束 · 首尾闭环：凭记忆重画那张图</h4>
+    <p class="small">合上本页，拿一张纸：中心写「同一条路」，凭记忆画出 10 个节点和它们的连线（病灶半圈、药方半圈）。画完再回 L1 对照——缺的节点就是该重读的章节。<b>画得出这张图，这本书才真正属于你。</b></p>
+  </div>
+</section>
+
+<!-- ═══════ 页脚：反幻觉说明 · 信源 · 署名 ═══════ -->
+<div class="footer">
+  <h4 style="margin-top:0;color:var(--label)">反幻觉声明与信源</h4>
+  <p><b>置信度三级标注贯穿全文：</b><span class="badge b-s">✅ 确证</span> 书中明确内容或多个可靠信源交叉一致；<span class="badge b-i">⚠️ 推断</span> 基于书内逻辑的合理延伸（全部辩证、跨界迁移、章名意象解读默认此级）；<span class="badge b-d">❓ 存疑</span> 公开信源不足，已注明且不代述细节（如第 8 章五法清单、五步心智更新的具体步骤、第 11 章第三标志、中文版出版信息）。全文不编造页码、不编造原文引文、不编造未核实清单。</p>
+  <p><b>核验信源：</b>Grand Central / Hachette 2025 版书页与 Barnes &amp; Noble 书目信息（版本、NYT 畅销）；2020 修订版目录（章节标题）；SuperSummary 官方学习指南（框架：三对手、三美德、PALMS、信念工具链、领导力定义，底本为 2020 Grand Central 电子版）；Shortform 摘要（四类障碍归纳）；Amazon 作者页与 innerexcellence.com 官网（作者履历、沙漠写作、selfless-actualization、新书信息）；Internet Archive（2010 McGraw-Hill 初版书目）；CBS Philadelphia / Axios / atozsports 等 2025 年 1 月报道（AJ Brown 事件与本人表述）。</p>
+  <p class="small">阅读科学基座：Adler 四层次阅读 · Ausubel 先行组织者 · 概念改变（Posner/Chi）· Make It Stick / Dunlosky 检索练习与间隔复习 · Gick &amp; Holyoak 多重类比迁移 · Minto 金字塔原理。</p>
+  <p class="sign">理海 / 飞猪度假 &amp; 国际酒店事业部 · 2026-07-12 · 详细解读 · deep-book-full-interpretation v6</p>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+(function(){
+  var steps = document.querySelectorAll('.step');
+  var map = {l1:null,l2:null,l3:null,l4:null};
+  steps.forEach(function(s){ map[s.getAttribute('data-t')] = s; });
+  var secs = ['l1','l2','l3','l4'].map(function(id){ return document.getElementById(id); });
+  function setOn(id){
+    steps.forEach(function(s){ s.classList.remove('on'); });
+    if(map[id]) map[id].classList.add('on');
+  }
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ setOn(e.target.id); } });
+    }, {rootMargin:'-30% 0px -60% 0px'});
+    secs.forEach(function(el){ if(el) io.observe(el); });
+  }
+  setOn('l1');
+})();
+</script>
+</body>
+</html>
