@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>《心智的10大模型》详细解读 · 大脑与意识的数学原理</title>
+<style>
+:root{
+  --bg:#F2F2F7; --card:#FFFFFF; --card2:#FBFBFD;
+  --label:#000000; --label2:rgba(60,60,67,.62); --label3:rgba(60,60,67,.34);
+  --sep:rgba(60,60,67,.24); --hair:rgba(60,60,67,.16);
+  --blue:#007AFF; --green:#34C759; --orange:#FF9500; --red:#FF3B30;
+  --purple:#AF52DE; --indigo:#5856D6; --teal:#30B0C7; --gray:#8E8E93;
+  --blue-bg:rgba(0,122,255,.10); --green-bg:rgba(52,199,89,.12); --orange-bg:rgba(255,149,0,.12);
+  --red-bg:rgba(255,59,48,.10); --purple-bg:rgba(175,82,222,.10); --indigo-bg:rgba(88,86,214,.10);
+  --teal-bg:rgba(48,176,199,.11); --fill:rgba(120,120,128,.12);
+  --glass:rgba(242,242,247,.78); --shadow:0 1px 2px rgba(0,0,0,.04),0 8px 24px rgba(0,0,0,.06);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#000000; --card:#1C1C1E; --card2:#151517;
+    --label:#FFFFFF; --label2:rgba(235,235,245,.64); --label3:rgba(235,235,245,.36);
+    --sep:rgba(84,84,88,.62); --hair:rgba(84,84,88,.42);
+    --blue:#0A84FF; --green:#30D158; --orange:#FF9F0A; --red:#FF453A;
+    --purple:#BF5AF2; --indigo:#5E5CE6; --teal:#40C8E0; --gray:#98989D;
+    --blue-bg:rgba(10,132,255,.16); --green-bg:rgba(48,209,88,.16); --orange-bg:rgba(255,159,10,.16);
+    --red-bg:rgba(255,69,58,.16); --purple-bg:rgba(191,90,242,.16); --indigo-bg:rgba(94,92,230,.18);
+    --teal-bg:rgba(64,200,224,.16); --fill:rgba(120,120,128,.24);
+    --glass:rgba(18,18,20,.72); --shadow:0 1px 2px rgba(0,0,0,.5),0 10px 30px rgba(0,0,0,.45);
+  }
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{font-size:clamp(16.5px,.4vw + 15px,18px);scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','SF Pro Display','PingFang SC','Helvetica Neue',sans-serif;
+  background:var(--bg);color:var(--label);line-height:1.85;letter-spacing:.015em;
+  padding-bottom:max(34px,env(safe-area-inset-bottom));}
+.wrap{max-width:none;padding:0 clamp(20px,4vw,72px)}
+a{color:var(--blue);text-decoration:none}
+a:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offset:2px;border-radius:8px}
+h1{font-size:clamp(1.7rem,1.2rem + 1.6vw,2.15rem);line-height:1.25;font-weight:800;letter-spacing:.002em}
+h2{font-size:1.5rem;line-height:1.28;font-weight:700;letter-spacing:.004em}
+h3{font-size:1.2rem;line-height:1.3;font-weight:700}
+h4{font-size:1.02rem;line-height:1.35;font-weight:600}
+p{margin:0 0 .9rem}
+.small{font-size:.82rem;color:var(--label2)}
+.tiny{font-size:.74rem;color:var(--label3)}
+/* ---------- 进度步骤条 ---------- */
+.stepper{position:sticky;top:0;z-index:60;backdrop-filter:blur(22px) saturate(180%);-webkit-backdrop-filter:blur(22px) saturate(180%);
+  background:var(--glass);border-bottom:.5px solid var(--hair);}
+.stepper-in{display:flex;gap:8px;align-items:center;overflow-x:auto;padding:10px clamp(20px,4vw,72px);scrollbar-width:none}
+.stepper-in::-webkit-scrollbar{display:none}
+.step{flex:0 0 auto;display:flex;align-items:center;gap:8px;min-height:44px;padding:6px 16px;border-radius:22px;
+  border:.5px solid var(--sep);background:var(--card);color:var(--label2);font-size:.86rem;font-weight:600;white-space:nowrap;
+  transition:all .2s ease}
+.step .n{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;
+  background:var(--fill);color:var(--label2);font-size:.72rem;font-weight:700}
+.step.on{color:#fff;border-color:transparent}
+.step.on .n{background:rgba(255,255,255,.28);color:#fff}
+.step.s1.on{background:var(--blue)} .step.s2.on{background:var(--green)}
+.step.s3.on{background:var(--orange)} .step.s4.on{background:var(--purple)}
+.stepper-meta{margin-left:auto;font-size:.74rem;color:var(--label3);white-space:nowrap;padding-left:8px}
+/* ---------- 通用卡片 ---------- */
+.card{background:var(--card);border:.5px solid var(--hair);border-radius:18px;box-shadow:var(--shadow);
+  padding:clamp(18px,2.4vw,30px);margin:0 0 20px}
+.card2{background:var(--card2)}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.76rem;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--label2);margin-bottom:10px}
+.dot{width:8px;height:8px;border-radius:50%}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+/* 置信度徽章（全文统一三标） */
+.bd{display:inline-flex;align-items:center;gap:4px;padding:2px 10px;border-radius:999px;font-size:.72rem;font-weight:700;vertical-align:1px}
+.bd-f{background:var(--green-bg);color:var(--green)}
+.bd-i{background:var(--orange-bg);color:var(--orange)}
+.bd-d{background:var(--fill);color:var(--label2)}
+/* 溯源 chip 与金句 */
+.src{display:inline-block;margin-top:6px;font-size:.72rem;color:var(--label3)}
+.take{margin-top:14px;padding:12px 16px;border-radius:14px;background:var(--indigo-bg);border-left:4px solid var(--indigo);
+  font-weight:600;font-size:.95rem}
+.take b{color:var(--indigo)}
+/* 概念三色标签 */
+.trio{display:grid;gap:8px;margin:.4rem 0 .9rem}
+.trio>div{display:flex;gap:10px;align-items:flex-start;font-size:.92rem}
+.tg{flex:0 0 auto;margin-top:3px;padding:1px 10px;border-radius:999px;font-size:.7rem;font-weight:700}
+.tg-term{background:var(--indigo-bg);color:var(--indigo)}
+.tg-plain{background:var(--green-bg);color:var(--green)}
+.tg-ana{background:var(--orange-bg);color:var(--orange)}
+/* 难点强化卡（换个说法） */
+.boost{position:relative;margin:14px 0;padding:16px 18px 14px 54px;border-radius:16px;
+  background:var(--orange-bg);border:.5px solid rgba(255,149,0,.35)}
+.boost .bulb{position:absolute;left:16px;top:16px;width:26px;height:26px;color:var(--orange)}
+.boost h5{font-size:.9rem;font-weight:700;color:var(--orange);margin-bottom:6px}
+.boost p{font-size:.92rem;margin-bottom:.55rem}
+.boost .lvl{position:absolute;right:14px;top:12px;font-size:.68rem;font-weight:700;color:var(--orange);
+  background:var(--card);border:.5px solid rgba(255,149,0,.4);padding:1px 9px;border-radius:999px}
+.boost ul{margin:0 0 .5rem 1.1rem}
+.boost li{font-size:.92rem;margin-bottom:.3rem}
+.edge-note{font-size:.8rem;color:var(--label2);border-top:.5px dashed var(--sep);padding-top:8px;margin-top:4px}
+/* 层结构 */
+.layer{padding-top:24px;margin-top:8px}
+.layer-head{display:flex;align-items:center;gap:14px;margin:8px 0 6px}
+.layer-badge{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;min-width:64px;height:44px;
+  border-radius:14px;color:#fff;font-weight:800;font-size:1.05rem;letter-spacing:.04em}
+.l1 .layer-badge{background:var(--blue)} .l2 .layer-badge{background:var(--green)}
+.l3 .layer-badge{background:var(--orange)} .l4 .layer-badge{background:var(--purple)}
+.layer-sub{font-size:.86rem;color:var(--label2);margin-bottom:16px}
+/* 桥 */
+.bridge{margin:26px 0 34px;padding:18px 22px;border-radius:16px;font-size:.98rem;
+  background:var(--fill);border-left:5px solid var(--gray)}
+.bridge b{font-weight:700}
+.bridge .to{display:inline-block;margin-right:8px;font-size:.74rem;font-weight:800;letter-spacing:.06em;color:var(--label2)}
+.br1{background:var(--green-bg);border-left-color:var(--green)}
+.br2{background:var(--orange-bg);border-left-color:var(--orange)}
+.br3{background:var(--purple-bg);border-left-color:var(--purple)}
+/* 章节卡 */
+.ch{scroll-margin-top:86px}
+.ch .num{display:inline-flex;align-items:center;gap:8px;font-size:.74rem;font-weight:800;letter-spacing:.1em;color:var(--green);margin-bottom:6px}
+.ch h3 .mdl{display:block;font-size:.88rem;font-weight:600;color:var(--label2);margin-top:4px;letter-spacing:.01em}
+.ch .thesis{margin:10px 0 12px;padding:10px 14px;border-radius:12px;background:var(--green-bg);font-weight:600;font-size:.96rem}
+.socratic{margin:10px 0;padding:10px 14px;border-radius:12px;background:var(--blue-bg);font-size:.92rem}
+.socratic b{color:var(--blue)}
+.dial{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin:8px 0 4px}
+.dial>div{border:.5px solid var(--hair);border-radius:12px;padding:10px 12px;font-size:.88rem;background:var(--card2)}
+.dial b{display:block;font-size:.74rem;letter-spacing:.06em;margin-bottom:4px}
+.dial .pro b{color:var(--green)} .dial .con b{color:var(--red)} .dial .lim b{color:var(--gray)}
+/* 误解卡 */
+.mis{scroll-margin-top:86px}
+.mis .wrong,.mis .truth{padding:12px 16px;border-radius:14px;margin:8px 0;font-size:.95rem}
+.mis .wrong{background:var(--red-bg);border-left:4px solid var(--red)}
+.mis .truth{background:var(--teal-bg);border-left:4px solid var(--teal)}
+.mis .wrong b{color:var(--red)} .mis .truth b{color:var(--teal)}
+.upg{margin-top:10px;font-size:.92rem}
+.upg b{color:var(--orange)}
+/* 表格 */
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+th{text-align:left;font-size:.76rem;letter-spacing:.06em;color:var(--label2);font-weight:700;
+  padding:8px 10px;border-bottom:1px solid var(--sep)}
+td{padding:10px;border-bottom:.5px solid var(--hair);vertical-align:top}
+tr:last-child td{border-bottom:none}
+.tbl-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+/* SVG 容器 */
+.figure{margin:14px 0 8px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.figure svg{display:block;min-width:840px;width:100%;height:auto}
+.figcap{font-size:.78rem;color:var(--label3);margin:6px 0 2px}
+/* details 自测 */
+details{border:.5px solid var(--hair);border-radius:14px;background:var(--card2);margin:10px 0;overflow:hidden}
+summary{cursor:pointer;padding:14px 16px;font-weight:600;font-size:.95rem;list-style:none;min-height:44px;display:flex;align-items:center;gap:10px}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"";flex:0 0 auto;width:8px;height:8px;border-right:2px solid var(--label2);border-bottom:2px solid var(--label2);
+  transform:rotate(-45deg);transition:transform .2s ease;margin-left:2px}
+details[open] summary::before{transform:rotate(45deg)}
+details .ans{padding:0 18px 16px;font-size:.92rem;color:var(--label);border-top:.5px dashed var(--sep)}
+details .ans p{margin-top:.8rem}
+/* Phase 标 */
+.ph{display:inline-flex;align-items:center;gap:8px;font-size:.76rem;font-weight:800;letter-spacing:.08em;color:var(--purple);margin-bottom:8px}
+.ph .pn{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:9px;background:var(--purple);color:#fff;font-size:.78rem}
+/* 页脚 */
+footer{margin-top:40px;padding:26px 0 10px;border-top:.5px solid var(--sep);font-size:.84rem;color:var(--label2)}
+.sign{font-weight:700;color:var(--label)}
+ul.clean{margin:0 0 .9rem 1.2rem}
+ul.clean li{margin-bottom:.35rem}
+.hero{padding:34px 0 6px}
+.hero .kicker{font-size:.8rem;font-weight:700;letter-spacing:.14em;color:var(--indigo);margin-bottom:10px}
+.hero .subtitle{font-size:1.05rem;color:var(--label2);margin-top:10px;max-width:62ch}
+.meta-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.chip{display:inline-flex;align-items:center;min-height:32px;padding:4px 14px;border-radius:999px;background:var(--card);
+  border:.5px solid var(--sep);font-size:.8rem;color:var(--label2)}
+.chip b{color:var(--label);margin-right:4px}
+.legend{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0 2px;font-size:.8rem;color:var(--label2)}
+.legend .k{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:10px;background:var(--card2);border:.5px solid var(--hair)}
+.k .sw{width:18px;height:0;border-top:3px solid var(--gray);border-radius:2px}
+.k .sw.teal{border-color:var(--teal)} .k .sw.blue{border-top-style:dashed;border-color:var(--blue)}
+.k .sw.red{border-top-style:dashed;border-color:var(--red)}
+@media (max-width:640px){
+  .stepper-meta{display:none}
+  .step{padding:6px 12px;font-size:.8rem}
+}
+</style>
+</head>
+<body>
+<nav class="stepper" aria-label="阅读动线">
+  <div class="stepper-in">
+    <a class="step s1" href="#l1"><span class="n">①</span>鸟瞰 · 知识关系图</a>
+    <a class="step s2" href="#l2"><span class="n">②</span>填充 · 逐章精读</a>
+    <a class="step s3" href="#l3"><span class="n">③</span>校准 · 认知纠正</a>
+    <a class="step s4" href="#l4"><span class="n">④</span>精研 · 五阶段解构</a>
+    <span class="stepper-meta">由浅入深 · 顺读最佳</span>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<header class="hero">
+  <div class="kicker">详细解读 · 四层递进阅读动线</div>
+  <h1>《心智的10大模型》<br>——大脑与意识的数学原理</h1>
+  <p class="subtitle">一句话总览（结论先行）：<b>这本书证明了一件事——我们之所以能谈论"大脑如何工作"，靠的不是显微镜，而是十副数学眼镜；每一副都看清了一块，没有一副能看清全部。</b>读懂它，你会同时收获一部计算神经科学百年史，和一套"用简化模型驯服复杂系统"的通用思维方法。</p>
+  <div class="meta-chips">
+    <span class="chip"><b>作者</b>[美] 格蕾丝·林赛（Grace Lindsay）</span>
+    <span class="chip"><b>译者</b>刘锦珂</span>
+    <span class="chip"><b>出版</b>湛庐文化 · 浙江教育出版社 · 2025-02</span>
+    <span class="chip"><b>原作</b>Models of the Mind（Bloomsbury，2021）</span>
+    <span class="chip"><b>篇幅</b>334 页 / 约 21 万字</span>
+  </div>
+</header>
+
+<section class="card card2" aria-label="书目核验">
+  <div class="eyebrow"><span class="dot" style="background:var(--green)"></span>书目核验档案（反幻觉第一步）</div>
+  <div class="grid2">
+    <div>
+      <p style="margin-bottom:.5rem"><span class="bd bd-f">✅ 确证</span> 你说的《大脑与意识的数学原理》，对应的正是这本 <b>《心智的10大模型》</b>：计算神经科学家格蕾丝·林赛的 <i>Models of the Mind: How Physics, Engineering and Mathematics Have Shaped Our Understanding of the Brain</i>（2021）中文版，湛庐文化出品、浙江教育出版社 2025 年 2 月出版，刘锦珂译（马克斯·普朗克研究所神经科学博士），ISBN 9787572295430。「大脑与意识的数学原理」在本报告中作为解读副题使用；主书名以版权页《心智的10大模型》为准。</p>
+      <p style="margin-bottom:0"><span class="bd bd-f">✅ 确证</span> 作者背景：纽约大学心理学与数据科学助理教授；匹兹堡大学神经科学学士（2011），哥伦比亚大学神经科学博士（2013–2017，聚焦注意力对感知调制的计算模型），2016 年谷歌计算神经科学博士奖学金；2018–2022 年先后在哥大理论神经科学中心与伦敦大学学院盖茨比中心从事博士后研究；主持播客 Unsupervised Thinking。</p>
+    </div>
+    <div>
+      <p style="margin-bottom:.5rem"><span class="bd bd-f">✅ 确证</span> 全书结构：推荐序两篇（洪波《如何再造一个硅基大脑》、顾凡及《脑科学的数学之旅》）＋引言＋正文 10 章（每章一组数学模型，并标注该模型的历史时间跨度）＋结语《有没有一个简明的大统一理论能解释大脑？》＋附录与译者后记。中外推荐人包括杨雄里院士、洪波、顾凡及、肖恩·卡罗尔、拉里·阿博特等。</p>
+      <p style="margin-bottom:0"><span class="bd bd-i">⚠️ 推断</span> 英文原书第 1 章 "Spherical Cows"（球形奶牛：数学能为生物学提供什么）在中文版中对应引言部分的方法论铺垫；本报告将"球形奶牛"作为全书元方法讲解，属基于两版目录对照的合理推断。</p>
+    </div>
+  </div>
+  <div class="legend" style="margin-top:14px">
+    <span class="k"><span class="bd bd-f">✅ 确证</span>书中明确 / 可靠信源交叉核验</span>
+    <span class="k"><span class="bd bd-i">⚠️ 推断</span>基于书的逻辑或领域常识的合理延伸</span>
+    <span class="k"><span class="bd bd-d">❓ 存疑</span>记忆模糊或信源冲突，仅供参考</span>
+  </div>
+</section>
+
+<section class="card" aria-label="为什么读">
+  <div class="eyebrow"><span class="dot" style="background:var(--indigo)"></span>SCQA · 为什么值得花两小时读透这本书</div>
+  <p><b>情境（S）：</b>你的头骨里有约 860 亿个神经元、超过 100 万亿个突触连接，它们此刻正在产生你读这句话的体验。AI 大模型的爆发让"硅基大脑"与"碳基大脑"的对照成了这个时代最核心的智力问题之一。</p>
+  <p><b>冲突（C）：</b>但大脑复杂到任何直觉和文字描述都会失效——你无法靠"讲道理"弄明白一千亿个元件如何协同。绝大多数脑科学科普只给你结论（"多巴胺是奖励物质""海马管记忆"），却不告诉你这些结论是<b>怎么算出来的</b>。</p>
+  <p><b>问题（Q）：</b>有没有一种方法，既不淹没在生物细节里，又不沦为空洞比喻，真正"把大脑当成一个可计算的系统"来理解？</p>
+  <p style="margin-bottom:0"><b>回答（A）：</b>有——数学建模。林赛的答案是：数学是一种<b>"外延认知"</b>——把大脑装不下的复杂关系外化成可操作的符号系统，再让符号替我们推理。本书用 10 组模型（从单个神经元的微分方程，到全脑的图论与贝叶斯推断）演示了这门手艺的百年演进史。而这条"用最小模型驯服最大复杂度"的思路，恰恰也是你在任何复杂系统（包括商业系统）中都用得上的元能力。<span class="src">溯源：引言《穿越400年时空，开启心智探索之旅》 <span class="bd bd-f">✅</span></span></p>
+</section>
+
+<section class="card card2" aria-label="动线说明">
+  <div class="eyebrow"><span class="dot" style="background:var(--gray)"></span>本报告怎么读 · 四层递进动线</div>
+  <p style="margin-bottom:.6rem">四层不是四个并列板块，而是一条<b>认知深度单调递增</b>的路线，对应经典阅读科学的阶梯（Adler 检视→分析→主题、SQ3R、先行组织者、概念改变、Make It Stick 提取练习）：</p>
+  <ul class="clean" style="margin-bottom:.4rem">
+    <li><b style="color:var(--blue)">① 鸟瞰</b>——先拿地图：10 个模型是什么、怎么连（先行组织者，给细节一个挂靠点）。</li>
+    <li><b style="color:var(--green)">② 填充</b>——顺作者的章节脉络，把每个节点填上血肉；真·难点处有橙色"换个说法"强化卡。</li>
+    <li><b style="color:var(--orange)">③ 校准</b>——用已建立的正确模型，对撞 8 条最常见的"想当然"。</li>
+    <li><b style="color:var(--purple)">④ 精研</b>——评判这本书本身、放进更大的知识网络、用提取练习焊进长期记忆。</li>
+  </ul>
+  <p class="small" style="margin-bottom:0">建议自上而下顺读；顶部步骤条随时可跳转。全文置信度三标（✅/⚠️/❓）与溯源标注贯穿四层，四层共用同一份核验事实。</p>
+</section>
+<!-- ================= L1 ================= -->
+<section id="l1" class="layer l1" style="scroll-margin-top:80px">
+  <div class="layer-head">
+    <span class="layer-badge">L1</span>
+    <div><h2>鸟瞰 · 知识关系图</h2><div class="layer-sub">检视阅读 / 先行组织者 —— 先拿地图，再看细节</div></div>
+  </div>
+  <div class="card">
+    <p><b>带走这句：全书的骨架是"1 个元方法 × 10 副数学眼镜 × 1 个未决问题"。</b>元方法是"球形奶牛"式的简化建模；10 副眼镜分别对准大脑的四个尺度——微观元件、网络与学习、系统原理、行为与决策；未决问题是结语那道悬案：这一切能否统一成一个方程。下图即全书地图，节点可点击跳转到对应章节精读。</p>
+    <div class="figure" role="img" aria-label="全书十大模型知识关系图">
+<svg viewBox="0 0 1200 830" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,'SF Pro Text','PingFang SC',sans-serif">
+  <defs>
+    <marker id="mT" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--teal)"/></marker>
+    <marker id="mB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--blue)"/></marker>
+    <marker id="mR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--red)"/></marker>
+  </defs>
+  <!-- 隶属辐条（统摄，最底层） -->
+  <g stroke="var(--hair)" stroke-width="1.4">
+    <line x1="600" y1="400" x2="600" y2="150"/><line x1="600" y1="400" x2="853" y2="204"/>
+    <line x1="600" y1="400" x2="1009" y2="344"/><line x1="600" y1="400" x2="1009" y2="456"/>
+    <line x1="600" y1="400" x2="853" y2="596"/><line x1="600" y1="400" x2="600" y2="650"/>
+    <line x1="600" y1="400" x2="347" y2="596"/><line x1="600" y1="400" x2="191" y2="456"/>
+    <line x1="600" y1="400" x2="191" y2="344"/><line x1="600" y1="400" x2="347" y2="204"/>
+  </g>
+  <!-- 类型边 -->
+  <path d="M 692 116 Q 776 118 800 152" fill="none" stroke="var(--teal)" stroke-width="2.6" marker-end="url(#mT)"/>
+  <path d="M 930 196 Q 1010 232 1016 288" fill="none" stroke="var(--teal)" stroke-width="2.6" marker-end="url(#mT)"/>
+  <path d="M 862 208 Q 880 400 862 590" fill="none" stroke="var(--teal)" stroke-width="2.6" marker-end="url(#mT)"/>
+  <path d="M 560 664 Q 380 620 268 522" fill="none" stroke="var(--teal)" stroke-width="2.6" marker-end="url(#mT)"/>
+  <path d="M 216 522 Q 250 588 300 610" fill="none" stroke="var(--blue)" stroke-width="2.4" stroke-dasharray="7 6" marker-end="url(#mB)"/>
+  <path d="M 512 690 Q 445 690 430 662" fill="none" stroke="var(--red)" stroke-width="2.4" stroke-dasharray="5 6" marker-start="url(#mR)" marker-end="url(#mR)"/>
+  <path d="M 600 712 L 600 742" fill="none" stroke="var(--hair)" stroke-width="1.6" stroke-dasharray="4 5"/>
+  <!-- 边标签卡（盖在线上，防图文重叠） -->
+  <g font-size="11.5" fill="var(--label2)">
+    <g><rect x="676" y="90" width="96" height="24" rx="8" fill="var(--card)" stroke="var(--hair)"/><text x="724" y="106" text-anchor="middle">从电到逻辑</text></g>
+    <g><rect x="948" y="216" width="110" height="24" rx="8" fill="var(--card)" stroke="var(--hair)"/><text x="1003" y="232" text-anchor="middle">权重学习谱系</text></g>
+    <g><rect x="806" y="386" width="132" height="24" rx="8" fill="var(--card)" stroke="var(--hair)"/><text x="872" y="402" text-anchor="middle">感知机→CNN</text></g>
+    <g><rect x="330" y="640" width="128" height="24" rx="8" fill="var(--card)" stroke="var(--hair)"/><text x="394" y="656" text-anchor="middle">不确定性→推断</text></g>
+    <g><rect x="150" y="560" width="118" height="24" rx="8" fill="var(--card)" stroke="var(--hair)"/><text x="209" y="576" text-anchor="middle">结构承载动力</text></g>
+    <g><rect x="404" y="700" width="128" height="24" rx="8" fill="var(--card)" stroke="var(--red)" stroke-opacity=".5"/><text x="468" y="716" text-anchor="middle" fill="var(--red)">编码观⇄动力观</text></g>
+  </g>
+  <!-- 中心枢纽 -->
+  <g>
+    <circle cx="600" cy="400" r="66" fill="var(--indigo)"/>
+    <text x="600" y="392" text-anchor="middle" fill="#fff" font-size="16" font-weight="700">数学建模</text>
+    <text x="600" y="414" text-anchor="middle" fill="rgba(255,255,255,.85)" font-size="11.5">球形奶牛策略</text>
+  </g>
+  <!-- 10 个模型节点（可点击） -->
+  <g font-weight="700" font-size="14.5">
+    <a href="#ch1"><rect x="512" y="90" width="176" height="60" rx="14" fill="var(--indigo-bg)" stroke="var(--indigo)" stroke-width="1.6"/><text x="600" y="115" text-anchor="middle" fill="var(--label)">1 神经元放电</text><text x="600" y="136" text-anchor="middle" fill="var(--label2)" font-size="11.5" font-weight="500">LIF · 霍奇金-赫胥黎</text></a>
+    <a href="#ch2"><rect x="765" y="144" width="176" height="60" rx="14" fill="var(--blue-bg)" stroke="var(--blue)" stroke-width="1.6"/><text x="853" y="169" text-anchor="middle" fill="var(--label)">2 逻辑与学习</text><text x="853" y="190" text-anchor="middle" fill="var(--label2)" font-size="11.5" font-weight="500">M-P 神经元 · 感知机</text></a>
+    <a href="#ch3"><rect x="921" y="284" width="176" height="60" rx="14" fill="var(--blue-bg)" stroke="var(--blue)" stroke-width="1.6"/><text x="1009" y="309" text-anchor="middle" fill="var(--label)">3 吸引子记忆</text><text x="1009" y="330" text-anchor="middle" fill="var(--label2)" font-size="11.5" font-weight="500">霍普菲尔德 · 环形网络</text></a>
+    <a href="#ch4"><rect x="921" y="426" width="176" height="60" rx="14" fill="var(--blue-bg)" stroke="var(--blue)" stroke-width="1.6"/><text x="1009" y="451" text-anchor="middle" fill="var(--label)">4 兴奋-抑制平衡</text><text x="1009" y="472" text-anchor="middle" fill="var(--label2)" font-size="11.5" font-weight="500">平衡网络 · 混沌振荡</text></a>
+    <a href="#ch5"><rect x="765" y="566" width="176" height="60" rx="14" fill="var(--blue-bg)" stroke="var(--blue)" stroke-width="1.6"/><text x="853" y="591" text-anchor="middle" fill="var(--label)">5 层级视觉</text><text x="853" y="612" text-anchor="middle" fill="var(--label2)" font-size="11.5" font-weight="500">新认知机 · CNN</text></a>
+    <a href="#ch6"><rect x="512" y="650" width="176" height="60" rx="14" fill="var(--teal-bg)" stroke="var(--teal)" stroke-width="1.6"/><text x="600" y="675" text-anchor="middle" fill="var(--label)">6 信息论编码</text><text x="600" y="696" text-anchor="middle" fill="var(--label2)" font-size="11.5" font-weight="500">香农 · 有效编码</text></a>
+    <a href="#ch7"><rect x="259" y="566" width="176" height="60" rx="14" fill="var(--teal-bg)" stroke="var(--teal)" stroke-width="1.6"/><text x="347" y="591" text-anchor="middle" fill="var(--label)">7 群体动力学</text><text x="347" y="612" text-anchor="middle" fill="var(--label2)" font-size="11.5" font-weight="500">状态空间 · 降维</text></a>
+    <a href="#ch8"><rect x="103" y="426" width="176" height="60" rx="14" fill="var(--teal-bg)" stroke="var(--teal)" stroke-width="1.6"/><text x="191" y="451" text-anchor="middle" fill="var(--label)">8 图论连接组</text><text x="191" y="472" text-anchor="middle" fill="var(--label2)" font-size="11.5" font-weight="500">网络神经科学</text></a>
+    <a href="#ch9"><rect x="103" y="284" width="176" height="60" rx="14" fill="var(--purple-bg)" stroke="var(--purple)" stroke-width="1.6"/><text x="191" y="309" text-anchor="middle" fill="var(--label)">9 贝叶斯大脑</text><text x="191" y="330" text-anchor="middle" fill="var(--label2)" font-size="11.5" font-weight="500">概率推断感知决策</text></a>
+    <a href="#ch10"><rect x="259" y="144" width="176" height="60" rx="14" fill="var(--purple-bg)" stroke="var(--purple)" stroke-width="1.6"/><text x="347" y="169" text-anchor="middle" fill="var(--label)">10 强化学习</text><text x="347" y="190" text-anchor="middle" fill="var(--label2)" font-size="11.5" font-weight="500">TD 学习 · 多巴胺</text></a>
+  </g>
+  <!-- 结语外弧 -->
+  <a href="#chZ"><rect x="300" y="748" width="600" height="58" rx="16" fill="var(--purple-bg)" stroke="var(--purple)" stroke-width="1.6" stroke-dasharray="8 6"/>
+  <text x="600" y="772" text-anchor="middle" fill="var(--label)" font-size="14" font-weight="700">结语 · 大统一理论候选：自由能 / 千脑智能 / 信息整合论</text>
+  <text x="600" y="792" text-anchor="middle" fill="var(--label2)" font-size="11.5">三者皆有硬伤——"简明大统一"至今悬而未决</text></a>
+  <!-- 尺度图例 -->
+  <g font-size="11.5" fill="var(--label2)">
+    <rect x="24" y="24" width="252" height="122" rx="12" fill="var(--card)" stroke="var(--hair)"/>
+    <text x="40" y="48" font-weight="700" fill="var(--label)" font-size="12.5">节点 = 尺度分层（解读框架）</text>
+    <circle cx="46" cy="68" r="5" fill="var(--indigo)"/><text x="58" y="72">微观元件（第1章）</text>
+    <circle cx="46" cy="90" r="5" fill="var(--blue)"/><text x="58" y="94">网络与学习（第2–5章）</text>
+    <circle cx="46" cy="112" r="5" fill="var(--teal)"/><text x="58" y="116">系统原理（第6–8章）</text>
+    <circle cx="46" cy="134" r="5" fill="var(--purple)"/><text x="58" y="138">行为与决策（第9–10章）</text>
+  </g>
+</svg>
+    </div>
+    <div class="legend">
+      <span class="k"><span class="sw"></span>隶属 · 枢纽统摄（灰细线）</span>
+      <span class="k"><span class="sw teal"></span>演进 · 谁催生了谁（青实线）</span>
+      <span class="k"><span class="sw blue"></span>前提 · 谁承载了谁（蓝虚线）</span>
+      <span class="k"><span class="sw red"></span>张力 · 观点之争（红虚线）</span>
+    </div>
+    <p class="figcap">图：全书知识关系图。四个尺度环由内而外对应"元件→网络→系统→行为"，与原书从单神经元到全脑行为的叙事顺序一致（尺度分层为解读者的组织框架 <span class="bd bd-i">⚠️</span>；节点与章对应关系依已核验目录 <span class="bd bd-f">✅</span>）。</p>
+  </div>
+
+  <div class="card card2">
+    <div class="eyebrow"><span class="dot" style="background:var(--blue)"></span>概念关系总表 · 一句话拿住每个节点</div>
+    <div class="tbl-scroll"><table>
+      <tr><th style="width:16%">模型（章）</th><th style="width:44%">一句大白话</th><th>关系标签</th></tr>
+      <tr><td><b>神经元放电</b>（1）</td><td>把神经元当成一只会漏水、装满就翻倒的桶：电荷是水，放电是翻倒。</td><td>一切网络模型的物理地基（隶属枢纽；演进→2）</td></tr>
+      <tr><td><b>逻辑与学习</b>（2）</td><td>把神经元再抽象成"开/关"逻辑门，连成会从错误中改权重的网。</td><td>演进→3（记忆网）、→5（视觉网）：现代 AI 的共同祖先</td></tr>
+      <tr><td><b>吸引子记忆</b>（3）</td><td>记忆不是存文件，而是在能量地形上挖坑；回忆是滚进坑底。</td><td>承自 2 的权重学习；动力学思想呼应 7</td></tr>
+      <tr><td><b>兴奋-抑制平衡</b>（4）</td><td>大脑靠"油门踩死＋刹车踩死"的对冲保持敏捷，噪声是这套机制的产物。</td><td>解释 1 观察到的"乱放电"；隶属网络层</td></tr>
+      <tr><td><b>层级视觉</b>（5）</td><td>一层找边、一层找形、一层认物——层层堆叠出"看见"。</td><td>承自 2（感知机谱系），直通今日 CNN 与计算机视觉</td></tr>
+      <tr><td><b>信息论编码</b>（6）</td><td>把神经放电当电报：问它每秒传了几比特、有没有浪费带宽。</td><td>演进→9（不确定性→推断）；张力⇄7（编码观 vs 动力观）</td></tr>
+      <tr><td><b>群体动力学</b>（7）</td><td>别逐个盯神经元，看整群活动在低维空间里划出的轨迹。</td><td>与 6 存在"编码 vs 齿轮"之争；以 8 的结构为前提</td></tr>
+      <tr><td><b>图论连接组</b>（8）</td><td>把大脑画成点和线的地铁图，用"几站能到"衡量它的组织效率。</td><td>前提→7：结构承载动力；隶属系统层</td></tr>
+      <tr><td><b>贝叶斯大脑</b>（9）</td><td>看见 = 先验猜测 × 感官证据的加权平均；感知是一场理性下注。</td><td>承接 6 的不确定性视角；隶属行为层</td></tr>
+      <tr><td><b>强化学习</b>（10）</td><td>多巴胺报告的不是快乐，是"比预期好多少"的差价信号。</td><td>与 9 同属行为层；直通 AI 强化学习与成瘾科学</td></tr>
+    </table></div>
+  </div>
+
+  <div class="bridge br1"><span class="to">桥 → L2</span>你已看清骨架——有哪些模型、怎么连、各管哪个尺度。但此刻每个节点还是空壳。下一层顺作者的章节顺序，逐章把节点填上血肉：每章讲清"一个主旨、几组概念、一条论证"，难点处有橙色强化卡帮你跨过去。</div>
+</section>
+<!-- ================= L2 ================= -->
+<section id="l2" class="layer l2" style="scroll-margin-top:80px">
+  <div class="layer-head">
+    <span class="layer-badge">L2</span>
+    <div><h2>填充 · 逐章精读</h2><div class="layer-sub">分析阅读 / 建立正确模型 —— 顺作者脉络，单章约 3 分钟</div></div>
+  </div>
+
+  <div class="card ch" id="ch0">
+    <div class="num" style="color:var(--indigo)">引言 · 穿越 400 年时空 <span class="bd bd-f">✅ 目录已核验</span></div>
+    <h3>数学不是描述大脑的工具之一，而是唯一装得下大脑的容器<span class="mdl">元方法：外延认知 与 球形奶牛策略</span></h3>
+    <div class="thesis">带走这句：数学是"外延认知"——把脑子装不下的复杂关系写到纸上，让符号替你推理；而好模型的第一美德是敢于简化。</div>
+    <div class="trio">
+      <div><span class="tg tg-term">术语</span><span><b>外延认知（extended cognition）</b>：认知不只发生在颅内，符号系统是思维的外接硬盘与外接 CPU。数学家写下方程，等于把对复杂关系的理解"外化"为可机械操作的对象。<span class="src">溯源：引言小节"如果没有数学，我们的思考和行动都会大打折扣" <span class="bd bd-f">✅</span></span></span></div>
+      <div><span class="tg tg-plain">大白话</span><span>心算 37×48 很难，列竖式就简单——不是你变聪明了，是纸和符号替你记住了中间步骤。研究大脑这道"千亿元件的乘法题"，必须列竖式。</span></div>
+      <div><span class="tg tg-ana">类比</span><span><b>球形奶牛</b>：物理学家笑话里"假设奶牛是球形的"——听着荒谬，却是一切科学建模的真姿势：先砍掉细节，抓住主要矛盾，算出来，再逐步加回细节。<span class="bd bd-i">⚠️ 原书第 1 章 Spherical Cows 主题，中文版并入引言（推断）</span></span></div>
+    </div>
+    <p style="margin-bottom:0"><b>核心观点：</b>本书随后的 10 章 = 10 次"球形奶牛"实战：每一章都是"某个数学分支 × 大脑的某个层面"的一次成功联姻，且几乎每一次联姻都同时反哺了工程界（尤其是 AI）。</p>
+  </div>
+
+  <div class="card ch" id="ch1">
+    <div class="num">第 1 章 · 19世纪20年代–21世纪10年代 <span class="bd bd-f">✅ 目录已核验</span></div>
+    <h3>我们头脑中的火树银花：神经元本质上是一个会漏电的电路元件<span class="mdl">带泄漏整合发放模型（LIF） · 霍奇金-赫胥黎模型（H-H）</span></h3>
+    <div class="thesis">带走这句：思维的最小单元不是神秘的"生命力"，而是可以写成微分方程的电现象——一只"漏水桶"就能刻画放电，四个方程就能重演动作电位。</div>
+    <div class="trio">
+      <div><span class="tg tg-term">术语</span><span><b>带泄漏整合发放模型</b>：神经元膜电位像容器持续"整合"输入电流、同时不断"泄漏"，越过阈值即"发放"一个脉冲并复位（拉皮克 1907 年提出思想雏形 <span class="bd bd-i">⚠️</span>）。<b>霍奇金-赫胥黎模型</b>：用一组耦合微分方程刻画钠、钾离子通道随电压开合，精确复现动作电位波形——两人后获诺贝尔奖。<span class="src">溯源：小节"欧姆定律与带泄漏整合发放模型""乌贼实验：动作电位是如何形成的" <span class="bd bd-f">✅</span></span></span></div>
+      <div><span class="tg tg-plain">大白话</span><span>LIF：往一只桶里滴水（输入），桶底有小孔漏水（泄漏），水位到红线桶就翻倒一次（放电）然后清空重来。H-H 则是把这只桶拆开，讲清桶壁上每扇"闸门"的开合物理。</span></div>
+      <div><span class="tg tg-ana">类比</span><span>两个模型的分工像<b>地铁线路图 vs 施工蓝图</b>：LIF 是线路图——粗、但一眼看懂、拿来就用（至今仍是大规模仿真主力）；H-H 是蓝图——精确到每根钢筋，但没法拿它规划整座城市的出行。简化不是偷懒，是选对分辨率。</span></div>
+    </div>
+    <p><b>核心观点：</b>本章还有条暗线——<b>方法先于对象</b>：从莱顿瓶、伽伐尼的青蛙腿到乌贼巨轴突，是"电学"这门外来学科给了神经科学第一套可计算的语言；电缆理论则进一步证明连树突这种"配线"都是有计算功能的齿轮，而非被动导线。<span class="src">溯源：小节"莱顿瓶与青蛙实验""电缆理论""赋予神经系统研究勃勃生机的正是电学研究" <span class="bd bd-f">✅</span></span></p>
+    <div class="socratic"><b>苏格拉底之问：</b>H-H 方程能精确"复现"动作电位——但精确预测等于理解吗？如果你能预测一个人所有行为却说不出他"为什么"，你理解他吗？</div>
+    <div class="dial">
+      <div class="pro"><b>正</b>让神经元第一次变成可定量预测的物理对象，奠定整个计算神经科学的合法性。</div>
+      <div class="con"><b>反</b>单神经元的精确不等于网络的可解：把 860 亿个 H-H 方程连起来，只会得到第二个看不懂的大脑。</div>
+      <div class="lim"><b>边界</b>它描述"电怎么流"，完全不触及"这次放电<b>意味着</b>什么"——意义问题要等第 6 章的信息论登场。</div>
+    </div>
+  </div>
+
+  <div class="card ch" id="ch2">
+    <div class="num">第 2 章 · 17世纪70年代–20世纪70年代 <span class="bd bd-f">✅ 目录已核验</span></div>
+    <h3>一团执行精密逻辑计算的粉色物质：从"神经元=逻辑门"到会自己改错的网络<span class="mdl">麦卡洛克-皮茨模型 · 感知机 · 多层网络与反向传播</span></h3>
+    <div class="thesis">带走这句：一旦把神经元抽象成"加权求和＋过阈激活"的逻辑单元，"学习"就被数学化为一件平凡的事——根据错误调整权重。今日所有 AI 都是这一步抽象的后代。</div>
+    <div class="trio">
+      <div><span class="tg tg-term">术语</span><span><b>麦卡洛克-皮茨神经元</b>（1943）：证明由简化神经元组成的网络可实现任意逻辑运算——大脑因此可被视为一台"遵循逻辑规则的计算设备"（呼应莱布尼茨"思维演算"之梦，章首时间标注始于 17 世纪 70 年代 <span class="bd bd-i">⚠️</span>）。<b>感知机</b>（罗森布拉特）：给权重加上"从错误中学习"的更新规则；书中并指出小脑的解剖结构与感知机原理惊人相似。<span class="src">溯源：小节"麦卡洛克-皮茨模型""感知机""小脑的神经元结构与感知机原理""反向传播算法" <span class="bd bd-f">✅</span></span></span></div>
+      <div><span class="tg tg-plain">大白话</span><span>M-P 说：神经元会做"如果 A 且 B 则开火"这种判断。感知机说：判断错了？把当时"投了赞成票"的连线调轻一点、该赞成没赞成的调重一点。就这么朴素。</span></div>
+      <div><span class="tg tg-ana">类比</span><span>感知机的困境与转机像<b>单层审批 vs 多级组织</b>：一个人拍板（单层）解不了"异或"这种需要中间判断的问题（明斯基与佩珀特 1969 年的著名批评）；加中间管理层（多层感知机）能力立涨——但新问题来了：出了错，中层的责任怎么算？</span></div>
+    </div>
+    <div class="boost">
+      <span class="lvl">难点 · 全套强化</span>
+      <svg class="bulb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/></svg>
+      <h5>换个说法：反向传播到底在"传"什么？</h5>
+      <p><b>一句朴素话：</b>反向传播传的不是电，也不是数据，是一张<b>逐层回传的"责任账单"</b>——总误差是多少、每根连线各该赔多少、就各自微调多少。</p>
+      <ul>
+        <li><b>类比一（生活）：</b>乐队合奏跑调了。指挥不会喊"所有人重练"，而是从最后一排开始逐排定位：铜管偏高 2 分、木管偏低 1 分……每个人只按自己那份偏差微调。练一万遍，整支乐队就"学会"了这首曲子。</li>
+        <li><b>类比二（商业）：</b>连锁品牌某新品差评率高。总部把"差评"这个总误差沿供应链逐级分摊：门店执行占三成、区域配方占五成、中央厨房选料占两成——每一环按责任比例整改。责任分摊的数学工具，就是链式法则。</li>
+      </ul>
+      <p><b>递进拆解：</b>① 网络给出答案，与正确答案的差距=误差；② 输出层每根连线对误差的"贡献度"可以精确计算；③ 用链式法则把贡献度一层层往回摊，直到最底层；④ 每个权重朝"减小自己那份责任"的方向挪一小步。重复百万次，网络就学会了。</p>
+      <p><b>点破直觉：</b>你的直觉会以为"学习=往里灌知识"；其实这里学习=<b>往回摊责任</b>——知识不是被存入的，是被误差一点点雕刻出来的。</p>
+      <p class="edge-note"><b>类比的边界：</b>乐队与供应链都有"指挥/总部"这个全知角色；而大脑里谁来算这张账单、误差信号如何精确回传，恰是反向传播<b>生物合理性</b>的最大疑点——人工网络确定在这么做，大脑未必。<span class="bd bd-i">⚠️</span></p>
+    </div>
+    <div class="socratic"><b>苏格拉底之问：</b>感知机 1969 年被判"死刑"，1986 年借反向传播复活。是当年的判决错了，还是那次"死刑"恰恰逼出了多层结构？——一个领域的寒冬，可能是它的必要条件吗？</div>
+    <div class="dial">
+      <div class="pro"><b>正</b>把"学习"从哲学问题变成优化问题，是 20 世纪认知科学最大的一次降维打击。</div>
+      <div class="con"><b>反</b>为了可训练，人工网络抛弃了脉冲、时间与大量生物约束——它越强大，离"大脑模型"的原意越远。</div>
+      <div class="lim"><b>边界</b>解释了系统"如何能学会"，没有解释系统"为何想学"——动机与奖励要等第 10 章。</div>
+    </div>
+  </div>
+
+  <div class="card ch" id="ch3">
+    <div class="num">第 3 章 · 20世纪40年代–20世纪90年代 <span class="bd bd-f">✅ 目录已核验</span></div>
+    <h3>我们如何相处，世界就如何被记住：记忆是能量地形上的坑，不是硬盘里的文件<span class="mdl">赫布学习 · 霍普菲尔德网络 · 环形网络</span></h3>
+    <div class="thesis">带走这句：拉什利终生没找到"记忆存放的位置"，因为记忆根本没有位置——它是分布在千万根连接强度里的一口"能量之坑"，回忆就是滚进坑底。</div>
+    <div class="trio">
+      <div><span class="tg tg-term">术语</span><span><b>赫布型学习</b>："一起放电的神经元连在一起"——记忆印迹（engram）被写进连接强度而非某个仓库。<b>霍普菲尔德网络</b>（1982）：物理学家借磁性系统的数学证明，对称连接的循环网络存在"能量函数"，每个记忆是一个能量极小点（吸引子），残缺输入会被动力学自动补全——"内容寻址"记忆。<span class="src">溯源：小节"印迹与赫布型学习""霍普菲尔德网络：跨学科的记忆模型" <span class="bd bd-f">✅</span></span></span></div>
+      <div><span class="tg tg-plain">大白话</span><span>给你半句"举头望明月"，你根本忍不住"低头思故乡"——不是你去哪里"查"了这句诗，是提示把你的脑状态丢在坑边，它自己滚到了坑底。</span></div>
+      <div><span class="tg tg-ana">类比</span><span>海马内部（尤其 CA3 区）的密集循环连接，被认为是最接近霍普菲尔德式"自联想网"的真实组织 <span class="bd bd-i">⚠️</span>；而<b>环形网络</b>则像一圈手拉手的观众做人浪：那个"浪头"（活动驻波）停在圈上哪个位置，就代表你此刻记住的朝向或数值——工作记忆的优雅实现。<span class="src">溯源：小节"海马，解开记忆奥秘的关键枢纽""环形网络：建立优质工作记忆系统的得力干将" <span class="bd bd-f">✅</span></span></span></div>
+    </div>
+    <div class="boost">
+      <span class="lvl">难点 · 全套强化</span>
+      <svg class="bulb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/></svg>
+      <h5>换个说法："吸引子"和"能量函数"到底是什么？</h5>
+      <p><b>一句朴素话：</b>把网络的每一种可能状态想成地形上的一个点，学习是<b>挖坑</b>，回忆是<b>放一颗球让它自己滚</b>。</p>
+      <ul>
+        <li><b>类比一（生活）：</b>老床垫睡出了你的身形凹陷。无论你今晚以什么姿势躺下（残缺提示），一觉醒来总会滑回那个熟悉的窝（完整记忆）。凹陷就是吸引子，床垫弹簧的松紧分布就是连接权重。</li>
+        <li><b>类比二（职场）：</b>组织文化是一口吸引子：新员工带着一半"外来模式"入职（部分输入），三个月后言谈举止被系统"补全"成老员工的样子（模式补全）。想改文化为什么难？因为你不是在改一个文件，而是在给千百根关系连线重新配重。</li>
+      </ul>
+      <p><b>递进拆解：</b>① 一个记忆=一组神经元的共同活跃模式；② 学习=按赫布规则加强这组神经元之间的连线，等于把这个模式挖成能量低谷；③ 给出残缺线索=把系统状态丢在谷的斜坡上；④ 网络动力学保证能量只降不升——状态自动滚到谷底，即完整回忆。</p>
+      <p><b>点破直觉：</b>你的直觉以为记忆有"地址"（像 U 盘）；其实它<b>以内容为地址</b>——内容的任何碎片都是打开它的钥匙。这也顺带解释了联想、既视感与"记忆被相似经验带偏"。</p>
+      <p class="edge-note"><b>类比的边界：</b>床垫的坑是死的；真实大脑的"坑"会重塑、会互相干涉、会随睡眠巩固与遗忘而变形——霍普菲尔德网络是记忆的骨架素描，不是全息照片。</p>
+    </div>
+    <div class="socratic"><b>苏格拉底之问：</b>如果"回忆=滚进最近的坑"，那么记错、张冠李戴就不是系统故障，而是这套机制的<b>结构性代价</b>。你愿意用"绝对不出错"换掉"能从碎片联想全局"吗？大脑显然没愿意。</div>
+    <div class="dial">
+      <div class="pro"><b>正</b>一举解释了分布式存储、局部损伤下的稳健、以及"内容寻址"式联想——这是文件柜隐喻永远做不到的。</div>
+      <div class="con"><b>反</b>经典霍普菲尔德网络容量有限、坑是静态的，难以解释人类记忆强烈的重构性与每次回忆后的改写。</div>
+      <div class="lim"><b>边界</b>这是陈述性记忆的好隐喻；对骑车这类程序性记忆、对情绪记忆，解释力明显减弱。</div>
+    </div>
+  </div>
+  <div class="card ch" id="ch4">
+    <div class="num">第 4 章 · 20世纪30年代–20世纪末 <span class="bd bd-f">✅ 目录已核验</span></div>
+    <h3>花样百出的神经元制衡战：大脑的"乱"，是油门与刹车同时踩满的产物<span class="mdl">平衡神经网络 · 混沌与神经振荡</span></h3>
+    <div class="thesis">带走这句：神经元放电的极度不规律曾被当作测量误差；平衡网络理论翻案说——那是兴奋与抑制两股巨力近乎完美对冲后的残余波动，"噪声"本身就是机制。</div>
+    <div class="trio">
+      <div><span class="tg tg-term">术语</span><span><b>兴奋-抑制平衡（E-I balance）</b>：网络中兴奋性与抑制性输入都非常强、且大体抵消，神经元由残余波动驱动放电——不规律性由此<b>内生</b>。<b>混沌</b>：这类网络对初始条件极度敏感，相同输入可引发千变万化的响应。<span class="src">溯源：小节"神经元的噪声之战：兴奋与抑制的平衡vs.大脑的随机性""混沌理论：为什么相同的输入会引发千变万化的反应" <span class="bd bd-f">✅</span></span></span></div>
+      <div><span class="tg tg-plain">大白话</span><span>抑制性神经元不是"消极角色"——没有刹车的车不敢开快。大脑把油门和刹车都踩满，看似原地发抖，实则处于随时可向任何方向弹射的战备状态。<span class="src">溯源：小节"抑制性神经元：使大脑产生思维的关键角色" <span class="bd bd-f">✅</span></span></span></div>
+      <div><span class="tg tg-ana">类比</span><span>脑电振荡（从伯格发现的脑波传统一路而来 <span class="bd bd-i">⚠️</span>）像体育场里的整场节奏：个体呐喊各自随机，但人浪与口号让千万人短暂同频——同步与混沌并存，正是认知活动的电生理指纹。<span class="src">溯源：小节"大脑中的振荡与混沌：认知活动之谜" <span class="bd bd-f">✅</span></span></span></div>
+    </div>
+    <div class="boost">
+      <span class="lvl">难点 · 全套强化</span>
+      <svg class="bulb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/></svg>
+      <h5>换个说法：为什么"两股大力互相抵消"反而是聪明设计？</h5>
+      <p><b>一句朴素话：</b>让两头大象顶住一扇门，门看似不动——但只要一根手指的新力量，门就会立刻朝那边开。<b>高张力对峙 = 最高灵敏度。</b></p>
+      <ul>
+        <li><b>类比一（生活）：</b>拔河两队势均力敌，绳子中点几乎静止却微微抖动（这就是"噪声"）；此时任何一名队员的一丝松劲，绳子瞬间大幅移动。若只有一队在拉（只有兴奋），绳子早已匀速跑掉，再也无法对新信息做出快速反应。</li>
+        <li><b>类比二（商业）：</b>做市商在买卖两侧同时挂满大单，价格表面平静、微观上高频抖动；正因双边张力巨大，任何真实信息一来，价格能以毫秒级完成调整。平静不是没劲，是劲全用来互相抵消、随时待发。</li>
+      </ul>
+      <p><b>递进拆解：</b>① 若神经元只是简单累加输入，放电应规律如节拍器；② 实测放电间隔却极不规律——矛盾；③ 解法：假设兴奋与抑制都巨大且近乎抵消；④ 放电时刻由残余波动决定——不规律性被"解释掉"了，还白送一个礼物：对新输入的极速响应。</p>
+      <p><b>点破直觉：</b>你的直觉以为噪声=元件劣质、越安静越好；其实这里的"乱"是战备状态的心跳——把大脑"降噪"成钟表，你得到的是一台迟钝的机器。</p>
+      <p class="edge-note"><b>类比的边界：</b>拔河与做市商都是单一维度的对峙；真实皮层的平衡是在数万根连接上同时成立的高维对峙，且平衡网络只是变异性来源之一（突触递质释放本身也随机 <span class="bd bd-i">⚠️</span>）。</p>
+    </div>
+    <div class="socratic"><b>苏格拉底之问：</b>混沌意味着"逐个尖峰复现大脑活动"在原理上不可能。那么"上传意识/精确仿真大脑"这类愿景，卡住它的到底是算力，还是数学本身？</div>
+    <div class="dial">
+      <div class="pro"><b>正</b>把最被嫌弃的"脏数据"翻案成机制线索，一并解释了变异性、快速响应与丰富的动态模式。</div>
+      <div class="con"><b>反</b>变异性也可能部分只是我们"没测到的变量"——把一切乱都归给混沌，同样是一种偷懒。</div>
+      <div class="lim"><b>边界</b>振荡到底承担何种认知功能（绑定？注意？还只是副产品？）至今争论未决。<span class="bd bd-i">⚠️</span></div>
+    </div>
+  </div>
+
+  <div class="card ch" id="ch5">
+    <div class="num">第 5 章 · 20世纪20年代–20世纪80年代 <span class="bd bd-f">✅ 目录已核验</span></div>
+    <h3>层层堆叠造就的清晰视野："看见"是一条特征流水线，而非一次拍照<span class="mdl">群魔殿 · 新认知机 · 卷积神经网络</span></h3>
+    <div class="thesis">带走这句：从"群魔殿"的喊叫恶魔，到休伯尔-维泽尔的简单/复杂细胞，再到福岛邦彦的新认知机与今日 CNN——"逐层提取、逐层抽象"是生物视觉与机器视觉共同押中的答案。</div>
+    <div class="trio">
+      <div><span class="tg tg-term">术语</span><span><b>群魔殿（Pandemonium）</b>：塞尔弗里奇的分层识别模型——底层"特征恶魔"看到自己负责的线条就喊叫，高层"认知恶魔"听谁喊得响就报出字母；一个玩笑名字，一个严肃的层级思想。<b>新认知机</b>：福岛邦彦师从视觉皮层的简单/复杂细胞交替结构，做出 CNN 的直系祖先。<span class="src">溯源：小节"群魔殿""探秘初级视觉皮质""新认知机""卷积神经网络" <span class="bd bd-f">✅</span></span></span></div>
+      <div><span class="tg tg-plain">大白话</span><span>第一层只认"斜线、边缘"这种碎片，第二层把碎片拼成"拐角、圆弧"，再往上拼成"眼睛、轮子"，最顶层才喊出"猫！"——没有任何一层"看见"了整只猫，"看见"是整条流水线的合唱。</span></div>
+      <div><span class="tg tg-ana">类比</span><span>像机场安检的多级流水线：第一关只看轮廓、第二关看材质、第三关开箱定性——每一关都简单粗暴，串起来却极其可靠。卷积的"权值共享"则相当于全国安检口统一培训教材：在左上角学会认刀具，右下角自动也会。</span></div>
+    </div>
+    <p><b>核心观点：</b>本章是全书"双向脚手架"的样板间——神经科学给了工程界层级蓝图（Hubel-Wiesel → 新认知机 → CNN），工程反过来给神经科学提供了可比对的"人造视觉系统"；作者呼吁的正是这种跨学科循环。<span class="src">溯源：小节"跨学科合作，共同探索生物视觉科学的未来" <span class="bd bd-f">✅</span></span></p>
+    <div class="socratic"><b>苏格拉底之问：</b>CNN 在图像识别上超过普通人，却可能被一张对抗贴纸骗到把熊猫认成长臂猿 <span class="bd bd-i">⚠️</span>。它学会的究竟是"看见"，还是一种与我们相似但错法完全不同的"另一种看见"？错法的差异，是否比对法的相似更能揭示机制？</div>
+    <div class="dial">
+      <div class="pro"><b>正</b>层级前馈思想同时赢下了生物学（皮层组织）与工程学（计算机视觉），是本书最有说服力的"数学联姻"案例。</div>
+      <div class="con"><b>反</b>真实视觉充满反馈连接、眼动与主动探索；经典 CNN 的纯前馈只是视觉故事的前半章。</div>
+      <div class="lim"><b>边界</b>"识别物体"不等于"理解场景"——从看见到看懂之间，还隔着注意、记忆与推理。</div>
+    </div>
+  </div>
+
+  <div class="card ch" id="ch6">
+    <div class="num">第 6 章 · 20世纪40年代–20世纪60年代 <span class="bd bd-f">✅ 目录已核验</span></div>
+    <h3>降本增效的信息处理大法：神经放电是一份只报"意外"的电报<span class="mdl">神经编码 · 香农信息论 · 有效编码假说</span></h3>
+    <div class="thesis">带走这句：信息的多少不取决于说了多少字，而取决于消除了多少不确定性；感官系统在预算内的最优策略只有一条——去冗余，只传"新闻"。</div>
+    <div class="trio">
+      <div><span class="tg tg-term">术语</span><span><b>信息熵/互信息</b>：香农 1948 年给"不确定性"配上了单位（比特）；神经科学家借它追问：一段放电序列到底携带了多少关于刺激的信息。<b>有效编码假说</b>：感官系统的编码方式适配自然环境的统计规律，以最经济的脉冲传递最多信息（巴洛等人 <span class="bd bd-i">⚠️</span>）。<span class="src">溯源：小节"信息论的起源""有效编码假说：大脑如何以最优方式传递和利用信息" <span class="bd bd-f">✅</span></span></span></div>
+      <div><span class="tg tg-plain">大白话</span><span>"明天太阳照常升起"＝0 比特；"明天台风正面登陆"＝很多比特。信息量 = 惊讶程度。神经元的每个脉冲都有代谢价钱，所以它只为惊讶付费。</span></div>
+      <div><span class="tg tg-ana">类比</span><span>财报季的市场：完全符合一致预期的公告，股价纹丝不动——因为它不含信息；只有"超预期/低于预期"才驱动价格。视网膜同理：面对均匀的天空近乎沉默，扫到边缘与变化才剧烈放电——省的都是话费。</span></div>
+    </div>
+    <div class="boost">
+      <span class="lvl">难点 · 全套强化</span>
+      <svg class="bulb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/></svg>
+      <h5>换个说法：把"熵"和"互信息"一次讲透</h5>
+      <p><b>一句朴素话：</b>熵 = 你在猜谜前的迷茫程度；互信息 = 看到线索后，迷茫少掉的那部分。</p>
+      <ul>
+        <li><b>类比一（生活）：</b>猜"我心里想的 0–100 的数"，你的迷茫约等于问 7 个是非题才能问出来（约 7 比特）。我提示"是偶数"——你的问题数少了 1 个：这条提示与答案的互信息 = 1 比特。</li>
+        <li><b>类比二（商业）：</b>一份用户调研的价值不看页数，看它把你对"该不该上这个功能"的犹豫削掉了几成。削得多，比特就多；全是你已知的结论，再厚也是 0 比特。</li>
+      </ul>
+      <p><b>递进拆解：</b>① 把神经元当成一条信道；② 问：放电模式与外界刺激之间的互信息有多少比特；③ 约束：带宽有限、脉冲昂贵（大脑功耗约 20 瓦量级 <span class="bd bd-i">⚠️</span>）；④ 最优解：抛掉环境中的冗余（可预测部分），只编码偏离预期的残差。</p>
+      <p><b>点破直觉：</b>你的直觉以为感官在"忠实转播世界"；其实它在做<b>压缩转发</b>——常规内容直接掐掉，只把"新闻"送往大脑。你体验中的完整世界，很大程度是下游用先验"解压"回来的（这个钩子在第 9 章引爆）。</p>
+      <p class="edge-note"><b>类比的边界：</b>香农的框架刻意不管"语义"——它能算你传了几比特，不能告诉你这些比特<b>对谁、有什么用</b>。书中直言"大脑就像一套通信系统，但这还不够"，正是为第 7、9 章的另两种视角让路。<span class="src">溯源：小节"大脑就像一套通信系统，但这还不够" <span class="bd bd-f">✅</span></span></p>
+    </div>
+    <div class="socratic"><b>苏格拉底之问：</b>如果感官只上报"意外"，那你此刻体验到的这个稳定、连续、细节饱满的世界，是被传输进来的，还是被你的大脑用预期"脑补"出来的？</div>
+    <div class="dial">
+      <div class="pro"><b>正</b>第一次给"神经活动的意义"配了量尺；有效编码假说成功预言了大量感官系统的设计细节。</div>
+      <div class="con"><b>反</b>大脑的目标不是忠实通信而是有用行动——为行动服务的编码，可以理直气壮地"失真"。</div>
+      <div class="lim"><b>边界</b>通信隐喻预设了发报方与收报方；可在闭环的大脑里，"解码者"是谁？这个追问直接引出下一章的对立观点。</div>
+    </div>
+  </div>
+
+  <div class="card ch" id="ch7">
+    <div class="num">第 7 章 · 20世纪30年代–20世纪90年代 <span class="bd bd-f">✅ 目录已核验</span></div>
+    <h3>在乱糟糟中合并同类项：别盯单个神经元，看整群活动的低维舞步<span class="mdl">动力系统 · 运动学与降维</span></h3>
+    <div class="thesis">带走这句：运动皮质研究憋出了全书最深的一次观念转弯——神经活动也许根本不在"编码"什么，它就是驱动肌肉的发条本身；而读懂发条的钥匙，是把百维数据降到三维看轨迹。</div>
+    <div class="trio">
+      <div><span class="tg tg-term">术语</span><span><b>编码之争</b>：自 19 世纪电刺激皮层引发肢体运动起，"运动皮质编码什么"（力？方向？肌肉？）争了一百多年；埃瓦茨的猴子腕力实验开启定量时代，而后"群体向量"等表征方案层出不穷 <span class="bd bd-i">⚠️</span>。<b>动力系统观</b>：换个问法——不问"它表示什么"，问"它作为一台机器如何演化出下一步状态并产出运动"。<span class="src">溯源：小节"从抽搐到动作""埃瓦茨的腕力研究""重新定义运动皮质的角色：不仅仅是编码" <span class="bd bd-f">✅</span></span></span></div>
+      <div><span class="tg tg-plain">大白话</span><span>老问法像追问汽车发动机的每个零件"你代表速度还是方向"；新问法承认：零件谁都不"代表"什么，整台发动机转起来，车就走了。脑机接口的成功路线恰是后者——"绕过理解，直达行动"。<span class="src">溯源：小节"解码运动皮质：绕过理解直达行动" <span class="bd bd-f">✅</span></span></span></div>
+      <div><span class="tg tg-ana">类比</span><span>看单个神经元像盯着鸟群里某一只椋鸟：轨迹杂乱无章；退后一步看整群，一万只鸟的队形其实只需寥寥几个参数就能描述——规律不住在个体里，住在群体的低维结构上。</span></div>
+    </div>
+    <div class="boost">
+      <span class="lvl">难点 · 全套强化</span>
+      <svg class="bulb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/></svg>
+      <h5>换个说法："状态空间"与"降维"到底在干什么？</h5>
+      <p><b>一句朴素话：</b>同时记录 200 个神经元，每一瞬间就是 200 维空间里的一个点；降维，就是发现这些点其实全趴在一张三维的"纸"上，然后把纸抽出来看。</p>
+      <ul>
+        <li><b>类比二（商业）：</b>一家公司有上千个经营指标，董事会却只看三条曲线（营收、毛利、现金流）——因为上千指标高度相关，系统的<b>真实自由度</b>远小于指标数。主成分分析做的就是替你找出这"三条曲线"。</li>
+        <li><b>类比一（自然）：</b>台风云图有亿万个像素，但气象学家用"中心位置＋强度＋移速"寥寥几维就能刻画它的演化——高维表象，低维本质。</li>
+      </ul>
+      <p><b>递进拆解：</b>① 每个时刻的群体活动=高维空间一个点；② 活动随时间展开=一条高维轨迹；③ 发现：轨迹并不乱窜，而是贴附在低维曲面（流形）上；④ 投影到 2–3 维后，肉眼可见的规律（例如准备期与执行期各自成形的旋转般轨迹 <span class="bd bd-i">⚠️</span>）浮现出来。</p>
+      <p><b>点破直觉：</b>你的直觉以为"单个神经元调谐杂乱=系统没规律"；其实规律完全可能只在群体层面成立——就像没有哪只椋鸟"知道"队形，但队形千真万确。</p>
+      <p class="edge-note"><b>类比的边界：</b>降维是发现的显微镜，也可能是幻觉的放大镜——低维结构有多少来自大脑、有多少来自任务简单与数学平滑假设，仍是活跃争议。<span class="bd bd-i">⚠️</span></p>
+    </div>
+    <div class="socratic"><b>苏格拉底之问："</b>编码观"与"动力观"常常对同一组数据给出同样好的拟合。当两种世界观无法被实验区分时，我们选择其一的理由是什么——证据、品味，还是它能带来的下一个实验？</div>
+    <div class="dial">
+      <div class="pro"><b>正</b>把"神经元动物园"式的逐个描述，升级为系统级的动力学定律；脑机接口的落地是它最硬的战绩。</div>
+      <div class="con"><b>反</b>"齿轮观"若走极端，等于宣布放弃追问"意义"——预测得再好，也可能只是精致的不理解。</div>
+      <div class="lim"><b>边界</b>本章与第 6 章的对撞（表征 vs 机器）是全书最诚实的张力，作者也承认这条探索之路"道阻且长"。<span class="src">溯源：小节"运动皮质的探索之路，道阻且长" <span class="bd bd-f">✅</span></span></div>
+    </div>
+  </div>
+  <div class="card ch" id="ch8">
+    <div class="num">第 8 章 · 18世纪30年代–21世纪10年代 <span class="bd bd-f">✅ 目录已核验</span></div>
+    <h3>简单线条揭示的庞杂秘密：把大脑画成地铁图，用"几站能到"衡量它<span class="mdl">图论 · 连接组与网络神经科学</span></h3>
+    <div class="thesis">带走这句：欧拉为七座桥发明的"点与线"，两百多年后成了丈量大脑组织方式的通用尺——大脑是一张"高聚团、短路径"的小世界网络，兼顾本地专业化与全局快联通。</div>
+    <div class="trio">
+      <div><span class="tg tg-term">术语</span><span><b>图论</b>：欧拉 1736 年解柯尼斯堡七桥问题时创立——把一切网络抽象为节点与边。<b>连接组（connectome）</b>：大脑完整接线图；从秀丽隐杆线虫的约 302 个神经元 <span class="bd bd-i">⚠️</span> 到人类的宏观脑区网络。<b>小世界结构</b>：邻里抱团紧密、任意两点又只需少数几步互达——"六度分隔"的神经系统版。<span class="src">溯源：小节"图论：解密复杂网络结构的数学之钥""六度分隔""连接组" <span class="bd bd-f">✅</span></span></span></div>
+      <div><span class="tg tg-plain">大白话</span><span>看大脑别看肉，看拓扑：谁跟谁连、绕几步能到、哪些节点是枢纽机场。同一把尺子还能量疾病——若干精神疾病表现为这张图的连通模式改变（枢纽受损、路径变长等）。<span class="src">溯源：小节"连接组与精神疾病：图论方法的医学应用" <span class="bd bd-f">✅</span></span></span></div>
+      <div><span class="tg tg-ana">类比</span><span>发育像城市路网建设的"先修再拆"：婴儿期疯狂铺路（突触过量生长），随后按使用量精雕细琢地裁撤冷线（修剪）——高效网络不是设计出来的，是用出来的。<span class="src">溯源：小节"从爆发到精雕细琢：如何构建稳定高效的神经网络" <span class="bd bd-f">✅</span></span></span></div>
+    </div>
+    <div class="socratic"><b>苏格拉底之问：</b>线虫的完整接线图我们已握在手中多年，却依然不能由图完全预测它的行为。如果"拿到地图≠理解领土"，那人类连接组计划真正买到的是什么？</div>
+    <div class="dial">
+      <div class="pro"><b>正</b>给不同尺度、不同物种、健康与疾病的大脑提供了同一套可比较的结构语言。</div>
+      <div class="con"><b>反</b>静态的点线图抹掉了突触强度、递质类型与时间动态——而这些恰恰可能是功能的关键。</div>
+      <div class="lim"><b>边界</b>结构是功能的必要条件而非充分条件；作者亦以"超越连接组"收束本章。<span class="src">溯源：小节"超越连接组，探索理解大脑复杂性的多维视角" <span class="bd bd-f">✅</span></span></div>
+    </div>
+  </div>
+
+  <div class="card ch" id="ch9">
+    <div class="num">第 9 章 · 16世纪–19世纪10年代 <span class="bd bd-f">✅ 目录已核验</span></div>
+    <h3>所知所见决定出牌策略：感知是一场"先验 × 证据"的理性下注<span class="mdl">概率论 · 贝叶斯法则与贝叶斯大脑假说</span></h3>
+    <div class="thesis">带走这句：为赌桌发明的数学，最终解释了"看见"——你体验到的世界不是感官的转播，而是大脑用过往经验（先验）给含噪证据（似然）加权后的最优猜测。</div>
+    <div class="trio">
+      <div><span class="tg tg-term">术语</span><span><b>贝叶斯法则</b>：后验 ∝ 先验 × 似然——新证据到来时，理性信念的唯一更新方式。源头是骰子赌局催生的概率论，经贝叶斯与拉普拉斯成形，20 世纪后期大举进入心理学。<span class="src">溯源：小节"从骰子到大数据""从概率到认知：贝叶斯法则在心理学中的崛起" <span class="bd bd-f">✅</span></span></span></div>
+      <div><span class="tg tg-plain">大白话</span><span>路灯下你把绳子看成蛇：视网膜证据模糊（似然弱），"暗处细长物=危险"的先验就接管了判断。虚惊不是系统故障，是在"错杀成本 vs 漏报成本"下的理性下注。错觉，是最优推断的正常副产品。<span class="src">溯源：小节"贝叶斯法则如何帮我们解读感知到的世界" <span class="bd bd-i">⚠️ 示例为解读者所加</span></span></span></div>
+      <div><span class="tg tg-ana">类比</span><span>像一位资深买手看供应商报价：报价单（证据）永远有水分，他会用"这家过往靠不靠谱"（先验）加权后再定夺；两路信息各按<b>可靠程度</b>配权——多感官整合被认为遵循同样的加权逻辑。<span class="bd bd-i">⚠️</span></span></div>
+    </div>
+    <p><b>核心观点：</b>从感知一路推到决策：大脑面对不确定世界的"出牌策略"，可被建模为在概率信念上选择期望收益最高的行动。但作者不回避争议——贝叶斯框架灵活到几乎能"事后"解释任何行为，这份灵活既是魅力也是软肋。<span class="src">溯源：小节"用贝叶斯法则理解大脑的决策过程""贝叶斯大脑假说：灵活与挑战并存的探索之路" <span class="bd bd-f">✅</span></span></p>
+    <div class="socratic"><b>苏格拉底之问：</b>如果正常感知本就是"受控的猜测"，那么幻觉与正常感知的区别，是<b>种类</b>之别，还是仅仅先验权重的<b>程度</b>之别？这条线该画在哪里？</div>
+    <div class="dial">
+      <div class="pro"><b>正</b>一个公式统一了感知、多感官整合与决策，还把"错觉"从系统缺陷翻案为理性证据。</div>
+      <div class="con"><b>反</b>可证伪性堪忧：先验看不见摸不着，行为不符时总能再补一个先验圆回来——"什么都能解释"逼近"什么也没解释"。</div>
+      <div class="lim"><b>边界</b>"大脑在计算概率"究竟是对行为的<b>描述</b>，还是对神经机制的<b>断言</b>？本书诚实地把这个问题留着。</div>
+    </div>
+  </div>
+
+  <div class="card ch" id="ch10">
+    <div class="num">第 10 章 · 20世纪50年代–20世纪70年代 <span class="bd bd-f">✅ 目录已核验</span></div>
+    <h3>用当下的惊喜修正对未来的预期：多巴胺报告的不是快乐，是"差价"<span class="mdl">时间差分学习 · 强化学习与多巴胺</span></h3>
+    <div class="thesis">带走这句：从巴甫洛夫的狗到贝尔曼方程，学习被数学化为一件事——用"实际所得 − 预期所得"这个误差信号，持续修正对每个状态的估值；而中脑多巴胺神经元的放电模式，与这个理论量惊人吻合。</div>
+    <div class="trio">
+      <div><span class="tg tg-term">术语</span><span><b>价值函数与贝尔曼方程</b>：一个状态的价值 = 即时回报 + 后续状态的折扣价值——贝尔曼在兰德公司发明的动态规划，把"深谋远虑"变成了可递归计算的对象。<b>时间差分（TD）学习</b>：不必等最终结果，每一步都拿"新预期 − 旧预期"的差分来更新估值。<span class="src">溯源：小节"从巴甫洛夫的狗到贝尔曼方程式""从兰德公司到动态规划""从条件反射到价值函数" <span class="bd bd-f">✅</span></span></span></div>
+      <div><span class="tg tg-plain">大白话</span><span>年终奖发了 1 万：若你预期 5 千，多巴胺猛窜；若你预期 2 万，同样的 1 万让它跌落——它汇报的从来不是绝对所得，而是<b>比预期好多少</b>。这解释了为何提示音（预告奖励）会接管放电，而如约而至的奖励本身反而沉默。<span class="bd bd-i">⚠️ 奖金示例为解读者类比；多巴胺-预测误差的对应关系为该领域标志性发现</span></span></div>
+      <div><span class="tg tg-ana">类比</span><span>成瘾是这套系号被劫持：某些物质<b>直接、人为地</b>拉高误差信号，等于给估值系统灌假账——系统忠实地"学习"了一条错误的价值，行为随之被锁死。<span class="src">溯源：小节"从蜜蜂到猴子：神经递质在学习与成瘾中的角色" <span class="bd bd-f">✅</span></span></span></div>
+    </div>
+    <p><b>核心观点：</b>本章是"AI ↔ 脑"最成功的一次握手：为机器发明的 TD 算法，回头成了解释真实多巴胺系统的最佳模型。章末借"马尔思考"提醒读者分清理解的层次——计算目标、算法、物理实现是三个不同的问题，混层争论只会空转。<span class="src">溯源：小节"大脑中的奖励与学习：马尔思考给我们的启示"（此处"马尔"指大卫·马尔的三层次分析框架，属合理推断 <span class="bd bd-i">⚠️</span>）</span></p>
+    <div class="socratic"><b>苏格拉底之问：</b>如果多巴胺登记的是"差价"而非快乐本身，那么一个不断抬高自己预期的人，是在追求幸福，还是在系统性地制造负误差？</div>
+    <div class="dial">
+      <div class="pro"><b>正</b>理论量（TD 误差）与生理量（多巴胺放电）的定量吻合，是计算神经科学皇冠上的宝石。</div>
+      <div class="con"><b>反</b>多巴胺同时深度参与运动、动机与努力分配——"单一误差信号"的叙事整洁得让人起疑。<span class="bd bd-i">⚠️</span></div>
+      <div class="lim"><b>边界</b>无模型的 TD 善解"习惯"，而人类的深思熟虑与沙盘推演（基于模型的规划）在本章框架之外。</div>
+    </div>
+  </div>
+
+  <div class="card ch" id="chZ">
+    <div class="num" style="color:var(--purple)">结语 <span class="bd bd-f">✅ 目录已核验</span></div>
+    <h3>有没有一个简明的大统一理论能解释大脑？——三位候选者，各带硬伤<span class="mdl">自由能原理 · 千脑智能理论 · 信息整合论</span></h3>
+    <div class="thesis">带走这句：物理学有麦克斯韦方程，脑科学有什么？三大候选各自宏大也各自可疑——本书的最终立场不是加冕谁，而是"在复杂中寻求简单之美"的同时，对一切"一揽子答案"保持清醒。</div>
+    <div class="boost">
+      <span class="lvl">难点 · 全套强化</span>
+      <svg class="bulb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/></svg>
+      <h5>换个说法：弗里斯顿的"自由能原理"到底在说什么？</h5>
+      <p><b>一句朴素话：</b>大脑是一台预测机器，一生只做一件事——缩小"我猜的"与"我测到的"之间的差距；要么改猜测（感知与学习），要么改世界（行动）。</p>
+      <ul>
+        <li><b>类比一（生活）：</b>恒温器：设定 24 度（预测）对撞实测 28 度（证据），4 度的偏差驱动一切动作。自由能原理的野心是说：你整个人，就是一台把"生存所需状态"当设定值的超级恒温器。</li>
+        <li><b>类比二（商业）：</b>预算管理：预算 vs 实绩的偏差出现时，你有两条消解路径——修订预测（调预算）或改变现实（冲业绩）。感知走前一条，行动走后一条，<b>同一个误差，两种消法</b>——这正是该框架把感知与行动统一起来的方式。</li>
+      </ul>
+      <p><b>递进拆解：</b>① 生物要存活＝把自己维持在少数"该在"的状态里；② 维持＝让"意外"尽可能少；③ "意外"无法直接计算，于是用一个可计算的替身——自由能——来压它的上界；④ 于是：更新内部模型（感知/学习）与改变感官输入（行动）都是在降同一个量。多数预测编码模型据此主张：自上而下的反馈连接携带预测，神经元放电强度反映预测误差——放电多即误差大。<span class="src">溯源：结语小节"从预测到行为：自由能理论的广泛应用与争议"；细节参照公开读书笔记对该章的转述 <span class="bd bd-f">✅（二手信源）</span></span></p>
+      <p><b>点破直觉：</b>它不是又一个"某功能的模型"，而是想把感知、学习、行动、体内平衡全部装进一个泛函的<b>元理论</b>——野心即卖点，野心亦即软肋。</p>
+      <p class="edge-note"><b>类比的边界与硬伤：</b>恒温器有明确的设定值，而"生物的自由能"在具体情境中缺乏客观的度量办法——批评者（书中亦持保留）指出它更像一种<b>观察大脑的视角</b>，而非可证伪的工作机制：什么都能解释的理论，可能什么也没解释。<span class="bd bd-f">✅（二手信源转述该章评价）</span></p>
+    </div>
+    <div class="grid2" style="margin-top:4px">
+      <div style="border:.5px solid var(--hair);border-radius:14px;padding:14px 16px;background:var(--card2)">
+        <h4 style="margin-bottom:6px">千脑智能理论（霍金斯）</h4>
+        <p class="small" style="margin-bottom:0">新皮质由大量重复的"皮质柱"构成，每根柱子都独立为世界建模，感知是众柱"投票"的结果；大脑靠主动移动身体获取动态感觉流来建立深刻的世界模型。魅力在于解剖学落点具体；局限在于它主要覆盖新皮质与感知运动学习，离"解释整个大脑"尚远。<span class="src">溯源：结语小节"千脑智能理论：解密大脑的终极挑战"＋二手笔记转述 <span class="bd bd-f">✅</span></span></p>
+      </div>
+      <div style="border:.5px solid var(--hair);border-radius:14px;padding:14px 16px;background:var(--card2)">
+        <h4 style="margin-bottom:6px">信息整合论 / IIT（托诺尼）</h4>
+        <p class="small" style="margin-bottom:0">试图用方程直接定义意识：系统作为整体所拥有的"不可拆分的整合信息量"（Φ）越大，意识程度越高。它是三者中最敢碰"意识本体"的，也因此争议最烈——Φ 的计算在真实系统上近乎不可行，且蕴含"很多简单系统也有微量意识"的泛心论意味；成书之后（2023 年）该理论更遭到部分学者公开信级别的激烈质疑，属成书后进展。<span class="src">溯源：结语小节"信息整合论：革命性的理论还是科学的误区"＋二手笔记 <span class="bd bd-f">✅</span>；成书后争议 <span class="bd bd-i">⚠️</span></span></p>
+      </div>
+    </div>
+    <div class="socratic" style="margin-top:14px"><b>苏格拉底之问：</b>物理学的大统一梦建立在"自然定律处处相同"之上；而大脑是演化拼贴出来的机会主义产物。<b>生物学欠我们一个大统一理论吗？</b>如果答案是否，那"追求统一"还剩下什么价值？</div>
+    <div class="dial">
+      <div class="pro"><b>正</b>三大候选逼着领域回答终极问题，哪怕失败也在划定"何为好答案"的标准。</div>
+      <div class="con"><b>反</b>三者要么不可证伪（自由能之嫌）、要么范围有限（千脑）、要么算不动且形而上（IIT）——目前没有赢家。</div>
+      <div class="lim"><b>边界</b>作者的收束是方法论的："在复杂中寻求简单之美"，但简单必须挣来，不能宣布。<span class="src">溯源：结语小节"大统一理论：在复杂中寻求简单之美" <span class="bd bd-f">✅</span></span></div>
+    </div>
+  </div>
+
+  <div class="bridge br2"><span class="to">桥 → L3</span>内容你已走过一遍，十副眼镜的正确模型都在手上了。现在最关键的一步：把它们和大多数人（也包括过去的你）的"想当然"正面对撞——下面 8 条误解，每一条都曾经、或正在悄悄扭曲大众对大脑的理解。</div>
+</section>
+<!-- ================= L3 ================= -->
+<section id="l3" class="layer l3" style="scroll-margin-top:80px">
+  <div class="layer-head">
+    <span class="layer-badge">L3</span>
+    <div><h2>校准 · 认知纠正</h2><div class="layer-sub">概念改变 / 把正确模型与"想当然"对撞 —— 8 条高发误解</div></div>
+  </div>
+
+  <div class="card">
+    <p><b>带走这句：这 8 条误解有一个共同病灶——把"一副好用的眼镜"错当成"眼睛本身"。</b>先看对照总图，再逐条拆解。</p>
+    <div class="figure" role="img" aria-label="八条误解与真相对照图">
+<svg viewBox="0 0 1150 660" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,'SF Pro Text','PingFang SC',sans-serif">
+  <defs><marker id="mA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--gray)"/></marker></defs>
+  <text x="255" y="42" text-anchor="middle" font-size="15" font-weight="800" fill="var(--red)">大众怎么想 ✗</text>
+  <text x="895" y="42" text-anchor="middle" font-size="15" font-weight="800" fill="var(--teal)">这本书怎么说 ✓</text>
+  <g font-size="13.5" font-weight="600">
+    <a href="#m1"><rect x="40" y="62" width="430" height="50" rx="12" fill="var(--red-bg)" stroke="var(--red)" stroke-opacity=".55"/><text x="255" y="92" text-anchor="middle" fill="var(--label)">大脑就是一台计算机</text></a>
+    <line x1="482" y1="87" x2="666" y2="87" stroke="var(--gray)" stroke-width="1.8" marker-end="url(#mA)"/>
+    <a href="#m1"><rect x="680" y="62" width="430" height="50" rx="12" fill="var(--teal-bg)" stroke="var(--teal)" stroke-opacity=".65"/><text x="895" y="92" text-anchor="middle" fill="var(--label)">"计算机"只是十副眼镜之一</text></a>
+    <a href="#m2"><rect x="40" y="134" width="430" height="50" rx="12" fill="var(--red-bg)" stroke="var(--red)" stroke-opacity=".55"/><text x="255" y="164" text-anchor="middle" fill="var(--label)">模型越逼真越有用</text></a>
+    <line x1="482" y1="159" x2="666" y2="159" stroke="var(--gray)" stroke-width="1.8" marker-end="url(#mA)"/>
+    <a href="#m2"><rect x="680" y="134" width="430" height="50" rx="12" fill="var(--teal-bg)" stroke="var(--teal)" stroke-opacity=".65"/><text x="895" y="164" text-anchor="middle" fill="var(--label)">敢于简化才是模型的美德</text></a>
+    <a href="#m3"><rect x="40" y="206" width="430" height="50" rx="12" fill="var(--red-bg)" stroke="var(--red)" stroke-opacity=".55"/><text x="255" y="236" text-anchor="middle" fill="var(--label)">放电杂乱 = 元件劣质的噪声</text></a>
+    <line x1="482" y1="231" x2="666" y2="231" stroke="var(--gray)" stroke-width="1.8" marker-end="url(#mA)"/>
+    <a href="#m3"><rect x="680" y="206" width="430" height="50" rx="12" fill="var(--teal-bg)" stroke="var(--teal)" stroke-opacity=".65"/><text x="895" y="236" text-anchor="middle" fill="var(--label)">"乱"是兴奋-抑制对峙的产物</text></a>
+    <a href="#m4"><rect x="40" y="278" width="430" height="50" rx="12" fill="var(--red-bg)" stroke="var(--red)" stroke-opacity=".55"/><text x="255" y="308" text-anchor="middle" fill="var(--label)">AI 神经网络 ≈ 大脑的翻版</text></a>
+    <line x1="482" y1="303" x2="666" y2="303" stroke="var(--gray)" stroke-width="1.8" marker-end="url(#mA)"/>
+    <a href="#m4"><rect x="680" y="278" width="430" height="50" rx="12" fill="var(--teal-bg)" stroke="var(--teal)" stroke-opacity=".65"/><text x="895" y="308" text-anchor="middle" fill="var(--label)">同源已分叉，互为脚手架</text></a>
+    <a href="#m5"><rect x="40" y="350" width="430" height="50" rx="12" fill="var(--red-bg)" stroke="var(--red)" stroke-opacity=".55"/><text x="255" y="380" text-anchor="middle" fill="var(--label)">记忆像文件，存在某个位置</text></a>
+    <line x1="482" y1="375" x2="666" y2="375" stroke="var(--gray)" stroke-width="1.8" marker-end="url(#mA)"/>
+    <a href="#m5"><rect x="680" y="350" width="430" height="50" rx="12" fill="var(--teal-bg)" stroke="var(--teal)" stroke-opacity=".65"/><text x="895" y="380" text-anchor="middle" fill="var(--label)">记忆是分布式的"能量之坑"</text></a>
+    <a href="#m6"><rect x="40" y="422" width="430" height="50" rx="12" fill="var(--red-bg)" stroke="var(--red)" stroke-opacity=".55"/><text x="255" y="452" text-anchor="middle" fill="var(--label)">神经活动在"编码"世界</text></a>
+    <line x1="482" y1="447" x2="666" y2="447" stroke="var(--gray)" stroke-width="1.8" marker-end="url(#mA)"/>
+    <a href="#m6"><rect x="680" y="422" width="430" height="50" rx="12" fill="var(--teal-bg)" stroke="var(--teal)" stroke-opacity=".65"/><text x="895" y="452" text-anchor="middle" fill="var(--label)">也可能只是产生行为的齿轮</text></a>
+    <a href="#m7"><rect x="40" y="494" width="430" height="50" rx="12" fill="var(--red-bg)" stroke="var(--red)" stroke-opacity=".55"/><text x="255" y="524" text-anchor="middle" fill="var(--label)">看见 = 对世界的客观拍照</text></a>
+    <line x1="482" y1="519" x2="666" y2="519" stroke="var(--gray)" stroke-width="1.8" marker-end="url(#mA)"/>
+    <a href="#m7"><rect x="680" y="494" width="430" height="50" rx="12" fill="var(--teal-bg)" stroke="var(--teal)" stroke-opacity=".65"/><text x="895" y="524" text-anchor="middle" fill="var(--label)">看见 = 先验加权后的最优猜测</text></a>
+    <a href="#m8"><rect x="40" y="566" width="430" height="50" rx="12" fill="var(--red-bg)" stroke="var(--red)" stroke-opacity=".55"/><text x="255" y="596" text-anchor="middle" fill="var(--label)">大脑的"大一统方程"已在路上</text></a>
+    <line x1="482" y1="591" x2="666" y2="591" stroke="var(--gray)" stroke-width="1.8" marker-end="url(#mA)"/>
+    <a href="#m8"><rect x="680" y="566" width="430" height="50" rx="12" fill="var(--teal-bg)" stroke="var(--teal)" stroke-opacity=".65"/><text x="895" y="596" text-anchor="middle" fill="var(--label)">三大候选皆有硬伤，悬而未决</text></a>
+  </g>
+</svg>
+    </div>
+    <p class="figcap">图：误解 ⇄ 真相对照总览，点击任一行跳转详解。</p>
+  </div>
+
+  <div class="card mis" id="m1">
+    <div class="num" style="color:var(--orange)">误解 1 / 8</div>
+    <h4>"大脑就是一台计算机"</h4>
+    <div class="wrong"><b>大众怎么想：</b>大脑=CPU，记忆=硬盘，思考=运行程序——计算机隐喻几乎成了默认世界观。</div>
+    <p class="small"><b>认知根源：</b>每个时代都用最先进的机器理解大脑（水力时代是液压、电话时代是交换机）；计算机恰好是我们这个时代的那台机器。</p>
+    <div class="truth"><b>这本书怎么说：</b>翻完十章你会发现，"逻辑计算设备"只是第 2 章那<b>一副</b>眼镜；大脑还被卓有成效地看作电路（第1章）、磁性系统（第3章）、对峙的动力系统（第4、7章）、通信信道（第6章）、地铁网络（第8章）、赌徒（第9章）与学徒（第10章）。没有哪副眼镜是"大脑本身"。</div>
+    <p class="upg"><b>认知升级：</b>问"大脑是不是计算机"是个坏问题；好问题是"计算机这副眼镜能看清哪些现象、看不清哪些"。<b>反问：</b>如果两百年后出现比计算机更强的机器，你确定我们不会改口说"大脑其实是一台 X"吗？</p>
+  </div>
+
+  <div class="card mis" id="m2">
+    <div class="num" style="color:var(--orange)">误解 2 / 8</div>
+    <h4>"模型越逼真、细节越全，就越有用"</h4>
+    <div class="wrong"><b>大众怎么想：</b>要理解大脑就该把每个离子通道都仿真出来——不逼真的模型是偷工减料。</div>
+    <p class="small"><b>认知根源：</b>把"模型"误当"复制品"；直觉上相似度=可信度。</p>
+    <div class="truth"><b>这本书怎么说：</b>"球形奶牛"是方法而非笑话：LIF 比 H-H 粗糙得多，却因为可解、可扩展而成为大规模仿真的主力（第1章）；霍普菲尔德网络"错得离谱"却解释了内容寻址（第3章）。模型的价值在于<b>回答特定问题的能力</b>，不在像素级还原——把 860 亿个精确方程连起来，只会得到第二个看不懂的大脑。</div>
+    <p class="upg"><b>认知升级：</b>建模的第一步是决定<b>扔掉什么</b>。<b>反问：</b>你手头那份"力求全面"的分析报告，是模型，还是第二份看不懂的现实？</p>
+  </div>
+
+  <div class="card mis" id="m3">
+    <div class="num" style="color:var(--orange)">误解 3 / 8</div>
+    <h4>"神经元放电不规律，说明测量有噪声 / 元件不精密"</h4>
+    <div class="wrong"><b>大众怎么想：</b>精密仪器就该输出整齐信号；杂乱=误差=坏事。</div>
+    <p class="small"><b>认知根源：</b>拿人造机器的标准（确定性、可重复）去要求演化系统。</p>
+    <div class="truth"><b>这本书怎么说：</b>第 4 章整章为"乱"翻案：不规律是兴奋与抑制两股巨力近乎抵消后的<b>结构性产物</b>，附赠对新输入的极速响应；混沌进一步说明相同输入本就会引发不同轨迹。变异性不是理解大脑的障碍，它本身就是需要被解释、也已被解释的现象。</div>
+    <p class="upg"><b>认知升级：</b>见到"乱"先别急着降噪——先问这乱是不是机制的指纹。<b>反问：</b>你所在系统里那些"该被消灭的波动"，有没有可能正是它保持灵敏的方式？</p>
+  </div>
+
+  <div class="card mis" id="m4">
+    <div class="num" style="color:var(--orange)">误解 4 / 8</div>
+    <h4>"AI 神经网络的成功，说明我们已经搞懂了大脑"</h4>
+    <div class="wrong"><b>大众怎么想：</b>它叫"神经网络"、它像人一样识图对话——所以它就是大脑原理的实现。</div>
+    <p class="small"><b>认知根源：</b>命名的诱导 + 输出相似导致的机制混淆。</p>
+    <div class="truth"><b>这本书怎么说：</b>两者<b>同源但早已分叉</b>：感知机确实脱胎于神经元抽象（第2章）、CNN 确实师承视觉皮层（第5章），但反向传播的生物合理性至今存疑（第2章），人工网络为了可训练抛弃了脉冲、时间与大量生物约束。正确的关系是<b>互为脚手架</b>：生物启发工程，工程反过来为脑科学提供可比对的假说机器。</div>
+    <p class="upg"><b>认知升级：</b>"以它为镜"不等于"它就是你"。<b>反问：</b>飞机的成功证明了鸟的飞行原理，还是证明了空气动力学？"人工智能的成功"证明的又是哪一个？</p>
+  </div>
+
+  <div class="card mis" id="m5">
+    <div class="num" style="color:var(--orange)">误解 5 / 8</div>
+    <h4>"记忆像文件，存放在大脑的某个位置"</h4>
+    <div class="wrong"><b>大众怎么想：</b>既然能"存取"记忆，就该有个存放地址；失忆=文件丢了。</div>
+    <p class="small"><b>认知根源：</b>硬盘隐喻的殖民；"提取"这个动词自带仓库画面。</p>
+    <div class="truth"><b>这本书怎么说：</b>拉什利切遍皮层也没找到那个"地址"，因为它不存在：记忆分布在千万根连接强度里，是能量地形上的一口坑（第3章）；回忆是被线索丢到坡上后的<b>动力学滚落</b>——所以任何内容碎片都是钥匙（内容寻址），所以局部损伤伤不了整段记忆，也所以每次回忆都可能把坑挖歪一点（记忆的重构性）。</div>
+    <p class="upg"><b>认知升级：</b>回忆是"再生成"，不是"读取"——这正是目击证词不可尽信的数学原因。<b>反问：</b>如果每次想起都在轻微改写，你最珍视的那段记忆，还是"原件"吗？</p>
+  </div>
+
+  <div class="card mis" id="m6">
+    <div class="num" style="color:var(--orange)">误解 6 / 8</div>
+    <h4>"某脑区'编码'了 X，找到解码器就读懂了大脑"</h4>
+    <div class="wrong"><b>大众怎么想：</b>神经活动是一部密码本——运动皮质编码动作、视皮层编码图像，破译即理解。</div>
+    <p class="small"><b>认知根源：</b>通信隐喻（第6章的成功）被无限外推；"读心术"叙事的媒体强化。</p>
+    <div class="truth"><b>这本书怎么说：</b>第 7 章给出全书最深的一记反转：动力系统观认为运动皮质的活动<b>不是关于运动的消息，而是产生运动的机器本身</b>——问齿轮"你代表什么"可能从根上问错了。两种观点常对同一数据拟合得同样好；"编码"这个词自带的"发报者-收报者"预设，在闭环大脑里未必成立。</div>
+    <p class="upg"><b>认知升级：</b>"能从活动中解码出 X" 只说明活动与 X 相关，不说明大脑<b>用</b>它来表示 X。<b>反问：</b>从你的心率能解码出你在开会——你的心脏在"编码"会议吗？</p>
+  </div>
+
+  <div class="card mis" id="m7">
+    <div class="num" style="color:var(--orange)">误解 7 / 8</div>
+    <h4>"眼见为实：看见就是对世界的客观记录"</h4>
+    <div class="wrong"><b>大众怎么想：</b>视觉像摄像头，忠实转播外界；错觉只是偶发故障。</div>
+    <p class="small"><b>认知根源：</b>体验的透明性——我们看不到"看"的过程，只看到结果，于是误以为结果=原始输入。</p>
+    <div class="truth"><b>这本书怎么说：</b>两章合击：第 6 章说感官只上传"意外"（去冗余的压缩转发），第 9 章说体验是先验与证据的加权合成。你眼中稳定、连续、细节饱满的世界，很大部分是大脑用模型"解压/脑补"出来的；错觉不是故障，而是<b>最优推断在非常规输入下的正常输出</b>。</div>
+    <p class="upg"><b>认知升级：</b>"眼见为实"应改写为"眼见为<b>最优猜测</b>"。<b>反问：</b>两个先验不同的人看同一份事实各执一词——这是谁在"歪曲事实"，还是两台贝叶斯机器都在正常工作？</p>
+  </div>
+
+  <div class="card mis" id="m8">
+    <div class="num" style="color:var(--orange)">误解 8 / 8</div>
+    <h4>"自由能 / IIT 已经（或很快将）统一解释大脑与意识"</h4>
+    <div class="wrong"><b>大众怎么想：</b>科普标题党的常客——"科学家找到意识方程""一个原理解释大脑一切"。</div>
+    <p class="small"><b>认知根源：</b>物理学大一统叙事的迁移 + 对"终极答案"的心理需求。</p>
+    <div class="truth"><b>这本书怎么说：</b>结语对三大候选逐一体检：自由能被批"更像一种观察视角而非可检验机制"，千脑理论范围有限，IIT 的 Φ 算不动且带泛心论意味（成书后更遭遇公开信级质疑 <span class="bd bd-i">⚠️ 成书后进展</span>）。作者的立场是审慎的多模型主义：追求简单之美，但<b>简单必须被挣来，不能被宣布</b>；而且演化拼贴出的大脑，可能压根不欠我们一个大一统。</div>
+    <p class="upg"><b>认知升级：</b>对"一个原理解释一切"的理论，先问一句"它排除了什么"——排除不了任何可能的理论，也就预言不了任何东西。<b>反问：</b>你更愿意要一张 90% 准确的分区地图，还是一个 100% 覆盖却无法证伪的"万能罗盘"？</p>
+  </div>
+
+  <div class="card card2">
+    <div class="eyebrow"><span class="dot" style="background:var(--orange)"></span>元认知收束 · 八条误解的共同病灶</div>
+    <p>把它们并排看，病灶只有两个：<b>其一，把"眼镜"当"眼睛"</b>——把某个成功隐喻（计算机、硬盘、密码本、摄像机）绝对化为大脑本身；<b>其二，把"好用"当"为真"</b>——模型拟合得好，就默认机制如此。而这本书的解毒剂恰恰是它的结构本身：十副眼镜排排坐，谁也别称王。这也是"读经典＝系统性纠偏"的一次标准示范——单篇爆款文章只会递给你一副新眼镜，唯有一本诚实的书会同时递上十副，外加每一副的裂痕说明书。</p>
+  </div>
+
+  <div class="bridge br3"><span class="to">桥 → L4</span>理解已校准。现在登上最高一层：不再只问"我懂了吗"，而是问"这本书本身站得住吗""它在更大的知识网络里坐在哪把椅子上"——最后，用提取练习把这一切焊进长期记忆。</div>
+</section>
+<!-- ================= L4 ================= -->
+<section id="l4" class="layer l4" style="scroll-margin-top:80px">
+  <div class="layer-head">
+    <span class="layer-badge">L4</span>
+    <div><h2>精研 · 五阶段深度解构</h2><div class="layer-sub">评判 · 主题阅读 · 内化 —— 最深的一层，也是把书变成自己的一层</div></div>
+  </div>
+
+  <div class="card">
+    <div class="ph"><span class="pn">0</span>PHASE 0 · 检视（回指）</div>
+    <p style="margin-bottom:0">全书骨架已在 L1 的关系图中一次性交付：1 个元方法（球形奶牛式建模）× 10 副数学眼镜（四个尺度环）× 1 个未决悬案（大统一）。此处不再重复检视，直接上分析。</p>
+  </div>
+
+  <div class="card">
+    <div class="ph"><span class="pn">1</span>PHASE 1 · 分析 · 全书论证骨架</div>
+    <p><b>带走这句：这不是十篇科普的合订本，而是一条完整三段论——复杂性逼出数学，数学的代价是简化，简化的代价是永远需要多副眼镜。</b></p>
+    <div class="figure" role="img" aria-label="全书论证骨架图">
+<svg viewBox="0 0 1150 620" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,'SF Pro Text','PingFang SC',sans-serif">
+  <defs><marker id="mP" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--purple)"/></marker></defs>
+  <g font-size="14" font-weight="600">
+    <rect x="235" y="28" width="680" height="62" rx="14" fill="var(--red-bg)" stroke="var(--red)" stroke-opacity=".5"/>
+    <text x="575" y="54" text-anchor="middle" fill="var(--label)" font-weight="800">困境：约 860 亿元件的复杂度，压垮直觉与自然语言</text>
+    <text x="575" y="76" text-anchor="middle" font-size="12" fill="var(--label2)">逐细胞描述与讲道理式解释，双双失效</text>
+    <line x1="575" y1="92" x2="575" y2="116" stroke="var(--purple)" stroke-width="2.2" marker-end="url(#mP)"/>
+    <rect x="235" y="120" width="680" height="62" rx="14" fill="var(--indigo-bg)" stroke="var(--indigo)" stroke-opacity=".6"/>
+    <text x="575" y="146" text-anchor="middle" fill="var(--label)" font-weight="800">回应：数学 = 外延认知</text>
+    <text x="575" y="168" text-anchor="middle" font-size="12" fill="var(--label2)">把装不下的关系外化为可机械推演的符号系统</text>
+    <line x1="575" y1="184" x2="575" y2="208" stroke="var(--purple)" stroke-width="2.2" marker-end="url(#mP)"/>
+    <rect x="235" y="212" width="680" height="62" rx="14" fill="var(--blue-bg)" stroke="var(--blue)" stroke-opacity=".6"/>
+    <text x="575" y="238" text-anchor="middle" fill="var(--label)" font-weight="800">方法：球形奶牛策略——敢简化，才可解</text>
+    <text x="575" y="260" text-anchor="middle" font-size="12" fill="var(--label2)">建模的第一步是决定扔掉什么；逼真让位于可答性</text>
+    <line x1="575" y1="276" x2="575" y2="300" stroke="var(--purple)" stroke-width="2.2" marker-end="url(#mP)"/>
+    <rect x="40" y="304" width="1070" height="120" rx="14" fill="var(--teal-bg)" stroke="var(--teal)" stroke-opacity=".55"/>
+    <text x="575" y="330" text-anchor="middle" fill="var(--label)" font-weight="800">实证：十副眼镜，各解锁一类现象（第 1–10 章）</text>
+    <g font-size="11.5" font-weight="600">
+      <rect x="58" y="344" width="196" height="30" rx="9" fill="var(--card)" stroke="var(--hair)"/><text x="156" y="364" text-anchor="middle" fill="var(--label2)">1 电路 → 放电</text>
+      <rect x="266" y="344" width="196" height="30" rx="9" fill="var(--card)" stroke="var(--hair)"/><text x="364" y="364" text-anchor="middle" fill="var(--label2)">2 逻辑 → 学习</text>
+      <rect x="474" y="344" width="196" height="30" rx="9" fill="var(--card)" stroke="var(--hair)"/><text x="572" y="364" text-anchor="middle" fill="var(--label2)">3 吸引子 → 记忆</text>
+      <rect x="682" y="344" width="196" height="30" rx="9" fill="var(--card)" stroke="var(--hair)"/><text x="780" y="364" text-anchor="middle" fill="var(--label2)">4 平衡对峙 → 噪声</text>
+      <rect x="890" y="344" width="196" height="30" rx="9" fill="var(--card)" stroke="var(--hair)"/><text x="988" y="364" text-anchor="middle" fill="var(--label2)">5 层级 → 视觉</text>
+      <rect x="58" y="382" width="196" height="30" rx="9" fill="var(--card)" stroke="var(--hair)"/><text x="156" y="402" text-anchor="middle" fill="var(--label2)">6 信息论 → 编码</text>
+      <rect x="266" y="382" width="196" height="30" rx="9" fill="var(--card)" stroke="var(--hair)"/><text x="364" y="402" text-anchor="middle" fill="var(--label2)">7 动力系统 → 运动</text>
+      <rect x="474" y="382" width="196" height="30" rx="9" fill="var(--card)" stroke="var(--hair)"/><text x="572" y="402" text-anchor="middle" fill="var(--label2)">8 图论 → 连接组</text>
+      <rect x="682" y="382" width="196" height="30" rx="9" fill="var(--card)" stroke="var(--hair)"/><text x="780" y="402" text-anchor="middle" fill="var(--label2)">9 贝叶斯 → 感知决策</text>
+      <rect x="890" y="382" width="196" height="30" rx="9" fill="var(--card)" stroke="var(--hair)"/><text x="988" y="402" text-anchor="middle" fill="var(--label2)">10 强化学习 → 奖励</text>
+    </g>
+    <line x1="575" y1="424" x2="575" y2="448" stroke="var(--purple)" stroke-width="2.2" marker-end="url(#mP)"/>
+    <rect x="235" y="452" width="680" height="62" rx="14" fill="var(--orange-bg)" stroke="var(--orange)" stroke-opacity=".6"/>
+    <text x="575" y="478" text-anchor="middle" fill="var(--label)" font-weight="800">张力：眼镜之间并不兼容</text>
+    <text x="575" y="500" text-anchor="middle" font-size="12" fill="var(--label2)">编码观 ⇄ 动力观；描述行为 ⇄ 断言机制；简化 ⇄ 失真</text>
+    <line x1="575" y1="516" x2="575" y2="540" stroke="var(--purple)" stroke-width="2.2" marker-end="url(#mP)"/>
+    <rect x="235" y="544" width="680" height="62" rx="14" fill="var(--purple-bg)" stroke="var(--purple)" stroke-opacity=".6"/>
+    <text x="575" y="570" text-anchor="middle" fill="var(--label)" font-weight="800">结论：多模型主义——大统一未至，诚实的拼图优于漂亮的宣言</text>
+    <text x="575" y="592" text-anchor="middle" font-size="12" fill="var(--label2)">结语对三大统一候选逐一体检后的立场</text>
+  </g>
+</svg>
+    </div>
+    <p class="figcap">图：全书隐含论证链（解读者依各章内容重构 <span class="bd bd-i">⚠️</span>；各环节事实均见 L2 对应章节）。</p>
+    <div class="grid2" style="margin-top:10px">
+      <div style="border:.5px solid var(--hair);border-radius:14px;padding:14px 16px;background:var(--card2)">
+        <h4 style="margin-bottom:6px">可调用框架 A ·「球形奶牛策略」</h4>
+        <p class="small" style="margin-bottom:0"><b>何时用：</b>任何复杂系统的分析起点——先造一个"小到可解"的最小模型，再逐步加回细节。<b>反模式：</b>①把模型当真相供起来；②为了"逼真"无限堆参数，直到模型和现实一样看不懂。</p>
+      </div>
+      <div style="border:.5px solid var(--hair);border-radius:14px;padding:14px 16px;background:var(--card2)">
+        <h4 style="margin-bottom:6px">可调用框架 B ·「双向脚手架」</h4>
+        <p class="small" style="margin-bottom:0"><b>何时用：</b>处理"生物智能 ↔ 人工智能"任何论断时——两者互相借梯（脑给 AI 蓝图，AI 给脑假说机器）。<b>反模式：</b>①把 AI 的成功当作大脑机制已被证明；②因两者差异否认互相启发的价值。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ph"><span class="pn">2</span>PHASE 2 · 辩证 · 先立靶，再射箭 <span class="bd bd-i">⚠️ 本阶段整体属推断性评价</span></div>
+    <p><b>带走这句：这本书最大的优点（叙事清爽的成功者列传）与最大的软肋（回避公式、回避失败）是同一枚硬币的两面。</b></p>
+    <div class="grid3">
+      <div style="border:.5px solid var(--hair);border-radius:14px;padding:14px 16px;background:var(--card2)">
+        <h4 style="margin-bottom:6px">争点 1 · 成功者叙事</h4>
+        <p class="small" style="margin-bottom:0"><b>正题（steelman）：</b>科普必须有叙事主线，十次"数学得胜"的列传是最有效的教学结构。<b>反题：</b>幸存者偏差让"数学化必然成功"显得理所当然——大量死胡同与至今未亡的对立方案被按下不表。<b>合题：</b>把本书当"精选集"而非"全史"读；每章的辩证栏（L2）就是补上的另一半。</p>
+      </div>
+      <div style="border:.5px solid var(--hair);border-radius:14px;padding:14px 16px;background:var(--card2)">
+        <h4 style="margin-bottom:6px">争点 2 · 无公式的代价</h4>
+        <p class="small" style="margin-bottom:0"><b>正题：</b>零公式门槛让最大读者群进得来，这正是它作为科普的职责。<b>反题：</b>在自由能、信息熵这类"形式化依赖"的概念上，纯文字讲解让理解停在类比层，且类比的误差读者无从自查。<b>合题：</b>把它当"地图册"，需要"地形图"时接续教科书级读物（如 Dayan &amp; Abbott 的理论神经科学教材 <span class="bd bd-i">⚠️</span>）。</p>
+      </div>
+      <div style="border:.5px solid var(--hair);border-radius:14px;padding:14px 16px;background:var(--card2)">
+        <h4 style="margin-bottom:6px">争点 3 · 选线偏 AI 亲缘</h4>
+        <p class="small" style="margin-bottom:0"><b>正题：</b>沿 AI 亲缘线（感知机→CNN→RL）选材，是接住时代注意力的聪明入口。<b>反题：</b>神经调质、情绪、发育、能量代谢等非"信息处理主线"的建模传统着墨有限，易给读者留下"大脑≈信息处理器"的窄化印象。<b>合题：</b>书的谦逊结论应回射到书自身——十副眼镜，仍不是全部眼镜。</p>
+      </div>
+    </div>
+    <p style="margin:14px 0 0"><b>偏差体检：</b>①作者是计算神经科学从业者，对建模价值天然乐观——这是立场，不是缺点，但读者应知情；②英文原书成书于 2021 年，恰在大语言模型爆发前夜：书中"AI ↔ 脑"的对照关系此后已被深刻改写（纯规模路线的胜利、涌现能力、表征对齐研究的兴起均为成书后进展 <span class="bd bd-i">⚠️</span>）；③中文版 2025 年面世，内容基线仍是 2021——读结语时请自带这三年多的时差。</p>
+  </div>
+
+  <div class="card">
+    <div class="ph"><span class="pn">3</span>PHASE 3 · 主题 · 把这本书放进你的书架网络</div>
+    <p><b>带走这句：在"心智科学"的书架上，这本书的位置是"工具谱系馆"——别的书给你结论，它给你结论背后的整套算法家谱。</b></p>
+    <div class="grid3">
+      <div style="border:.5px solid var(--hair);border-radius:14px;padding:14px 16px;background:var(--card2)">
+        <h4 style="margin-bottom:6px">对话 · 迪昂《脑与意识》</h4>
+        <p class="small" style="margin-bottom:0">同属湛庐脑科学书系。迪昂代表意识研究的<b>实验派</b>：全局工作空间理论＋可测的"意识标志物"；林赛的结语呈现的则是<b>理论派</b>（IIT / 自由能）。两书互为镜像：一个回答"意识何时发生、如何测量"，一个回答"这些理论如何被数学化、又各自卡在哪"。连读可获得意识科学的完整地形。<span class="bd bd-i">⚠️ 关联为解读者构建</span></p>
+      </div>
+      <div style="border:.5px solid var(--hair);border-radius:14px;padding:14px 16px;background:var(--card2)">
+        <h4 style="margin-bottom:6px">对话 · 库兹韦尔《如何创造思维》</h4>
+        <p class="small" style="margin-bottom:0">库兹韦尔把"层级模式识别"这<b>一个</b>原理推到底，直达造脑宣言；林赛的第 5 章讲的是同一层级思想的科学史版本——但她全书的姿态恰是对"一个原理打天下"的解毒剂。两书对照读，能清晰看见工程乐观主义与科学审慎主义各自的力量与盲区。<span class="bd bd-i">⚠️</span></p>
+      </div>
+      <div style="border:.5px solid var(--hair);border-radius:14px;padding:14px 16px;background:var(--card2)">
+        <h4 style="margin-bottom:6px">对话 · 克里斯汀《人机对齐》</h4>
+        <p class="small" style="margin-bottom:0">第 10 章的 TD 学习与多巴胺，正是《人机对齐》里奖励建模一脉的学术上游（萨顿-巴托传统）。本书的"成瘾＝误差信号被劫持"，在对齐问题里有一个工程孪生：奖励错定（reward misspecification）——给系统灌假账，系统就忠实地学坏。<span class="bd bd-i">⚠️</span></p>
+      </div>
+    </div>
+    <div class="grid2" style="margin-top:14px">
+      <div style="border:.5px solid var(--hair);border-radius:14px;padding:14px 16px;background:var(--card2)">
+        <h4 style="margin-bottom:6px">模型格栅 ×2</h4>
+        <p class="small" style="margin-bottom:0"><b>① 多模型思维：</b>对同一现象至少上两把互不相同的尺子，结论在交叉处才可信——本书就是这条格栅的 10 连示范。<b>② 地图非疆域：</b>模型"好用"与"为真"是两回事；换地图前先问旧地图在哪些路段仍然最准。</p>
+      </div>
+      <div style="border:.5px solid var(--hair);border-radius:14px;padding:14px 16px;background:var(--card2)">
+        <h4 style="margin-bottom:6px">时代映照 · 在 2026 年读它</h4>
+        <p class="small" style="margin-bottom:0">大模型已在规模与许多任务上超车，但本书暗含一份"碳基优势清单"在今天愈发醒目：约 20 瓦的能耗、少样本学习、终身在线学习、具身闭环、由 E-I 平衡带来的鲁棒灵敏。AI 越强，这份清单越像下一代架构的路线图。<span class="bd bd-i">⚠️ 成书后视角</span></p>
+      </div>
+    </div>
+    <div style="border:.5px solid var(--hair);border-radius:14px;padding:14px 16px;background:var(--card2);margin-top:14px">
+      <h4 style="margin-bottom:6px">业务迁移 · 三条（克制版）</h4>
+      <p class="small" style="margin-bottom:0"><b>① 指标体系即球形奶牛：</b>任何 KPI 框架（含目的地双指数这类合成指标）本质都是"敢扔细节"的简化模型——它的价值边界该像 LIF 一样被明说，而非被当成现实本身。<b>② 组织的 E-I 平衡：</b>只有油门（增长侧）的组织跑得快但迟钝失控；强抑制角色（风控、复盘、反对派）不是内耗，是让系统"既稳又敏"的对冲结构。<b>③ 体验管理的本质是预期差：</b>多巴胺登记的是"实际 − 预期"——用户满意度与支付意愿同理：管理预期线，常比堆砌绝对体验更有杠杆。<span class="bd bd-i">⚠️ 迁移为解读者应用</span></p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ph"><span class="pn">4</span>PHASE 4 · 内化 · 把书焊进长期记忆</div>
+    <p><b>带走这句：读完只是"见过"；下面四步（必读回炉 → 自测 → 间隔 → 行动）才把"见过"变成"拥有"。</b>本节只用两种被反复验证的最高收益技术：检索练习（自测）与间隔复习，辅以"讲给外行"的教学反哺。</p>
+    <h4 style="margin:10px 0 6px">帕累托必读回炉（约 20% 篇幅拿走 80% 精华）</h4>
+    <ul class="clean">
+      <li><b>引言</b>——"外延认知＋球形奶牛"，全书的操作系统；</li>
+      <li><b>第 3 章</b>——吸引子记忆：对直觉颠覆最大、迁移面最广的一章；</li>
+      <li><b>第 7 章</b>——编码观 vs 动力观：全书思想密度峰值；</li>
+      <li><b>第 9、10 章</b>——贝叶斯与强化学习：与当下 AI 及日常决策接口最多；</li>
+      <li><b>结语</b>——对"大一统"的三连体检：科学品味的示范课。</li>
+    </ul>
+    <h4 style="margin:14px 0 6px">提取练习 · 五道自测（先作答，再展开）</h4>
+    <details><summary>Q1 · LIF 与霍奇金-赫胥黎模型明明描述同一个神经元，为何一百多年后两个都还活着？</summary><div class="ans"><p>因为它们分辨率不同、回答的问题不同：H-H 是"施工蓝图"，精确到离子通道，用于理解放电的生物物理机制；LIF 是"地铁线路图"，牺牲细节换取可解性与可扩展性，是大规模网络仿真的主力。模型的取舍标准是"要回答什么问题"，不是"谁更像真的"。（第 1 章）</p></div></details>
+    <details><summary>Q2 · 用一个不含任何术语的句子说清"反向传播在传什么"，并指出它对大脑成立的最大疑点。</summary><div class="ans"><p>它传的是一张逐层回摊的"责任账单"：总误差按每根连接的贡献度分摊，各自朝减小自己那份责任的方向微调。最大疑点：人工网络里有"全知会计"精确计算并回传这张账单，大脑中是否存在等价机制（误差信号如何精确逐层回传）至今存疑。（第 2 章）</p></div></details>
+    <details><summary>Q3 · 为什么说神经元放电的"乱"不是缺陷？这个解释顺带赠送了什么功能好处？</summary><div class="ans"><p>平衡网络理论：兴奋与抑制两股巨大输入近乎抵消，放电由残余波动决定——不规律性是这种高张力对峙的结构性产物。赠品：处于"对峙"状态的系统对任何新输入都能极速响应——乱与快，是同一机制的两面。（第 4 章）</p></div></details>
+    <details><summary>Q4 · "编码观"与"动力观"对运动皮质的分歧，用一句话各自概括；为什么这场争论难以用数据了结？</summary><div class="ans"><p>编码观：神经活动是关于运动参数（方向、力）的"消息"，等待被下游解读。动力观：神经活动不是消息，它就是产生运动的机器本身——问齿轮"你代表什么"是问错了问题。难以了结，因为两种框架常对同一组数据拟合得同样好——分歧在世界观与下一步实验的设计上，而不只在数据里。（第 6–7 章）</p></div></details>
+    <details><summary>Q5 · 多巴胺信号登记的是什么？据此用一句话解释成瘾，并说出这套理论与 AI 的关系。</summary><div class="ans"><p>登记"奖励预测误差"：实际所得比预期好多少。成瘾＝某些物质人为直接拉高该误差信号，等于给估值系统灌假账，系统忠实学出一条错误的高价值并锁死行为。这套 TD（时间差分）理论本是为机器学习发明的算法，回头成为解释真实多巴胺系统的最佳模型——AI 与脑科学最成功的一次握手。（第 10 章）</p></div></details>
+    <details><summary>附加题 · 3 分钟把这本书讲给一个完全外行（教学反哺，能讲清才算真懂）</summary><div class="ans"><p>参考讲稿骨架："大脑有八百多亿个零件，谁也没法靠盯着看搞懂它。一百多年来，科学家的办法是给它配'数学眼镜'：把神经元当漏水的桶，就懂了放电；当会改错的投票器，就懂了学习；把记忆当地形上的坑，就懂了为什么半句诗能勾出整首；把多巴胺当'比预期好多少'的差价播报员，就懂了惊喜和上瘾。这本书讲了十副这样的眼镜——每副都看清了一块，没有一副看清全部。它最后的忠告是：谁跟你说有一副眼镜能看清一切，先别信。"</p></div></details>
+    <h4 style="margin:14px 0 6px">间隔复习锚点 &amp; 72 小时行动</h4>
+    <ul class="clean" style="margin-bottom:.5rem">
+      <li><b>1 天后：</b>不看原图，凭记忆重画 L1 关系图（见下方收束清单）；</li>
+      <li><b>1 周后：</b>用上面的 3 分钟讲稿真的讲给一个人听，记录对方卡住的位置——那就是你的薄弱节点；</li>
+      <li><b>1 个月后：</b>重做五道自测，只重读答错题对应的章。</li>
+    </ul>
+    <p style="margin-bottom:0"><b>72 小时行动：</b>选一个你正被其复杂性困住的真实问题（业务或生活皆可），在一页纸上写下：①我决定扔掉的三个细节；②留下的最小模型（不超过三个变量）；③这个模型能回答与不能回答的各一个问题。——这就是你的第一头球形奶牛。</p>
+  </div>
+
+  <div class="card card2">
+    <div class="eyebrow"><span class="dot" style="background:var(--purple)"></span>收束 · 凭记忆重画 L1 关系图（首尾闭环自测）</div>
+    <p style="margin-bottom:.5rem">合上屏幕，白纸一张，检查你能否画出：</p>
+    <ul class="clean" style="margin-bottom:.4rem">
+      <li>□ 中心枢纽（元方法叫什么？）；</li>
+      <li>□ 10 个模型节点＋各自对应的大脑现象；</li>
+      <li>□ 4 个尺度环（元件 → 网络 → 系统 → 行为）；</li>
+      <li>□ 至少 1 条演进边、1 条前提边、1 条张力边（那条红色虚线连着谁和谁？）；</li>
+      <li>□ 图外那条悬而未决的弧线上，站着哪三位"大一统候选人"？</li>
+    </ul>
+    <p class="small" style="margin-bottom:0">全部画出＝这本书的骨架已属于你；卡住之处，回到对应层补一遍即可。这正是"检索练习"本身——你刚刚完成了对全书的最后一次提取。</p>
+  </div>
+</section>
+<!-- ================= 附录 ================= -->
+<section class="layer" style="scroll-margin-top:80px">
+  <div class="card card2">
+    <div class="eyebrow"><span class="dot" style="background:var(--gray)"></span>附录 · 信源与反幻觉声明</div>
+    <p style="margin-bottom:.5rem"><b>已核验信源：</b></p>
+    <ul class="clean">
+      <li>豆瓣图书条目（书名、作者、译者、出版社、出品方、出版年、页数、定价、ISBN 9787572295430、原作名、作者履历）；</li>
+      <li>当当云阅读（完整目录：两篇推荐序、引言、第 1–10 章全部小节标题及各章时间跨度标注、结语三大理论小节、附录与译者后记；内容简介与推荐人名单）；</li>
+      <li>豆瓣阅读电子书页（字数约 20.4 万、出版信息交叉验证）；</li>
+      <li>Bloomsbury / Goodreads / 亚马逊等英文原书页（原书书名、2021 年出版、作者学术履历）；</li>
+      <li>公开读书笔记（CSDN《心智的 10 大模型》万字笔记，用于交叉核对引言"外延认知"表述与结语三大理论的转述——标注为二手信源）。</li>
+    </ul>
+    <p style="margin-bottom:.5rem"><b>反幻觉声明：</b>本报告执行三层防御——① 全部章节结构与小节名以已核验目录为准，未杜撰任何章节标题与页码；② 全文置信度三标：<span class="bd bd-f">✅ 确证</span>（书中明确或多信源交叉）、<span class="bd bd-i">⚠️ 推断</span>（基于书的逻辑、领域常识或成书后进展的合理延伸——包括各章历史人物细节、生活/商业类比与全部跨书联结）、<span class="bd bd-d">❓ 存疑</span>（本报告未使用存疑级内容）；③ 不提供伪装成原文的引文；书中观点均为转述。若你手头有纸书，欢迎抽查任意一处标注。</p>
+    <p class="small" style="margin-bottom:0"><b>特别说明：</b>「大脑与意识的数学原理」为本报告采用的解读副题（对应你检索本书时使用的名称）；正式书名以版权页《心智的10大模型》为准。四层动线中的尺度分层、论证骨架图与全部教学类比，属解读者的组织与讲解层，不代表原书原文结构。</p>
+  </div>
+
+  <footer>
+    <p><span class="sign">理海 / 飞猪度假事业部</span> · 详细解读系列 · 2026-08-13</p>
+    <p class="tiny" style="margin-bottom:0">四层递进阅读动线：L1 鸟瞰（先行组织者）→ L2 填充（分析阅读）→ L3 校准（概念改变）→ L4 精研（评判 · 主题 · 内化）。单文件 HTML · 遵循 Apple HIG · 明暗双模 · 由 Claude 协作生成。</p>
+  </footer>
+</section>
+
+</div><!-- /wrap -->
+
+<script>
+(function(){
+  var ids=["l1","l2","l3","l4"];
+  var steps={};
+  document.querySelectorAll(".step").forEach(function(s,i){ steps[ids[i]]=s; });
+  function setOn(id){
+    ids.forEach(function(k){ if(steps[k]) steps[k].classList.toggle("on", k===id); });
+  }
+  if("IntersectionObserver" in window){
+    var current="l1";
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ current=e.target.id; setOn(current); } });
+    },{rootMargin:"-20% 0px -70% 0px"});
+    ids.forEach(function(k){ var el=document.getElementById(k); if(el) io.observe(el); });
+    setOn("l1");
+  }
+  document.querySelectorAll('.step').forEach(function(s){
+    s.addEventListener('click', function(){ setOn(this.getAttribute('href').slice(1)); });
+  });
+})();
+</script>
+</body>
+</html>
